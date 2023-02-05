@@ -1,0 +1,14 @@
+"add-new-script" = "Add new script";
+"info-add-new-script" = "Test and save a new script to add it to the saved list";
+
+"add-new-group" = "Add new group";
+"info-add-new-group" = "Use groups to organize scripts and run all by one";
+
+"saved %@" = "Saved scripts (%@)";
+
+"name-add-script" = "Name for the script";
+"path-add-script" = "Path to the script";
+"test-script" = "Test script";
+"test-success" = "Script worked";
+"test-failed" = "Script failed";
+"save-script" = "Save script";

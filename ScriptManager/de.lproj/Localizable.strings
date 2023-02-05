@@ -1,0 +1,14 @@
+"add-new-script" = "Neues Skript hinzufügen";
+"info-add-new-script" = "Teste und füge ein neues Skript deiner Liste hinzu";
+
+"add-new-group" = "Neue Gruppe hinzufügen";
+"info-add-new-group" = "Nutze Gruppen um deine Skripte zu organisieren";
+
+"saved %@" = "Gespeicherte Skripte (%@)";
+
+"name-add-script" = "Skriptname";
+"path-add-script" = "Pfad zum Skript";
+"test-script" = "Skript testen";
+"test-success" = "Erfolgreich getestet";
+"test-failed" = "Skript fehlerhaft";
+"save-script" = "Skript speichern";
