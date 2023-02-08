@@ -12,7 +12,7 @@ struct MainView: View {
     @StateObject private var viewModelScripts = ScriptsViewModel()
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HeaderView()
             
             ScrollView() {                
@@ -25,9 +25,11 @@ struct MainView: View {
                         viewModelMain.showAddScript.toggle()
                     }))
                 )
+                .padding(.top, Spacing.m)
                 
                 Divider()
                 
+                /* TODO: Add group-feature
                 GroupView(
                     toggleVar: $viewModelMain.showAddGroup,
                     toggle: {viewModelMain.showAddGroup.toggle()},
@@ -39,12 +41,14 @@ struct MainView: View {
                 )
                 
                 Divider()
+                 */
                 
                 ScriptsListView(viewModel: viewModelScripts)
                     .padding(.all, Spacing.xl)
                 
                 Spacer()
             }
+            .background(Color.AppBg)
         }
         .frame(width: 300, height: 450)
         

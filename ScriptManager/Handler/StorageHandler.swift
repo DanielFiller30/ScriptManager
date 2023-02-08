@@ -8,22 +8,6 @@
 import Foundation
 
 class StorageHandler: ObservableObject {
-    public func saveData(key: String, value: String) {
-        if let encoded = try? JSONEncoder().encode(value) {
-            UserDefaults.standard.set(encoded, forKey: key)
-        }
-    }
-    
-    public func loadData(key: String) -> String? {
-        if let data = UserDefaults.standard.data(forKey: key) {
-            if let decoded = try? JSONDecoder().decode(String.self, from: data) {
-                return decoded
-            }
-        }
-        
-        return nil
-    }
-    
     public func saveScripts(value: [Script]) {
         if let encoded = try? JSONEncoder().encode(value) {
             UserDefaults.standard.set(encoded, forKey: StorageKey.SCRIPTS.rawValue)
@@ -33,6 +17,22 @@ class StorageHandler: ObservableObject {
     public func loadScripts() -> [Script]? {
         if let data = UserDefaults.standard.data(forKey: StorageKey.SCRIPTS.rawValue) {
             if let decoded = try? JSONDecoder().decode([Script].self, from: data) {
+                return decoded
+            }
+        }
+        
+        return nil
+    }
+    
+    public func saveSettings(value: Settings) {
+        if let encoded = try? JSONEncoder().encode(value) {
+            UserDefaults.standard.set(encoded, forKey: StorageKey.SETTINGS.rawValue)
+        }
+    }
+    
+    public func loadSettings() -> Settings? {
+        if let data = UserDefaults.standard.data(forKey: StorageKey.SETTINGS.rawValue) {
+            if let decoded = try? JSONDecoder().decode(Settings.self, from: data) {
                 return decoded
             }
         }
@@ -53,4 +53,5 @@ extension UserDefaults {
 
 enum StorageKey: String, CaseIterable {
     case SCRIPTS
+    case SETTINGS
 }

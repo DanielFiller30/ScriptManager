@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HeaderView: View {
+    @StateObject var viewModel = SettingsViewModel()
+    
     var body: some View {
         HStack(alignment: .center) {
             Image("StatusBarIcon")
@@ -19,7 +21,7 @@ struct HeaderView: View {
             Spacer()
             
             Button {
-                print("TEST")
+                viewModel.showingPopover.toggle()
             } label: {
                 Image(systemName: "gear")
                     .resizable()
@@ -29,6 +31,9 @@ struct HeaderView: View {
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
+            .popover(isPresented: $viewModel.showingPopover) {
+                SettingsView(viewModel: viewModel)
+            }
             
         }
         .padding(.vertical, Spacing.l)

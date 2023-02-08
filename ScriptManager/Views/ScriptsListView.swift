@@ -17,10 +17,19 @@ struct ScriptsListView: View {
                 .fontWeight(.bold)
                 .font(.system(size: 12))
                 .padding(.bottom, Spacing.m)
-                        
-            ScrollView {
-                ForEach($viewModel.scripts) { $script in
-                    ScriptsListRowView(viewModel: viewModel, script: script)
+            
+            if (viewModel.scripts.isEmpty) {
+                Text("empty-scripts")
+                    .font(.system(size: 11))
+                    .foregroundColor(Color.Creme)
+                    .padding()
+                    .multilineTextAlignment(.center)
+                
+            } else {
+                ScrollView {
+                    ForEach($viewModel.scripts) { $script in
+                        ScriptsListRowView(viewModel: viewModel, script: script)
+                    }
                 }
             }
             

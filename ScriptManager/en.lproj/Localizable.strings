@@ -1,14 +1,40 @@
+// Menu
 "add-new-script" = "Add new script";
 "info-add-new-script" = "Test and save a new script to add it to the saved list";
 
 "add-new-group" = "Add new group";
 "info-add-new-group" = "Use groups to organize scripts and run all by one";
 
+// List
 "saved %@" = "Saved scripts (%@)";
+"empty-scripts" = "Add a new script, to run it here";
 
+// Add new script
 "name-add-script" = "Name for the script";
-"path-add-script" = "Path to the script";
-"test-script" = "Test script";
+"path-add-script" = "Script to execute";
+"test-script" = "Test";
 "test-success" = "Script worked";
 "test-failed" = "Script failed";
-"save-script" = "Save script";
+"save-script" = "Save";
+
+// Details
+"path" = "Command:";
+"last-run" = "Last executed:";
+
+// Delete-Alert
+"delete" = "Delete";
+"cancel" = "Cancel";
+"delete-title" = "Remove script";
+"delete-msg" = "Are you sure to remove this script from your list?";
+
+
+// Settings
+"settings" = "Settings";
+"shell-type" = "Shell-type";
+"path-shell" = "Path to shell";
+"path-profile" = "Path to profile";
+"shell-unicode" = "Unicode-format";
+"settings-reset" = "Delete saved data";
+"settings-save" = "Save settings";
+"settings-delete-title" = "Delete saved scripts";
+"settings-delete-msg" = "Are you sure to remove all the saved scripts from your list?";
