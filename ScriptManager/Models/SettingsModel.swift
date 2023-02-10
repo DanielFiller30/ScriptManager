@@ -11,4 +11,7 @@ struct Settings: Identifiable, Codable {
     var id = UUID()
     var shell: Shell
     var unicode: String
+    var logs: Bool
+    var pathLogs: String
+    var notifications: Bool
 }

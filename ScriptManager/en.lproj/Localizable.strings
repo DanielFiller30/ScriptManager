@@ -38,3 +38,12 @@
 "settings-save" = "Save settings";
 "settings-delete-title" = "Delete saved scripts";
 "settings-delete-msg" = "Are you sure to remove all the saved scripts from your list?";
+"settings-logging" = "Activate error-logs";
+"path-logs" = "Path for logs";
+"settings-notifications" = "Activate notifications";
+
+// Notification
+"notification-successfull-title %@" = "Script '%@' successfull finished";
+"notification-failed-title %@" = "Skript '%@' failed";
+"notification-successfull-subtitle" = "Your script has successfully finished. Run an other script in your menu-bar application.";
+"notification-failed-subtitle" = "Your script failed. Please check the error in your menu-bar application. Hint: Activate logging in your settings, to get further information for your error.";

@@ -37,3 +37,12 @@
 "settings-save" = "Einstellungen speichern";
 "settings-delete-title" = "Datenstand löschen";
 "settings-delete-msg" = "Bist du sicher, dass du deine gespeicherten Skripte aus deiner Liste entfernen möchtest?";
+"settings-logging" = "Fehler-Protokoll aktivieren";
+"path-logs" = "Pfad zu den Protokollen";
+"settings-notifications" = "Mitteilungen aktivieren";
+
+// Notification
+"notification-successfull-title %@" = "Skript '%@' abgeschlossen";
+"notification-failed-title %@" = "Skript '%@' fehlgeschlagen";
+"notification-successfull-subtitle" = "Dein Skript wurde erfolgreich durchgeführt. Führe ein weiteres Skript über die Verwaltungsoberfläche aus.";
+"notification-failed-subtitle" = "Dein Skript konnte nicht erfolgreich ausgeführt werden. Hinweis: Aktiviere das Logging in den Einstellungen, um mehr Informationen zu deinem Fehler zu erhalten.";

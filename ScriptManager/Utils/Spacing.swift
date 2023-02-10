@@ -8,6 +8,7 @@
 import Foundation
 
 struct Spacing {
+    static let zero = 0.0
     static let s = 2.0
     static let m = 5.0
     static let l = 10.0

@@ -15,12 +15,12 @@ struct ScriptsListView: View {
             Text("saved \(String($viewModel.scripts.count))")
                 .foregroundColor(.white)
                 .fontWeight(.bold)
-                .font(.system(size: 12))
+                .font(.system(size: Font.subTitle))
                 .padding(.bottom, Spacing.m)
             
             if (viewModel.scripts.isEmpty) {
                 Text("empty-scripts")
-                    .font(.system(size: 11))
+                    .font(.system(size: Font.text))
                     .foregroundColor(Color.Creme)
                     .padding()
                     .multilineTextAlignment(.center)
@@ -28,7 +28,7 @@ struct ScriptsListView: View {
             } else {
                 ScrollView {
                     ForEach($viewModel.scripts) { $script in
-                        ScriptsListRowView(viewModel: viewModel, script: script)
+                        ScriptRowView(viewModel: viewModel, script: script)
                     }
                 }
             }

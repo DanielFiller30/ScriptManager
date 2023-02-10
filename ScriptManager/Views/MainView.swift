@@ -12,7 +12,7 @@ struct MainView: View {
     @StateObject private var viewModelScripts = ScriptsViewModel()
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: Spacing.zero) {
             HeaderView()
             
             ScrollView() {                

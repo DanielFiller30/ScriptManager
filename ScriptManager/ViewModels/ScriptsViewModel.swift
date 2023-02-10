@@ -7,6 +7,7 @@
 
 import Foundation
 import AppKit
+import UserNotifications
 
 class ScriptsViewModel: ObservableObject {
     private let storage = StorageHandler()
@@ -14,29 +15,44 @@ class ScriptsViewModel: ObservableObject {
     @Published var scripts: [Script] = []
     @Published var name: String = ""
     @Published var path: String = ""
-    //@Published var path: String = "sh /Users/Daniel.Filler/Development/04_Mein_dm/custom_batch_scripts/toolTest.sh"
     
     func loadScripts() {
         self.scripts = storage.loadScripts() ?? []
     }
     
-    func runScript(_ command: String) async -> ResultState {
+    func loadSettings() -> Settings {
+        var settings = storage.loadSettings()
+        if (settings == nil) {
+            // Load default settings if no saved data
+            let homeDirURL = FileManager.default.homeDirectoryForCurrentUser.relativePath
+            
+            settings = Settings(
+                shell: Shell(type: DefaultSettings.shell.type, path: DefaultSettings.shell.path, profile: "\(homeDirURL)/.zshrc"),
+                unicode: DefaultSettings.unicode,
+                logs: DefaultSettings.logs,
+                pathLogs: DefaultSettings.pathLogs,
+                notifications: DefaultSettings.notifications
+            )
+        }
+        
+        return settings!
+    }
+    
+    func runScript(_ command: String, scriptName: String, test: Bool) async -> ResultState {
         do {
-            var settings = storage.loadSettings()
-            if (settings == nil) {
-                let homeDirURL = FileManager.default.homeDirectoryForCurrentUser.relativePath
-                settings = Settings(shell: Shell(type: .zsh, path: "/bin/zsh", profile: "\(homeDirURL)/.zshrc"), unicode: "en_US.UTF-8")
-            }
+            let settings = loadSettings()
             
             let task = Process()
             let pipe = Pipe()
             
-            let profilePath = settings!.shell.profile != nil ? "source \(settings!.shell.profile!);" : ""
-            let validatedCommand = "export LANG=\(settings!.unicode); \(profilePath) \(command)"
+            // Build valid shell command
+            let unicode = "export LANG=\(settings.unicode);"
+            let profilePath = settings.shell.profile != nil ? "source \(settings.shell.profile!);" : ""
+            let validatedCommand = unicode + profilePath + command
             
             task.standardError = pipe
             task.arguments = ["--login","-c", validatedCommand]
-            task.executableURL = URL(fileURLWithPath: settings!.shell.path)
+            task.executableURL = URL(fileURLWithPath: settings.shell.path)
             task.standardInput = nil
             task.standardOutput = pipe
             
@@ -48,9 +64,19 @@ class ScriptsViewModel: ObservableObject {
             task.waitUntilExit()
             
             if (task.terminationStatus == 0) {
+                if (settings.notifications && !test) {
+                    sendNotification(state: true, name: scriptName)
+                }
+                
                 return .successfull
             } else {
-                writeLog(output: output)
+                if (settings.logs && !test) {
+                    writeLog(output: output, pathLogs: settings.pathLogs)
+                }
+                
+                if (settings.notifications && !test) {
+                    sendNotification(state: false, name: scriptName)
+                }
                 
                 return .failed
             }
@@ -85,10 +111,22 @@ class ScriptsViewModel: ObservableObject {
         loadScripts()
     }
     
-    func writeLog(output: String) {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let fileName = paths[0].appendingPathComponent("log_\(getFormattedDate(date: Date())).txt")
-                
+    func sendNotification(state: Bool, name: String) {
+        let content = UNMutableNotificationContent()
+        content.title = state ? String(localized: "notification-successfull-title \(name)") : String(localized: "notification-failed-title \(name)")
+        content.subtitle = state ? String(localized: "notification-successfull-subtitle") : String(localized: "notification-failed-subtitle")
+        content.sound = UNNotificationSound.default
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+    func writeLog(output: String, pathLogs: String) {
+        let url = URL(string: "file://\(pathLogs)")
+        guard let validUrl = url else { return }
+        
+        let fileName = validUrl.appendingPathComponent("log_\(getFormattedDate(date: Date())).txt")
+        
         do {
             try output.write(to: fileName, atomically: true, encoding: String.Encoding.utf8)
         } catch {
@@ -97,13 +135,16 @@ class ScriptsViewModel: ObservableObject {
     }
     
     func openLogs() {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        NSWorkspace.shared.open(paths[0])
+        let savedSettings: Settings? = storage.loadSettings()
+        guard let settings = savedSettings else {return}
+        guard let url = URL(string: "file://\(settings.pathLogs)") else {return}
+        
+        NSWorkspace.shared.open(url)
     }
     
     func getFormattedDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YY HH:mm:ss"        
+        dateFormatter.dateFormat = "dd.MM.YY HH:mm:ss"
         
         return dateFormatter.string(from: date)
     }

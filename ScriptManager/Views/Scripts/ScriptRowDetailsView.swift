@@ -15,7 +15,7 @@ struct ScriptDetailsView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 Text("path")
-                    .font(.system(size: 11))
+                    .font(.system(size: Font.text))
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .frame(width: 80, alignment: .leading)
@@ -23,9 +23,10 @@ struct ScriptDetailsView: View {
                 Spacer()
                 
                 Text(script.path)
-                    .font(.system(size: 11))
+                    .font(.system(size: Font.text))
                     .foregroundColor(Color.white)
                     .onTapGesture() {
+                        // Copy path
                         let pasteboard = NSPasteboard.general
                         pasteboard.clearContents()
                         pasteboard.setString(script.path, forType: .string)
@@ -35,7 +36,7 @@ struct ScriptDetailsView: View {
             
             HStack(alignment: .top) {
                 Text("last-run")
-                    .font(.system(size: 11))
+                    .font(.system(size: Font.text))
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .frame(width: 80, alignment: .leading)
@@ -44,11 +45,11 @@ struct ScriptDetailsView: View {
                 
                 if (script.lastRun != nil) {
                     Text(viewModel.getFormattedDate(date: script.lastRun!))
-                        .font(.system(size: 11))
+                        .font(.system(size: Font.text))
                         .foregroundColor(Color.white)
                 } else {
                     Text("-")
-                        .font(.system(size: 11))
+                        .font(.system(size: Font.text))
                         .foregroundColor(Color.white)
                 }
             }

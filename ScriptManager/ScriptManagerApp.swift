@@ -12,6 +12,7 @@ struct ScriptManagerApp: App {
     let storage = StorageHandler()
     
     init() {
+        // Reset all data
         //storage.reset()
     }
     

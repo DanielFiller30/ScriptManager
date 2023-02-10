@@ -16,7 +16,7 @@ struct HeaderView: View {
             
             Text("Script Manager")
                 .foregroundColor(.white)
-                .font(.system(size: 14))
+                .font(.system(size: Font.title))
             
             Spacer()
             
@@ -25,8 +25,8 @@ struct HeaderView: View {
             } label: {
                 Image(systemName: "gear")
                     .resizable()
-                    .frame(width: 20, height: 20)
-                    .padding(5)
+                    .frame(width: IconSize.l, height: IconSize.l)
+                    .padding(Spacing.m)
                     .background(Color.Light)
                     .clipShape(Circle())
             }
