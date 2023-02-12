@@ -21,7 +21,7 @@ struct AddScriptView: View {
             
             VStack(alignment: .leading) {
                 Text("name-add-script")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                 
                 TextField("", text: $viewModel.name)
                 
@@ -30,7 +30,7 @@ struct AddScriptView: View {
             
             VStack(alignment: .leading) {
                 Text("path-add-script")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                 
                 TextField("cd /Desktop/ sh ...", text: $viewModel.path, axis: .vertical)
                     .lineLimit(4, reservesSpace: true)
@@ -46,7 +46,7 @@ struct AddScriptView: View {
             }
             
             Text(testResult)
-                .font(.system(size: Font.subTitle))
+                .font(.system(size: FontSize.subTitle))
                 .foregroundColor(testIsSuccessfull == .successfull ? Color.Success : Color.Danger)
                 .padding(.top, Spacing.m)
             

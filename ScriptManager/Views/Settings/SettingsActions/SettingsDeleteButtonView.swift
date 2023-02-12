@@ -15,6 +15,8 @@ struct SettingsDeleteButtonView: View {
             viewModel.showDeleteAlert.toggle()
         } label: {
             HStack(alignment: .center) {
+                Spacer()
+                
                 Text("settings-reset")
                     .padding(.trailing, Spacing.m)
                 
@@ -30,7 +32,7 @@ struct SettingsDeleteButtonView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }
-        .frame(width: 220)
+        .frame(width: 230)
         .buttonStyle(.plain)
         .padding(.top, Spacing.l)
         .alert(String(localized: "settings-delete-title"), isPresented: $viewModel.showDeleteAlert) {

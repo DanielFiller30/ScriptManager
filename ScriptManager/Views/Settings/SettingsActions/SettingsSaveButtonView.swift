@@ -15,6 +15,8 @@ struct SettingsSaveButtonView: View {
             viewModel.save()
         } label: {
             HStack(alignment: .center) {
+                Spacer()
+                
                 Text("settings-save")
                     .padding(.trailing, Spacing.m)
                 
@@ -23,14 +25,14 @@ struct SettingsSaveButtonView: View {
                 Image(systemName: "checkmark")
                     .resizable()
                     .frame(width: IconSize.s, height: IconSize.s)
-                    .foregroundColor(Color.Success)
+                    .foregroundColor(Color.white)
             }
             .padding(Spacing.l)
-            .background(Color.Light)
+            .background(Color.Success)
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }
-        .frame(width: 220)
+        .frame(width: 230)
         .disabled(viewModel.shellPath.isEmpty || viewModel.unicode.isEmpty)
         .buttonStyle(.plain)
         .padding(.bottom, Spacing.xl)    }

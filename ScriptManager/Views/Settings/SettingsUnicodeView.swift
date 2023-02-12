@@ -14,7 +14,7 @@ struct SettingsUnicodeView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("shell-unicode")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                 
                 Spacer()
                 

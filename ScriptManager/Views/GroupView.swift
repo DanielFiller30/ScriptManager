@@ -24,7 +24,7 @@ struct GroupView: View {
             HStack(alignment: .center) {
                 Text(label)
                     .fontWeight(.bold)
-                    .font(.system(size: Font.subTitle))
+                    .font(.system(size: FontSize.subTitle))
                     .onTapGesture {
                         withAnimation {
                             toggle()
@@ -35,7 +35,7 @@ struct GroupView: View {
                 Text(info)
                     .fontWeight(.light)
                     .foregroundColor(Color.Creme)
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                     .onTapGesture {
                         withAnimation {
                             toggle()

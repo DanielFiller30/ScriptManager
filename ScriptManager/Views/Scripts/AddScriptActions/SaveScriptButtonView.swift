@@ -24,7 +24,7 @@ struct SaveScriptButtonView: View {
                 Image(systemName: "doc.badge.plus")
                     .resizable()
                     .frame(width: IconSize.m, height: IconSize.m)
-                    .foregroundColor(Color.Creme)
+                    .foregroundColor(Color.white)
             }
             .padding(Spacing.l)
             .background(Color.Success)

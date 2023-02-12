@@ -10,12 +10,16 @@ import SwiftUI
 struct SettingsShellView: View {
     @StateObject var viewModel: SettingsViewModel
     
+    @State var showHintShell: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             
             HStack(alignment: .center) {
                 Text("shell-type")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
+                
+                HintView(title: String(localized: "hint-shell-title"), text: String(localized: "hint-shell-text"))
                 
                 Spacer()
                 
@@ -26,7 +30,7 @@ struct SettingsShellView: View {
                     }
                 }
                 .onChange(of: viewModel.shell) { type in
-                    changeShellType(type: type)
+                    changeShellType(stype: type)
                 }
                 .frame(width: 110)
             }
@@ -34,7 +38,7 @@ struct SettingsShellView: View {
             
             HStack(alignment: .center) {
                 Text("path-shell")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                 
                 Spacer()
                 
@@ -45,8 +49,10 @@ struct SettingsShellView: View {
             
             HStack(alignment: .center) {
                 Text("path-profile")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                 
+                HintView(title: String(localized: "hint-profile-title"), text: String(localized: "hint-profile-text"))
+
                 Spacer()
                 
                 TextField("", text: $viewModel.profilePath)
@@ -58,8 +64,8 @@ struct SettingsShellView: View {
         
     }
     
-    func changeShellType(type: ShellType) {
-        let shell: Shell = Shells.filter{ _ in type == viewModel.shell }.first!
+    func changeShellType(stype: ShellType) {
+        let shell: Shell = Shells.filter{ $0.type == viewModel.shell }.first!
         viewModel.shellPath = shell.path
         viewModel.profilePath = viewModel.homeDir + (shell.profile ?? "")
     }

@@ -13,27 +13,21 @@ class SettingsViewModel: ObservableObject {
     
     @Published var showingPopover: Bool = false
     @Published var showDeleteAlert: Bool = false
+    
+    @Published var homeDir: String = ""
 
     @Published var shell: ShellType = DefaultSettings.shell.type
     @Published var shellPath: String = DefaultSettings.shell.path
     @Published var profilePath: String = ""
     @Published var unicode: String = DefaultSettings.unicode
-    @Published var homeDir: String = ""
     @Published var loggingState: Bool = DefaultSettings.logs
     @Published var logsPath: String = ""
     @Published var notificationState: Bool = DefaultSettings.notifications
 
     func loadSettings() {
-        let savedSettings = storage.loadSettings()
-        
-        guard let settings = savedSettings else {
-            // Load default paths
-            self.profilePath = loadUserDir()
-            self.logsPath = loadLogsDir()
-            
-            return
-        }
-        
+        let settings = storage.loadSettings()
+        homeDir = FileManager.default.homeDirectoryForCurrentUser.relativePath
+
         // Set saved settings
         self.shell = settings.shell.type
         self.shellPath = settings.shell.path

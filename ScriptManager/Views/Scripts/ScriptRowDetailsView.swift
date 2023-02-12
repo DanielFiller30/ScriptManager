@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ScriptDetailsView: View {
     var viewModel = ScriptsViewModel()
+    let scriptHandler: ScriptHandler = ScriptHandler()
     var script: Script
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 Text("path")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .frame(width: 80, alignment: .leading)
@@ -23,7 +24,7 @@ struct ScriptDetailsView: View {
                 Spacer()
                 
                 Text(script.path)
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                     .foregroundColor(Color.white)
                     .onTapGesture() {
                         // Copy path
@@ -36,7 +37,7 @@ struct ScriptDetailsView: View {
             
             HStack(alignment: .top) {
                 Text("last-run")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .frame(width: 80, alignment: .leading)
@@ -44,12 +45,12 @@ struct ScriptDetailsView: View {
                 Spacer()
                 
                 if (script.lastRun != nil) {
-                    Text(viewModel.getFormattedDate(date: script.lastRun!))
-                        .font(.system(size: Font.text))
+                    Text(scriptHandler.getFormattedDate(date: script.lastRun!))
+                        .font(.system(size: FontSize.text))
                         .foregroundColor(Color.white)
                 } else {
                     Text("-")
-                        .font(.system(size: Font.text))
+                        .font(.system(size: FontSize.text))
                         .foregroundColor(Color.white)
                 }
             }

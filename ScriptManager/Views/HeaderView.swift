@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HeaderView: View {
     @StateObject var viewModel = SettingsViewModel()
+    @State var showCloseAlert: Bool = false
     
     var body: some View {
         HStack(alignment: .center) {
@@ -16,7 +17,8 @@ struct HeaderView: View {
             
             Text("Script Manager")
                 .foregroundColor(.white)
-                .font(.system(size: Font.title))
+                .font(Font.custom("Courier New", size: FontSize.title))
+                .fontWeight(.bold)
             
             Spacer()
             
@@ -35,10 +37,35 @@ struct HeaderView: View {
                 SettingsView(viewModel: viewModel)
             }
             
+            Button {
+                showCloseAlert.toggle()
+            } label: {
+                Image(systemName: "xmark.circle")
+                    .resizable()
+                    .frame(width: IconSize.l, height: IconSize.l)
+                    .padding(Spacing.m)
+                    .background(Color.Light)
+                    .clipShape(Circle())
+            }
+            .buttonStyle(.plain)
+            .alert(String(localized: "close-app-title"), isPresented: $showCloseAlert) {
+                Button("cancel", role: .cancel) {}
+                Button("close-app-btn") {
+                    terminateApp()
+                }
+                
+            } message: {
+                Text("close-app-msg")
+            }
+            
         }
         .padding(.vertical, Spacing.l)
         .padding(.horizontal, Spacing.xl)
         .background(Color.Dark)
+    }
+    
+    func terminateApp() {
+        NSApp.terminate(self)
     }
 }
 

@@ -1,3 +1,18 @@
+// Welcome Screen
+"welcome-title" = "Herzlich Willkommen zu deinem persönlichen Skript-Manager";
+"welcome-info" = "Du kannst deinen Skript-Manager über das neue Symbol in der Menubar deines Macs öffnen. Bevor du loslegst, solltest du einen Blick in deine Einstellungen werfen, die benötigt werden, um deine Skripte zum laufen zu bringen.";
+"welcome-info2" = "Deine Einstellungen öffnest du in deinem Skript-Manager über das Zahnrad Symbol:";
+"welcome-info3" = "Ein neues Skript kannst du über die Auswahl 'Neues Skript hinzufügen' speichern. Über die Liste ist es dir dann ermöglicht, ganz einfach deine gespeicherten Skripte auszuführen. Ist dein Skript durchgelaufen, kannst du dir mithilfe von Mitteilungen (Aktivierung in den Einstellungen) das Ergebnis zeigen lassen, oder du öffnest deinen Skript-Manager.";
+"welcome-info4" = "Hier siehst du zwei verschiedene Resultate für dein abgeschlossenes Skript:";
+"welcome-info5" = "Ein grüner Haken bedeutet, dass dein Skript ohne Fehler abgeschlossen wurde. Ein rotes Kreuz bedeutet ein Fehler ist aufgetreten. Hier hilft es dir die Logging-Funktion über die Einstellung zu aktivieren. Bei aktivierter Logging-Funktion wird das Bild zu einer Schaltfläche mit rotem Hintergrund, über die du ganz einfach zu deinem für die Logs hinterlegten Pfad gelangst.";
+"welcome-toggle" = "Nicht mehr anzeigen";
+"welcome-close" = "Fenster schließen";
+
+// Alert terminate
+"close-app-title" = "Anwendung beenden";
+"close-app-btn" = "Beenden";
+"close-app-msg" = "Bist du sicher, dass du deinen Skript-Manager beenden möchtest?";
+
 // Menu
 "add-new-script" = "Neues Skript hinzufügen";
 "info-add-new-script" = "Teste und füge ein neues Skript deiner Liste hinzu";
@@ -46,3 +61,11 @@
 "notification-failed-title %@" = "Skript '%@' fehlgeschlagen";
 "notification-successfull-subtitle" = "Dein Skript wurde erfolgreich durchgeführt. Führe ein weiteres Skript über die Verwaltungsoberfläche aus.";
 "notification-failed-subtitle" = "Dein Skript konnte nicht erfolgreich ausgeführt werden. Hinweis: Aktiviere das Logging in den Einstellungen, um mehr Informationen zu deinem Fehler zu erhalten.";
+
+// Hints
+"hint-shell-title" = "Shell-Typ";
+"hint-shell-text" = "Du hast die Möglichkeit deine Standard-Shell zu ändern. Nutze bestmöglichst die Shell, die du in deinem Terminal auch verwendest.";
+"hint-profile-title" = "Profil";
+"hint-profile-text" = "Falls du eine Profilkonfiguration für deine Shell verwendest, passe den Pfad zu dieser Datei an.";
+"hint-notifications-title" = "Mitteilungen";
+"hint-notifications-text" = "Wenn du die Mitteilungen aktiviert hast, wirst du automatisch über Push-up Mitteilungen darüber informiert, ob dein Skript erfolgreich durchgelaufen ist.";

@@ -20,7 +20,7 @@ struct ScriptRowLabel: View {
         HStack(alignment: .center) {
             Text(script.name)
                 .foregroundColor(.white)
-                .font(.system(size: Font.subTitle))
+                .font(.system(size: FontSize.subTitle))
                 .fontWeight(.bold)
                 .frame(maxWidth: 110, alignment: .leading)
                 .lineLimit(1)
@@ -44,7 +44,8 @@ struct ScriptRowLabel: View {
     }
     
     func reloadSettings() {
-        let settings: Settings = viewModel.loadSettings()
+        let storage = StorageHandler()
+        let settings: Settings = storage.loadSettings()
         isLogEnabled = settings.logs
     }
 }

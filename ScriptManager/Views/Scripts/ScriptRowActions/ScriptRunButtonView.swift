@@ -11,6 +11,8 @@ struct ScriptRunButtonView: View {
     let viewModel: ScriptsViewModel
     let reloadSettings: () -> Void
     
+    let scriptHandler: ScriptHandler = ScriptHandler()
+    
     @Binding var script: Script
     @Binding var isRunning: Bool
     
@@ -47,7 +49,7 @@ struct ScriptRunButtonView: View {
         activeId = script.id
         isRunning = true
         
-        script.success = await viewModel.runScript(script.path, scriptName: script.name, test: false)
+        script.success = await scriptHandler.runScript(script.path, scriptName: script.name, test: false)
         script.finished = true
         script.lastRun = Date.now
         viewModel.updateScripts()

@@ -14,8 +14,10 @@ struct SettingsNotificationsView: View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
                 Text("settings-notifications")
-                    .font(.system(size: Font.text))
-                
+                    .font(.system(size: FontSize.text))
+
+                HintView(title: String(localized: "hint-notifications-title"), text: String(localized: "hint-notifications-text"))
+
                 Spacer()
                 
                 Toggle("", isOn: $viewModel.notificationState)

@@ -13,7 +13,7 @@ struct SettingsView: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("settings")
-                .font(.system(size: Font.subTitle))
+                .font(.system(size: FontSize.subTitle))
                 .padding(.bottom, Spacing.l)
                 .padding(.top, Spacing.xl)
             
@@ -42,7 +42,7 @@ struct SettingsView: View {
             }
             
         }
-        .frame(minWidth: 250)
+        .frame(minWidth: 260)
         .onAppear() {
             viewModel.loadSettings()
         }

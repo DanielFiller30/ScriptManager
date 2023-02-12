@@ -1,3 +1,18 @@
+// Welcome Screen
+"welcome-title" = "Welcome to your personal Script-Manager";
+"welcome-info" = "You can open your Script-Manager via the menubar symbol of your Mac. Before you add your first script, please have a look in your settings, they are important to offer that your scripts run successfully.";
+"welcome-info2" = "You can open the settings with the gear symbol:";
+"welcome-info3" = "A new script can be added with the field 'Add new script'. With the displayed list you can run your script by a simple click. If your script is finished, you can get a notification (Activate in your settings) or you open your script-manager.";
+"welcome-info4" = "This are the different result states for your script:";
+"welcome-info5" = "A green checkmark signalizes that your script run successfully. A red cross symbol shows that your script has failed by an error. Therefore you can activate the logging function in your settings to get further informations. If you have activated the logging, you will see a red button which opens the specified path to your logs.";
+"welcome-toggle" = "Don't show again";
+"welcome-close" = "Close window";
+
+// Alert terminate
+"close-app-title" = "Terminate application";
+"close-app-btn" = "Terminate";
+"close-app-msg" = "Are you sure to terminate your script-manager?";
+
 // Menu
 "add-new-script" = "Add new script";
 "info-add-new-script" = "Test and save a new script to add it to the saved list";
@@ -27,7 +42,6 @@
 "delete-title" = "Remove script";
 "delete-msg" = "Are you sure to remove this script from your list?";
 
-
 // Settings
 "settings" = "Settings";
 "shell-type" = "Shell-type";
@@ -47,3 +61,11 @@
 "notification-failed-title %@" = "Skript '%@' failed";
 "notification-successfull-subtitle" = "Your script has successfully finished. Run an other script in your menu-bar application.";
 "notification-failed-subtitle" = "Your script failed. Please check the error in your menu-bar application. Hint: Activate logging in your settings, to get further information for your error.";
+
+// Hints
+"hint-shell-title" = "Shell-Type";
+"hint-shell-text" = "You can change your default type of shell. Use the type of shell you use in your terminal as well.";
+"hint-profile-title" = "Profile";
+"hint-profile-text" = "If you are using a profile configuration for your shell then change your path to your profile file.";
+"hint-notifications-title" = "Notifications";
+"hint-notifications-text" = "When you activate notifications, you will get a push-up information when your running script has finished.";

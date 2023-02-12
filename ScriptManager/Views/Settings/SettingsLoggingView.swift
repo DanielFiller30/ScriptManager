@@ -14,7 +14,7 @@ struct SettingsLoggingView: View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
                 Text("settings-logging")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                 
                 Spacer()
                 
@@ -24,7 +24,7 @@ struct SettingsLoggingView: View {
             
             HStack(alignment: .center) {
                 Text("path-logs")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                 
                 Spacer()
                 

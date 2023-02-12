@@ -15,12 +15,12 @@ struct ScriptsListView: View {
             Text("saved \(String($viewModel.scripts.count))")
                 .foregroundColor(.white)
                 .fontWeight(.bold)
-                .font(.system(size: Font.subTitle))
-                .padding(.bottom, Spacing.m)
+                .font(.system(size: FontSize.subTitle))
+                .padding(.bottom, Spacing.l)
             
             if (viewModel.scripts.isEmpty) {
                 Text("empty-scripts")
-                    .font(.system(size: Font.text))
+                    .font(.system(size: FontSize.text))
                     .foregroundColor(Color.Creme)
                     .padding()
                     .multilineTextAlignment(.center)

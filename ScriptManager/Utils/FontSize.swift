@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Font {
+struct FontSize {
     static let title = 14.0
     static let subTitle = 12.0
     static let text = 10.0
