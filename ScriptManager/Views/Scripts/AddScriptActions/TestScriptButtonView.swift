@@ -12,7 +12,7 @@ struct TestScriptButtonView: View {
     let scriptHandler: ScriptHandler = ScriptHandler()
     
     @Binding var testIsRunning: Bool
-    @Binding var testResult: String
+    @Binding var testResult: LocalizedStringKey
     @Binding var testIsSuccessfull: ResultState
     
     var body: some View {
@@ -53,7 +53,7 @@ struct TestScriptButtonView: View {
         testIsRunning = true
         
         testIsSuccessfull = await scriptHandler.runScript(viewModel.path, scriptName: viewModel.name, test: true)
-        testResult = testIsSuccessfull == .successfull ? String(localized: "test-success") : String(localized: "test-failed")
+        testResult = testIsSuccessfull == .successfull ? "test-success" : "test-failed"
         
         testIsRunning = false
     }

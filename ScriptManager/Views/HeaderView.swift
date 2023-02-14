@@ -48,7 +48,7 @@ struct HeaderView: View {
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
-            .alert(String(localized: "close-app-title"), isPresented: $showCloseAlert) {
+            .alert("close-app-title", isPresented: $showCloseAlert) {
                 Button("cancel", role: .cancel) {}
                 Button("close-app-btn") {
                     terminateApp()

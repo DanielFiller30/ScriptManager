@@ -16,7 +16,7 @@ struct SettingsNotificationsView: View {
                 Text("settings-notifications")
                     .font(.system(size: FontSize.text))
 
-                HintView(title: String(localized: "hint-notifications-title"), text: String(localized: "hint-notifications-text"))
+                HintView(title: "hint-notifications-title", text: "hint-notifications-text")
 
                 Spacer()
                 

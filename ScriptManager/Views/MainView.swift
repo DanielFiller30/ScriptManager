@@ -19,8 +19,8 @@ struct MainView: View {
                 GroupView(
                     toggleVar: $viewModelMain.showAddScript,
                     toggle: {viewModelMain.showAddScript.toggle()},
-                    label: String(localized: "add-new-script"),
-                    info: String(localized: "info-add-new-script"),
+                    label: "add-new-script",
+                    info: "info-add-new-script",
                     view: AnyView(AddScriptView(viewModel: viewModelScripts, closeGroup: {
                         viewModelMain.showAddScript.toggle()
                     }))
@@ -33,8 +33,8 @@ struct MainView: View {
                 GroupView(
                     toggleVar: $viewModelMain.showAddGroup,
                     toggle: {viewModelMain.showAddGroup.toggle()},
-                    label: String(localized: "add-new-group"),
-                    info: String(localized: "info-add-new-group"),
+                    label: "add-new-group",
+                    info: "info-add-new-group",
                     view: AnyView(AddGroupView(closeGroup: {
                         viewModelMain.showAddGroup.toggle()
                     }))

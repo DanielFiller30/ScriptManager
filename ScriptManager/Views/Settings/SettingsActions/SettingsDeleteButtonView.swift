@@ -35,7 +35,7 @@ struct SettingsDeleteButtonView: View {
         .frame(width: 230)
         .buttonStyle(.plain)
         .padding(.top, Spacing.l)
-        .alert(String(localized: "settings-delete-title"), isPresented: $viewModel.showDeleteAlert) {
+        .alert("settings-delete-title", isPresented: $viewModel.showDeleteAlert) {
             
             Button("cancel", role: .cancel) {}
             Button("delete") {
