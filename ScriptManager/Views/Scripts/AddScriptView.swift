@@ -12,7 +12,7 @@ struct AddScriptView: View {
     var closeGroup: () -> Void
 
     @State var testIsRunning: Bool = false
-    @State var testResult: String = ""
+    @State var testResult: LocalizedStringKey = ""
     @State var testIsSuccessfull: ResultState = .ready
     
     

@@ -27,7 +27,7 @@ struct ScriptDeleteButtonView: View {
         }
         .buttonStyle(.plain)
         .disabled(isRunning)
-        .alert(String(localized: "delete-title"), isPresented: $showDeleteAlert) {
+        .alert("delete-title", isPresented: $showDeleteAlert) {
             
             Button("cancel", role: .cancel) {}
             Button("delete") {

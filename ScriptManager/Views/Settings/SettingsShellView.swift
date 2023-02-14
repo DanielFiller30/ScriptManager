@@ -19,7 +19,7 @@ struct SettingsShellView: View {
                 Text("shell-type")
                     .font(.system(size: FontSize.text))
                 
-                HintView(title: String(localized: "hint-shell-title"), text: String(localized: "hint-shell-text"))
+                HintView(title: "hint-shell-title", text: "hint-shell-text")
                 
                 Spacer()
                 
@@ -51,7 +51,7 @@ struct SettingsShellView: View {
                 Text("path-profile")
                     .font(.system(size: FontSize.text))
                 
-                HintView(title: String(localized: "hint-profile-title"), text: String(localized: "hint-profile-text"))
+                HintView(title: "hint-profile-title", text: "hint-profile-text")
 
                 Spacer()
                 

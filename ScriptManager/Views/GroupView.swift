@@ -11,8 +11,8 @@ struct GroupView: View {
     var toggleVar: Binding<Bool>
     var toggle: () -> Void
     
-    var label: String
-    var info: String
+    var label: LocalizedStringKey
+    var info: LocalizedStringKey
 
     var view: AnyView
     

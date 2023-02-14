@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HintView: View {
-    var title: String
-    var text: String
+    var title: LocalizedStringKey
+    var text: LocalizedStringKey
     
     @State var showHint: Bool = false
     
