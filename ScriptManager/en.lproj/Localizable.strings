@@ -69,3 +69,5 @@
 "hint-profile-text" = "If you are using a profile configuration for your shell then change your path to your profile file.";
 "hint-notifications-title" = "Notifications";
 "hint-notifications-text" = "When you activate notifications, you will get a push-up information when your running script has finished.";
+"hint-script-title" = "Script";
+"hint-script-text" = "Pleace notice that your script is running out of your root folder. Du kannst jeden beliebigen Befehl ausführen. Bei einer Folge von Befehlen, beachte, dass diese durhc ein ';' getrennt werden müssen.";

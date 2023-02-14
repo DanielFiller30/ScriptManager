@@ -29,8 +29,12 @@ struct AddScriptView: View {
             .padding(.bottom, Spacing.l)
             
             VStack(alignment: .leading) {
-                Text("path-add-script")
-                    .font(.system(size: FontSize.text))
+                HStack(alignment: .center) {
+                    Text("path-add-script")
+                        .font(.system(size: FontSize.text))
+                    
+                    HintView(title: "hint-script-title", text: "hint-script-text")
+                }
                 
                 TextField("cd /Desktop/ sh ...", text: $viewModel.path, axis: .vertical)
                     .lineLimit(4, reservesSpace: true)

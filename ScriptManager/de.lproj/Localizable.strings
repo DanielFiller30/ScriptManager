@@ -69,3 +69,5 @@
 "hint-profile-text" = "Falls du eine Profilkonfiguration für deine Shell verwendest, passe den Pfad zu dieser Datei an.";
 "hint-notifications-title" = "Mitteilungen";
 "hint-notifications-text" = "Wenn du die Mitteilungen aktiviert hast, wirst du automatisch über Push-up Mitteilungen darüber informiert, ob dein Skript erfolgreich durchgelaufen ist.";
+"hint-script-title" = "Skript";
+"hint-script-text" = "Beachte dass du dich im Root-Verzeichnis deines Macs befindest. Du kannst jeden beliebigen Befehl ausführen. Bei einer Folge von Befehlen, beachte, dass diese durhc ein ';' getrennt werden müssen.";
