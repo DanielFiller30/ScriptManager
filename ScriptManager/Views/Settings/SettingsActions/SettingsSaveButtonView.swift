@@ -19,6 +19,7 @@ struct SettingsSaveButtonView: View {
                 
                 Text("settings-save")
                     .padding(.trailing, Spacing.m)
+                    .foregroundColor(.white)
                 
                 Spacer()
                 

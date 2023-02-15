@@ -13,7 +13,6 @@ struct ScriptsListView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("saved \(String($viewModel.scripts.count))")
-                .foregroundColor(.white)
                 .fontWeight(.bold)
                 .font(.system(size: FontSize.subTitle))
                 .padding(.bottom, Spacing.l)

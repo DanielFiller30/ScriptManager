@@ -18,14 +18,12 @@ struct ScriptDetailsView: View {
                 Text("path")
                     .font(.system(size: FontSize.text))
                     .fontWeight(.bold)
-                    .foregroundColor(Color.white)
                     .frame(width: 80, alignment: .leading)
                 
                 Spacer()
                 
                 Text(script.path)
                     .font(.system(size: FontSize.text))
-                    .foregroundColor(Color.white)
                     .onTapGesture() {
                         // Copy path
                         let pasteboard = NSPasteboard.general
@@ -39,7 +37,6 @@ struct ScriptDetailsView: View {
                 Text("last-run")
                     .font(.system(size: FontSize.text))
                     .fontWeight(.bold)
-                    .foregroundColor(Color.white)
                     .frame(width: 80, alignment: .leading)
 
                 Spacer()
@@ -47,11 +44,9 @@ struct ScriptDetailsView: View {
                 if (script.lastRun != nil) {
                     Text(scriptHandler.getFormattedDate(date: script.lastRun!))
                         .font(.system(size: FontSize.text))
-                        .foregroundColor(Color.white)
                 } else {
                     Text("-")
                         .font(.system(size: FontSize.text))
-                        .foregroundColor(Color.white)
                 }
             }
         }
