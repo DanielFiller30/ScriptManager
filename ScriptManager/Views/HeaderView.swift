@@ -16,7 +16,6 @@ struct HeaderView: View {
             Image("StatusBarIcon")
             
             Text("Script Manager")
-                .foregroundColor(.white)
                 .font(Font.custom("Courier New", size: FontSize.title))
                 .fontWeight(.bold)
             

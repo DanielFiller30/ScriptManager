@@ -20,6 +20,7 @@ struct SaveScriptButtonView: View {
             HStack(alignment: .center) {
                 Text("save-script")
                     .padding(.trailing, Spacing.m)
+                    .foregroundColor(.white)
                 
                 Image(systemName: "doc.badge.plus")
                     .resizable()

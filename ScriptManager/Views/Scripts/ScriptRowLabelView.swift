@@ -19,7 +19,6 @@ struct ScriptRowLabel: View {
     var body: some View {
         HStack(alignment: .center) {
             Text(script.name)
-                .foregroundColor(.white)
                 .font(.system(size: FontSize.subTitle))
                 .fontWeight(.bold)
                 .frame(maxWidth: 110, alignment: .leading)
