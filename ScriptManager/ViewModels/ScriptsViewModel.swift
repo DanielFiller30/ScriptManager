@@ -14,6 +14,7 @@ class ScriptsViewModel: ObservableObject {
     @Published var scripts: [Script] = []
     @Published var name: String = ""
     @Published var path: String = ""
+    @Published var selectedIcon: Int = 0
     
     func loadScripts() {
         self.scripts = storage.loadScripts() ?? []
@@ -21,7 +22,7 @@ class ScriptsViewModel: ObservableObject {
     
     func saveScript() {
         var savedScripts: [Script] = storage.loadScripts() ?? []
-        savedScripts.append(Script(name: self.name, path: self.path, success: .ready, finished: false ))
+        savedScripts.append(Script(name: self.name, icon: ScriptIcons[selectedIcon], path: self.path, success: .ready, finished: false ))
         storage.saveScripts(value: savedScripts)
         
         loadScripts()

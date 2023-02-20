@@ -47,5 +47,10 @@ struct SettingsView: View {
             viewModel.loadSettings()
         }
     }
-    
+}
+
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView(viewModel: SettingsViewModel())
+    }
 }

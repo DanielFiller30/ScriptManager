@@ -18,6 +18,18 @@ struct ScriptRowLabel: View {
     
     var body: some View {
         HStack(alignment: .center) {
+            Image(systemName: script.icon)
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(Color.Primary)
+                .frame(height: IconSize.m)
+                .padding(.horizontal, Spacing.m)
+                .onTapGesture {
+                    withAnimation() {
+                        toggleDetails()
+                    }
+                }
+            
             Text(script.name)
                 .font(.system(size: FontSize.subTitle))
                 .fontWeight(.bold)
@@ -32,9 +44,9 @@ struct ScriptRowLabel: View {
             Spacer()
             
             ScriptStateButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning, isLogEnabled: $isLogEnabled)
-
+            
             ScriptRunButtonView(viewModel: viewModel, reloadSettings: { reloadSettings() }, script: $script, isRunning: $isRunning)
-                        
+            
             ScriptDeleteButtonView(viewModel: viewModel, scriptId: $script.id, isRunning: $isRunning)
         }
         .onAppear() {
@@ -46,5 +58,11 @@ struct ScriptRowLabel: View {
         let storage = StorageHandler()
         let settings: Settings = storage.loadSettings()
         isLogEnabled = settings.logs
+    }
+}
+
+struct ScriptRowLabelView_Previews: PreviewProvider {
+    static var previews: some View {
+        ScriptRowLabel(viewModel: ScriptsViewModel(), toggleDetails: {}, script: .constant(DefaultScript))
     }
 }

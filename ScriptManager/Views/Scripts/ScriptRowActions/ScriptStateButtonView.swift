@@ -1,5 +1,5 @@
 //
-//  ScriptRunButtonView.swift
+//  ScriptStateButtonView.swift
 //  ScriptManager
 //
 //  Created by Filler, Daniel on 10.02.23.
@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ScriptStateButtonView: View {
     let viewModel: ScriptsViewModel
-
+    
     @Binding var script: Script
     @Binding var isRunning: Bool
     @Binding var isLogEnabled: Bool
-
+    
     var body: some View {
         if (script.finished) {
             let success = script.success == ResultState.successfull

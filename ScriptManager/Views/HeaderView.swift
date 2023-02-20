@@ -14,6 +14,7 @@ struct HeaderView: View {
     var body: some View {
         HStack(alignment: .center) {
             Image("StatusBarIcon")
+                .foregroundColor(Color.Primary)
             
             Text("Script Manager")
                 .font(Font.custom("Courier New", size: FontSize.title))

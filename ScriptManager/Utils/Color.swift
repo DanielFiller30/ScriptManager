@@ -16,4 +16,5 @@ extension Color {
     static let Creme = Color("Creme")
     static let Background = Color("Background")
     static let AppBg = Color("AppBg")
+    static let Primary = Color("Primary")
 }

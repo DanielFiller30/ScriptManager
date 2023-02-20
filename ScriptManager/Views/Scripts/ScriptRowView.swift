@@ -1,5 +1,5 @@
 //
-//  ScriptsListRowView.swift
+//  ScriptRowView.swift
 //  ScriptManager
 //
 //  Created by Filler, Daniel on 05.02.23.
@@ -12,7 +12,7 @@ struct ScriptRowView: View {
     
     @State var script: Script
     @State var showDetails: Bool = false
-
+    
     var body: some View {
         DisclosureGroup(isExpanded: $showDetails) {
             Divider()
@@ -32,5 +32,11 @@ struct ScriptRowView: View {
         .frame(maxWidth: 350, alignment: .leading)
         .background(Color.Dark)
         .cornerRadius(10)
+    }
+}
+
+struct ScriptRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        ScriptRowView(viewModel: ScriptsViewModel(), script: DefaultScript)
     }
 }
