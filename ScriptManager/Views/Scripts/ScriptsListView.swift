@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScriptsListView: View {
     @StateObject var viewModel: ScriptsViewModel
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("saved \(String($viewModel.scripts.count))")
@@ -37,5 +37,11 @@ struct ScriptsListView: View {
         .onAppear() {
             viewModel.loadScripts()
         }
+    }
+}
+
+struct ScriptsListView_Previews: PreviewProvider {
+    static var previews: some View {
+        ScriptsListView(viewModel: ScriptsViewModel())
     }
 }

@@ -1,6 +1,6 @@
 // Welcome Screen
 "welcome-title" = "Welcome to your personal Script-Manager";
-"welcome-info" = "You can open your Script-Manager via the menubar symbol of your Mac. Before you add your first script, please have a look in your settings, they are important to offer that your scripts run successfully.";
+"welcome-info" = "You can open your Script-Manager with the menubar symbol of your Mac. Before you add your first script, please have a look in your settings, they are important to offer that your scripts run successfully.";
 "welcome-info2" = "You can open the settings with the gear symbol:";
 "welcome-info3" = "A new script can be added with the field 'Add new script'. With the displayed list you can run your script by a simple click. If your script is finished, you can get a notification (Activate in your settings) or you open your script-manager.";
 "welcome-info4" = "This are the different result states for your script:";
@@ -14,11 +14,11 @@
 "close-app-msg" = "Are you sure to terminate your script-manager?";
 
 // Menu
-"add-new-script" = "Add new script";
-"info-add-new-script" = "Test and save a new script to add it to the saved list";
+"add-new-script" = "Add a new script";
+"info-add-new-script" = "Test and save a new script for your personal list";
 
 "add-new-group" = "Add new group";
-"info-add-new-group" = "Use groups to organize scripts and run all by one";
+"info-add-new-group" = "Use groups to organize scripts and run all by one click";
 
 // List
 "saved %@" = "Saved scripts (%@)";
@@ -31,6 +31,7 @@
 "test-success" = "Script worked";
 "test-failed" = "Script failed";
 "save-script" = "Save";
+"icon-script" = "Script-icon";
 
 // Details
 "path" = "Command:";

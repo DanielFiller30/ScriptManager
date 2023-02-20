@@ -38,7 +38,7 @@ struct ScriptDetailsView: View {
                     .font(.system(size: FontSize.text))
                     .fontWeight(.bold)
                     .frame(width: 80, alignment: .leading)
-
+                
                 Spacer()
                 
                 if (script.lastRun != nil) {
@@ -51,5 +51,11 @@ struct ScriptDetailsView: View {
             }
         }
         .padding(.all, Spacing.m)
+    }
+}
+
+struct ScriptDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        ScriptDetailsView(viewModel: ScriptsViewModel(), script: DefaultScript)
     }
 }

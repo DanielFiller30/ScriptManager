@@ -10,6 +10,7 @@ import Foundation
 struct Script: Identifiable, Codable {
     var id = UUID()
     var name: String
+    var icon: String
     var path: String
     var success: ResultState
     var finished: Bool

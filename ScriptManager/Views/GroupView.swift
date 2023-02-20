@@ -13,7 +13,7 @@ struct GroupView: View {
     
     var label: LocalizedStringKey
     var info: LocalizedStringKey
-
+    
     var view: AnyView
     
     var body: some View {
@@ -31,11 +31,12 @@ struct GroupView: View {
                         }
                     }
                     .padding(.trailing, Spacing.l)
-                                
+                
                 Text(info)
                     .fontWeight(.light)
                     .foregroundColor(Color.Creme)
                     .font(.system(size: FontSize.text))
+                    .frame(maxWidth: 120)
                     .onTapGesture {
                         withAnimation {
                             toggle()
@@ -47,5 +48,11 @@ struct GroupView: View {
         .padding(.vertical, Spacing.m)
         .padding(.horizontal, Spacing.xl)
         
+    }
+}
+
+struct GroupView_Previews: PreviewProvider {
+    static var previews: some View {
+        GroupView(toggleVar: .constant(false), toggle: {}, label: "Test", info: "Info-Test", view: AnyView(EmptyView()))
     }
 }

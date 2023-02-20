@@ -10,7 +10,7 @@ import SwiftUI
 struct AddScriptView: View {
     @StateObject var viewModel: ScriptsViewModel
     var closeGroup: () -> Void
-
+    
     @State var testIsRunning: Bool = false
     @State var testResult: LocalizedStringKey = ""
     @State var testIsSuccessfull: ResultState = .ready
@@ -25,6 +25,14 @@ struct AddScriptView: View {
                 
                 TextField("", text: $viewModel.name)
                 
+            }
+            .padding(.bottom, Spacing.l)
+            
+            VStack(alignment: .leading) {
+                Text("icon-script")
+                    .font(.system(size: FontSize.text))
+                
+                IconPickerView(viewModel: viewModel)
             }
             .padding(.bottom, Spacing.l)
             
@@ -55,5 +63,12 @@ struct AddScriptView: View {
                 .padding(.top, Spacing.m)
             
         }
+        .frame(height: 305)
+    }
+}
+
+struct AddScriptView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddScriptView(viewModel: ScriptsViewModel(), closeGroup: {})
     }
 }
