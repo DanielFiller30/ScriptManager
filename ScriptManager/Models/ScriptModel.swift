@@ -11,7 +11,7 @@ struct Script: Identifiable, Codable {
     var id = UUID()
     var name: String
     var icon: String
-    var path: String
+    var command: String
     var success: ResultState
     var finished: Bool
     var lastRun: Date?

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SaveScriptButtonView: View {
     @StateObject var viewModel: ScriptsViewModel
-    var closeGroup: () -> Void
     
     @Binding var testIsRunning: Bool
     
@@ -33,18 +32,18 @@ struct SaveScriptButtonView: View {
             
         }
         .buttonStyle(.plain)
-        .disabled(testIsRunning || viewModel.name.isEmpty || viewModel.path.isEmpty)
+        .disabled(testIsRunning || viewModel.name.isEmpty || viewModel.command.isEmpty)
         
     }
     
     func saveScript() {
         viewModel.saveScript()
-        closeGroup()
+        viewModel.showAddScript.toggle()
     }
 }
 
 struct SaveScriptButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveScriptButtonView(viewModel: ScriptsViewModel(), closeGroup: {}, testIsRunning: .constant(false))
+        SaveScriptButtonView(viewModel: ScriptsViewModel(), testIsRunning: .constant(false))
     }
 }

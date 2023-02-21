@@ -14,7 +14,6 @@
 		DC2991D729A3830C00DBCAAD /* ScriptIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */; };
 		DC75B443299BA57F00086806 /* ScriptManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B40F299BA57F00086806 /* ScriptManagerApp.swift */; };
 		DC75B444299BA57F00086806 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B411299BA57F00086806 /* SettingsViewModel.swift */; };
-		DC75B445299BA57F00086806 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B412299BA57F00086806 /* MainViewModel.swift */; };
 		DC75B446299BA57F00086806 /* ScriptsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B413299BA57F00086806 /* ScriptsViewModel.swift */; };
 		DC75B447299BA57F00086806 /* ScriptHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B415299BA57F00086806 /* ScriptHandler.swift */; };
 		DC75B448299BA57F00086806 /* StorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B416299BA57F00086806 /* StorageHandler.swift */; };
@@ -52,7 +51,12 @@
 		DC75B469299BA58000086806 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B440299BA57F00086806 /* LanguageModel.swift */; };
 		DC75B46A299BA58000086806 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B441299BA57F00086806 /* ResultModel.swift */; };
 		DC75B46B299BA58000086806 /* ScriptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B442299BA57F00086806 /* ScriptModel.swift */; };
+		DC889DBE29A3B6D80006B0DF /* ScriptEditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DBD29A3B6D80006B0DF /* ScriptEditButtonView.swift */; };
+		DC889DC029A3B7420006B0DF /* ScriptLogButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DBF29A3B7420006B0DF /* ScriptLogButtonView.swift */; };
+		DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DC129A3B9210006B0DF /* EditScriptView.swift */; };
 		DC987BF1298FEC9D00129145 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DC987BF3298FEC9D00129145 /* Localizable.strings */; };
+		DCDF0F9529A4B70600057C1E /* SaveChangesButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDF0F9429A4B70600057C1E /* SaveChangesButtonView.swift */; };
+		DCDF0F9729A4B71500057C1E /* DeleteChangesButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDF0F9629A4B71500057C1E /* DeleteChangesButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +69,6 @@
 		DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptIcons.swift; sourceTree = "<group>"; };
 		DC75B40F299BA57F00086806 /* ScriptManagerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptManagerApp.swift; sourceTree = "<group>"; };
 		DC75B411299BA57F00086806 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		DC75B412299BA57F00086806 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		DC75B413299BA57F00086806 /* ScriptsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptsViewModel.swift; sourceTree = "<group>"; };
 		DC75B415299BA57F00086806 /* ScriptHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptHandler.swift; sourceTree = "<group>"; };
 		DC75B416299BA57F00086806 /* StorageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageHandler.swift; sourceTree = "<group>"; };
@@ -103,8 +106,13 @@
 		DC75B440299BA57F00086806 /* LanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		DC75B441299BA57F00086806 /* ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 		DC75B442299BA57F00086806 /* ScriptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptModel.swift; sourceTree = "<group>"; };
+		DC889DBD29A3B6D80006B0DF /* ScriptEditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptEditButtonView.swift; sourceTree = "<group>"; };
+		DC889DBF29A3B7420006B0DF /* ScriptLogButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptLogButtonView.swift; sourceTree = "<group>"; };
+		DC889DC129A3B9210006B0DF /* EditScriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScriptView.swift; sourceTree = "<group>"; };
 		DC987BF2298FEC9D00129145 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DC987BF4298FECB700129145 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DCDF0F9429A4B70600057C1E /* SaveChangesButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveChangesButtonView.swift; sourceTree = "<group>"; };
+		DCDF0F9629A4B71500057C1E /* DeleteChangesButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChangesButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				DC75B411299BA57F00086806 /* SettingsViewModel.swift */,
-				DC75B412299BA57F00086806 /* MainViewModel.swift */,
 				DC75B413299BA57F00086806 /* ScriptsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -241,25 +248,12 @@
 		DC75B42D299BA57F00086806 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				DC75B42F299BA57F00086806 /* ScriptRowView.swift */,
+				DCDF0F9229A4B6AA00057C1E /* AddScript */,
+				DCDF0F9329A4B6C400057C1E /* EditScript */,
+				DC889DBC29A3B65E0006B0DF /* ScriptRow */,
 				DC75B430299BA57F00086806 /* ScriptsListView.swift */,
-				DC75B431299BA57F00086806 /* AddScriptActions */,
-				DC75B434299BA57F00086806 /* AddScriptView.swift */,
-				DC75B435299BA57F00086806 /* ScriptDetailsView.swift */,
-				DC75B436299BA57F00086806 /* ScriptRowActions */,
-				DC75B43A299BA57F00086806 /* ScriptRowLabelView.swift */,
-				DC2991D429A382A800DBCAAD /* IconPickerView.swift */,
 			);
 			path = Scripts;
-			sourceTree = "<group>";
-		};
-		DC75B431299BA57F00086806 /* AddScriptActions */ = {
-			isa = PBXGroup;
-			children = (
-				DC75B432299BA57F00086806 /* SaveScriptButtonView.swift */,
-				DC75B433299BA57F00086806 /* TestScriptButtonView.swift */,
-			);
-			path = AddScriptActions;
 			sourceTree = "<group>";
 		};
 		DC75B436299BA57F00086806 /* ScriptRowActions */ = {
@@ -268,6 +262,8 @@
 				DC75B437299BA57F00086806 /* ScriptStateButtonView.swift */,
 				DC75B438299BA57F00086806 /* ScriptDeleteButtonView.swift */,
 				DC75B439299BA57F00086806 /* ScriptRunButtonView.swift */,
+				DC889DBD29A3B6D80006B0DF /* ScriptEditButtonView.swift */,
+				DC889DBF29A3B7420006B0DF /* ScriptLogButtonView.swift */,
 			);
 			path = ScriptRowActions;
 			sourceTree = "<group>";
@@ -282,6 +278,38 @@
 				DC75B442299BA57F00086806 /* ScriptModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DC889DBC29A3B65E0006B0DF /* ScriptRow */ = {
+			isa = PBXGroup;
+			children = (
+				DC75B436299BA57F00086806 /* ScriptRowActions */,
+				DC75B42F299BA57F00086806 /* ScriptRowView.swift */,
+				DC75B43A299BA57F00086806 /* ScriptRowLabelView.swift */,
+				DC75B435299BA57F00086806 /* ScriptDetailsView.swift */,
+			);
+			path = ScriptRow;
+			sourceTree = "<group>";
+		};
+		DCDF0F9229A4B6AA00057C1E /* AddScript */ = {
+			isa = PBXGroup;
+			children = (
+				DC2991D429A382A800DBCAAD /* IconPickerView.swift */,
+				DC75B434299BA57F00086806 /* AddScriptView.swift */,
+				DC75B432299BA57F00086806 /* SaveScriptButtonView.swift */,
+				DC75B433299BA57F00086806 /* TestScriptButtonView.swift */,
+			);
+			path = AddScript;
+			sourceTree = "<group>";
+		};
+		DCDF0F9329A4B6C400057C1E /* EditScript */ = {
+			isa = PBXGroup;
+			children = (
+				DC889DC129A3B9210006B0DF /* EditScriptView.swift */,
+				DCDF0F9429A4B70600057C1E /* SaveChangesButtonView.swift */,
+				DCDF0F9629A4B71500057C1E /* DeleteChangesButtonView.swift */,
+			);
+			path = EditScript;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,12 +409,15 @@
 			files = (
 				DC75B452299BA58000086806 /* SettingsNotificationsView.swift in Sources */,
 				DC75B44B299BA58000086806 /* IconSize.swift in Sources */,
+				DC889DC029A3B7420006B0DF /* ScriptLogButtonView.swift in Sources */,
+				DCDF0F9729A4B71500057C1E /* DeleteChangesButtonView.swift in Sources */,
 				DC75B467299BA58000086806 /* ShellModel.swift in Sources */,
 				DC75B466299BA58000086806 /* GroupView.swift in Sources */,
 				DC75B454299BA58000086806 /* SettingsDeleteButtonView.swift in Sources */,
 				DC75B45C299BA58000086806 /* ScriptsListView.swift in Sources */,
 				DC75B46B299BA58000086806 /* ScriptModel.swift in Sources */,
 				DC2991D729A3830C00DBCAAD /* ScriptIcons.swift in Sources */,
+				DC889DBE29A3B6D80006B0DF /* ScriptEditButtonView.swift in Sources */,
 				DC75B451299BA58000086806 /* SettingsShellView.swift in Sources */,
 				DC75B447299BA57F00086806 /* ScriptHandler.swift in Sources */,
 				DC75B44C299BA58000086806 /* DefaultScript.swift in Sources */,
@@ -402,13 +433,14 @@
 				DC75B453299BA58000086806 /* SettingsSaveButtonView.swift in Sources */,
 				DC75B456299BA58000086806 /* HintView.swift in Sources */,
 				DC75B45D299BA58000086806 /* SaveScriptButtonView.swift in Sources */,
+				DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */,
 				DC75B468299BA58000086806 /* SettingsModel.swift in Sources */,
 				DC75B44E299BA58000086806 /* Color.swift in Sources */,
 				DC75B446299BA57F00086806 /* ScriptsViewModel.swift in Sources */,
 				DC75B444299BA57F00086806 /* SettingsViewModel.swift in Sources */,
 				DC75B44A299BA57F00086806 /* Spacing.swift in Sources */,
-				DC75B445299BA57F00086806 /* MainViewModel.swift in Sources */,
 				DC75B462299BA58000086806 /* ScriptDeleteButtonView.swift in Sources */,
+				DCDF0F9529A4B70600057C1E /* SaveChangesButtonView.swift in Sources */,
 				DC75B46A299BA58000086806 /* ResultModel.swift in Sources */,
 				DC75B458299BA58000086806 /* WelcomeView.swift in Sources */,
 				DC75B464299BA58000086806 /* ScriptRowLabelView.swift in Sources */,

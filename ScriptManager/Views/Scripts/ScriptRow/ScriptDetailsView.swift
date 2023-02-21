@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ScriptDetailsView: View {
-    var viewModel = ScriptsViewModel()
+    var viewModel: ScriptsViewModel
     let scriptHandler: ScriptHandler = ScriptHandler()
+    // TODO: CHECK BINDING
     var script: Script
     
     var body: some View {
@@ -22,13 +23,13 @@ struct ScriptDetailsView: View {
                 
                 Spacer()
                 
-                Text(script.path)
+                Text(script.command)
                     .font(.system(size: FontSize.text))
                     .onTapGesture() {
                         // Copy path
                         let pasteboard = NSPasteboard.general
                         pasteboard.clearContents()
-                        pasteboard.setString(script.path, forType: .string)
+                        pasteboard.setString(script.command, forType: .string)
                     }
             }
             .padding(.bottom, Spacing.m)
@@ -49,6 +50,17 @@ struct ScriptDetailsView: View {
                         .font(.system(size: FontSize.text))
                 }
             }
+            
+            Divider()
+            
+            HStack(alignment: .center) {
+                ScriptLogButtonView(viewModel: viewModel)
+                
+                Spacer()
+                
+                ScriptEditButtonView(viewModel: viewModel, script: script)
+            }
+            .padding(.all, Spacing.m)
         }
         .padding(.all, Spacing.m)
     }

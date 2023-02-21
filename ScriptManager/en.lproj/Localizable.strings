@@ -33,9 +33,16 @@
 "save-script" = "Save";
 "icon-script" = "Script-icon";
 
+// Edit script
+"edit-script-title" = "Edit script";
+"edit-save" = "Save changes";
+"edit-delete" = "Discard changes";
+
 // Details
 "path" = "Command:";
 "last-run" = "Last executed:";
+"edit-script" = "Edit";
+"open-logs" = "Open logs";
 
 // Delete-Alert
 "delete" = "Delete";

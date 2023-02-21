@@ -1,20 +1,14 @@
 //
-//  AddScriptView.swift
+//  EditScriptView.swift
 //  ScriptManager
 //
-//  Created by Filler, Daniel on 03.02.23.
+//  Created by Filler, Daniel on 20.02.23.
 //
 
 import SwiftUI
 
-struct AddScriptView: View {
+struct EditScriptView: View {
     @StateObject var viewModel: ScriptsViewModel
-    var closeGroup: () -> Void
-    
-    @State var testIsRunning: Bool = false
-    @State var testResult: LocalizedStringKey = ""
-    @State var testIsSuccessfull: ResultState = .ready
-    
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -44,31 +38,28 @@ struct AddScriptView: View {
                     HintView(title: "hint-script-title", text: "hint-script-text")
                 }
                 
-                TextField("cd /Desktop/ sh ...", text: $viewModel.path, axis: .vertical)
+                TextField("cd /Desktop/ sh ...", text: $viewModel.command, axis: .vertical)
                     .lineLimit(4, reservesSpace: true)
                 
             }.padding(.bottom, Spacing.l)
             
+            Spacer()
+            
             HStack(alignment: .center) {
-                TestScriptButtonView(viewModel: viewModel, testIsRunning: $testIsRunning, testResult: $testResult, testIsSuccessfull: $testIsSuccessfull)
+                DeleteChangesButton(viewModel: viewModel)
                 
                 Spacer()
                 
-                SaveScriptButtonView(viewModel: viewModel, closeGroup: { closeGroup() }, testIsRunning: $testIsRunning)
+                SaveChangesButton(viewModel: viewModel)
             }
-            
-            Text(testResult)
-                .font(.system(size: FontSize.subTitle))
-                .foregroundColor(testIsSuccessfull == .successfull ? Color.Success : Color.Danger)
-                .padding(.top, Spacing.m)
             
         }
         .frame(height: 305)
     }
 }
 
-struct AddScriptView_Previews: PreviewProvider {
+struct EditScriptView_Previews: PreviewProvider {
     static var previews: some View {
-        AddScriptView(viewModel: ScriptsViewModel(), closeGroup: {})
+        EditScriptView(viewModel: ScriptsViewModel())
     }
 }

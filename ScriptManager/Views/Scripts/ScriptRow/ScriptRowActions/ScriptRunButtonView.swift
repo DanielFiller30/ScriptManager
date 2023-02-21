@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ScriptRunButtonView: View {
     let viewModel: ScriptsViewModel
-    let reloadSettings: () -> Void
-    
     let scriptHandler: ScriptHandler = ScriptHandler()
     
     @Binding var script: Script
@@ -49,18 +47,20 @@ struct ScriptRunButtonView: View {
         activeId = script.id
         isRunning = true
         
-        script.success = await scriptHandler.runScript(script.path, scriptName: script.name, test: false)
+        script.success = await scriptHandler.runScript(script.command, scriptName: script.name, test: false)
         script.finished = true
         script.lastRun = Date.now
-        viewModel.updateScripts()
+        
+        viewModel.refreshScripts()
         
         isRunning = false
-        reloadSettings()
+        
+        viewModel.loadSettings()
     }
 }
 
 struct ScriptRunButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRunButtonView(viewModel: ScriptsViewModel(), reloadSettings: {}, script: .constant(DefaultScript), isRunning: .constant(false))
+        ScriptRunButtonView(viewModel: ScriptsViewModel(), script: .constant(DefaultScript), isRunning: .constant(false))
     }
 }

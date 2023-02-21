@@ -33,9 +33,16 @@
 "save-script" = "Speichern";
 "icon-script" = "Skript-Icon";
 
+// Edit script
+"edit-script-title" = "Skript anpassen";
+"edit-save" = "Speichern";
+"edit-delete" = "Verwerfen";
+
 // Details
 "path" = "Befehl:";
 "last-run" = "Zuletzt ausgeführt:";
+"edit-script" = "Anpassen";
+"open-logs" = "Protokolle öffnen";
 
 // Delete-Alert
 "delete" = "Löschen";
