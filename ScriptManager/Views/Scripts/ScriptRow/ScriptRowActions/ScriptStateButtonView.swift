@@ -12,7 +12,6 @@ struct ScriptStateButtonView: View {
     
     @Binding var script: Script
     @Binding var isRunning: Bool
-    @Binding var isLogEnabled: Bool
     
     var body: some View {
         if (script.finished) {
@@ -26,7 +25,7 @@ struct ScriptStateButtonView: View {
                     .padding(Spacing.l)
                     .background(Color.Background)
                     .clipShape(Circle())
-            } else if (isLogEnabled) {
+            } else if (viewModel.isLogEnabled) {
                 // Script failed and logging is active
                 Button {
                     viewModel.openLogs()
@@ -57,6 +56,6 @@ struct ScriptStateButtonView: View {
 
 struct ScriptStateButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptStateButtonView(viewModel: ScriptsViewModel(), script: .constant(DefaultScript), isRunning: .constant(false), isLogEnabled: .constant(false))
+        ScriptStateButtonView(viewModel: ScriptsViewModel(), script: .constant(DefaultScript), isRunning: .constant(false))
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 let DefaultScript: Script = Script(
     name: "Test",
     icon: "terminal",
-    path: "/test",
+    command: "/test",
     success: .ready,
     finished: false
 )

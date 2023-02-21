@@ -8,24 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var viewModelMain = MainViewModel()
-    @StateObject private var viewModelScripts = ScriptsViewModel()
+    @StateObject private var viewModel = ScriptsViewModel()
     
     var body: some View {
         VStack(spacing: Spacing.zero) {
             HeaderView()
             
             GroupView(
-                toggleVar: $viewModelMain.showAddScript,
-                toggle: {viewModelMain.showAddScript.toggle()},
-                label: "add-new-script",
-                info: "info-add-new-script",
-                view: AnyView(AddScriptView(viewModel: viewModelScripts, closeGroup: {
-                    viewModelMain.showAddScript.toggle()
-                }))
+                toggleVar: $viewModel.showAddScript,
+                toggle: { toggleGroup() },
+                label: viewModel.editMode ? "edit-script-title" : "add-new-script",
+                info: viewModel.editMode ? "" : "info-add-new-script",
+                view: viewModel.editMode ? AnyView(EditScriptView(viewModel: viewModel)) : AnyView(AddScriptView(viewModel: viewModel))
             )
-            .padding(.top, Spacing.l)
-            .padding(.bottom, Spacing.l)
+            .padding(.vertical, Spacing.l)
             .background(Color.AppBg)
             
             Divider()
@@ -45,8 +41,7 @@ struct MainView: View {
              */
             
             ScrollView() {
-                
-                ScriptsListView(viewModel: viewModelScripts)
+                ScriptsListView(viewModel: viewModel)
                     .padding(.all, Spacing.xl)
                 
                 Spacer()
@@ -55,6 +50,14 @@ struct MainView: View {
         }
         .frame(width: 350, height: 450)
         
+    }
+    
+    func toggleGroup() {
+        if viewModel.editMode {
+            viewModel.closeEdit()            
+        } else {
+            viewModel.showAddScript.toggle()
+        }
     }
 }
 

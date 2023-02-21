@@ -45,14 +45,14 @@ struct TestScriptButtonView: View {
             
         }
         .buttonStyle(.plain)
-        .disabled(testIsRunning || viewModel.path.isEmpty)
+        .disabled(testIsRunning || viewModel.command.isEmpty)
         
     }
     
     func testScript() async {
         testIsRunning = true
         
-        testIsSuccessfull = await scriptHandler.runScript(viewModel.path, scriptName: viewModel.name, test: true)
+        testIsSuccessfull = await scriptHandler.runScript(viewModel.command, scriptName: viewModel.name, test: true)
         testResult = testIsSuccessfull == .successfull ? "test-success" : "test-failed"
         
         testIsRunning = false

@@ -11,10 +11,24 @@ import AppKit
 class ScriptsViewModel: ObservableObject {
     private let storage = StorageHandler()
     
+    @Published var showAddScript: Bool = false
     @Published var scripts: [Script] = []
+    
     @Published var name: String = ""
-    @Published var path: String = ""
+    @Published var command: String = ""
     @Published var selectedIcon: Int = 0
+    
+    @Published var editMode: Bool = false
+    @Published var editId: UUID = UUID()
+    
+    @Published var isLogEnabled: Bool = DefaultSettings.logs
+    
+    func loadSettings() {
+        let storage = StorageHandler()
+        let settings: Settings = storage.loadSettings()
+        
+        self.isLogEnabled = settings.logs
+    }
     
     func loadScripts() {
         self.scripts = storage.loadScripts() ?? []
@@ -22,15 +36,22 @@ class ScriptsViewModel: ObservableObject {
     
     func saveScript() {
         var savedScripts: [Script] = storage.loadScripts() ?? []
-        savedScripts.append(Script(name: self.name, icon: ScriptIcons[selectedIcon], path: self.path, success: .ready, finished: false ))
+        savedScripts.append(Script(name: self.name, icon: ScriptIcons[selectedIcon], command: self.command, success: .ready, finished: false ))
         storage.saveScripts(value: savedScripts)
         
+        // Refresh data
         loadScripts()
-        self.name = ""
-        self.path = ""
+        
+        resetForm()
     }
     
-    func updateScripts() {
+    func resetForm() {
+        self.name = ""
+        self.command = ""
+        self.selectedIcon = 0
+    }
+    
+    func refreshScripts() {
         storage.saveScripts(value: self.scripts)
     }
     
@@ -39,9 +60,44 @@ class ScriptsViewModel: ObservableObject {
             $0.id != id
         }
         
-        updateScripts()
+        refreshScripts()
         
         loadScripts()
+    }
+    
+    func updateScript() {
+        var savedScripts: [Script] = storage.loadScripts() ?? []
+        let index: Int? = savedScripts.firstIndex(where: { $0.id == self.editId })
+        
+        guard let index else { return }
+        savedScripts[index].name = self.name
+        savedScripts[index].icon = ScriptIcons[self.selectedIcon]
+        savedScripts[index].command = self.command
+        
+        storage.saveScripts(value: savedScripts)
+        
+        // Refresh data
+        self.scripts = savedScripts
+
+        closeEdit()
+    }
+    
+    func openEdit(script: Script) {
+        self.editMode = true
+        self.editId = script.id
+        
+        self.name = script.name
+        self.command = script.command
+        self.selectedIcon = ScriptIcons.firstIndex(of: script.icon) ?? 0
+        
+        self.showAddScript = true
+    }
+    
+    func closeEdit() {
+        self.editMode = false
+        self.resetForm()
+        
+        self.showAddScript.toggle()
     }
     
     func openLogs() {

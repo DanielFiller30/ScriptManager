@@ -13,7 +13,6 @@ struct ScriptRowLabel: View {
     
     @Binding var script: Script
     
-    @State var isLogEnabled: Bool = DefaultSettings.logs
     @State var isRunning: Bool = false
     
     var body: some View {
@@ -43,21 +42,12 @@ struct ScriptRowLabel: View {
             
             Spacer()
             
-            ScriptStateButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning, isLogEnabled: $isLogEnabled)
+            ScriptStateButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning)
             
-            ScriptRunButtonView(viewModel: viewModel, reloadSettings: { reloadSettings() }, script: $script, isRunning: $isRunning)
+            ScriptRunButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning)
             
             ScriptDeleteButtonView(viewModel: viewModel, scriptId: $script.id, isRunning: $isRunning)
         }
-        .onAppear() {
-            reloadSettings()
-        }
-    }
-    
-    func reloadSettings() {
-        let storage = StorageHandler()
-        let settings: Settings = storage.loadSettings()
-        isLogEnabled = settings.logs
     }
 }
 

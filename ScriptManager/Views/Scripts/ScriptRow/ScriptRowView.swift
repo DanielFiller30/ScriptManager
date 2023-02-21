@@ -10,15 +10,16 @@ import SwiftUI
 struct ScriptRowView: View {
     @StateObject var viewModel: ScriptsViewModel
     
-    @State var script: Script
-    @State var showDetails: Bool = false
+    @Binding var script: Script
     
+    @State var showDetails: Bool = false
+
     var body: some View {
         DisclosureGroup(isExpanded: $showDetails) {
             Divider()
                 .padding(.top, Spacing.l)
             
-            ScriptDetailsView(script: script)
+            ScriptDetailsView(viewModel: viewModel, script: script)
             
         } label: {
             ScriptRowLabel(
@@ -32,11 +33,14 @@ struct ScriptRowView: View {
         .frame(maxWidth: 350, alignment: .leading)
         .background(Color.Dark)
         .cornerRadius(10)
+        .onAppear() {
+            viewModel.loadSettings()
+        }
     }
 }
 
 struct ScriptRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRowView(viewModel: ScriptsViewModel(), script: DefaultScript)
+        ScriptRowView(viewModel: ScriptsViewModel(), script: .constant(DefaultScript))
     }
 }

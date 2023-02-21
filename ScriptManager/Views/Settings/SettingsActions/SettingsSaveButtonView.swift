@@ -34,7 +34,11 @@ struct SettingsSaveButtonView: View {
             
         }
         .frame(width: 230)
-        .disabled(viewModel.shellPath.isEmpty || viewModel.unicode.isEmpty)
+        .disabled(
+            viewModel.shellPath.isEmpty
+            || viewModel.unicode.isEmpty
+            || (viewModel.loggingState && viewModel.logsPath.isEmpty)
+        )
         .buttonStyle(.plain)
         .padding(.bottom, Spacing.xl)    }
 }

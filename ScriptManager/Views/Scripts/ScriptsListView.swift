@@ -27,7 +27,7 @@ struct ScriptsListView: View {
             } else {
                 ScrollView {
                     ForEach($viewModel.scripts) { $script in
-                        ScriptRowView(viewModel: viewModel, script: script)
+                        ScriptRowView(viewModel: viewModel, script: $script)
                     }
                 }
             }
