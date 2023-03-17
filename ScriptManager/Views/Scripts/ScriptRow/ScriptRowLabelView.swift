@@ -20,7 +20,7 @@ struct ScriptRowLabel: View {
             Image(systemName: script.icon)
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(Color.Primary)
+                .foregroundColor(AppColor.Primary)
                 .frame(height: IconSize.m)
                 .padding(.horizontal, Spacing.m)
                 .onTapGesture {

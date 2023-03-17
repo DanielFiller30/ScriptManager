@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SettingsSaveButtonView: View {
-    @StateObject var viewModel: SettingsViewModel
+    @EnvironmentObject var settings: ScriptManagerSettings
 
     var body: some View {
         Button {
-            viewModel.save()
+            settings.save()
         } label: {
             HStack(alignment: .center) {
                 Spacer()
@@ -29,15 +29,15 @@ struct SettingsSaveButtonView: View {
                     .foregroundColor(Color.white)
             }
             .padding(Spacing.l)
-            .background(Color.Success)
+            .background(AppColor.Success)
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }
         .frame(width: 230)
         .disabled(
-            viewModel.shellPath.isEmpty
-            || viewModel.unicode.isEmpty
-            || (viewModel.loggingState && viewModel.logsPath.isEmpty)
+            settings.shellPath.isEmpty
+            || settings.unicode.isEmpty
+            || (settings.loggingState && settings.logsPath.isEmpty)
         )
         .buttonStyle(.plain)
         .padding(.bottom, Spacing.xl)    }
@@ -45,6 +45,6 @@ struct SettingsSaveButtonView: View {
 
 struct SettingsSaveButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsSaveButtonView(viewModel: SettingsViewModel())
+        SettingsSaveButtonView()
     }
 }

@@ -29,7 +29,7 @@ struct TestScriptButtonView: View {
                     Image(systemName: "play")
                         .resizable()
                         .frame(width: IconSize.s, height: IconSize.s)
-                        .foregroundColor(Color.Creme)
+                        .foregroundColor(AppColor.Creme)
                     
                 } else {
                     ProgressView()
@@ -40,7 +40,7 @@ struct TestScriptButtonView: View {
                 
             }
             .padding(Spacing.l)
-            .background(Color.Dark)
+            .background(AppColor.Dark)
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }

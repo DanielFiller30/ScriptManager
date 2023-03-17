@@ -95,7 +95,7 @@ class ScriptHandler: ObservableObject {
     
     func getFormattedDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.YY HH:mm:ss"
+        dateFormatter.dateFormat = "dd.MM.yy HH:mm:ss"
         
         return dateFormatter.string(from: date)
     }

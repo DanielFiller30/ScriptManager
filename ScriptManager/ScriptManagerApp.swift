@@ -42,7 +42,7 @@ struct ScriptManagerApp: App {
         window.close()
     }
     
-    var body: some Scene {
+    var body: some Scene {        
         MenuBarExtra("", image: "StatusBarIcon") {
             MainView()
         }

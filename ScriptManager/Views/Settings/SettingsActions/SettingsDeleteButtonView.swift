@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SettingsDeleteButtonView: View {
-    @StateObject var viewModel: SettingsViewModel
-    
+    @EnvironmentObject var settings: ScriptManagerSettings
+
     var body: some View {
         Button {
-            viewModel.showDeleteAlert.toggle()
+            settings.showDeleteAlert.toggle()
         } label: {
             HStack(alignment: .center) {
                 Spacer()
@@ -25,21 +25,21 @@ struct SettingsDeleteButtonView: View {
                 Image(systemName: "trash")
                     .resizable()
                     .frame(width: IconSize.m, height: IconSize.m)
-                    .foregroundColor(Color.Creme)
+                    .foregroundColor(AppColor.Creme)
             }
             .padding(Spacing.l)
-            .background(Color.Dark)
+            .background(AppColor.Dark)
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }
         .frame(width: 230)
         .buttonStyle(.plain)
         .padding(.top, Spacing.l)
-        .alert("settings-delete-title", isPresented: $viewModel.showDeleteAlert) {
+        .alert("settings-delete-title", isPresented: $settings.showDeleteAlert) {
             
             Button("cancel", role: .cancel) {}
             Button("delete") {
-                viewModel.reset()
+                settings.reset()
             }
             
         } message: {
@@ -51,6 +51,6 @@ struct SettingsDeleteButtonView: View {
 
 struct SettingsDeleteButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsDeleteButtonView(viewModel: SettingsViewModel())
+        SettingsDeleteButtonView()
     }
 }

@@ -22,7 +22,7 @@ struct ScriptDeleteButtonView: View {
                 .resizable()
                 .frame(width: IconSize.s, height: IconSize.s)
                 .padding(Spacing.l)
-                .background(Color.Background)
+                .background(AppColor.Background)
                 .clipShape(Circle())
         }
         .buttonStyle(.plain)

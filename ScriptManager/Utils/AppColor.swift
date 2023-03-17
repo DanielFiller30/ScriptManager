@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Color {
+struct AppColor {
     static let Dark = Color("Dark")
     static let Light = Color("Light")
     static let Success = Color("Success")

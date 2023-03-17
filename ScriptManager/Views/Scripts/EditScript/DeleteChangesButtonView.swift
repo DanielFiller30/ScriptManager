@@ -26,7 +26,7 @@ struct DeleteChangesButton: View {
             }
             .padding(.vertical, Spacing.l)
             .padding(.horizontal, Spacing.xl)
-            .background(Color.Background)
+            .background(AppColor.Background)
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }

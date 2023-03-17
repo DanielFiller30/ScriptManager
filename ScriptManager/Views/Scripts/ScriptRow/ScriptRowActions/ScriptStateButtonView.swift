@@ -20,10 +20,10 @@ struct ScriptStateButtonView: View {
             if (success) {
                 // Script run successfull
                 Image(systemName: "checkmark")
-                    .foregroundColor(Color.Success)
+                    .foregroundColor(AppColor.Success)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(Color.Background)
+                    .background(AppColor.Background)
                     .clipShape(Circle())
             } else if (viewModel.isLogEnabled) {
                 // Script failed and logging is active
@@ -34,8 +34,8 @@ struct ScriptStateButtonView: View {
                         .resizable()
                         .frame(width: IconSize.s, height: IconSize.s)
                         .padding(Spacing.l)
-                        .foregroundColor(Color.Creme)
-                        .background(Color.Danger)
+                        .foregroundColor(AppColor.Creme)
+                        .background(AppColor.Danger)
                         .clipShape(Circle())
                 }
                 .buttonStyle(.plain)
@@ -43,10 +43,10 @@ struct ScriptStateButtonView: View {
             } else {
                 // Script failed but logging is disabled
                 Image(systemName: "xmark")
-                    .foregroundColor(Color.Danger)
+                    .foregroundColor(AppColor.Danger)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(Color.Background)
+                    .background(AppColor.Background)
                     .clipShape(Circle())
             }
             

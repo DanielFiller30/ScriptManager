@@ -38,7 +38,7 @@ struct WelcomeView: View {
                     .resizable()
                     .frame(width: IconSize.l, height: IconSize.l)
                     .padding(Spacing.m)
-                    .background(Color.Light)
+                    .background(AppColor.Light)
                     .clipShape(Circle())
                 
             }
@@ -51,24 +51,24 @@ struct WelcomeView: View {
                     .font(.system(size: FontSize.text))
                 
                 Image(systemName: "checkmark")
-                    .foregroundColor(Color.Success)
+                    .foregroundColor(AppColor.Success)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(Color.Background)
+                    .background(AppColor.Background)
                     .clipShape(Circle())
                 
                 Image(systemName: "xmark")
-                    .foregroundColor(Color.Danger)
+                    .foregroundColor(AppColor.Danger)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(Color.Background)
+                    .background(AppColor.Background)
                     .clipShape(Circle())
                 
                 Image(systemName: "xmark")
-                    .foregroundColor(Color.Dark)
+                    .foregroundColor(AppColor.Dark)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(Color.Danger)
+                    .background(AppColor.Danger)
                     .clipShape(Circle())
             }
             
@@ -95,11 +95,11 @@ struct WelcomeView: View {
                         Image(systemName: "xmark")
                             .resizable()
                             .frame(width: IconSize.m, height: IconSize.m)
-                            .foregroundColor(Color.Creme)
+                            .foregroundColor(AppColor.Creme)
                         
                     }
                     .padding(Spacing.l)
-                    .background(Color.Dark)
+                    .background(AppColor.Dark)
                     .clipShape(RoundedRectangle(cornerRadius: 10.0))
                     
                 }

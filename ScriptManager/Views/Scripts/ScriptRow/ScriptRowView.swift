@@ -31,7 +31,7 @@ struct ScriptRowView: View {
         }
         .padding(.all, Spacing.l)
         .frame(maxWidth: 350, alignment: .leading)
-        .background(Color.Dark)
+        .background(AppColor.Dark)
         .cornerRadius(10)
         .onAppear() {
             viewModel.loadSettings()

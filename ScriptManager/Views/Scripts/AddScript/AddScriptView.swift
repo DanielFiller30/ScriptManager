@@ -58,7 +58,7 @@ struct AddScriptView: View {
             
             Text(testResult)
                 .font(.system(size: FontSize.subTitle))
-                .foregroundColor(testIsSuccessfull == .successfull ? Color.Success : Color.Danger)
+                .foregroundColor(testIsSuccessfull == .successfull ? AppColor.Success : AppColor.Danger)
                 .padding(.top, Spacing.m)
             
         }

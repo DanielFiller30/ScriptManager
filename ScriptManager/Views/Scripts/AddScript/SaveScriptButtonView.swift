@@ -27,7 +27,7 @@ struct SaveScriptButtonView: View {
                     .foregroundColor(Color.white)
             }
             .padding(Spacing.l)
-            .background(Color.Success)
+            .background(AppColor.Success)
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }

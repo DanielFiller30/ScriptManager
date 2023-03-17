@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject var viewModel: SettingsViewModel
+    @EnvironmentObject var settings: ScriptManagerSettings
     
     var body: some View {
         VStack(alignment: .center) {
@@ -20,37 +20,37 @@ struct SettingsView: View {
             Divider()
             
             Group {
-                SettingsShellView(viewModel: viewModel)
+                SettingsShellView()
                 
                 Divider()
                 
-                SettingsUnicodeView(viewModel: viewModel)
+                SettingsUnicodeView()
                 
                 Divider()
                 
-                SettingsLoggingView(viewModel: viewModel)
+                SettingsLoggingView()
                 
                 Divider()
                 
-                SettingsNotificationsView(viewModel: viewModel)
+                SettingsNotificationsView()
                 
                 Divider()
                 
-                SettingsDeleteButtonView(viewModel: viewModel)
+                SettingsDeleteButtonView()
                 
-                SettingsSaveButtonView(viewModel: viewModel)
+                SettingsSaveButtonView()
             }
             
         }
         .frame(minWidth: 260)
         .onAppear() {
-            viewModel.loadSettings()
+            settings.loadSettings()
         }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(viewModel: SettingsViewModel())
+        SettingsView()
     }
 }

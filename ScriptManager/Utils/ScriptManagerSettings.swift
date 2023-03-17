@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 
-class SettingsViewModel: ObservableObject {
+class ScriptManagerSettings: ObservableObject {
     private let storage = StorageHandler()
     
     @Published var showingPopover: Bool = false

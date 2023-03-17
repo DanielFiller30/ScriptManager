@@ -26,7 +26,7 @@ struct ScriptEditButtonView: View {
                     .foregroundColor(Color.white)
             }
             .padding(Spacing.l)
-            .background(Color.Background)
+            .background(AppColor.Background)
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }

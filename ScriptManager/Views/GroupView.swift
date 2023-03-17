@@ -6,19 +6,34 @@
 //
 
 import SwiftUI
+import Foundation
 
-struct GroupView: View {
+struct GroupView<Content>: View where Content: View {
     var toggleVar: Binding<Bool>
     var toggle: () -> Void
     
     var label: LocalizedStringKey
     var info: LocalizedStringKey
     
-    var view: AnyView
+    let content: () -> Content
+    
+    init(
+        toggleVar: Binding<Bool>,
+        toggle: @escaping () -> Void,
+        label: LocalizedStringKey,
+        info: LocalizedStringKey,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.toggleVar = toggleVar
+        self.toggle = toggle
+        self.label = label
+        self.info = info
+        self.content = content
+    }
     
     var body: some View {
         DisclosureGroup(isExpanded: toggleVar) {
-            view
+            content()
                 .padding(.all, Spacing.xl)
         } label: {
             HStack(alignment: .center) {
@@ -34,7 +49,7 @@ struct GroupView: View {
                 
                 Text(info)
                     .fontWeight(.light)
-                    .foregroundColor(Color.Creme)
+                    .foregroundColor(AppColor.Creme)
                     .font(.system(size: FontSize.text))
                     .frame(maxWidth: 120)
                     .onTapGesture {
@@ -53,6 +68,8 @@ struct GroupView: View {
 
 struct GroupView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupView(toggleVar: .constant(false), toggle: {}, label: "Test", info: "Info-Test", view: AnyView(EmptyView()))
+        GroupView(toggleVar: .constant(false), toggle: {}, label: "Test", info: "Info-Test") {
+            EmptyView()
+        }
     }
 }

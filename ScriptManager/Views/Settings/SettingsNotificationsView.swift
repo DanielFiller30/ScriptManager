@@ -8,32 +8,33 @@
 import SwiftUI
 
 struct SettingsNotificationsView: View {
-    @StateObject var viewModel: SettingsViewModel
-
+    @EnvironmentObject var settings: ScriptManagerSettings
+    
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
                 Text("settings-notifications")
                     .font(.system(size: FontSize.text))
-
+                
                 HintView(title: "hint-notifications-title", text: "hint-notifications-text")
-
+                
                 Spacer()
                 
-                Toggle("", isOn: $viewModel.notificationState)
+                Toggle("", isOn: $settings.notificationState)
                     .toggleStyle(.switch)
-                    .onChange(of: viewModel.notificationState) { state in
-                        viewModel.activateNotifications()
+                    .onChange(of: settings.notificationState) { state in
+                        settings.activateNotifications()
                     }
-                    
+                
             }
         }
         .padding(.vertical, Spacing.m)
-        .padding(.horizontal, Spacing.xl)    }
+        .padding(.horizontal, Spacing.xl)
+    }
 }
 
 struct SettingsNotificationsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsNotificationsView(viewModel: SettingsViewModel())
+        SettingsNotificationsView()
     }
 }

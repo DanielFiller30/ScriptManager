@@ -22,7 +22,7 @@ struct ScriptRunButtonView: View {
                 .frame(width: IconSize.s, height: IconSize.s)
                 .scaleEffect(0.5)
                 .padding(Spacing.l)
-                .background(Color.Background)
+                .background(AppColor.Background)
                 .clipShape(Circle())
             
         } else {
@@ -35,7 +35,7 @@ struct ScriptRunButtonView: View {
                     .resizable()
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(Color.Background)
+                    .background(AppColor.Background)
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)

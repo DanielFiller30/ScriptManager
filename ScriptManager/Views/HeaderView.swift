@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @StateObject var viewModel = SettingsViewModel()
+    @EnvironmentObject var settings: ScriptManagerSettings
+    
     @State var showCloseAlert: Bool = false
     
     var body: some View {
         HStack(alignment: .center) {
             Image("StatusBarIcon")
-                .foregroundColor(Color.Primary)
+                .foregroundColor(AppColor.Primary)
             
             Text("Script Manager")
                 .font(Font.custom("Courier New", size: FontSize.title))
@@ -23,18 +24,18 @@ struct HeaderView: View {
             Spacer()
             
             Button {
-                viewModel.showingPopover.toggle()
+                settings.showingPopover.toggle()
             } label: {
                 Image(systemName: "gear")
                     .resizable()
                     .frame(width: IconSize.l, height: IconSize.l)
                     .padding(Spacing.m)
-                    .background(Color.Light)
+                    .background(AppColor.Light)
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
-            .popover(isPresented: $viewModel.showingPopover) {
-                SettingsView(viewModel: viewModel)
+            .popover(isPresented: $settings.showingPopover) {
+                SettingsView()
             }
             
             Button {
@@ -44,7 +45,7 @@ struct HeaderView: View {
                     .resizable()
                     .frame(width: IconSize.l, height: IconSize.l)
                     .padding(Spacing.m)
-                    .background(Color.Light)
+                    .background(AppColor.Light)
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
@@ -61,7 +62,7 @@ struct HeaderView: View {
         }
         .padding(.vertical, Spacing.l)
         .padding(.horizontal, Spacing.xl)
-        .background(Color.Dark)
+        .background(AppColor.Dark)
     }
     
     func terminateApp() {

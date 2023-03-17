@@ -26,7 +26,7 @@ struct SaveChangesButton: View {
             }
             .padding(.vertical, Spacing.l)
             .padding(.horizontal, Spacing.xl)
-            .background(Color.Success)
+            .background(AppColor.Success)
             .clipShape(RoundedRectangle(cornerRadius: 10.0))
             
         }

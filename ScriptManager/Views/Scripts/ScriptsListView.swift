@@ -12,7 +12,7 @@ struct ScriptsListView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("saved \(String($viewModel.scripts.count))")
+            Text("saved \(String(viewModel.scripts.count))")
                 .fontWeight(.bold)
                 .font(.system(size: FontSize.subTitle))
                 .padding(.bottom, Spacing.l)
@@ -20,7 +20,7 @@ struct ScriptsListView: View {
             if (viewModel.scripts.isEmpty) {
                 Text("empty-scripts")
                     .font(.system(size: FontSize.text))
-                    .foregroundColor(Color.Creme)
+                    .foregroundColor(AppColor.Creme)
                     .padding()
                     .multilineTextAlignment(.center)
                 
