@@ -64,6 +64,7 @@
 "path-logs" = "Pfad zu den Protokollen";
 "settings-notifications" = "Mitteilungen aktivieren";
 "settings-color" = "Primärfarbe anpassen";
+"settings-autostart" = "Bei der Anmeldung öffnen";
 
 // Notification
 "notification-successfull-title %@" = "Skript '%@' abgeschlossen";

@@ -64,6 +64,7 @@
 "path-logs" = "Path for logs";
 "settings-notifications" = "Activate notifications";
 "settings-color" = "Change primary color";
+"settings-autostart" = "Launch at login";
 
 // Notification
 "notification-successfull-title %@" = "Script '%@' successfull finished";

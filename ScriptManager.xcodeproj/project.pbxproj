@@ -12,6 +12,8 @@
 		DC044912298D4046004B6389 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC044911298D4046004B6389 /* Colors.xcassets */; };
 		DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D429A382A800DBCAAD /* IconPickerView.swift */; };
 		DC2991D729A3830C00DBCAAD /* ScriptIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */; };
+		DC2E7A9A29C4A40200B6CFFE /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = DC2E7A9929C4A40200B6CFFE /* LaunchAtLogin */; };
+		DC2E7A9C29C4A41C00B6CFFE /* SettingsAutostartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */; };
 		DC75B443299BA57F00086806 /* ScriptManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B40F299BA57F00086806 /* ScriptManagerApp.swift */; };
 		DC75B444299BA57F00086806 /* ScriptManagerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B411299BA57F00086806 /* ScriptManagerSettings.swift */; };
 		DC75B446299BA57F00086806 /* ScriptsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B413299BA57F00086806 /* ScriptsViewModel.swift */; };
@@ -67,6 +69,7 @@
 		DC044911298D4046004B6389 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DC2991D429A382A800DBCAAD /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptIcons.swift; sourceTree = "<group>"; };
+		DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAutostartView.swift; sourceTree = "<group>"; };
 		DC75B40F299BA57F00086806 /* ScriptManagerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptManagerApp.swift; sourceTree = "<group>"; };
 		DC75B411299BA57F00086806 /* ScriptManagerSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptManagerSettings.swift; sourceTree = "<group>"; };
 		DC75B413299BA57F00086806 /* ScriptsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptsViewModel.swift; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC2E7A9A29C4A40200B6CFFE /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +228,7 @@
 				DC75B424299BA57F00086806 /* SettingsActions */,
 				DC75B427299BA57F00086806 /* SettingsUnicodeView.swift */,
 				DC8E08BA29C498C100AA9B32 /* SettingsColorView.swift */,
+				DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -321,6 +326,9 @@
 			dependencies = (
 			);
 			name = ScriptManager;
+			packageProductDependencies = (
+				DC2E7A9929C4A40200B6CFFE /* LaunchAtLogin */,
+			);
 			productName = ScriptManager;
 			productReference = DC0448F2298D2F38004B6389 /* ScriptManager.app */;
 			productType = "com.apple.product-type.application";
@@ -351,6 +359,9 @@
 				de,
 			);
 			mainGroup = DC0448E9298D2F38004B6389;
+			packageReferences = (
+				DC2E7A9829C4A40200B6CFFE /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+			);
 			productRefGroup = DC0448F3298D2F38004B6389 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -423,6 +434,7 @@
 				DC75B461299BA58000086806 /* ScriptStateButtonView.swift in Sources */,
 				DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */,
 				DC75B448299BA57F00086806 /* StorageHandler.swift in Sources */,
+				DC2E7A9C29C4A41C00B6CFFE /* SettingsAutostartView.swift in Sources */,
 				DC75B453299BA58000086806 /* SettingsSaveButtonView.swift in Sources */,
 				DC75B456299BA58000086806 /* HintView.swift in Sources */,
 				DC75B45D299BA58000086806 /* SaveScriptButtonView.swift in Sources */,
@@ -657,6 +669,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC2E7A9829C4A40200B6CFFE /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC2E7A9929C4A40200B6CFFE /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC2E7A9829C4A40200B6CFFE /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DC0448EA298D2F38004B6389 /* Project object */;
 }

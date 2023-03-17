@@ -29,11 +29,17 @@ struct SettingsView: View {
                     
                     Divider()
                     
-                    SettingsLoggingView()
+                    Group {
+                        SettingsLoggingView()
+                        
+                        Divider()
+                        
+                        SettingsNotificationsView()
+                        
+                        Divider()
+                    }
                     
-                    Divider()
-                    
-                    SettingsNotificationsView()
+                    SettingsAutostartView()
                     
                     Divider()
                     
