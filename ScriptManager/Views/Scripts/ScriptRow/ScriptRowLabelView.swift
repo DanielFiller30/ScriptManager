@@ -41,6 +41,7 @@ struct ScriptRowLabel: View {
                         toggleDetails()
                     }
                 }
+                .help(script.name)
             
             Spacer()
             

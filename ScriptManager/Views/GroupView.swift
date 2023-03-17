@@ -55,7 +55,9 @@ struct GroupView<Content>: View where Content: View {
                     .onTapGesture {
                         withAnimation {
                             toggle()
-                        }                    }
+                        }
+                    }
+                    .help(info)
             }
             .padding(.leading, Spacing.m)
             
