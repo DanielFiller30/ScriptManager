@@ -40,7 +40,8 @@ struct SettingsSaveButtonView: View {
             || (settings.loggingState && settings.logsPath.isEmpty)
         )
         .buttonStyle(.plain)
-        .padding(.bottom, Spacing.xl)    }
+        .padding(.bottom, Spacing.xl)
+    }
 }
 
 struct SettingsSaveButtonView_Previews: PreviewProvider {

@@ -63,6 +63,7 @@
 "settings-logging" = "Fehler-Protokoll aktivieren";
 "path-logs" = "Pfad zu den Protokollen";
 "settings-notifications" = "Mitteilungen aktivieren";
+"settings-color" = "Primärfarbe anpassen";
 
 // Notification
 "notification-successfull-title %@" = "Skript '%@' abgeschlossen";

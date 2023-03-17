@@ -20,25 +20,33 @@ struct SettingsView: View {
             Divider()
             
             Group {
-                SettingsShellView()
+                Group {
+                    SettingsShellView()
+                    
+                    Divider()
+                    
+                    SettingsUnicodeView()
+                    
+                    Divider()
+                    
+                    SettingsLoggingView()
+                    
+                    Divider()
+                    
+                    SettingsNotificationsView()
+                    
+                    Divider()
+                    
+                    SettingsColorView()
+                    
+                    Divider()
+                }                
                 
-                Divider()
-                
-                SettingsUnicodeView()
-                
-                Divider()
-                
-                SettingsLoggingView()
-                
-                Divider()
-                
-                SettingsNotificationsView()
-                
-                Divider()
-                
-                SettingsDeleteButtonView()
-                
-                SettingsSaveButtonView()
+                Group {
+                    SettingsDeleteButtonView()
+                    
+                    SettingsSaveButtonView()
+                }
             }
             
         }

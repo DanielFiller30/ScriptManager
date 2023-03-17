@@ -63,6 +63,7 @@
 "settings-logging" = "Activate error-logs";
 "path-logs" = "Path for logs";
 "settings-notifications" = "Activate notifications";
+"settings-color" = "Change primary color";
 
 // Notification
 "notification-successfull-title %@" = "Script '%@' successfull finished";

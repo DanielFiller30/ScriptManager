@@ -7,6 +7,7 @@
 
 import Foundation
 import UserNotifications
+import SwiftUI
 
 class ScriptManagerSettings: ObservableObject {
     private let storage = StorageHandler()
@@ -23,22 +24,30 @@ class ScriptManagerSettings: ObservableObject {
     @Published var loggingState: Bool = DefaultSettings.logs
     @Published var logsPath: String = ""
     @Published var notificationState: Bool = DefaultSettings.notifications
+    @Published var mainColor: Color = AppColor.Primary
 
     func loadSettings() {
-        let settings = storage.loadSettings()
-        homeDir = FileManager.default.homeDirectoryForCurrentUser.relativePath
+        do {
+            let settings = storage.loadSettings()
+            homeDir = FileManager.default.homeDirectoryForCurrentUser.relativePath
 
-        // Set saved settings
-        self.shell = settings.shell.type
-        self.shellPath = settings.shell.path
-        self.profilePath = settings.shell.profile ?? loadLogsDir()
-        self.unicode = settings.unicode
-        self.loggingState = settings.logs
-        self.logsPath = settings.pathLogs
-        self.notificationState = settings.notifications
+            let decodedColor = try decodeColor(from: settings.mainColor)
+            
+            // Set saved settings
+            self.shell = settings.shell.type
+            self.shellPath = settings.shell.path
+            self.profilePath = settings.shell.profile ?? loadLogsDir()
+            self.unicode = settings.unicode
+            self.loggingState = settings.logs
+            self.logsPath = settings.pathLogs
+            self.notificationState = settings.notifications
+            self.mainColor = decodedColor
 
-        // Load initial directory paths
-        self.profilePath = loadUserDir()
+            // Load initial directory paths
+            self.profilePath = loadUserDir()
+        } catch {
+            debugPrint("Loading settings failed.")
+        }
     }
     
     func loadUserDir() -> String {
@@ -72,16 +81,23 @@ class ScriptManagerSettings: ObservableObject {
     }
     
     func save() {
-        let settings = Settings(
-            shell: Shell(type: shell, path: shellPath, profile: profilePath),
-            unicode: unicode,
-            logs: loggingState,
-            pathLogs: logsPath,
-            notifications: notificationState
-        )
-        
-        storage.saveSettings(value: settings)
-        
-        showingPopover.toggle()
+        do {
+            let encodedColor = try encodeColor(color: mainColor)
+            
+            let settings = Settings(
+                shell: Shell(type: shell, path: shellPath, profile: profilePath),
+                unicode: unicode,
+                logs: loggingState,
+                pathLogs: logsPath,
+                notifications: notificationState,
+                mainColor: encodedColor
+            )
+            
+            storage.saveSettings(value: settings)
+            
+            showingPopover.toggle()
+        } catch {
+            debugPrint("Save settings failed.")
+        }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Settings: Identifiable, Codable {
     var id = UUID()
@@ -14,4 +15,5 @@ struct Settings: Identifiable, Codable {
     var logs: Bool
     var pathLogs: String
     var notifications: Bool
+    var mainColor: Data
 }

@@ -37,6 +37,9 @@ struct MainView: View {
             .background(AppColor.AppBg)
         }
         .frame(width: 350, height: 450)
+        .onAppear() {
+            settings.loadSettings()
+        }
         .environmentObject(settings)
         
     }

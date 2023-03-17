@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ScriptRowLabel: View {
+    @EnvironmentObject var settings: ScriptManagerSettings
+
     var viewModel: ScriptsViewModel
     var toggleDetails: () -> Void
     
@@ -20,7 +22,7 @@ struct ScriptRowLabel: View {
             Image(systemName: script.icon)
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(AppColor.Primary)
+                .foregroundColor(settings.mainColor)
                 .frame(height: IconSize.m)
                 .padding(.horizontal, Spacing.m)
                 .onTapGesture {

@@ -59,7 +59,8 @@ class StorageHandler: ObservableObject {
             unicode: DefaultSettings.unicode,
             logs: DefaultSettings.logs,
             pathLogs: DefaultSettings.pathLogs,
-            notifications: DefaultSettings.notifications
+            notifications: DefaultSettings.notifications,
+            mainColor: DefaultSettings.mainColor!
         )
         
         return settings
