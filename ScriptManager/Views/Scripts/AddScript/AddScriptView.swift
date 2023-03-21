@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddScriptView: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
     
     @State var testIsRunning: Bool = false
     @State var testResult: LocalizedStringKey = ""
@@ -68,6 +68,6 @@ struct AddScriptView: View {
 
 struct AddScriptView_Previews: PreviewProvider {
     static var previews: some View {
-        AddScriptView(viewModel: ScriptsViewModel())
+        AddScriptView(viewModel: ScriptViewModel())
     }
 }

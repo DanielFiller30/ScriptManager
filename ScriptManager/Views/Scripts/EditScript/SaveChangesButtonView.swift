@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SaveChangesButton: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
 
     var body: some View {
         Button {
@@ -35,6 +35,6 @@ struct SaveChangesButton: View {
 
 struct SaveChangesButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveChangesButton(viewModel: ScriptsViewModel())
+        SaveChangesButton(viewModel: ScriptViewModel())
     }
 }

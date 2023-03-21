@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @EnvironmentObject var settings: ScriptManagerSettings
+    @EnvironmentObject var settings: SettingsHandler
     
     @State var showCloseAlert: Bool = false
     

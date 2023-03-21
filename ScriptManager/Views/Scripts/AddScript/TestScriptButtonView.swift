@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TestScriptButtonView: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
     let scriptHandler: ScriptHandler = ScriptHandler()
     
     @Binding var testIsRunning: Bool
@@ -52,7 +52,8 @@ struct TestScriptButtonView: View {
     func testScript() async {
         testIsRunning = true
         
-        testIsSuccessfull = await scriptHandler.runScript(viewModel.command, scriptName: viewModel.name, test: true)
+        let tempScript: Script = Script(name: viewModel.name, icon: "", command: viewModel.command, success: .ready, finished: false)
+        testIsSuccessfull = await scriptHandler.runScript(tempScript, test: true)
         testResult = testIsSuccessfull == .successfull ? "test-success" : "test-failed"
         
         testIsRunning = false
@@ -61,6 +62,6 @@ struct TestScriptButtonView: View {
 
 struct TestScriptButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        TestScriptButtonView(viewModel: ScriptsViewModel(), testIsRunning: .constant(false), testResult: .constant("Successfull"), testIsSuccessfull: .constant(.ready))
+        TestScriptButtonView(viewModel: ScriptViewModel(), testIsRunning: .constant(false), testResult: .constant("Successfull"), testIsSuccessfull: .constant(.ready))
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScriptDetailsView: View {
-    var viewModel: ScriptsViewModel
+    var viewModel: ScriptViewModel
     let scriptHandler: ScriptHandler = ScriptHandler()
     // TODO: CHECK BINDING
     var script: Script
@@ -68,6 +68,6 @@ struct ScriptDetailsView: View {
 
 struct ScriptDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDetailsView(viewModel: ScriptsViewModel(), script: DefaultScript)
+        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript)
     }
 }

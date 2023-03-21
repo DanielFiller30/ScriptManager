@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IconPickerView: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
     
     var body: some View {
         Form {
@@ -30,6 +30,6 @@ struct IconPickerView: View {
 
 struct IconPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        IconPickerView(viewModel: ScriptsViewModel())
+        IconPickerView(viewModel: ScriptViewModel())
     }
 }

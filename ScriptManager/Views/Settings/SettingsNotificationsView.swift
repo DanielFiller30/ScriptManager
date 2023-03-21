@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsNotificationsView: View {
-    @EnvironmentObject var settings: ScriptManagerSettings
+    @EnvironmentObject var settings: SettingsHandler
     
     var body: some View {
         VStack(alignment: .center) {

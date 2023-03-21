@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsShellView: View {
-    @EnvironmentObject var settings: ScriptManagerSettings
+    @EnvironmentObject var settings: SettingsHandler
     
     @State var showHintShell: Bool = false
     
@@ -32,7 +32,7 @@ struct SettingsShellView: View {
                 .onChange(of: settings.shell) { type in
                     changeShellType(stype: type)
                 }
-                .frame(width: 110)
+                .frame(width: 160)
             }
             .padding(.bottom, Spacing.l)
             
@@ -43,7 +43,7 @@ struct SettingsShellView: View {
                 Spacer()
                 
                 TextField("", text: $settings.shellPath)
-                    .frame(width: 100)
+                    .frame(width: 150)
             }
             .padding(.bottom, Spacing.l)
             
@@ -56,11 +56,10 @@ struct SettingsShellView: View {
                 Spacer()
                 
                 TextField("", text: $settings.profilePath)
-                    .frame(width: 100)
+                    .frame(width: 150)
             }
         }
-        .padding(.vertical, Spacing.m)
-        .padding(.horizontal, Spacing.xl)
+        .padding(.vertical, Spacing.m)        
     }
     
     func changeShellType(stype: ShellType) {

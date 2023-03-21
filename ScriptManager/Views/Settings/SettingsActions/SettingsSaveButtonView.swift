@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsSaveButtonView: View {
-    @EnvironmentObject var settings: ScriptManagerSettings
+    @EnvironmentObject var settings: SettingsHandler
 
     var body: some View {
         Button {

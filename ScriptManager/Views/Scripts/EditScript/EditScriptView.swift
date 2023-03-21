@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditScriptView: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -60,6 +60,6 @@ struct EditScriptView: View {
 
 struct EditScriptView_Previews: PreviewProvider {
     static var previews: some View {
-        EditScriptView(viewModel: ScriptsViewModel())
+        EditScriptView(viewModel: ScriptViewModel())
     }
 }

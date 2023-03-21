@@ -52,6 +52,7 @@
 
 // Settings
 "settings" = "Settings";
+"settings-shell" = "Shell-settings";
 "shell-type" = "Shell-type";
 "path-shell" = "Path to shell";
 "path-profile" = "Path to profile";
@@ -65,12 +66,20 @@
 "settings-notifications" = "Activate notifications";
 "settings-color" = "Change primary color";
 "settings-autostart" = "Launch at login";
+"settings-shortcut" = "Modify shortcuts";
+"settings-sc-1" = "Shortcut 1:";
+"settings-sc-2" = "Shortcut 2:";
+"settings-sc-3" = "Shortcut 3:";
+"settings-sc-4" = "Shortcut 4:";
+"settings-sc-5" = "Shortcut 5:";
 
 // Notification
 "notification-successfull-title %@" = "Script '%@' successfull finished";
 "notification-failed-title %@" = "Skript '%@' failed";
 "notification-successfull-subtitle" = "Your script has successfully finished. Run an other script in your menu-bar application.";
 "notification-failed-subtitle" = "Your script failed. Please check the error in your menu-bar application. Hint: Activate logging in your settings, to get further information for your error.";
+"notification-start-title %@" = "Script '%@' is running";
+"notification-start-subtitle" = "Your script was called by a keyboard shortcut and is now running.";
 
 // Hints
 "hint-shell-title" = "Shell-Type";

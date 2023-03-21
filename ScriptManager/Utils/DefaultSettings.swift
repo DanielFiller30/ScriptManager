@@ -22,4 +22,5 @@ struct DefaultSettings {
             return nil
         }
     }()
+    static var shortcuts: [Shortcut] = []
 }

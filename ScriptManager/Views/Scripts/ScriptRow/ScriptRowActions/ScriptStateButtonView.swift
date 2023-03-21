@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScriptStateButtonView: View {
-    let viewModel: ScriptsViewModel
+    let viewModel: ScriptViewModel
     
     @Binding var script: Script
     @Binding var isRunning: Bool
@@ -56,6 +56,6 @@ struct ScriptStateButtonView: View {
 
 struct ScriptStateButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptStateButtonView(viewModel: ScriptsViewModel(), script: .constant(DefaultScript), isRunning: .constant(false))
+        ScriptStateButtonView(viewModel: ScriptViewModel(), script: .constant(DefaultScript), isRunning: .constant(false))
     }
 }

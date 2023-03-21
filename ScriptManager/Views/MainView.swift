@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var viewModel = ScriptsViewModel()
-    @StateObject private var settings = ScriptManagerSettings()
+    @StateObject private var viewModel = ScriptViewModel()
+    @StateObject private var settings = SettingsHandler()
     
     var body: some View {
         VStack(spacing: Spacing.zero) {
@@ -19,7 +19,9 @@ struct MainView: View {
                 toggleVar: $viewModel.showAddScript,
                 toggle: { toggleGroup() },
                 label: viewModel.editMode ? "edit-script-title" : "add-new-script",
-                info: viewModel.editMode ? "" : "info-add-new-script"                
+                info: viewModel.editMode ? nil : "info-add-new-script",
+                padding: nil,
+                animation: true
             ) {
                 viewModel.editMode ? AnyView(EditScriptView(viewModel: viewModel)) : AnyView(AddScriptView(viewModel: viewModel))
             }

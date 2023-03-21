@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScriptRowView: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
     
     @Binding var script: Script
     
@@ -41,6 +41,6 @@ struct ScriptRowView: View {
 
 struct ScriptRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRowView(viewModel: ScriptsViewModel(), script: .constant(DefaultScript))
+        ScriptRowView(viewModel: ScriptViewModel(), script: .constant(DefaultScript))
     }
 }

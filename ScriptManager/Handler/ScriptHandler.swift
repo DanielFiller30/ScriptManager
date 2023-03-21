@@ -10,8 +10,13 @@ import UserNotifications
 
 class ScriptHandler: ObservableObject {
     private let storage = StorageHandler()
+    var scripts: [Script] = []
     
-    func runScript(_ command: String, scriptName: String, test: Bool) async -> ResultState {
+    func loadScripts() {
+        self.scripts = storage.loadScripts() ?? []
+    }
+    
+    func runScript(_ script: Script, test: Bool) async -> ResultState {
         do {
             let settings = storage.loadSettings()
             
@@ -21,7 +26,7 @@ class ScriptHandler: ObservableObject {
             // Build valid shell command
             let unicode = "export LANG=\(settings.unicode);"
             let profilePath = settings.shell.profile != nil ? "source \(settings.shell.profile!);" : ""
-            let validatedCommand = unicode + profilePath + command
+            let validatedCommand = unicode + profilePath + script.command
             
             task.standardError = pipe
             task.arguments = ["--login","-c", validatedCommand]
@@ -41,7 +46,7 @@ class ScriptHandler: ObservableObject {
                 output: output,
                 settings: settings,
                 test: test,
-                scriptName: scriptName
+                scriptName: script.name
             )
             
         } catch {
@@ -53,7 +58,7 @@ class ScriptHandler: ObservableObject {
     private func handleScriptResult(result: Int32, output: String, settings: Settings, test: Bool, scriptName: String) -> ResultState {
         if (result == 0) {
             if (settings.notifications && !test) {
-                sendNotification(state: true, name: scriptName)
+                sendResultNotification(state: true, name: scriptName)
             }
             
             return .successfull
@@ -63,17 +68,27 @@ class ScriptHandler: ObservableObject {
             }
             
             if (settings.notifications && !test) {
-                sendNotification(state: false, name: scriptName)
+                sendResultNotification(state: false, name: scriptName)
             }
             
             return .failed
         }
     }
     
-    private func sendNotification(state: Bool, name: String) {
+    private func sendResultNotification(state: Bool, name: String) {
         let content = UNMutableNotificationContent()
         content.title = state ? String(localized: "notification-successfull-title \(name)") : String(localized: "notification-failed-title \(name)")
         content.subtitle = state ? String(localized: "notification-successfull-subtitle") : String(localized: "notification-failed-subtitle")
+        content.sound = UNNotificationSound.default
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+    func sendStartNotification(name: String) {
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "notification-start-title \(name)")
+        content.subtitle = String(localized: "notification-start-subtitle")
         content.sound = UNNotificationSound.default
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)

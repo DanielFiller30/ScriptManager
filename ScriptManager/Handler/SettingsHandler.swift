@@ -9,14 +9,14 @@ import Foundation
 import UserNotifications
 import SwiftUI
 
-class ScriptManagerSettings: ObservableObject {
+class SettingsHandler: ObservableObject {
     private let storage = StorageHandler()
     
     @Published var showingPopover: Bool = false
     @Published var showDeleteAlert: Bool = false
     
     @Published var homeDir: String = ""
-
+    
     @Published var shell: ShellType = DefaultSettings.shell.type
     @Published var shellPath: String = DefaultSettings.shell.path
     @Published var profilePath: String = ""
@@ -25,12 +25,18 @@ class ScriptManagerSettings: ObservableObject {
     @Published var logsPath: String = ""
     @Published var notificationState: Bool = DefaultSettings.notifications
     @Published var mainColor: Color = AppColor.Primary
-
+    // Shortcut-Picker
+    @Published var selectedScript1: UUID = UUID()
+    @Published var selectedScript2: UUID = UUID()
+    @Published var selectedScript3: UUID = UUID()
+    @Published var selectedScript4: UUID = UUID()
+    @Published var selectedScript5: UUID = UUID()
+    
     func loadSettings() {
         do {
             let settings = storage.loadSettings()
             homeDir = FileManager.default.homeDirectoryForCurrentUser.relativePath
-
+            
             let decodedColor = try decodeColor(from: settings.mainColor)
             
             // Set saved settings
@@ -42,7 +48,25 @@ class ScriptManagerSettings: ObservableObject {
             self.logsPath = settings.pathLogs
             self.notificationState = settings.notifications
             self.mainColor = decodedColor
-
+            if !settings.shortcuts.isEmpty {
+                for index in 0...settings.shortcuts.count {
+                    switch index {
+                    case 0:
+                        self.selectedScript1 = settings.shortcuts[0].scriptId
+                    case 1:
+                        self.selectedScript2 = settings.shortcuts[1].scriptId
+                    case 2:
+                        self.selectedScript3 = settings.shortcuts[2].scriptId
+                    case 3:
+                        self.selectedScript4 = settings.shortcuts[3].scriptId
+                    case 4:
+                        self.selectedScript5 = settings.shortcuts[4].scriptId
+                    default:
+                        return
+                    }
+                }
+            }
+            
             // Load initial directory paths
             self.profilePath = loadUserDir()
         } catch {
@@ -83,6 +107,13 @@ class ScriptManagerSettings: ObservableObject {
     func save() {
         do {
             let encodedColor = try encodeColor(color: mainColor)
+            let shortcuts = [
+                Shortcut(shortcutIndex: 0, scriptId: selectedScript1),
+                Shortcut(shortcutIndex: 1, scriptId: selectedScript2),
+                Shortcut(shortcutIndex: 2, scriptId: selectedScript3),
+                Shortcut(shortcutIndex: 3, scriptId: selectedScript4),
+                Shortcut(shortcutIndex: 4, scriptId: selectedScript5)
+            ]
             
             let settings = Settings(
                 shell: Shell(type: shell, path: shellPath, profile: profilePath),
@@ -90,7 +121,8 @@ class ScriptManagerSettings: ObservableObject {
                 logs: loggingState,
                 pathLogs: logsPath,
                 notifications: notificationState,
-                mainColor: encodedColor
+                mainColor: encodedColor,
+                shortcuts: shortcuts
             )
             
             storage.saveSettings(value: settings)

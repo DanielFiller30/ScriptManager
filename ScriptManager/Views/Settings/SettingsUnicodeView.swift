@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsUnicodeView: View {
-    @EnvironmentObject var settings: ScriptManagerSettings
+    @EnvironmentObject var settings: SettingsHandler
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,11 +19,11 @@ struct SettingsUnicodeView: View {
                 Spacer()
                 
                 TextField("", text: $settings.unicode)
-                    .frame(width: 100)
+                    .frame(width: 150)
             }
         }
-        .padding(.vertical, Spacing.m)
-        .padding(.horizontal, Spacing.xl)    }
+        .padding(.vertical, Spacing.m)                
+    }
 }
 
 struct SettingsUnicodeView_Previews: PreviewProvider {

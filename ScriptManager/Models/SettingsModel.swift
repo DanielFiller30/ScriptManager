@@ -16,4 +16,5 @@ struct Settings: Identifiable, Codable {
     var pathLogs: String
     var notifications: Bool
     var mainColor: Data
+    var shortcuts: [Shortcut]
 }

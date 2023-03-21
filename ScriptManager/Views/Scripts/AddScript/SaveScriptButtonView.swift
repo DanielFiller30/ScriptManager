@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SaveScriptButtonView: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
     
     @Binding var testIsRunning: Bool
     
@@ -44,6 +44,6 @@ struct SaveScriptButtonView: View {
 
 struct SaveScriptButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SaveScriptButtonView(viewModel: ScriptsViewModel(), testIsRunning: .constant(false))
+        SaveScriptButtonView(viewModel: ScriptViewModel(), testIsRunning: .constant(false))
     }
 }

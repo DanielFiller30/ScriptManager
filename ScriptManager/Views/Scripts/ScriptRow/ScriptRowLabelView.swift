@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ScriptRowLabel: View {
-    @EnvironmentObject var settings: ScriptManagerSettings
+    @EnvironmentObject var settings: SettingsHandler
 
-    var viewModel: ScriptsViewModel
+    var viewModel: ScriptViewModel
     var toggleDetails: () -> Void
     
     @Binding var script: Script
@@ -56,6 +56,6 @@ struct ScriptRowLabel: View {
 
 struct ScriptRowLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRowLabel(viewModel: ScriptsViewModel(), toggleDetails: {}, script: .constant(DefaultScript))
+        ScriptRowLabel(viewModel: ScriptViewModel(), toggleDetails: {}, script: .constant(DefaultScript))
     }
 }

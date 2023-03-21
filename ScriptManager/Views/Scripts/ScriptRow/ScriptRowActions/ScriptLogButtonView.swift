@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScriptLogButtonView: View {
-    let viewModel: ScriptsViewModel
+    let viewModel: ScriptViewModel
     
     var body: some View {
         Button {
@@ -37,6 +37,6 @@ struct ScriptLogButtonView: View {
 
 struct ScriptLogButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptLogButtonView(viewModel: ScriptsViewModel())
+        ScriptLogButtonView(viewModel: ScriptViewModel())
     }
 }

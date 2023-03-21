@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsLoggingView: View {
-    @EnvironmentObject var settings: ScriptManagerSettings
+    @EnvironmentObject var settings: SettingsHandler
     
     var body: some View {
         VStack(alignment: .center) {
@@ -29,7 +29,7 @@ struct SettingsLoggingView: View {
                 Spacer()
                 
                 TextField("", text: $settings.logsPath)
-                    .frame(width: 100)
+                    .frame(width: 150)
             }
         }
         .padding(.vertical, Spacing.m)

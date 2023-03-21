@@ -12,11 +12,14 @@
 		DC044912298D4046004B6389 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC044911298D4046004B6389 /* Colors.xcassets */; };
 		DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D429A382A800DBCAAD /* IconPickerView.swift */; };
 		DC2991D729A3830C00DBCAAD /* ScriptIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */; };
+		DC2A807629C892B700BF6DE7 /* SettingsShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */; };
 		DC2E7A9A29C4A40200B6CFFE /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = DC2E7A9929C4A40200B6CFFE /* LaunchAtLogin */; };
 		DC2E7A9C29C4A41C00B6CFFE /* SettingsAutostartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */; };
+		DC2E7A9F29C4A6FE00B6CFFE /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = DC2E7A9E29C4A6FE00B6CFFE /* KeyboardShortcuts */; };
+		DC2E7AA129C4A72800B6CFFE /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E7AA029C4A72800B6CFFE /* Shortcuts.swift */; };
 		DC75B443299BA57F00086806 /* ScriptManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B40F299BA57F00086806 /* ScriptManagerApp.swift */; };
-		DC75B444299BA57F00086806 /* ScriptManagerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B411299BA57F00086806 /* ScriptManagerSettings.swift */; };
-		DC75B446299BA57F00086806 /* ScriptsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B413299BA57F00086806 /* ScriptsViewModel.swift */; };
+		DC75B444299BA57F00086806 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B411299BA57F00086806 /* SettingsHandler.swift */; };
+		DC75B446299BA57F00086806 /* ScriptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B413299BA57F00086806 /* ScriptViewModel.swift */; };
 		DC75B447299BA57F00086806 /* ScriptHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B415299BA57F00086806 /* ScriptHandler.swift */; };
 		DC75B448299BA57F00086806 /* StorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B416299BA57F00086806 /* StorageHandler.swift */; };
 		DC75B449299BA57F00086806 /* FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B418299BA57F00086806 /* FontSize.swift */; };
@@ -52,6 +55,7 @@
 		DC75B469299BA58000086806 /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B440299BA57F00086806 /* LanguageModel.swift */; };
 		DC75B46A299BA58000086806 /* ResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B441299BA57F00086806 /* ResultModel.swift */; };
 		DC75B46B299BA58000086806 /* ScriptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B442299BA57F00086806 /* ScriptModel.swift */; };
+		DC84CC1C29C9BB51006C8F07 /* ShortcutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC84CC1B29C9BB51006C8F07 /* ShortcutModel.swift */; };
 		DC889DBE29A3B6D80006B0DF /* ScriptEditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DBD29A3B6D80006B0DF /* ScriptEditButtonView.swift */; };
 		DC889DC029A3B7420006B0DF /* ScriptLogButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DBF29A3B7420006B0DF /* ScriptLogButtonView.swift */; };
 		DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DC129A3B9210006B0DF /* EditScriptView.swift */; };
@@ -69,10 +73,12 @@
 		DC044911298D4046004B6389 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DC2991D429A382A800DBCAAD /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptIcons.swift; sourceTree = "<group>"; };
+		DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsShortcutView.swift; sourceTree = "<group>"; };
 		DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAutostartView.swift; sourceTree = "<group>"; };
+		DC2E7AA029C4A72800B6CFFE /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		DC75B40F299BA57F00086806 /* ScriptManagerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptManagerApp.swift; sourceTree = "<group>"; };
-		DC75B411299BA57F00086806 /* ScriptManagerSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptManagerSettings.swift; sourceTree = "<group>"; };
-		DC75B413299BA57F00086806 /* ScriptsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptsViewModel.swift; sourceTree = "<group>"; };
+		DC75B411299BA57F00086806 /* SettingsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
+		DC75B413299BA57F00086806 /* ScriptViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptViewModel.swift; sourceTree = "<group>"; };
 		DC75B415299BA57F00086806 /* ScriptHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptHandler.swift; sourceTree = "<group>"; };
 		DC75B416299BA57F00086806 /* StorageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageHandler.swift; sourceTree = "<group>"; };
 		DC75B418299BA57F00086806 /* FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSize.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 		DC75B440299BA57F00086806 /* LanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		DC75B441299BA57F00086806 /* ResultModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultModel.swift; sourceTree = "<group>"; };
 		DC75B442299BA57F00086806 /* ScriptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptModel.swift; sourceTree = "<group>"; };
+		DC84CC1B29C9BB51006C8F07 /* ShortcutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutModel.swift; sourceTree = "<group>"; };
 		DC889DBD29A3B6D80006B0DF /* ScriptEditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptEditButtonView.swift; sourceTree = "<group>"; };
 		DC889DBF29A3B7420006B0DF /* ScriptLogButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptLogButtonView.swift; sourceTree = "<group>"; };
 		DC889DC129A3B9210006B0DF /* EditScriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScriptView.swift; sourceTree = "<group>"; };
@@ -124,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC2E7A9A29C4A40200B6CFFE /* LaunchAtLogin in Frameworks */,
+				DC2E7A9F29C4A6FE00B6CFFE /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +183,7 @@
 		DC75B410299BA57F00086806 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				DC75B413299BA57F00086806 /* ScriptsViewModel.swift */,
+				DC75B413299BA57F00086806 /* ScriptViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 			children = (
 				DC75B415299BA57F00086806 /* ScriptHandler.swift */,
 				DC75B416299BA57F00086806 /* StorageHandler.swift */,
+				DC75B411299BA57F00086806 /* SettingsHandler.swift */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -192,7 +201,6 @@
 		DC75B417299BA57F00086806 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				DC75B411299BA57F00086806 /* ScriptManagerSettings.swift */,
 				DC75B418299BA57F00086806 /* FontSize.swift */,
 				DC75B419299BA57F00086806 /* Spacing.swift */,
 				DC75B41A299BA57F00086806 /* IconSize.swift */,
@@ -200,6 +208,7 @@
 				DC75B41C299BA57F00086806 /* DefaultSettings.swift */,
 				DC75B41D299BA57F00086806 /* AppColor.swift */,
 				DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */,
+				DC2E7AA029C4A72800B6CFFE /* Shortcuts.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -229,6 +238,7 @@
 				DC75B427299BA57F00086806 /* SettingsUnicodeView.swift */,
 				DC8E08BA29C498C100AA9B32 /* SettingsColorView.swift */,
 				DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */,
+				DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -273,6 +283,7 @@
 				DC75B440299BA57F00086806 /* LanguageModel.swift */,
 				DC75B441299BA57F00086806 /* ResultModel.swift */,
 				DC75B442299BA57F00086806 /* ScriptModel.swift */,
+				DC84CC1B29C9BB51006C8F07 /* ShortcutModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +339,7 @@
 			name = ScriptManager;
 			packageProductDependencies = (
 				DC2E7A9929C4A40200B6CFFE /* LaunchAtLogin */,
+				DC2E7A9E29C4A6FE00B6CFFE /* KeyboardShortcuts */,
 			);
 			productName = ScriptManager;
 			productReference = DC0448F2298D2F38004B6389 /* ScriptManager.app */;
@@ -361,6 +373,7 @@
 			mainGroup = DC0448E9298D2F38004B6389;
 			packageReferences = (
 				DC2E7A9829C4A40200B6CFFE /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				DC2E7A9D29C4A6FE00B6CFFE /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = DC0448F3298D2F38004B6389 /* Products */;
 			projectDirPath = "";
@@ -433,16 +446,19 @@
 				DC75B455299BA58000086806 /* SettingsUnicodeView.swift in Sources */,
 				DC75B461299BA58000086806 /* ScriptStateButtonView.swift in Sources */,
 				DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */,
+				DC2E7AA129C4A72800B6CFFE /* Shortcuts.swift in Sources */,
 				DC75B448299BA57F00086806 /* StorageHandler.swift in Sources */,
 				DC2E7A9C29C4A41C00B6CFFE /* SettingsAutostartView.swift in Sources */,
 				DC75B453299BA58000086806 /* SettingsSaveButtonView.swift in Sources */,
+				DC2A807629C892B700BF6DE7 /* SettingsShortcutView.swift in Sources */,
 				DC75B456299BA58000086806 /* HintView.swift in Sources */,
+				DC84CC1C29C9BB51006C8F07 /* ShortcutModel.swift in Sources */,
 				DC75B45D299BA58000086806 /* SaveScriptButtonView.swift in Sources */,
 				DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */,
 				DC75B468299BA58000086806 /* SettingsModel.swift in Sources */,
 				DC75B44E299BA58000086806 /* AppColor.swift in Sources */,
-				DC75B446299BA57F00086806 /* ScriptsViewModel.swift in Sources */,
-				DC75B444299BA57F00086806 /* ScriptManagerSettings.swift in Sources */,
+				DC75B446299BA57F00086806 /* ScriptViewModel.swift in Sources */,
+				DC75B444299BA57F00086806 /* SettingsHandler.swift in Sources */,
 				DC75B44A299BA57F00086806 /* Spacing.swift in Sources */,
 				DC75B462299BA58000086806 /* ScriptDeleteButtonView.swift in Sources */,
 				DCDF0F9529A4B70600057C1E /* SaveChangesButtonView.swift in Sources */,
@@ -679,6 +695,14 @@
 				kind = branch;
 			};
 		};
+		DC2E7A9D29C4A6FE00B6CFFE /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -686,6 +710,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC2E7A9829C4A40200B6CFFE /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
 			productName = LaunchAtLogin;
+		};
+		DC2E7A9E29C4A6FE00B6CFFE /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC2E7A9D29C4A6FE00B6CFFE /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

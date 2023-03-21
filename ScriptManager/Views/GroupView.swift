@@ -11,9 +11,11 @@ import Foundation
 struct GroupView<Content>: View where Content: View {
     var toggleVar: Binding<Bool>
     var toggle: () -> Void
+    var padding: CGFloat?
+    var animation: Bool
     
     var label: LocalizedStringKey
-    var info: LocalizedStringKey
+    var info: LocalizedStringKey?
     
     let content: () -> Content
     
@@ -21,48 +23,62 @@ struct GroupView<Content>: View where Content: View {
         toggleVar: Binding<Bool>,
         toggle: @escaping () -> Void,
         label: LocalizedStringKey,
-        info: LocalizedStringKey,
+        info: LocalizedStringKey?,
+        padding: CGFloat?,
+        animation: Bool,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.toggleVar = toggleVar
         self.toggle = toggle
         self.label = label
         self.info = info
+        self.padding = padding
+        self.animation = animation
         self.content = content
     }
     
     var body: some View {
         DisclosureGroup(isExpanded: toggleVar) {
             content()
-                .padding(.all, Spacing.xl)
+                .padding(.all, self.padding == nil ? Spacing.xl : self.padding)
         } label: {
             HStack(alignment: .center) {
                 Text(label)
                     .fontWeight(.bold)
                     .font(.system(size: FontSize.subTitle))
                     .onTapGesture {
-                        withAnimation {
+                        if animation {
+                            withAnimation {
+                                toggle()
+                            }
+                        } else {
                             toggle()
                         }
                     }
                     .padding(.trailing, Spacing.l)
                 
-                Text(info)
-                    .fontWeight(.light)
-                    .foregroundColor(AppColor.Creme)
-                    .font(.system(size: FontSize.text))
-                    .frame(maxWidth: 120)
-                    .onTapGesture {
-                        withAnimation {
-                            toggle()
+                if self.info != nil {
+                    Text(info!)
+                        .fontWeight(.light)
+                        .foregroundColor(AppColor.Creme)
+                        .font(.system(size: FontSize.text))
+                        .frame(maxWidth: 120)
+                        .onTapGesture {
+                            if animation {
+                                withAnimation {
+                                    toggle()
+                                }
+                            } else {
+                                toggle()
+                            }
                         }
-                    }
-                    .help(info)
+                        .help(info!)
+                }
             }
             .padding(.leading, Spacing.m)
             
         }
-        .padding(.vertical, Spacing.m)
+        .padding(.vertical,  Spacing.m)
         .padding(.horizontal, Spacing.xl)
         
     }
@@ -70,7 +86,7 @@ struct GroupView<Content>: View where Content: View {
 
 struct GroupView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupView(toggleVar: .constant(false), toggle: {}, label: "Test", info: "Info-Test") {
+        GroupView(toggleVar: .constant(false), toggle: {}, label: "Test", info: nil, padding: nil, animation: true) {
             EmptyView()
         }
     }

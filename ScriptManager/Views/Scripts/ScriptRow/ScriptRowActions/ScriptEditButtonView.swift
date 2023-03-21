@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScriptEditButtonView: View {
-    var viewModel: ScriptsViewModel
+    var viewModel: ScriptViewModel
     var script: Script
     
     var body: some View {
@@ -37,6 +37,6 @@ struct ScriptEditButtonView: View {
 
 struct ScriptEditButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptEditButtonView(viewModel: ScriptsViewModel(), script: DefaultScript)
+        ScriptEditButtonView(viewModel: ScriptViewModel(), script: DefaultScript)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScriptDeleteButtonView: View {
-    let viewModel: ScriptsViewModel
+    let viewModel: ScriptViewModel
     @Binding var scriptId: UUID
     @Binding var isRunning: Bool
     
@@ -42,6 +42,6 @@ struct ScriptDeleteButtonView: View {
 
 struct ScriptDeleteButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDeleteButtonView(viewModel: ScriptsViewModel(), scriptId: .constant(UUID()), isRunning: .constant(false))
+        ScriptDeleteButtonView(viewModel: ScriptViewModel(), scriptId: .constant(UUID()), isRunning: .constant(false))
     }
 }

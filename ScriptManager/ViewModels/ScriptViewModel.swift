@@ -8,7 +8,7 @@
 import Foundation
 import AppKit
 
-class ScriptsViewModel: ObservableObject {
+class ScriptViewModel: ObservableObject {
     private let storage = StorageHandler()
     
     @Published var showAddScript: Bool = false

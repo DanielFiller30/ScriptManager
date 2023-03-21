@@ -52,6 +52,7 @@
 
 // Settings
 "settings" = "Einstellungen";
+"settings-shell" = "Terminal-Einstellungen";
 "shell-type" = "Shell-Typ";
 "path-shell" = "Pfad zur Shell";
 "path-profile" = "Pfad zum Profil";
@@ -65,12 +66,21 @@
 "settings-notifications" = "Mitteilungen aktivieren";
 "settings-color" = "Primärfarbe anpassen";
 "settings-autostart" = "Bei der Anmeldung öffnen";
+"settings-shortcut" = "Tastenkurzbefehle festlegen";
+"settings-sc-1" = "Kurzbefehl 1:";
+"settings-sc-2" = "Kurzbefehl 2:";
+"settings-sc-3" = "Kurzbefehl 3:";
+"settings-sc-4" = "Kurzbefehl 4:";
+"settings-sc-5" = "Kurzbefehl 5:";
 
 // Notification
 "notification-successfull-title %@" = "Skript '%@' abgeschlossen";
 "notification-failed-title %@" = "Skript '%@' fehlgeschlagen";
 "notification-successfull-subtitle" = "Dein Skript wurde erfolgreich durchgeführt. Führe ein weiteres Skript über die Verwaltungsoberfläche aus.";
 "notification-failed-subtitle" = "Dein Skript konnte nicht erfolgreich ausgeführt werden. Hinweis: Aktiviere das Logging in den Einstellungen, um mehr Informationen zu deinem Fehler zu erhalten.";
+"notification-start-title %@" = "Skript '%@' wird ausgeführt";
+"notification-start-subtitle" = "Dein Skript wurde durch einen Tastatur-Kurzbefehl ausgelöst und wird gerade ausgeführt.";
+
 
 // Hints
 "hint-shell-title" = "Shell-Typ";
