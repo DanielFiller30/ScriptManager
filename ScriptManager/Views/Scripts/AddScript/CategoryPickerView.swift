@@ -12,6 +12,9 @@ struct CategoryPickerView: View {
 
     var body: some View {
         Picker("", selection: $viewModel.selectedCategory) {
+            Text(EmptyCategory.name)
+                .tag(EmptyCategory.id)
+            
             ForEach(viewModel.categories) { category in
                 Text(category.name)
                     .tag(category.id)

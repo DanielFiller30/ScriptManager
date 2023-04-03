@@ -23,6 +23,7 @@
 "saved %@" = "Saved scripts (%@)";
 "empty-scripts" = "Add a new script, to run it here";
 "categories-title" = "Filter";
+"empty-categories" = "Add a new category, to filter your scripts";
 
 // Add new script
 "name-add-script" = "Name for the script";

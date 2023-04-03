@@ -19,7 +19,6 @@ struct SettingsShortcutView: View {
     init() {
         debugPrint("Scripts Loaded")
         self.scripts = storage.loadScripts() ?? []
-        self.scripts.append(EmptyScript)
     }
     
     func getDataByIndex(index: Int) -> DataModel {
@@ -45,6 +44,9 @@ struct SettingsShortcutView: View {
                 let data = getDataByIndex(index: index)
                 
                 HStack(alignment: .center) {
+                    Text(EmptyScript.name)
+                        .tag(EmptyScript.id)
+                    
                     Picker("", selection: data.selection) {
                         ForEach(scripts, id: \.self.id) {
                             Text($0.name).tag($0.id)
@@ -55,6 +57,7 @@ struct SettingsShortcutView: View {
                     
                     KeyboardShortcuts.Recorder("", name: data.shortcut)
                 }
+                .padding(.bottom, Spacing.m)
             }
         }
         .padding(.top, Spacing.l)

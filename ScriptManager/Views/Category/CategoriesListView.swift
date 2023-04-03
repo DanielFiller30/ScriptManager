@@ -76,7 +76,10 @@ struct CategoriesListView: View {
                                         if category.id == vmCategory.activeCategory {
                                             vmCategory.activeCategory = nil
                                         } else {
+                                            debugPrint("Category: \(category.id)")
                                             vmCategory.activeCategory = category.id
+                                            debugPrint("ACTIVE: \(category.id == vmCategory.activeCategory)")
+
                                             vmScript.filterScripts(category: category)
                                         }
                                     }
@@ -91,7 +94,13 @@ struct CategoriesListView: View {
                             }                            
                         }
                     } else {
-                        Text("-")
+                        Text("empty-categories")
+                            .font(.system(size: FontSize.text))
+                            .foregroundColor(AppColor.Creme)
+                            .frame(maxWidth: .infinity)
+                            .multilineTextAlignment(.center)
+                        
+                        Spacer()
                     }
                 }
                 .padding(.bottom, Spacing.xl)

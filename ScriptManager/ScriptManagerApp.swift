@@ -19,6 +19,7 @@ struct ScriptManagerApp: App {
     init() {
         // Reset all data
         //storage.reset()
+        //storage.removeCategories()
         
         // Open welcome-screen on first launch
         let hasLaunchedBefore = storage.loadFirstLaunch()

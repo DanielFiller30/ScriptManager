@@ -61,7 +61,6 @@ class ScriptViewModel: ObservableObject {
     
     func loadCategories() {
         categories = storage.loadCategories() ?? []
-        categories.append(EmptyCategory)
     }
     
     func getCategoryById(id: UUID?) -> Category? {
@@ -82,7 +81,7 @@ class ScriptViewModel: ObservableObject {
     }
     
     func saveScript() {
-        var savedScripts: [Script] = storage.loadScripts() ?? []
+        var savedScripts: [Script] = storage.loadScripts() ?? []         
         let tempScript = Script(name: name, icon: ScriptIcons[selectedIcon], command: command, success: .ready, finished: false, categoryID: selectedCategory)
         savedScripts.append(tempScript)
         storage.saveScripts(value: savedScripts)

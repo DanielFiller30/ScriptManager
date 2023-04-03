@@ -23,6 +23,7 @@
 "saved %@" = "Gespeicherte Skripte (%@)";
 "empty-scripts" = "Füge ein neues Skript hinzu, um es über diese Liste auszuführen";
 "categories-title" = "Filter";
+"empty-categories" = "Füge eine neue Kategorie hinzu, um deine Skripte zu filtern";
 
 // Add new script
 "name-add-script" = "Skriptname";

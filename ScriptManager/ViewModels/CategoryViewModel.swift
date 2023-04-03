@@ -49,7 +49,6 @@ class CategoryViewModel: ObservableObject {
     
     func loadCategories() {
         categories = storage.loadCategories() ?? []
-        categories.append(EmptyCategory)
     }
     
     func getDecodedColor(data: Data) -> Color {
