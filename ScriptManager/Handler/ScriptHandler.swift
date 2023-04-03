@@ -11,6 +11,7 @@ import UserNotifications
 class ScriptHandler: ObservableObject {
     private let storage = StorageHandler()
     var scripts: [Script] = []
+    @Published var output: String = ""
     
     func loadScripts() {
         self.scripts = storage.loadScripts() ?? []
@@ -34,11 +35,18 @@ class ScriptHandler: ObservableObject {
             task.standardInput = nil
             task.standardOutput = pipe
             
+            let outHandle = pipe.fileHandleForReading
+            outHandle.readabilityHandler = { pipe in
+                if let line = String(data: pipe.availableData, encoding: .utf8) {
+                    DispatchQueue.main.async {
+                        self.output += line
+                    }
+                } else {
+                    print("Error decoding data: \(pipe.availableData)")
+                }
+            }
+            
             try task.run()
-            
-            let data = pipe.fileHandleForReading.readDataToEndOfFile()
-            let output = String(data: data, encoding: .utf8) ?? ""
-            
             task.waitUntilExit()
             
             return handleScriptResult(
@@ -80,7 +88,7 @@ class ScriptHandler: ObservableObject {
         content.title = state ? String(localized: "notification-successfull-title \(name)") : String(localized: "notification-failed-title \(name)")
         content.subtitle = state ? String(localized: "notification-successfull-subtitle") : String(localized: "notification-failed-subtitle")
         content.sound = UNNotificationSound.default
-
+        
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request)
     }
@@ -90,7 +98,7 @@ class ScriptHandler: ObservableObject {
         content.title = String(localized: "notification-start-title \(name)")
         content.subtitle = String(localized: "notification-start-subtitle")
         content.sound = UNNotificationSound.default
-
+        
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request)
     }

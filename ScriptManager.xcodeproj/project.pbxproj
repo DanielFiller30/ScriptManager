@@ -62,6 +62,7 @@
 		DCDFAC4A29CB251600D538A2 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4929CB251600D538A2 /* CategoryViewModel.swift */; };
 		DCDFAC4D29CB25FF00D538A2 /* AddCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4C29CB25FF00D538A2 /* AddCategoryView.swift */; };
 		DCECD16E29D3483500FF3958 /* MenuSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCECD16D29D3483500FF3958 /* MenuSheetView.swift */; };
+		DCEE233A29DAF2AD00814902 /* OutputWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE233929DAF2AD00814902 /* OutputWindowView.swift */; };
 		DCF82FB229D1C1250085627D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF82FB129D1C1250085627D /* CategoryModel.swift */; };
 		DCF82FB429D1C33F0085627D /* CategoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF82FB329D1C33F0085627D /* CategoriesListView.swift */; };
 		DCF82FB629D1CDBF0085627D /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF82FB529D1CDBF0085627D /* CategoryPickerView.swift */; };
@@ -123,6 +124,7 @@
 		DCDFAC4929CB251600D538A2 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		DCDFAC4C29CB25FF00D538A2 /* AddCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryView.swift; sourceTree = "<group>"; };
 		DCECD16D29D3483500FF3958 /* MenuSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheetView.swift; sourceTree = "<group>"; };
+		DCEE233929DAF2AD00814902 /* OutputWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputWindowView.swift; sourceTree = "<group>"; };
 		DCF82FB129D1C1250085627D /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		DCF82FB329D1C33F0085627D /* CategoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesListView.swift; sourceTree = "<group>"; };
 		DCF82FB529D1CDBF0085627D /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				DCDF0F9229A4B6AA00057C1E /* AddScript */,
 				DC889DBC29A3B65E0006B0DF /* ScriptRow */,
 				DC75B430299BA57F00086806 /* ScriptsListView.swift */,
+				DCEE233929DAF2AD00814902 /* OutputWindowView.swift */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC75B452299BA58000086806 /* SettingsNotificationsView.swift in Sources */,
+				DCEE233A29DAF2AD00814902 /* OutputWindowView.swift in Sources */,
 				DC75B44B299BA58000086806 /* IconSize.swift in Sources */,
 				DC4D2D9729CAFC99006CDF16 /* BadgeView.swift in Sources */,
 				DC75B467299BA58000086806 /* ShellModel.swift in Sources */,

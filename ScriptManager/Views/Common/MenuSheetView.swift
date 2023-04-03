@@ -15,6 +15,8 @@ struct MenuSheetView<Content>: View where Content: View {
     let content: () -> Content
     let height: CGFloat
     
+    let width: CGFloat = 350.0
+    
     @Binding var isPresented: Bool
     
     init(
@@ -70,7 +72,6 @@ struct MenuSheetView<Content>: View where Content: View {
                     .buttonStyle(.plain)
                 }
                 .padding(.all, Spacing.xl)
-                .frame(width: 300)
                 
                 Divider()
                 
@@ -78,7 +79,7 @@ struct MenuSheetView<Content>: View where Content: View {
                 
                 Spacer()
             }
-            .frame(minHeight: height)
+            .frame(minWidth: width, maxWidth: width, minHeight: height)
             .background(AppColor.AppBg)
         }
     }

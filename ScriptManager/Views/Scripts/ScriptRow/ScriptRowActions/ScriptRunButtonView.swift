@@ -45,7 +45,7 @@ struct ScriptRunButtonView: View {
                         showRunPopover.toggle()
                         
                         Task {
-                            await runScript()
+                            await runScript(showOutput: false)
                         }
                     } label: {
                         HStack(alignment: .center) {
@@ -69,7 +69,11 @@ struct ScriptRunButtonView: View {
                     .buttonStyle(.plain)
                     
                     Button {
+                        showRunPopover.toggle()
                         
+                        Task {
+                            await runScript(showOutput: true)
+                        }
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
@@ -97,9 +101,13 @@ struct ScriptRunButtonView: View {
         }
     }
     
-    func runScript() async {
+    private func runScript(showOutput: Bool) async {
         activeId = script.id
         isRunning = true
+        
+        if showOutput {
+            openOutputWindow()
+        }
         
         let success = await scriptHandler.runScript(script, test: false)
         
@@ -120,6 +128,21 @@ struct ScriptRunButtonView: View {
         
         viewModel.loadSettings()
     }
+    
+    private func openOutputWindow() {
+        DispatchQueue.main.async {
+            let window = NSWindow()
+            let contentView = OutputWindowView(scriptHandler: scriptHandler)
+            window.contentViewController = NSHostingController(rootView: contentView)
+            window.styleMask = [.titled, .resizable, .closable, .miniaturizable]
+            window.center()
+            window.title = "Output"
+            window.isReleasedWhenClosed = false
+            window.orderFrontRegardless()
+            window.makeKeyAndOrderFront(nil)
+        }
+    }
+
 }
 
 struct ScriptRunButtonView_Previews: PreviewProvider {
