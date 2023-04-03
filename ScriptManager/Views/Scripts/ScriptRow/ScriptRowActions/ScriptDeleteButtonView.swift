@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ScriptDeleteButtonView: View {
     let viewModel: ScriptViewModel
-    @Binding var scriptId: UUID
+    
+    var scriptId: UUID
     @Binding var isRunning: Bool
     
     @State var showDeleteAlert: Bool = false
@@ -27,6 +28,7 @@ struct ScriptDeleteButtonView: View {
         }
         .buttonStyle(.plain)
         .disabled(isRunning)
+        .help("button-delete")
         .alert("delete-title", isPresented: $showDeleteAlert) {
             
             Button("cancel", role: .cancel) {}
@@ -42,6 +44,6 @@ struct ScriptDeleteButtonView: View {
 
 struct ScriptDeleteButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDeleteButtonView(viewModel: ScriptViewModel(), scriptId: .constant(UUID()), isRunning: .constant(false))
+        ScriptDeleteButtonView(viewModel: ScriptViewModel(), scriptId: (UUID()), isRunning: .constant(false))
     }
 }

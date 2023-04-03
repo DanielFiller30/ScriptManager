@@ -54,58 +54,51 @@ struct ScriptManagerApp: App {
 
 @MainActor
 final class AppState: ObservableObject {
-    let scriptHandler = ScriptHandler()
-    let storageHandler = StorageHandler()
+    private let scriptHandler = ScriptHandler()
+    private let storageHandler = StorageHandler()
+    private var savedShortcuts: [Shortcut] = []
     
-    init() {
-        scriptHandler.loadScripts()
-       
-        let savedShortcuts = storageHandler.loadSettings().shortcuts
-        
+    init() {        
         KeyboardShortcuts.onKeyUp(for: .runScript1) {
             debugPrint("Run Script 1")
-            guard let script = self.getScript(id: savedShortcuts[0].scriptId) else { return }
-            self.runScript(script: script)
+            self.runScript(index: 0)
         }
         
         KeyboardShortcuts.onKeyUp(for: .runScript2) {
             debugPrint("Run Script 2")
-            guard let script = self.getScript(id: savedShortcuts[1].scriptId) else { return }
-            self.runScript(script: script)
+            self.runScript(index: 1)
         }
         
         KeyboardShortcuts.onKeyUp(for: .runScript3) {
             debugPrint("Run Script 3")
-            guard let script = self.getScript(id: savedShortcuts[2].scriptId) else { return }
-            self.runScript(script: script)
+            self.runScript(index: 2)
         }
         
         KeyboardShortcuts.onKeyUp(for: .runScript4) {
             debugPrint("Run Script 4")
-            guard let script = self.getScript(id: savedShortcuts[3].scriptId) else { return }
-            self.runScript(script: script)
+            self.runScript(index: 3)
         }
         
         KeyboardShortcuts.onKeyUp(for: .runScript5) {
             debugPrint("Run Script 5")
-            guard let script = self.getScript(id: savedShortcuts[4].scriptId) else { return }
-            self.runScript(script: script)
+            self.runScript(index: 4)
         }
     }
     
-    func getScript(id: UUID) -> Script? {
-        if let script = scriptHandler.scripts.first(where: { $0.id == id }) {
-            return script
-        } else {
-            return nil
-        }
-    }
-    
-    func runScript(script: Script) {
-        self.scriptHandler.sendStartNotification(name: script.name)
+    func runScript(index: Int) {
+        scriptHandler.loadScripts()
+        savedShortcuts = storageHandler.loadSettings().shortcuts
+
+        let id = savedShortcuts[index].scriptId
         
-        Task {
-            await self.scriptHandler.runScript(script, test: false)
+        if id != EmptyScript.id {
+            if let script = scriptHandler.scripts.first(where: { $0.id == id }) {
+                self.scriptHandler.sendStartNotification(name: script.name)
+                
+                Task {
+                    await self.scriptHandler.runScript(script, test: false)
+                }
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ struct IconPickerView: View {
                     }
                 }
             }
+            .frame(maxWidth: 145)
             .padding(.leading, -8)
         }
     }

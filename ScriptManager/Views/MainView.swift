@@ -8,50 +8,44 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var viewModel = ScriptViewModel()
+    @StateObject private var vmScript = ScriptViewModel()
+    @StateObject private var vmCategory = CategoryViewModel()
+    
     @StateObject private var settings = SettingsHandler()
     
     var body: some View {
         VStack(spacing: Spacing.zero) {
             HeaderView()
-            
-            GroupView(
-                toggleVar: $viewModel.showAddScript,
-                toggle: { toggleGroup() },
-                label: viewModel.editMode ? "edit-script-title" : "add-new-script",
-                info: viewModel.editMode ? nil : "info-add-new-script",
-                padding: nil,
-                animation: true
-            ) {
-                viewModel.editMode ? AnyView(EditScriptView(viewModel: viewModel)) : AnyView(AddScriptView(viewModel: viewModel))
-            }
-            .padding(.vertical, Spacing.l)
-            .background(AppColor.AppBg)
+                .background(
+                    LinearGradient(colors: [AppColor.Header, AppColor.AppBg], startPoint: .top, endPoint: .bottom)
+                )
+
             
             Divider()
+                .frame(minHeight: 2)
+                .background(AppColor.Header)
+                .foregroundColor(AppColor.AppBg)
             
-            ScrollView() {
-                ScriptsListView(viewModel: viewModel)
-                    .padding(.all, Spacing.xl)
-                
-                Spacer()
-            }
-            .background(AppColor.AppBg)
+            CategoriesListView(vmCategory: vmCategory, vmScript: vmScript)
+                .background(AppColor.AppBg)
+
+    
+            Divider()
+                .frame(minHeight: 2)
+                .background(AppColor.Header)
+                .foregroundColor(AppColor.AppBg)
+               
+            
+            ScriptsListView(viewModel: vmScript)
+                .padding(.top, Spacing.xl)
+                .background(AppColor.AppBg)
+
         }
-        .frame(width: 350, height: 450)
-        .onAppear() {
+        .frame(width: 380, height: 550)
+        .onAppear {
             settings.loadSettings()
         }
         .environmentObject(settings)
-        
-    }
-    
-    func toggleGroup() {
-        if viewModel.editMode {
-            viewModel.closeEdit()            
-        } else {
-            viewModel.showAddScript.toggle()
-        }
     }
 }
 

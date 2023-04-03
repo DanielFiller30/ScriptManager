@@ -44,7 +44,7 @@ struct GroupView<Content>: View where Content: View {
         } label: {
             HStack(alignment: .center) {
                 Text(label)
-                    .fontWeight(.bold)
+                    .fontWeight(.medium)
                     .font(.system(size: FontSize.subTitle))
                     .onTapGesture {
                         if animation {
@@ -55,14 +55,16 @@ struct GroupView<Content>: View where Content: View {
                             toggle()
                         }
                     }
-                    .padding(.trailing, Spacing.l)
+                    .padding(.trailing, Spacing.m)
+                
+                Spacer()
                 
                 if self.info != nil {
                     Text(info!)
                         .fontWeight(.light)
                         .foregroundColor(AppColor.Creme)
                         .font(.system(size: FontSize.text))
-                        .frame(maxWidth: 120)
+                        .frame(maxWidth: 180)
                         .onTapGesture {
                             if animation {
                                 withAnimation {
@@ -76,11 +78,9 @@ struct GroupView<Content>: View where Content: View {
                 }
             }
             .padding(.leading, Spacing.m)
-            
+            .fixedSize(horizontal: false, vertical: true)
         }
-        .padding(.vertical,  Spacing.m)
         .padding(.horizontal, Spacing.xl)
-        
     }
 }
 

@@ -12,3 +12,8 @@ struct Shortcut: Codable {
     var shortcutIndex: Int
     var scriptId: UUID
 }
+
+let EmptyShortcut = Shortcut(
+    shortcutIndex: 9999,
+    scriptId: EmptyScript.id
+)

@@ -17,6 +17,7 @@ struct AppColor {
     static let Background = Color("Background")
     static let AppBg = Color("AppBg")
     static let Primary = Color("Primary")
+    static let Header = Color("Header")
 }
 
 typealias PlatformColor = NSColor
@@ -45,4 +46,13 @@ public func decodeColor(from data: Data) throws -> Color {
 
 enum DecodingError: Error {
     case wrongType
+}
+
+var defaultEncodedColor: Data? {
+    do {
+        return try encodeColor(color: AppColor.Primary)
+    } catch {
+        debugPrint(error)
+        return nil
+    }    
 }

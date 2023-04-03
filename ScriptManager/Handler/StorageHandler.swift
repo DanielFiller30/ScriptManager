@@ -67,8 +67,28 @@ class StorageHandler: ObservableObject {
         return settings
     }
     
+    public func saveCategory(value: [Category]) {
+        if let encoded = try? JSONEncoder().encode(value) {
+            UserDefaults.standard.set(encoded, forKey: StorageKey.CATEGORY.rawValue)
+        }
+    }
+    
+    public func loadCategories() -> [Category]? {
+        if let data = UserDefaults.standard.data(forKey: StorageKey.CATEGORY.rawValue) {
+            if let decoded = try? JSONDecoder().decode([Category].self, from: data) {
+                return decoded
+            }
+        }
+        
+        return nil
+    }
+    
     public func reset() {
         UserDefaults.standard.reset()
+    }
+    
+    public func removeCategories() {
+        UserDefaults.standard.removeObject(forKey: StorageKey.CATEGORY.rawValue)
     }
 }
 
@@ -82,4 +102,5 @@ enum StorageKey: String, CaseIterable {
     case SCRIPTS
     case SETTINGS
     case FIRSTLAUNCH
+    case CATEGORY
 }

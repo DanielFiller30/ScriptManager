@@ -15,6 +15,7 @@ struct ScriptRunButtonView: View {
     @Binding var isRunning: Bool
     
     @State var activeId: UUID? = nil
+    @State var showRunPopover: Bool = false
     
     var body: some View {
         if (isRunning && activeId == script.id) {
@@ -22,24 +23,77 @@ struct ScriptRunButtonView: View {
                 .frame(width: IconSize.s, height: IconSize.s)
                 .scaleEffect(0.5)
                 .padding(Spacing.l)
-                .background(AppColor.Background)
+                .background(AppColor.Light)
                 .clipShape(Circle())
             
         } else {
             Button {
-                Task {
-                    await runScript()
-                }
+                showRunPopover.toggle()
             } label: {
                 Image(systemName: "play")
                     .resizable()
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(AppColor.Background)
+                    .background(AppColor.Light)
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
             .disabled(isRunning)
+            .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {
+                VStack(alignment: .center, spacing: Spacing.m) {
+                    Button {
+                        showRunPopover.toggle()
+                        
+                        Task {
+                            await runScript()
+                        }
+                    } label: {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            
+                            Text("script-run")
+                                .font(.system(size: FontSize.text))
+                            
+                            Spacer()
+                            
+                            Image(systemName: "play")
+                                .resizable()
+                                .frame(width: IconSize.s, height: IconSize.s)
+                        }
+                        .frame(width: 150)
+                        .padding(.horizontal, Spacing.l)
+                        .padding(.vertical, Spacing.l)
+                        .background(AppColor.Dark)
+                        .cornerRadius(8)
+                    }
+                    .buttonStyle(.plain)
+                    
+                    Button {
+                        
+                    } label: {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            
+                            Text("script-run-output")
+                                .font(.system(size: FontSize.text))
+                            
+                            Spacer()
+                            
+                            Image(systemName: "play.display")
+                                .resizable()
+                                .frame(width: IconSize.s, height: IconSize.s)
+                        }
+                        .frame(width: 150)
+                        .padding(.horizontal, Spacing.l)
+                        .padding(.vertical, Spacing.l)
+                        .background(AppColor.Dark)
+                        .cornerRadius(8)
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.all, Spacing.m)
+                .background(AppColor.AppBg)
+            }
         }
     }
     
@@ -47,11 +101,20 @@ struct ScriptRunButtonView: View {
         activeId = script.id
         isRunning = true
         
-        script.success = await scriptHandler.runScript(script, test: false)
-        script.finished = true
-        script.lastRun = Date.now
+        let success = await scriptHandler.runScript(script, test: false)
         
-        viewModel.refreshScripts()
+        DispatchQueue.main.async {
+            self.script.success = success
+            
+            withAnimation() {
+                // Show state-button
+                self.script.finished = true
+            }
+            
+            self.script.lastRun = Date.now
+        }        
+        
+        viewModel.updateSavedScripts()
         
         isRunning = false
         

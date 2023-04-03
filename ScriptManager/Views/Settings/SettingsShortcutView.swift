@@ -19,6 +19,7 @@ struct SettingsShortcutView: View {
     init() {
         debugPrint("Scripts Loaded")
         self.scripts = storage.loadScripts() ?? []
+        self.scripts.append(EmptyScript)
     }
     
     func getDataByIndex(index: Int) -> DataModel {

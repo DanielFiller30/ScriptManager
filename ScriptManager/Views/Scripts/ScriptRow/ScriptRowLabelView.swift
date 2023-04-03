@@ -9,13 +9,12 @@ import SwiftUI
 
 struct ScriptRowLabel: View {
     @EnvironmentObject var settings: SettingsHandler
-
+    
     var viewModel: ScriptViewModel
     var toggleDetails: () -> Void
     
     @Binding var script: Script
-    
-    @State var isRunning: Bool = false
+    @Binding var isRunning: Bool
     
     var body: some View {
         HStack(alignment: .center) {
@@ -31,31 +30,37 @@ struct ScriptRowLabel: View {
                     }
                 }
             
-            Text(script.name)
-                .font(.system(size: FontSize.subTitle))
-                .fontWeight(.bold)
-                .frame(maxWidth: 110, alignment: .leading)
-                .lineLimit(1)
-                .onTapGesture {
-                    withAnimation() {
-                        toggleDetails()
+            HStack(alignment: .center, spacing: Spacing.l) {
+                Text(script.name)
+                    .font(.system(size: FontSize.subTitle))
+                    .fontWeight(.bold)
+                    .lineLimit(1)
+                    .scaledToFit()
+                    .onTapGesture {
+                        withAnimation() {
+                            toggleDetails()
+                        }
                     }
+                    .help(script.name)
+                                
+                let category = viewModel.getCategoryById(id: script.categoryID)
+                
+                if category != nil {
+                    BadgeView(color: viewModel.getDecodedColor(data: category!.badgeColor), title: category!.name, active: false)
                 }
-                .help(script.name)
+            }
             
             Spacer()
             
             ScriptStateButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning)
             
             ScriptRunButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning)
-            
-            ScriptDeleteButtonView(viewModel: viewModel, scriptId: $script.id, isRunning: $isRunning)
         }
     }
 }
 
 struct ScriptRowLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRowLabel(viewModel: ScriptViewModel(), toggleDetails: {}, script: .constant(DefaultScript))
+        ScriptRowLabel(viewModel: ScriptViewModel(), toggleDetails: {}, script: .constant(DefaultScript), isRunning: .constant(false))
     }
 }

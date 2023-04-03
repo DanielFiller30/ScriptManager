@@ -30,6 +30,15 @@ struct EditScriptView: View {
             }
             .padding(.bottom, Spacing.l)
             
+            HStack(alignment: .center) {
+                Text("category-script")
+                    .font(.system(size: FontSize.text))
+                
+                Spacer()
+                
+                CategoryPickerView(viewModel: viewModel)
+            }
+            
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
                     Text("path-add-script")
@@ -45,16 +54,29 @@ struct EditScriptView: View {
             
             Spacer()
             
-            HStack(alignment: .center) {
-                DeleteChangesButton(viewModel: viewModel)
-                
-                Spacer()
-                
-                SaveChangesButton(viewModel: viewModel)
-            }
+            // Save changed script
+            CustomButtonView(
+                onClick: { viewModel.updateScript() },
+                label: "edit-save",
+                color: AppColor.Success,
+                outlined: false,
+                disabled: false
+            )
+            .padding(.bottom, Spacing.m)
             
+            // Cancel
+            CustomButtonView(
+                onClick: {
+                    viewModel.closeEdit()
+                    viewModel.showAddScript.toggle()
+                },
+                label: "cancel",
+                color: AppColor.Creme,
+                outlined: true,
+                disabled: false
+            )
         }
-        .frame(height: 305)
+        .padding(.all, Spacing.xl)
     }
 }
 

@@ -22,7 +22,9 @@ struct SettingsColorView: View {
             }
         }
         .padding(.vertical, Spacing.m)
-        .padding(.horizontal, Spacing.xl)    }
+        .padding(.horizontal, Spacing.xl)
+        
+    }
 }
 
 struct SettingsColorView_Previews: PreviewProvider {

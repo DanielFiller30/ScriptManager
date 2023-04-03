@@ -16,13 +16,13 @@
 // Menu
 "add-new-script" = "Add a new script";
 "info-add-new-script" = "Test and save a new script for your personal list";
-
-"add-new-group" = "Add new group";
-"info-add-new-group" = "Use groups to organize scripts and run all by one click";
+"add-new-category" = "Add a new category";
+"info-add-new-category" = "Add a new category to group your scripts";
 
 // List
 "saved %@" = "Saved scripts (%@)";
 "empty-scripts" = "Add a new script, to run it here";
+"categories-title" = "Filter";
 
 // Add new script
 "name-add-script" = "Name for the script";
@@ -32,6 +32,12 @@
 "test-failed" = "Script failed";
 "save-script" = "Save";
 "icon-script" = "Script-icon";
+"category-script" = "Category";
+
+// Add new category
+"name-add-category" = "Name of category";
+"color-add-category" = "Color";
+"save-category" = "Save new category";
 
 // Edit script
 "edit-script-title" = "Edit script";
@@ -43,12 +49,17 @@
 "last-run" = "Last executed:";
 "edit-script" = "Edit";
 "open-logs" = "Open logs";
+"button-delete" = "Delete script";
+"button-logs" = "Open logs";
+"button-edit" = "Modify script";
 
 // Delete-Alert
 "delete" = "Delete";
 "cancel" = "Cancel";
 "delete-title" = "Remove script";
 "delete-msg" = "Are you sure to remove this script from your list?";
+"delete-category-title" = "Delete category";
+"delete-category-msg" = "Are you sure to remove the selected category?";
 
 // Settings
 "settings" = "Settings";
@@ -90,3 +101,9 @@
 "hint-notifications-text" = "When you activate notifications, you will get a push-up information when your running script has finished.";
 "hint-script-title" = "Script";
 "hint-script-text" = "Pleace notice that your script is running out of your root folder. Du kannst jeden beliebigen Befehl ausführen. Bei einer Folge von Befehlen, beachte, dass diese durhc ein ';' getrennt werden müssen.";
+"hint-copied" = "Copied!";
+"hint-remove-category" = "Remove active category";
+
+// Script-run
+"script-run" = "Start without output";
+"script-run-output" = "Start and show output";

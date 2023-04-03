@@ -26,11 +26,11 @@ class SettingsHandler: ObservableObject {
     @Published var notificationState: Bool = DefaultSettings.notifications
     @Published var mainColor: Color = AppColor.Primary
     // Shortcut-Picker
-    @Published var selectedScript1: UUID = UUID()
-    @Published var selectedScript2: UUID = UUID()
-    @Published var selectedScript3: UUID = UUID()
-    @Published var selectedScript4: UUID = UUID()
-    @Published var selectedScript5: UUID = UUID()
+    @Published var selectedScript1: UUID = EmptyScript.id
+    @Published var selectedScript2: UUID = EmptyScript.id
+    @Published var selectedScript3: UUID = EmptyScript.id
+    @Published var selectedScript4: UUID = EmptyScript.id
+    @Published var selectedScript5: UUID = EmptyScript.id
     
     func loadSettings() {
         do {

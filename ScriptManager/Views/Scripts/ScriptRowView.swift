@@ -13,24 +13,24 @@ struct ScriptRowView: View {
     @Binding var script: Script
     
     @State var showDetails: Bool = false
-
+    @State var isRunning: Bool = false
+    
     var body: some View {
         DisclosureGroup(isExpanded: $showDetails) {
             Divider()
                 .padding(.top, Spacing.l)
             
-            ScriptDetailsView(viewModel: viewModel, script: script)
+            ScriptDetailsView(viewModel: viewModel, script: script, isRunning: $isRunning)
             
         } label: {
             ScriptRowLabel(
                 viewModel: viewModel,
                 toggleDetails: { showDetails.toggle() },
-                script: $script
+                script: $script,
+                isRunning: $isRunning
             )
-            
         }
         .padding(.all, Spacing.l)
-        .frame(maxWidth: 350, alignment: .leading)
         .background(AppColor.Dark)
         .cornerRadius(10)
         .onAppear() {

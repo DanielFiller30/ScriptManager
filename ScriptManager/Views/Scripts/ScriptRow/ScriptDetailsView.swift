@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ScriptDetailsView: View {
     var viewModel: ScriptViewModel
     let scriptHandler: ScriptHandler = ScriptHandler()
-    // TODO: CHECK BINDING
     var script: Script
+    
+    @Binding var isRunning: Bool
+    @State private var showToast = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,9 +33,15 @@ struct ScriptDetailsView: View {
                         let pasteboard = NSPasteboard.general
                         pasteboard.clearContents()
                         pasteboard.setString(script.command, forType: .string)
+                        
+                        // Show copied toast
+                        showToast.toggle()
                     }
             }
             .padding(.bottom, Spacing.m)
+            .toast(isPresenting: $showToast, duration: 1, tapToDismiss: true) {
+                AlertToast(type: .regular, title: "hint-copied")
+            }
             
             HStack(alignment: .top) {
                 Text("last-run")
@@ -54,11 +63,24 @@ struct ScriptDetailsView: View {
             Divider()
             
             HStack(alignment: .center) {
-                ScriptLogButtonView(viewModel: viewModel)
-                
+                // Open logs
+                ScriptDetailButtonView(
+                    onClick: { viewModel.openLogs() },
+                    icon: "folder",
+                    help: "button-logs"
+                )
+                                
                 Spacer()
                 
-                ScriptEditButtonView(viewModel: viewModel, script: script)
+                // Edit script
+                ScriptDetailButtonView(
+                    onClick: { viewModel.openEdit(script: script) },
+                    icon: "pencil",
+                    help: "button-edit"
+                )
+                
+                // Delete script
+                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, isRunning: $isRunning)
             }
             .padding(.all, Spacing.m)
         }
@@ -68,6 +90,6 @@ struct ScriptDetailsView: View {
 
 struct ScriptDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript)
+        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript, isRunning: .constant(false))
     }
 }

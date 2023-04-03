@@ -7,19 +7,24 @@
 
 import Foundation
 import AppKit
+import SwiftUI
 
 class ScriptViewModel: ObservableObject {
     private let storage = StorageHandler()
     
     @Published var showAddScript: Bool = false
     @Published var scripts: [Script] = []
-    
+    @Published var categories: [Category] = []
+
     @Published var name: String = ""
     @Published var command: String = ""
     @Published var selectedIcon: Int = 0
-    
+    @Published var selectedCategory: UUID = UUID()
+
     @Published var editMode: Bool = false
     @Published var editId: UUID = UUID()
+    
+    @Published var searchString: String = ""
     
     @Published var isLogEnabled: Bool = DefaultSettings.logs
     
@@ -27,16 +32,59 @@ class ScriptViewModel: ObservableObject {
         let storage = StorageHandler()
         let settings: Settings = storage.loadSettings()
         
-        self.isLogEnabled = settings.logs
+        DispatchQueue.main.async {
+            self.isLogEnabled = settings.logs
+        }
     }
     
     func loadScripts() {
-        self.scripts = storage.loadScripts() ?? []
+        scripts = storage.loadScripts() ?? []
+    }
+    
+    func filterScripts(category: Category) {
+        scripts = scripts.filter({ $0.categoryID == category.id })
+    }
+    
+    func removeCategory(categoryId: UUID?) {
+        loadScripts()
+        
+        guard categoryId != nil else { return }
+        
+        for (index, script) in scripts.enumerated() {
+            if script.categoryID == categoryId {
+                scripts[index].categoryID = nil
+            }
+        }
+        
+        updateSavedScripts()
+    }
+    
+    func loadCategories() {
+        categories = storage.loadCategories() ?? []
+        categories.append(EmptyCategory)
+    }
+    
+    func getCategoryById(id: UUID?) -> Category? {
+        if id != EmptyCategory.id {
+            return categories.first(where: {$0.id == id})
+        } else {
+            // Empty category
+            return nil
+        }
+    }
+    
+    func getDecodedColor(data: Data) -> Color {
+        do {
+            return try decodeColor(from: data)
+        } catch {
+            return AppColor.Primary
+        }
     }
     
     func saveScript() {
         var savedScripts: [Script] = storage.loadScripts() ?? []
-        savedScripts.append(Script(name: self.name, icon: ScriptIcons[selectedIcon], command: self.command, success: .ready, finished: false ))
+        let tempScript = Script(name: name, icon: ScriptIcons[selectedIcon], command: command, success: .ready, finished: false, categoryID: selectedCategory)
+        savedScripts.append(tempScript)
         storage.saveScripts(value: savedScripts)
         
         // Refresh data
@@ -46,13 +94,14 @@ class ScriptViewModel: ObservableObject {
     }
     
     func resetForm() {
-        self.name = ""
-        self.command = ""
-        self.selectedIcon = 0
+        name = ""
+        command = ""
+        selectedIcon = 0
+        selectedCategory = UUID()
     }
     
-    func refreshScripts() {
-        storage.saveScripts(value: self.scripts)
+    func updateSavedScripts() {
+        storage.saveScripts(value: scripts)
     }
     
     func deleteScript(id: UUID) {
@@ -60,44 +109,44 @@ class ScriptViewModel: ObservableObject {
             $0.id != id
         }
         
-        refreshScripts()
+        updateSavedScripts()
         
         loadScripts()
     }
     
     func updateScript() {
         var savedScripts: [Script] = storage.loadScripts() ?? []
-        let index: Int? = savedScripts.firstIndex(where: { $0.id == self.editId })
+        let index: Int? = savedScripts.firstIndex(where: { $0.id == editId })
         
         guard let index else { return }
-        savedScripts[index].name = self.name
-        savedScripts[index].icon = ScriptIcons[self.selectedIcon]
-        savedScripts[index].command = self.command
+        savedScripts[index].name = name
+        savedScripts[index].icon = ScriptIcons[selectedIcon]
+        savedScripts[index].command = command
+        savedScripts[index].categoryID = selectedCategory
         
         storage.saveScripts(value: savedScripts)
         
         // Refresh data
-        self.scripts = savedScripts
+        scripts = savedScripts
 
         closeEdit()
     }
     
     func openEdit(script: Script) {
-        self.editMode = true
-        self.editId = script.id
+        editMode = true
+        editId = script.id
         
-        self.name = script.name
-        self.command = script.command
-        self.selectedIcon = ScriptIcons.firstIndex(of: script.icon) ?? 0
+        name = script.name
+        command = script.command
+        selectedIcon = ScriptIcons.firstIndex(of: script.icon) ?? 0
+        selectedCategory = script.categoryID ?? UUID()
         
-        self.showAddScript = true
+        showAddScript = true
     }
     
     func closeEdit() {
-        self.editMode = false
-        self.resetForm()
-        
-        self.showAddScript.toggle()
+        editMode = false
+        resetForm()
     }
     
     func openLogs() {

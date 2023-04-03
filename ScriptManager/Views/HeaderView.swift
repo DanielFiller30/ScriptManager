@@ -18,8 +18,10 @@ struct HeaderView: View {
                 .foregroundColor(settings.mainColor)
             
             Text("Script Manager")
-                .font(Font.custom("Courier New", size: FontSize.title))
                 .fontWeight(.bold)
+            
+            Text("v2")
+                .fontWeight(.light)
             
             Spacer()
             
@@ -60,9 +62,8 @@ struct HeaderView: View {
             }
             
         }
-        .padding(.vertical, Spacing.l)
+        .padding(.vertical, 15)
         .padding(.horizontal, Spacing.xl)
-        .background(AppColor.Dark)
     }
     
     func terminateApp() {

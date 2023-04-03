@@ -16,13 +16,13 @@
 // Menu
 "add-new-script" = "Neues Skript hinzufügen";
 "info-add-new-script" = "Teste und füge ein neues Skript deiner Liste hinzu";
-
-"add-new-group" = "Neue Gruppe hinzufügen";
-"info-add-new-group" = "Nutze Gruppen um deine Skripte zu organisieren";
+"add-new-category" = "Neue Kategorie hinzufügen";
+"info-add-new-category" = "Füge eine neue Kategorie zum Gruppieren deiner Skripte hinzu";
 
 // List
 "saved %@" = "Gespeicherte Skripte (%@)";
 "empty-scripts" = "Füge ein neues Skript hinzu, um es über diese Liste auszuführen";
+"categories-title" = "Filter";
 
 // Add new script
 "name-add-script" = "Skriptname";
@@ -32,6 +32,12 @@
 "test-failed" = "Skript fehlerhaft";
 "save-script" = "Speichern";
 "icon-script" = "Skript-Icon";
+"category-script" = "Kategorie";
+
+// Add new category
+"name-add-category" = "Kategoriename";
+"color-add-category" = "Farbe der Kategorie";
+"save-category" = "Kategorie speichern";
 
 // Edit script
 "edit-script-title" = "Skript anpassen";
@@ -43,12 +49,17 @@
 "last-run" = "Zuletzt ausgeführt:";
 "edit-script" = "Anpassen";
 "open-logs" = "Protokolle öffnen";
+"button-delete" = "Skript löschen";
+"button-logs" = "Protokolle öffnen";
+"button-edit" = "Skript anpassen";
 
 // Delete-Alert
 "delete" = "Löschen";
 "cancel" = "Abbrechen";
 "delete-title" = "Skript-Eintrag löschen";
 "delete-msg" = "Bist du sicher, dass du dieses Skript aus deiner Liste entfernen möchtest?";
+"delete-category-title" = "Kategorie löschen";
+"delete-category-msg" = "Bist du sicher, dass du die ausgewählte Kategorie löschen möchtest?";
 
 // Settings
 "settings" = "Einstellungen";
@@ -81,7 +92,6 @@
 "notification-start-title %@" = "Skript '%@' wird ausgeführt";
 "notification-start-subtitle" = "Dein Skript wurde durch einen Tastatur-Kurzbefehl ausgelöst und wird gerade ausgeführt.";
 
-
 // Hints
 "hint-shell-title" = "Shell-Typ";
 "hint-shell-text" = "Du hast die Möglichkeit deine Standard-Shell zu ändern. Nutze bestmöglichst die Shell, die du in deinem Terminal auch verwendest.";
@@ -91,3 +101,10 @@
 "hint-notifications-text" = "Wenn du die Mitteilungen aktiviert hast, wirst du automatisch über Push-up Mitteilungen darüber informiert, ob dein Skript erfolgreich durchgelaufen ist.";
 "hint-script-title" = "Skript";
 "hint-script-text" = "Beachte dass du dich im Root-Verzeichnis deines Macs befindest. Du kannst jeden beliebigen Befehl ausführen. Bei einer Folge von Befehlen, beachte, dass diese durhc ein ';' getrennt werden müssen.";
+"hint-copied" = "Kopiert!";
+"hint-remove-category" = "Aktive Kategorie löschen";
+
+
+// Script-run
+"script-run" = "Ohne Ausgabe starten";
+"script-run-output" = "Mit Ausgabe starten";

@@ -17,6 +17,7 @@ struct SettingsView: View {
         VStack(alignment: .center) {
             Text("settings")
                 .font(.system(size: FontSize.subTitle))
+                .fontWeight(.bold)
                 .padding(.bottom, Spacing.l)
                 .padding(.top, Spacing.xl)
             
@@ -69,12 +70,55 @@ struct SettingsView: View {
             Divider()
             
             Group {
-                SettingsDeleteButtonView()
+                // Save settings
+                CustomButtonView(
+                    onClick: { settings.save() },
+                    label: "settings-save",
+                    color: AppColor.Success,
+                    outlined: false,
+                    disabled: settings.shellPath.isEmpty
+                    || settings.unicode.isEmpty
+                    || (settings.loggingState && settings.logsPath.isEmpty)
+                )
+                .padding(.bottom, Spacing.m)
+                .padding(.top, Spacing.l)
+        
+                // Remove scripts
+                CustomButtonView(
+                    onClick: { settings.showDeleteAlert.toggle() },
+                    label: "settings-reset",
+                    color: AppColor.Creme,
+                    outlined: true,
+                    disabled: false
+                )
+                .padding(.bottom, Spacing.m)
+                .alert("settings-delete-title", isPresented: $settings.showDeleteAlert) {
+                    
+                    Button("cancel", role: .cancel) {}
+                    Button("delete") {
+                        settings.reset()
+                    }
+                    
+                } message: {
+                    Text("settings-delete-msg")
+                }
                 
-                SettingsSaveButtonView()
+                // Cancel
+                CustomButtonView(
+                    onClick: { settings.showingPopover.toggle() },
+                    label: "cancel",
+                    color: AppColor.Creme,
+                    outlined: true,
+                    disabled: false
+                )
+                .padding(.bottom, Spacing.xl)
+
             }
+            .padding(.horizontal, Spacing.xl)
+
         }
         .frame(minWidth: 320)
+        .background(AppColor.AppBg)
         .onAppear() {
             settings.loadSettings()
         }

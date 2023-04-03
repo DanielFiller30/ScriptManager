@@ -23,7 +23,7 @@ struct ScriptStateButtonView: View {
                     .foregroundColor(AppColor.Success)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(AppColor.Background)
+                    .background(AppColor.Light)
                     .clipShape(Circle())
             } else if (viewModel.isLogEnabled) {
                 // Script failed and logging is active
@@ -46,7 +46,7 @@ struct ScriptStateButtonView: View {
                     .foregroundColor(AppColor.Danger)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(AppColor.Background)
+                    .background(AppColor.Light)
                     .clipShape(Circle())
             }
             
