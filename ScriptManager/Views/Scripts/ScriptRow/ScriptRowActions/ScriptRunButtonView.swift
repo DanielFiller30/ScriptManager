@@ -12,14 +12,12 @@ struct ScriptRunButtonView: View {
     let viewModel: ScriptViewModel
     let scriptHandler: ScriptHandler = ScriptHandler()
     
-    @Binding var script: Script
-    @Binding var isRunning: Bool
+    var script: Script
     
-    @State var activeId: UUID? = nil
     @State var showRunPopover: Bool = false
     
     var body: some View {
-        if (isRunning && activeId == script.id) {
+        if (viewModel.isRunning && viewModel.runningScript.id == script.id) {
             ProgressView()
                 .frame(width: IconSize.s, height: IconSize.s)
                 .scaleEffect(0.5)
@@ -39,15 +37,13 @@ struct ScriptRunButtonView: View {
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
-            .disabled(isRunning)
+            .disabled(viewModel.isRunning)
             .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {
                 VStack(alignment: .center, spacing: Spacing.m) {
                     Button {
                         showRunPopover.toggle()
-                        
-                        Task {
-                            await runScript(showOutput: false)
-                        }
+                        viewModel.runningScript = script                        
+                        viewModel.runScript(showOutput: false)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
@@ -71,10 +67,8 @@ struct ScriptRunButtonView: View {
                     
                     Button {
                         showRunPopover.toggle()
-                        
-                        Task {
-                            await runScript(showOutput: true)
-                        }
+                        viewModel.runningScript = script
+                        viewModel.runScript(showOutput: true)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
@@ -101,62 +95,10 @@ struct ScriptRunButtonView: View {
             }
         }
     }
-    
-    private func runScript(showOutput: Bool) async {
-        do {
-            let storage = StorageHandler()
-            guard var tempScripts = try storage.load([Script].self, key: .SCRIPTS)?.get() else { return }
-            guard let index = tempScripts.firstIndex(where: { $0.id == script.id }) else { return }
-            
-            activeId = script.id
-            isRunning = true
-            
-            if showOutput {
-                openOutputWindow()
-            }
-            
-            let success = await scriptHandler.runScript(script, test: false)
-            
-            tempScripts[index].success = success
-            tempScripts[index].finished = true
-            tempScripts[index].lastRun = Date.now
-            storage.save(value: AnyCodable(tempScripts), key: .SCRIPTS)
-
-            DispatchQueue.main.async {
-                self.script.success = success
-                
-                withAnimation() {
-                    // Show state-button
-                    self.script.finished = true
-                }
-                
-                self.script.lastRun = Date.now
-            }
-            
-            isRunning = false
-        } catch {
-            debugPrint("Error while running script: \(error)")
-        }
-    }
-    
-    private func openOutputWindow() {
-        DispatchQueue.main.async {
-            let window = NSWindow()
-            let contentView = OutputWindowView(scriptHandler: scriptHandler)
-            window.contentViewController = NSHostingController(rootView: contentView)
-            window.styleMask = [.titled, .resizable, .closable, .miniaturizable]
-            window.center()
-            window.title = "Output"
-            window.isReleasedWhenClosed = false
-            window.orderFrontRegardless()
-            window.makeKeyAndOrderFront(nil)
-        }
-    }
-
 }
 
 struct ScriptRunButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRunButtonView(viewModel: ScriptViewModel(), script: .constant(DefaultScript), isRunning: .constant(false))
+        ScriptRunButtonView(viewModel: ScriptViewModel(), script: DefaultScript)
     }
 }

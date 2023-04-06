@@ -14,9 +14,10 @@ class ScriptViewModel: ObservableObject {
     internal let dataHandler = DataHandler.shared
     internal let settingsHandler = SettingsHandler()
     internal let storageHandler = StorageHandler()
+    internal let scriptHandler = ScriptHandler()
     
     @Published var showAddScript: Bool = false
-
+    
     @Published var editMode: Bool = false
     @Published var editId: UUID = UUID()
     
@@ -27,6 +28,63 @@ class ScriptViewModel: ObservableObject {
     @Published var selectedTag: UUID = UUID()
     
     @Published var isLogEnabled: Bool = DefaultSettings.logs
+    @Published var runningScript: Script = DefaultScript
+    @Published var isRunning: Bool = false
+    
+    func runScript(showOutput: Bool) {
+        Task {
+            guard var tempScripts = try storageHandler.load([Script].self, key: .SCRIPTS)?.get() else { return }
+            guard let index = tempScripts.firstIndex(where: { $0.id == runningScript.id }) else { return }
+            
+            changeIsRunningState(state: true)
+            
+            if showOutput {
+                openOutputWindow()
+            }
+            
+            let success = await scriptHandler.runScript(runningScript, test: false)
+            tempScripts[index].success = success
+            tempScripts[index].finished = true
+            tempScripts[index].lastRun = Date.now
+            storageHandler.save(value: AnyCodable(tempScripts), key: .SCRIPTS)
+            
+            DispatchQueue.main.async {
+                self.runningScript.success = success
+                
+                withAnimation() {
+                    // Show state-button
+                    self.runningScript.finished = true
+                }
+                
+                self.runningScript.lastRun = Date.now
+            }
+            
+            changeIsRunningState(state: false)
+            
+            // Check if logs enabled
+            loadSettings()
+        }
+    }
+    
+    func changeIsRunningState(state: Bool) {
+        DispatchQueue.main.async {
+            self.isRunning = state
+        }
+    }
+    
+    private func openOutputWindow() {
+        DispatchQueue.main.async {
+            let window = NSWindow()
+            let contentView = OutputWindowView(scriptHandler: self.scriptHandler)
+            window.contentViewController = NSHostingController(rootView: contentView)
+            window.styleMask = [.titled, .resizable, .closable, .miniaturizable]
+            window.center()
+            window.title = "Output"
+            window.isReleasedWhenClosed = false
+            window.orderFrontRegardless()
+            window.makeKeyAndOrderFront(nil)
+        }
+    }
     
     func loadSettings() {
         // Get current settings
@@ -124,7 +182,7 @@ class ScriptViewModel: ObservableObject {
         dataHandler.scripts[index] = selectedScript
         
         updateSavedScripts()
-
+        
         closeEdit()
     }
     

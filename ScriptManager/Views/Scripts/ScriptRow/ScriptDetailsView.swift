@@ -13,7 +13,6 @@ struct ScriptDetailsView: View {
     let scriptHandler: ScriptHandler = ScriptHandler()
     var script: Script
     
-    var isRunning: Bool
     @State private var showToast = false
     
     var body: some View {
@@ -77,12 +76,12 @@ struct ScriptDetailsView: View {
                 ScriptDetailButtonView(
                     onClick: { viewModel.openEdit(script: script) },
                     icon: "pencil",
-                    disabled: isRunning,
+                    disabled: viewModel.isRunning && viewModel.runningScript.id == script.id,
                     help: "button-edit"
                 )
                 
                 // Delete script
-                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, isRunning: isRunning)
+                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, disabled: viewModel.isRunning && viewModel.runningScript.id == script.id)
             }
             .padding(.all, Spacing.m)
         }
@@ -92,6 +91,6 @@ struct ScriptDetailsView: View {
 
 struct ScriptDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript, isRunning: false)
+        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript)
     }
 }

@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ScriptStateButtonView: View {
     let viewModel: ScriptViewModel
-    
-    @Binding var script: Script
-    @Binding var isRunning: Bool
+    var script: Script
     
     var body: some View {
         if (script.finished) {
@@ -39,7 +37,7 @@ struct ScriptStateButtonView: View {
                         .clipShape(Circle())
                 }
                 .buttonStyle(.plain)
-                .disabled(isRunning)
+                .disabled(viewModel.isRunning && viewModel.runningScript.id == script.id)
             } else {
                 // Script failed but logging is disabled
                 Image(systemName: "xmark")
@@ -56,6 +54,6 @@ struct ScriptStateButtonView: View {
 
 struct ScriptStateButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptStateButtonView(viewModel: ScriptViewModel(), script: .constant(DefaultScript), isRunning: .constant(false))
+        ScriptStateButtonView(viewModel: ScriptViewModel(), script: DefaultScript)
     }
 }

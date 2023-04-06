@@ -12,9 +12,7 @@ struct ScriptRowLabel: View {
     
     var viewModel: ScriptViewModel
     var toggleDetails: () -> Void
-    
-    @Binding var script: Script
-    @Binding var isRunning: Bool
+    var script: Script
     
     var body: some View {
         HStack(alignment: .center) {
@@ -52,15 +50,15 @@ struct ScriptRowLabel: View {
             
             Spacer()
             
-            ScriptStateButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning)
+            ScriptStateButtonView(viewModel: viewModel, script: script)
             
-            ScriptRunButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning)
+            ScriptRunButtonView(viewModel: viewModel, script: script)
         }
     }
 }
 
 struct ScriptRowLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRowLabel(viewModel: ScriptViewModel(), toggleDetails: {}, script: .constant(DefaultScript), isRunning: .constant(false))
+        ScriptRowLabel(viewModel: ScriptViewModel(), toggleDetails: {}, script: DefaultScript)
     }
 }
