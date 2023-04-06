@@ -16,14 +16,14 @@
 // Menu
 "add-new-script" = "Add a new script";
 "info-add-new-script" = "Test and save a new script for your personal list";
-"add-new-category" = "Add a new category";
-"info-add-new-category" = "Add a new category to group your scripts";
+"add-new-tag" = "Add a new tag";
+"info-add-new-tag" = "Add a new tag to group your scripts";
 
 // List
 "saved %@" = "Saved scripts (%@)";
 "empty-scripts" = "Add a new script, to run it here";
-"categories-title" = "Filter";
-"empty-categories" = "Add a new category, to filter your scripts";
+"tags-title" = "Filter";
+"empty-tags" = "Add a new tag, to filter your scripts";
 
 // Add new script
 "name-add-script" = "Name for the script";
@@ -33,12 +33,12 @@
 "test-failed" = "Script failed";
 "save-script" = "Save";
 "icon-script" = "Script-icon";
-"category-script" = "Category";
+"tag-script" = "tag";
 
-// Add new category
-"name-add-category" = "Name of category";
-"color-add-category" = "Color";
-"save-category" = "Save new category";
+// Add new tag
+"name-add-tag" = "Name of tag";
+"color-add-tag" = "Color";
+"save-tag" = "Save new tag";
 
 // Edit script
 "edit-script-title" = "Edit script";
@@ -59,8 +59,8 @@
 "cancel" = "Cancel";
 "delete-title" = "Remove script";
 "delete-msg" = "Are you sure to remove this script from your list?";
-"delete-category-title" = "Delete category";
-"delete-category-msg" = "Are you sure to remove the selected category?";
+"delete-tag-title" = "Delete tag";
+"delete-tag-msg" = "Are you sure to remove the selected tag?";
 
 // Settings
 "settings" = "Settings";
@@ -103,7 +103,7 @@
 "hint-script-title" = "Script";
 "hint-script-text" = "Pleace notice that your script is running out of your root folder. Du kannst jeden beliebigen Befehl ausführen. Bei einer Folge von Befehlen, beachte, dass diese durhc ein ';' getrennt werden müssen.";
 "hint-copied" = "Copied!";
-"hint-remove-category" = "Remove active category";
+"hint-remove-tag" = "Remove active tag";
 
 // Script-run
 "script-run" = "Start without output";

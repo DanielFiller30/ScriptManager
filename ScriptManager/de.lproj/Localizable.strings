@@ -16,14 +16,14 @@
 // Menu
 "add-new-script" = "Neues Skript hinzufügen";
 "info-add-new-script" = "Teste und füge ein neues Skript deiner Liste hinzu";
-"add-new-category" = "Neue Kategorie hinzufügen";
-"info-add-new-category" = "Füge eine neue Kategorie zum Gruppieren deiner Skripte hinzu";
+"add-new-tag" = "Neue Kategorie hinzufügen";
+"info-add-new-tag" = "Füge eine neue Kategorie zum Gruppieren deiner Skripte hinzu";
 
 // List
 "saved %@" = "Gespeicherte Skripte (%@)";
 "empty-scripts" = "Füge ein neues Skript hinzu, um es über diese Liste auszuführen";
-"categories-title" = "Filter";
-"empty-categories" = "Füge eine neue Kategorie hinzu, um deine Skripte zu filtern";
+"tags-title" = "Filter";
+"empty-tags" = "Füge eine neue Kategorie hinzu, um deine Skripte zu filtern";
 
 // Add new script
 "name-add-script" = "Skriptname";
@@ -33,12 +33,12 @@
 "test-failed" = "Skript fehlerhaft";
 "save-script" = "Speichern";
 "icon-script" = "Skript-Icon";
-"category-script" = "Kategorie";
+"tag-script" = "Kategorie";
 
-// Add new category
-"name-add-category" = "Kategoriename";
-"color-add-category" = "Farbe der Kategorie";
-"save-category" = "Kategorie speichern";
+// Add new tag
+"name-add-tag" = "Kategoriename";
+"color-add-tag" = "Farbe der Kategorie";
+"save-tag" = "Kategorie speichern";
 
 // Edit script
 "edit-script-title" = "Skript anpassen";
@@ -59,8 +59,8 @@
 "cancel" = "Abbrechen";
 "delete-title" = "Skript-Eintrag löschen";
 "delete-msg" = "Bist du sicher, dass du dieses Skript aus deiner Liste entfernen möchtest?";
-"delete-category-title" = "Kategorie löschen";
-"delete-category-msg" = "Bist du sicher, dass du die ausgewählte Kategorie löschen möchtest?";
+"delete-tag-title" = "Kategorie löschen";
+"delete-tag-msg" = "Bist du sicher, dass du die ausgewählte Kategorie löschen möchtest?";
 
 // Settings
 "settings" = "Einstellungen";
@@ -103,7 +103,7 @@
 "hint-script-title" = "Skript";
 "hint-script-text" = "Beachte dass du dich im Root-Verzeichnis deines Macs befindest. Du kannst jeden beliebigen Befehl ausführen. Bei einer Folge von Befehlen, beachte, dass diese durhc ein ';' getrennt werden müssen.";
 "hint-copied" = "Kopiert!";
-"hint-remove-category" = "Aktive Kategorie löschen";
+"hint-remove-tag" = "Aktive Kategorie löschen";
 
 
 // Script-run

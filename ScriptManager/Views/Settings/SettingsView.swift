@@ -72,7 +72,7 @@ struct SettingsView: View {
             Group {
                 // Save settings
                 CustomButtonView(
-                    onClick: { settings.save() },
+                    onClick: { settings.saveSettings() },
                     label: "settings-save",
                     color: AppColor.Success,
                     outlined: false,

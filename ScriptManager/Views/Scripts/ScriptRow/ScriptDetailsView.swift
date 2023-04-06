@@ -13,7 +13,7 @@ struct ScriptDetailsView: View {
     let scriptHandler: ScriptHandler = ScriptHandler()
     var script: Script
     
-    @Binding var isRunning: Bool
+    var isRunning: Bool
     @State private var showToast = false
     
     var body: some View {
@@ -52,7 +52,7 @@ struct ScriptDetailsView: View {
                 Spacer()
                 
                 if (script.lastRun != nil) {
-                    Text(scriptHandler.getFormattedDate(date: script.lastRun!))
+                    Text(DateHandler.getFormattedDate(date: script.lastRun!))
                         .font(.system(size: FontSize.text))
                 } else {
                     Text("-")
@@ -67,6 +67,7 @@ struct ScriptDetailsView: View {
                 ScriptDetailButtonView(
                     onClick: { viewModel.openLogs() },
                     icon: "folder",
+                    disabled: false,
                     help: "button-logs"
                 )
                                 
@@ -76,11 +77,12 @@ struct ScriptDetailsView: View {
                 ScriptDetailButtonView(
                     onClick: { viewModel.openEdit(script: script) },
                     icon: "pencil",
+                    disabled: isRunning,
                     help: "button-edit"
                 )
                 
                 // Delete script
-                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, isRunning: $isRunning)
+                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, isRunning: isRunning)
             }
             .padding(.all, Spacing.m)
         }
@@ -90,6 +92,6 @@ struct ScriptDetailsView: View {
 
 struct ScriptDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript, isRunning: .constant(false))
+        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript, isRunning: false)
     }
 }

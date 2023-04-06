@@ -1,5 +1,5 @@
 //
-//  AddCategoryView.swift
+//  AddTagView.swift
 //  ScriptManager
 //
 //  Created by Filler, Daniel on 22.03.23.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct AddCategoryView: View {
-    @StateObject var viewModel: CategoryViewModel
+struct AddTagView: View {
+    @StateObject var viewModel: TagViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                Text("name-add-category")
+                Text("name-add-tag")
                     .font(.system(size: FontSize.text))
                 
                 Spacer()
@@ -24,7 +24,7 @@ struct AddCategoryView: View {
             .padding(.bottom, Spacing.l)
             
             HStack(alignment: .center) {
-                Text("color-add-category")
+                Text("color-add-tag")
                     .font(.system(size: FontSize.text))
                                 
                 Spacer()
@@ -33,10 +33,10 @@ struct AddCategoryView: View {
             }
             .padding(.bottom, Spacing.l)
                         
-            // Save category
+            // Save tag
             CustomButtonView(
-                onClick: { viewModel.saveCategory() },
-                label: "save-category",
+                onClick: { viewModel.saveTag() },
+                label: "save-tag",
                 color: AppColor.Success,
                 outlined: false,
                 disabled: viewModel.name.isEmpty
@@ -45,7 +45,7 @@ struct AddCategoryView: View {
             
             // Cancel
             CustomButtonView(
-                onClick: { viewModel.showAddCategory.toggle() },
+                onClick: { viewModel.showAddTag.toggle() },
                 label: "cancel",
                 color: AppColor.Creme,
                 outlined: true,
@@ -56,8 +56,8 @@ struct AddCategoryView: View {
     }
 }
 
-struct AddCategoryView_Previews: PreviewProvider {
+struct AddTagView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCategoryView(viewModel: CategoryViewModel())
+        AddTagView(viewModel: TagViewModel())
     }
 }

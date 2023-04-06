@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var vmScript = ScriptViewModel()
-    @StateObject private var vmCategory = CategoryViewModel()
+    @StateObject private var vmTag = TagViewModel()
     
     @StateObject private var settings = SettingsHandler()
     
@@ -26,7 +26,7 @@ struct MainView: View {
                 .background(AppColor.Header)
                 .foregroundColor(AppColor.AppBg)
             
-            CategoriesListView(vmCategory: vmCategory, vmScript: vmScript)
+            TagsListView(vmTag: vmTag, vmScript: vmScript)
                 .background(AppColor.AppBg)
 
     
@@ -42,9 +42,6 @@ struct MainView: View {
 
         }
         .frame(width: 380, height: 550)
-        .onAppear {
-            settings.loadSettings()
-        }
         .environmentObject(settings)
     }
 }

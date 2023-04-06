@@ -11,7 +11,7 @@ struct ScriptDeleteButtonView: View {
     let viewModel: ScriptViewModel
     
     var scriptId: UUID
-    @Binding var isRunning: Bool
+    var isRunning: Bool
     
     @State var showDeleteAlert: Bool = false
     
@@ -44,6 +44,6 @@ struct ScriptDeleteButtonView: View {
 
 struct ScriptDeleteButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDeleteButtonView(viewModel: ScriptViewModel(), scriptId: (UUID()), isRunning: .constant(false))
+        ScriptDeleteButtonView(viewModel: ScriptViewModel(), scriptId: (UUID()), isRunning: false)
     }
 }

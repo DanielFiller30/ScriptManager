@@ -1,5 +1,5 @@
 //
-//  SettingsViewModel.swift
+//  SettingsHandler.swift
 //  ScriptManager
 //
 //  Created by Filler, Daniel on 06.02.23.
@@ -8,9 +8,12 @@
 import Foundation
 import UserNotifications
 import SwiftUI
+import AnyCodable
 
-class SettingsHandler: ObservableObject {
-    private let storage = StorageHandler()
+class SettingsHandler: SettingsHandlerProtocol {
+    internal var storage = StorageHandler()
+    
+    var settings: Settings = DefaultSettings
     
     @Published var showingPopover: Bool = false
     @Published var showDeleteAlert: Bool = false
@@ -25,6 +28,7 @@ class SettingsHandler: ObservableObject {
     @Published var logsPath: String = ""
     @Published var notificationState: Bool = DefaultSettings.notifications
     @Published var mainColor: Color = AppColor.Primary
+    
     // Shortcut-Picker
     @Published var selectedScript1: UUID = EmptyScript.id
     @Published var selectedScript2: UUID = EmptyScript.id
@@ -32,22 +36,34 @@ class SettingsHandler: ObservableObject {
     @Published var selectedScript4: UUID = EmptyScript.id
     @Published var selectedScript5: UUID = EmptyScript.id
     
+    required init() {
+        loadSettings()
+        initSettings()
+    }
+    
     func loadSettings() {
         do {
-            let settings = storage.loadSettings()
+            settings = try storage.load(Settings.self, key: .SETTINGS)?.get() ?? DefaultSettings
+        } catch {
+            debugPrint(error)
+        }
+    }
+    
+    func initSettings() {
+        do {
+            // Set initial home path
             homeDir = FileManager.default.homeDirectoryForCurrentUser.relativePath
-            
-            let decodedColor = try decodeColor(from: settings.mainColor)
-            
+                        
             // Set saved settings
             self.shell = settings.shell.type
             self.shellPath = settings.shell.path
             self.profilePath = settings.shell.profile ?? loadLogsDir()
+            self.profilePath = loadUserDir()
             self.unicode = settings.unicode
             self.loggingState = settings.logs
             self.logsPath = settings.pathLogs
             self.notificationState = settings.notifications
-            self.mainColor = decodedColor
+            self.mainColor = try ColorHandler.decodeColor(from: settings.mainColor)
             if !settings.shortcuts.isEmpty {
                 for index in 0...settings.shortcuts.count {
                     switch index {
@@ -66,9 +82,6 @@ class SettingsHandler: ObservableObject {
                     }
                 }
             }
-            
-            // Load initial directory paths
-            self.profilePath = loadUserDir()
         } catch {
             debugPrint("Loading settings failed.")
         }
@@ -104,9 +117,9 @@ class SettingsHandler: ObservableObject {
         }
     }
     
-    func save() {
+    func saveSettings() {
         do {
-            let encodedColor = try encodeColor(color: mainColor)
+            let encodedColor = try ColorHandler.encodeColor(color: mainColor)
             let shortcuts = [
                 Shortcut(shortcutIndex: 0, scriptId: selectedScript1),
                 Shortcut(shortcutIndex: 1, scriptId: selectedScript2),
@@ -125,11 +138,12 @@ class SettingsHandler: ObservableObject {
                 shortcuts: shortcuts
             )
             
-            storage.saveSettings(value: settings)
+            storage.save(value: AnyCodable(settings), key: .SETTINGS)
             
+            // Hide settings-modal
             showingPopover.toggle()
         } catch {
-            debugPrint("Save settings failed.")
+            debugPrint("Save settings failed: \(error)")
         }
     }
 }

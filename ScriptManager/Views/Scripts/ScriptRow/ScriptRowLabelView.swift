@@ -43,10 +43,10 @@ struct ScriptRowLabel: View {
                     }
                     .help(script.name)
                                 
-                let category = viewModel.getCategoryById(id: script.categoryID)
+                let tag = viewModel.getTagById(id: script.tagID)
                 
-                if category != nil {
-                    BadgeView(color: viewModel.getDecodedColor(data: category!.badgeColor), title: category!.name, active: false)
+                if tag != nil {
+                    BadgeView(color: ColorHandler.getDecodedColor(data: tag!.badgeColor), title: tag!.name, active: false)
                 }
             }
             

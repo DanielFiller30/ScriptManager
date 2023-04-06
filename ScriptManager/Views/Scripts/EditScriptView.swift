@@ -31,12 +31,12 @@ struct EditScriptView: View {
             .padding(.bottom, Spacing.l)
             
             HStack(alignment: .center) {
-                Text("category-script")
+                Text("tag-script")
                     .font(.system(size: FontSize.text))
                 
                 Spacer()
                 
-                CategoryPickerView(viewModel: viewModel)
+                TagPickerView(viewModel: viewModel)
             }
             
             VStack(alignment: .leading) {
@@ -56,7 +56,7 @@ struct EditScriptView: View {
             
             // Save changed script
             CustomButtonView(
-                onClick: { viewModel.updateScript() },
+                onClick: { viewModel.updateSavedScripts() },
                 label: "edit-save",
                 color: AppColor.Success,
                 outlined: false,

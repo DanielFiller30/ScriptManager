@@ -15,7 +15,7 @@ struct Script: Identifiable, Codable {
     var success: ResultState
     var finished: Bool
     var lastRun: Date?
-    var categoryID: UUID?
+    var tagID: UUID?
 }
 
 let EmptyScript = Script(
@@ -26,5 +26,13 @@ let EmptyScript = Script(
     success: .ready,
     finished: false,
     lastRun: Date.now,
-    categoryID: nil
+    tagID: nil
+)
+
+let DefaultScript = Script(
+    name: "Test",
+    icon: "terminal",
+    command: "/test",
+    success: .ready,
+    finished: false
 )

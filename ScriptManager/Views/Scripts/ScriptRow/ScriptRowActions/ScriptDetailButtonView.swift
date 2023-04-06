@@ -10,6 +10,7 @@ import SwiftUI
 struct ScriptDetailButtonView: View {
     var onClick: () -> Void
     var icon: String
+    var disabled: Bool
     var help: LocalizedStringKey
     
     var body: some View {
@@ -24,12 +25,13 @@ struct ScriptDetailButtonView: View {
                 .clipShape(Circle())
         }
         .buttonStyle(.plain)
+        .disabled(disabled)
         .help(help)
     }
 }
 
 struct ScriptDetailButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDetailButtonView(onClick: {}, icon: "xmark", help: "Preview")
+        ScriptDetailButtonView(onClick: {}, icon: "xmark", disabled: false, help: "Preview")
     }
 }

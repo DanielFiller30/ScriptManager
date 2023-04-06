@@ -20,7 +20,7 @@ struct ScriptRowView: View {
             Divider()
                 .padding(.top, Spacing.l)
             
-            ScriptDetailsView(viewModel: viewModel, script: script, isRunning: $isRunning)
+            ScriptDetailsView(viewModel: viewModel, script: script, isRunning: isRunning)
             
         } label: {
             ScriptRowLabel(

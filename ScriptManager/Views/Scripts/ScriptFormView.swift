@@ -40,12 +40,12 @@ struct ScriptFormView: View {
             .padding(.bottom, Spacing.l)
             
             HStack(alignment: .center) {
-                Text("category-script")
+                Text("tag-script")
                     .font(.system(size: FontSize.text))
                 
                 Spacer()
                 
-                CategoryPickerView(viewModel: viewModel)
+                TagPickerView(viewModel: viewModel)
             }
             
             Divider()
@@ -74,7 +74,7 @@ struct ScriptFormView: View {
             CustomButtonView(
                 onClick: {
                     if viewModel.editMode {
-                        viewModel.updateScript()
+                        viewModel.saveChangedScript()
                     } else {
                         viewModel.saveScript()
                     }

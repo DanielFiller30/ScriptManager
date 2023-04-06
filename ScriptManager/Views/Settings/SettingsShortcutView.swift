@@ -10,16 +10,10 @@ import SwiftUI
 
 struct SettingsShortcutView: View {
     @EnvironmentObject var settings: SettingsHandler
+    private let dataHandler = DataHandler.shared
     
-    private var scripts: [Script] = []
-
     private let storage: StorageHandler = StorageHandler()
     private let shortcutLimit = 5
-    
-    init() {
-        debugPrint("Scripts Loaded")
-        self.scripts = storage.loadScripts() ?? []
-    }
     
     func getDataByIndex(index: Int) -> DataModel {
         switch index {
@@ -48,7 +42,9 @@ struct SettingsShortcutView: View {
                         .tag(EmptyScript.id)
                     
                     Picker("", selection: data.selection) {
-                        ForEach(scripts, id: \.self.id) {
+                        Text(EmptyScript.name).tag(EmptyScript.id)
+                        
+                        ForEach(dataHandler.scripts, id: \.self.id) {
                             Text($0.name).tag($0.id)
                         }
                     }

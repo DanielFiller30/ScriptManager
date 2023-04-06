@@ -1,5 +1,5 @@
 //
-//  ScriptsListViewModel.swift
+//  ScriptViewModel.swift
 //  ScriptManager
 //
 //  Created by Filler, Daniel on 03.02.23.
@@ -8,87 +8,80 @@
 import Foundation
 import AppKit
 import SwiftUI
+import AnyCodable
 
 class ScriptViewModel: ObservableObject {
-    private let storage = StorageHandler()
+    internal let dataHandler = DataHandler.shared
+    internal let settingsHandler = SettingsHandler()
+    internal let storageHandler = StorageHandler()
     
     @Published var showAddScript: Bool = false
-    @Published var scripts: [Script] = []
-    @Published var categories: [Category] = []
-
-    @Published var name: String = ""
-    @Published var command: String = ""
-    @Published var selectedIcon: Int = 0
-    @Published var selectedCategory: UUID = UUID()
 
     @Published var editMode: Bool = false
     @Published var editId: UUID = UUID()
     
-    @Published var searchString: String = ""
+    // Form values
+    @Published var name: String = ""
+    @Published var command: String = ""
+    @Published var selectedIcon: Int = 0
+    @Published var selectedTag: UUID = UUID()
     
     @Published var isLogEnabled: Bool = DefaultSettings.logs
     
     func loadSettings() {
-        let storage = StorageHandler()
-        let settings: Settings = storage.loadSettings()
+        // Get current settings
+        settingsHandler.loadSettings()
         
+        // Enable logs button
         DispatchQueue.main.async {
-            self.isLogEnabled = settings.logs
+            self.isLogEnabled = self.settingsHandler.settings.logs
         }
     }
     
-    func loadScripts() {
-        scripts = storage.loadScripts() ?? []
+    func filterScripts(tag: Tag) {
+        dataHandler.scripts = dataHandler.scripts.filter({ $0.tagID == tag.id })
     }
     
-    func filterScripts(category: Category) {
-        scripts = scripts.filter({ $0.categoryID == category.id })
-    }
-    
-    func removeCategory(categoryId: UUID?) {
-        loadScripts()
+    func removeTagFromScript(tagId: UUID?) {
+        // Refresh scripts to remove filter
+        dataHandler.selectedTag = nil
+        dataHandler.loadScripts()
         
-        guard categoryId != nil else { return }
-        
-        for (index, script) in scripts.enumerated() {
-            if script.categoryID == categoryId {
-                scripts[index].categoryID = nil
+        guard tagId != nil else { return }
+        for (index, script) in dataHandler.scripts.enumerated() {
+            if script.tagID == tagId {
+                dataHandler.scripts[index].tagID = nil
             }
         }
         
         updateSavedScripts()
     }
     
-    func loadCategories() {
-        categories = storage.loadCategories() ?? []
-    }
-    
-    func getCategoryById(id: UUID?) -> Category? {
-        if id != EmptyCategory.id {
-            return categories.first(where: {$0.id == id})
+    func getTagById(id: UUID?) -> Tag? {
+        if id != EmptyTag.id {
+            return dataHandler.tags.first(where: {$0.id == id})
         } else {
-            // Empty category
+            // Empty tag
             return nil
         }
     }
     
-    func getDecodedColor(data: Data) -> Color {
-        do {
-            return try decodeColor(from: data)
-        } catch {
-            return AppColor.Primary
-        }
-    }
-    
     func saveScript() {
-        var savedScripts: [Script] = storage.loadScripts() ?? []         
-        let tempScript = Script(name: name, icon: ScriptIcons[selectedIcon], command: command, success: .ready, finished: false, categoryID: selectedCategory)
+        // Refresh scripts to remove filter
+        dataHandler.selectedTag = nil
+        dataHandler.loadScripts()
+        
+        var savedScripts = dataHandler.scripts
+        
+        let tempScript = Script(name: name, icon: ScriptIcons[selectedIcon], command: command, success: .ready, finished: false, tagID: selectedTag)
+        
         savedScripts.append(tempScript)
-        storage.saveScripts(value: savedScripts)
+        storageHandler.save(value: AnyCodable(savedScripts), key: .SCRIPTS)
         
         // Refresh data
-        loadScripts()
+        dataHandler.loadScripts()
         
+        // Reset form
         resetForm()
     }
     
@@ -96,37 +89,41 @@ class ScriptViewModel: ObservableObject {
         name = ""
         command = ""
         selectedIcon = 0
-        selectedCategory = UUID()
+        selectedTag = UUID()
     }
     
     func updateSavedScripts() {
-        storage.saveScripts(value: scripts)
+        storageHandler.save(value: AnyCodable(dataHandler.scripts), key: .SCRIPTS)
     }
     
     func deleteScript(id: UUID) {
-        scripts = scripts.filter {
+        // Refresh scripts to remove filter
+        dataHandler.loadScripts()
+        
+        dataHandler.scripts = dataHandler.scripts.filter {
             $0.id != id
         }
         
         updateSavedScripts()
-        
-        loadScripts()
     }
     
-    func updateScript() {
-        var savedScripts: [Script] = storage.loadScripts() ?? []
-        let index: Int? = savedScripts.firstIndex(where: { $0.id == editId })
+    func saveChangedScript() {
+        // Refresh scripts to remove filter
+        dataHandler.selectedTag = nil
+        dataHandler.loadScripts()
+        
+        let index: Int? = dataHandler.scripts.firstIndex(where: { $0.id == editId })
         
         guard let index else { return }
-        savedScripts[index].name = name
-        savedScripts[index].icon = ScriptIcons[selectedIcon]
-        savedScripts[index].command = command
-        savedScripts[index].categoryID = selectedCategory
+        var selectedScript = dataHandler.scripts[index]
+        selectedScript.name = name
+        selectedScript.icon = ScriptIcons[selectedIcon]
+        selectedScript.command = command
+        selectedScript.tagID = selectedTag
         
-        storage.saveScripts(value: savedScripts)
+        dataHandler.scripts[index] = selectedScript
         
-        // Refresh data
-        scripts = savedScripts
+        updateSavedScripts()
 
         closeEdit()
     }
@@ -138,7 +135,7 @@ class ScriptViewModel: ObservableObject {
         name = script.name
         command = script.command
         selectedIcon = ScriptIcons.firstIndex(of: script.icon) ?? 0
-        selectedCategory = script.categoryID ?? UUID()
+        selectedTag = script.tagID ?? UUID()
         
         showAddScript = true
     }
@@ -149,7 +146,7 @@ class ScriptViewModel: ObservableObject {
     }
     
     func openLogs() {
-        let savedSettings: Settings? = storage.loadSettings()
+        let savedSettings: Settings? = settingsHandler.settings
         guard let settings = savedSettings else {return}
         guard let url = URL(string: "file://\(settings.pathLogs)") else {return}
         

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AnyCodable
 
 struct ScriptRunButtonView: View {
     let viewModel: ScriptViewModel
@@ -102,31 +103,40 @@ struct ScriptRunButtonView: View {
     }
     
     private func runScript(showOutput: Bool) async {
-        activeId = script.id
-        isRunning = true
-        
-        if showOutput {
-            openOutputWindow()
-        }
-        
-        let success = await scriptHandler.runScript(script, test: false)
-        
-        DispatchQueue.main.async {
-            self.script.success = success
+        do {
+            let storage = StorageHandler()
+            guard var tempScripts = try storage.load([Script].self, key: .SCRIPTS)?.get() else { return }
+            guard let index = tempScripts.firstIndex(where: { $0.id == script.id }) else { return }
             
-            withAnimation() {
-                // Show state-button
-                self.script.finished = true
+            activeId = script.id
+            isRunning = true
+            
+            if showOutput {
+                openOutputWindow()
             }
             
-            self.script.lastRun = Date.now
-        }        
-        
-        viewModel.updateSavedScripts()
-        
-        isRunning = false
-        
-        viewModel.loadSettings()
+            let success = await scriptHandler.runScript(script, test: false)
+            
+            tempScripts[index].success = success
+            tempScripts[index].finished = true
+            tempScripts[index].lastRun = Date.now
+            storage.save(value: AnyCodable(tempScripts), key: .SCRIPTS)
+
+            DispatchQueue.main.async {
+                self.script.success = success
+                
+                withAnimation() {
+                    // Show state-button
+                    self.script.finished = true
+                }
+                
+                self.script.lastRun = Date.now
+            }
+            
+            isRunning = false
+        } catch {
+            debugPrint("Error while running script: \(error)")
+        }
     }
     
     private func openOutputWindow() {

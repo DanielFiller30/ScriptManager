@@ -18,3 +18,13 @@ struct Settings: Identifiable, Codable {
     var mainColor: Data
     var shortcuts: [Shortcut]
 }
+
+let DefaultSettings = Settings(
+    shell: Shell(type: .zsh, path: "/bin/zsh", profile: ""),
+    unicode: "en_US.UTF-8",
+    logs: false,
+    pathLogs: "",
+    notifications: false,
+    mainColor: ColorHandler.defaultEncodedColor,
+    shortcuts: []
+)

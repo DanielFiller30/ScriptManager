@@ -7,6 +7,7 @@
 
 import SwiftUI
 import KeyboardShortcuts
+import AnyCodable
 
 @main
 struct ScriptManagerApp: App {
@@ -17,14 +18,17 @@ struct ScriptManagerApp: App {
     @StateObject private var appState = AppState()
     
     init() {
-        // Reset all data
-        //storage.reset()
-        //storage.removeCategories()
-        
-        // Open welcome-screen on first launch
-        let hasLaunchedBefore = storage.loadFirstLaunch()
-        if !hasLaunchedBefore {
-            openWindow()
+        do {
+            // Reset all data
+            //storage.reset()
+            
+            // Open welcome-screen on first launch
+            let hasLaunchedBefore = try storage.load(Bool.self, key: .FIRSTLAUNCH)?.get() ?? false
+            if !hasLaunchedBefore {
+                openWindow()
+            }
+        } catch {
+            debugPrint("Failed to load first launch: \(error)")
         }
     }
     
@@ -39,7 +43,7 @@ struct ScriptManagerApp: App {
     
     func closeWindow() {
         if hideWelcomeScreen {
-            storage.updateFirstLaunch()
+            storage.save(value: AnyCodable(true), key: .FIRSTLAUNCH)
         }
         
         window.close()
@@ -55,8 +59,10 @@ struct ScriptManagerApp: App {
 
 @MainActor
 final class AppState: ObservableObject {
+    private let dataHandler = DataHandler()
     private let scriptHandler = ScriptHandler()
-    private let storageHandler = StorageHandler()
+    private let settingsHandler = SettingsHandler()
+    
     private var savedShortcuts: [Shortcut] = []
     
     init() {        
@@ -87,17 +93,17 @@ final class AppState: ObservableObject {
     }
     
     func runScript(index: Int) {
-        scriptHandler.loadScripts()
-        savedShortcuts = storageHandler.loadSettings().shortcuts
+        dataHandler.loadScripts()
+        savedShortcuts = settingsHandler.settings.shortcuts
 
         let id = savedShortcuts[index].scriptId
         
         if id != EmptyScript.id {
-            if let script = scriptHandler.scripts.first(where: { $0.id == id }) {
-                self.scriptHandler.sendStartNotification(name: script.name)
+            if let script = dataHandler.scripts.first(where: { $0.id == id }) {
+                NotificationHandler.sendStartNotification(name: script.name)
                 
                 Task {
-                    await self.scriptHandler.runScript(script, test: false)
+                    await scriptHandler.runScript(script, test: false)
                 }
             }
         }

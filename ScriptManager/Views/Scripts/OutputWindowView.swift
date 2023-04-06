@@ -12,7 +12,7 @@ struct OutputWindowView: View {
     
     var body: some View {
         ScrollView {
-            Text(scriptHandler.output ?? "")
+            Text(scriptHandler.output)
         }
         .frame(minWidth: 500, minHeight: 600)
     }
