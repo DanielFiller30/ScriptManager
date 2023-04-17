@@ -42,6 +42,7 @@ class ScriptViewModel: ObservableObject {
                 openOutputWindow()
             }
             
+            // Update all scripts
             let success = await scriptHandler.runScript(runningScript, test: false)
             tempScripts[index].success = success
             tempScripts[index].finished = true
@@ -49,14 +50,12 @@ class ScriptViewModel: ObservableObject {
             storageHandler.save(value: AnyCodable(tempScripts), key: .SCRIPTS)
             
             DispatchQueue.main.async {
-                self.runningScript.success = success
-                
-                withAnimation() {
-                    // Show state-button
-                    self.runningScript.finished = true
-                }
-                
-                self.runningScript.lastRun = Date.now
+                // Update local scripts (filtered)
+                var scriptIndex = self.dataHandler.scripts.firstIndex(where: { $0.id == self.runningScript.id })
+                guard let index = scriptIndex else { return }
+                self.dataHandler.scripts[index].success = success
+                self.dataHandler.scripts[index].finished = true
+                self.dataHandler.scripts[index].lastRun = Date.now
             }
             
             changeIsRunningState(state: false)
@@ -182,6 +181,9 @@ class ScriptViewModel: ObservableObject {
         dataHandler.scripts[index] = selectedScript
         
         updateSavedScripts()
+        
+        // Refresh data
+        dataHandler.loadScripts()
         
         closeEdit()
     }

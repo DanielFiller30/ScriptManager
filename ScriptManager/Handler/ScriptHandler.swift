@@ -17,6 +17,7 @@ class ScriptHandler: ScriptHandlerProtocol {
             let settings = settingsHandler.settings
             let task = Process()
             let pipe = Pipe()
+            self.output = ""
             
             // Build valid shell command
             let unicode = "export LANG=\(settings.unicode);"
@@ -39,9 +40,11 @@ class ScriptHandler: ScriptHandlerProtocol {
                     print("Error decoding data: \(pipe.availableData)")
                 }
             }
-            
+                        
             try task.run()
             task.waitUntilExit()
+
+            try outHandle.close()
             
             return handleScriptResult(
                 result: task.terminationStatus,
