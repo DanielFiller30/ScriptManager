@@ -8,40 +8,62 @@
 import SwiftUI
 
 struct ScriptsListView: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
+    @ObservedObject var data = DataHandler.shared
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("saved \(String($viewModel.scripts.count))")
-                .fontWeight(.bold)
-                .font(.system(size: FontSize.subTitle))
-                .padding(.bottom, Spacing.l)
-            
-            if (viewModel.scripts.isEmpty) {
-                Text("empty-scripts")
-                    .font(.system(size: FontSize.text))
-                    .foregroundColor(Color.Creme)
-                    .padding()
-                    .multilineTextAlignment(.center)
+        VStack(alignment: .leading, spacing: Spacing.l) {
+            HStack(alignment: .center) {
+                Text("saved \(String(data.scripts.count))")
+                    .fontWeight(.bold)
+                    .font(.system(size: FontSize.subTitle))
                 
-            } else {
-                ScrollView {
-                    ForEach($viewModel.scripts) { $script in
-                        ScriptRowView(viewModel: viewModel, script: $script)
-                    }
+                Spacer()
+                
+                MenuSheetView(
+                    hint: "add-new-script",
+                    sheetTitle: viewModel.editMode ? "edit-script-title" : "add-new-script",
+                    onClick: {
+                        viewModel.editMode = false
+                        viewModel.showAddScript.toggle()
+                    },
+                    onClose: viewModel.editMode ? { viewModel.closeEdit() } : {},
+                    isPresented: $viewModel.showAddScript,
+                    height: 480
+                ) {
+                    ScriptFormView(viewModel: viewModel)
                 }
             }
+            .padding(.bottom, Spacing.l)
             
+            if (viewModel.dataHandler.scripts.isEmpty) {
+                Text("empty-scripts")
+                    .font(.system(size: FontSize.text))
+                    .foregroundColor(AppColor.Creme)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+            } else {
+                ScrollView {
+                    ForEach($data.scripts) { $script in
+                        ScriptRowView(viewModel: viewModel, script: $script)
+                            .padding(.horizontal, Spacing.l)
+                            .padding(.bottom, Spacing.m)
+                    }
+                    
+                    Spacer()
+                }
+            }
         }
-        .frame(maxWidth: 350, alignment: .leading)
-        .onAppear() {
-            viewModel.loadScripts()
-        }
+        .padding(.horizontal, Spacing.xl)
+        .padding(.top, Spacing.m)
     }
 }
 
 struct ScriptsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptsListView(viewModel: ScriptsViewModel())
+        ScriptsListView(viewModel: ScriptViewModel())
     }
 }

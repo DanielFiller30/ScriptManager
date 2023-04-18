@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct ScriptStateButtonView: View {
-    let viewModel: ScriptsViewModel
-    
-    @Binding var script: Script
-    @Binding var isRunning: Bool
+    let viewModel: ScriptViewModel
+    var script: Script
     
     var body: some View {
         if (script.finished) {
@@ -20,10 +18,10 @@ struct ScriptStateButtonView: View {
             if (success) {
                 // Script run successfull
                 Image(systemName: "checkmark")
-                    .foregroundColor(Color.Success)
+                    .foregroundColor(AppColor.Success)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(Color.Background)
+                    .background(AppColor.Light)
                     .clipShape(Circle())
             } else if (viewModel.isLogEnabled) {
                 // Script failed and logging is active
@@ -34,19 +32,19 @@ struct ScriptStateButtonView: View {
                         .resizable()
                         .frame(width: IconSize.s, height: IconSize.s)
                         .padding(Spacing.l)
-                        .foregroundColor(Color.Creme)
-                        .background(Color.Danger)
+                        .foregroundColor(AppColor.Creme)
+                        .background(AppColor.Danger)
                         .clipShape(Circle())
                 }
                 .buttonStyle(.plain)
-                .disabled(isRunning)
+                .disabled(viewModel.isRunning && viewModel.runningScript.id == script.id)
             } else {
                 // Script failed but logging is disabled
                 Image(systemName: "xmark")
-                    .foregroundColor(Color.Danger)
+                    .foregroundColor(AppColor.Danger)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(Color.Background)
+                    .background(AppColor.Light)
                     .clipShape(Circle())
             }
             
@@ -56,6 +54,6 @@ struct ScriptStateButtonView: View {
 
 struct ScriptStateButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptStateButtonView(viewModel: ScriptsViewModel(), script: .constant(DefaultScript), isRunning: .constant(false))
+        ScriptStateButtonView(viewModel: ScriptViewModel(), script: DefaultScript)
     }
 }

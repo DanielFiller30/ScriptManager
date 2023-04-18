@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditScriptView: View {
-    @StateObject var viewModel: ScriptsViewModel
+    @StateObject var viewModel: ScriptViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,6 +30,15 @@ struct EditScriptView: View {
             }
             .padding(.bottom, Spacing.l)
             
+            HStack(alignment: .center) {
+                Text("tag-script")
+                    .font(.system(size: FontSize.text))
+                
+                Spacer()
+                
+                TagPickerView(viewModel: viewModel)
+            }
+            
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
                     Text("path-add-script")
@@ -45,21 +54,34 @@ struct EditScriptView: View {
             
             Spacer()
             
-            HStack(alignment: .center) {
-                DeleteChangesButton(viewModel: viewModel)
-                
-                Spacer()
-                
-                SaveChangesButton(viewModel: viewModel)
-            }
+            // Save changed script
+            CustomButtonView(
+                onClick: { viewModel.updateSavedScripts() },
+                label: "edit-save",
+                color: AppColor.Success,
+                outlined: false,
+                disabled: false
+            )
+            .padding(.bottom, Spacing.m)
             
+            // Cancel
+            CustomButtonView(
+                onClick: {
+                    viewModel.closeEdit()
+                    viewModel.showAddScript.toggle()
+                },
+                label: "cancel",
+                color: AppColor.Creme,
+                outlined: true,
+                disabled: false
+            )
         }
-        .frame(height: 305)
+        .padding(.all, Spacing.xl)
     }
 }
 
 struct EditScriptView_Previews: PreviewProvider {
     static var previews: some View {
-        EditScriptView(viewModel: ScriptsViewModel())
+        EditScriptView(viewModel: ScriptViewModel())
     }
 }

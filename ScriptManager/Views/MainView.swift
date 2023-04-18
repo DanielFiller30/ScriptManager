@@ -8,56 +8,41 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var viewModel = ScriptsViewModel()
+    @StateObject private var vmScript = ScriptViewModel()
+    @StateObject private var vmTag = TagViewModel()
+    
+    @StateObject private var settings = SettingsHandler()
     
     var body: some View {
         VStack(spacing: Spacing.zero) {
             HeaderView()
-            
-            GroupView(
-                toggleVar: $viewModel.showAddScript,
-                toggle: { toggleGroup() },
-                label: viewModel.editMode ? "edit-script-title" : "add-new-script",
-                info: viewModel.editMode ? "" : "info-add-new-script",
-                view: viewModel.editMode ? AnyView(EditScriptView(viewModel: viewModel)) : AnyView(AddScriptView(viewModel: viewModel))
-            )
-            .padding(.vertical, Spacing.l)
-            .background(Color.AppBg)
+                .background(
+                    LinearGradient(colors: [AppColor.Header, AppColor.AppBg], startPoint: .top, endPoint: .bottom)
+                )
+
             
             Divider()
+                .frame(minHeight: 2)
+                .background(AppColor.Header)
+                .foregroundColor(AppColor.AppBg)
             
-            /* TODO: Add group-feature
-             GroupView(
-             toggleVar: $viewModelMain.showAddGroup,
-             toggle: {viewModelMain.showAddGroup.toggle()},
-             label: "add-new-group",
-             info: "info-add-new-group",
-             view: AnyView(AddGroupView(closeGroup: {
-             viewModelMain.showAddGroup.toggle()
-             }))
-             )
-             
-             Divider()
-             */
-            
-            ScrollView() {
-                ScriptsListView(viewModel: viewModel)
-                    .padding(.all, Spacing.xl)
-                
-                Spacer()
-            }
-            .background(Color.AppBg)
-        }
-        .frame(width: 350, height: 450)
-        
-    }
+            TagsListView(vmTag: vmTag, vmScript: vmScript)
+                .background(AppColor.AppBg)
+
     
-    func toggleGroup() {
-        if viewModel.editMode {
-            viewModel.closeEdit()            
-        } else {
-            viewModel.showAddScript.toggle()
+            Divider()
+                .frame(minHeight: 2)
+                .background(AppColor.Header)
+                .foregroundColor(AppColor.AppBg)
+               
+            
+            ScriptsListView(viewModel: vmScript)
+                .padding(.top, Spacing.xl)
+                .background(AppColor.AppBg)
+
         }
+        .frame(width: 380, height: 550)
+        .environmentObject(settings)
     }
 }
 

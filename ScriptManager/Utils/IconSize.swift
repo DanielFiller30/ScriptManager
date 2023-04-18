@@ -8,6 +8,7 @@
 import Foundation
 
 struct IconSize {
+    static let xs = 7.0
     static let s = 13.0
     static let m = 15.0
     static let l = 20.0

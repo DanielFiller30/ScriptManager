@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SettingsUnicodeView: View {
-    @StateObject var viewModel: SettingsViewModel
-    
+    @EnvironmentObject var settings: SettingsHandler
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
@@ -18,16 +18,16 @@ struct SettingsUnicodeView: View {
                 
                 Spacer()
                 
-                TextField("", text: $viewModel.unicode)
-                    .frame(width: 100)
+                TextField("", text: $settings.unicode)
+                    .frame(width: 150)
             }
         }
-        .padding(.vertical, Spacing.m)
-        .padding(.horizontal, Spacing.xl)    }
+        .padding(.vertical, Spacing.m)                
+    }
 }
 
 struct SettingsUnicodeView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsUnicodeView(viewModel: SettingsViewModel())
+        SettingsUnicodeView()
     }
 }

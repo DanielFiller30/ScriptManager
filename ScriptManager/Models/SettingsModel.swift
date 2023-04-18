@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Settings: Identifiable, Codable {
     var id = UUID()
@@ -14,4 +15,16 @@ struct Settings: Identifiable, Codable {
     var logs: Bool
     var pathLogs: String
     var notifications: Bool
+    var mainColor: Data
+    var shortcuts: [Shortcut]
 }
+
+let DefaultSettings = Settings(
+    shell: Shell(type: .zsh, path: "/bin/zsh", profile: ""),
+    unicode: "en_US.UTF-8",
+    logs: false,
+    pathLogs: "",
+    notifications: false,
+    mainColor: ColorHandler.defaultEncodedColor,
+    shortcuts: []
+)

@@ -1,5 +1,5 @@
 //
-//  ShellTypeModel.swift
+//  ShellModel.swift
 //  ScriptManager
 //
 //  Created by Filler, Daniel on 06.02.23.

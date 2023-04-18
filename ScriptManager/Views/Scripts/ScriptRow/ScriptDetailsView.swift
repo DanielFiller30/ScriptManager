@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ScriptDetailsView: View {
-    var viewModel: ScriptsViewModel
+    var viewModel: ScriptViewModel
     let scriptHandler: ScriptHandler = ScriptHandler()
-    // TODO: CHECK BINDING
     var script: Script
+    
+    @State private var showToast = false
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,9 +32,15 @@ struct ScriptDetailsView: View {
                         let pasteboard = NSPasteboard.general
                         pasteboard.clearContents()
                         pasteboard.setString(script.command, forType: .string)
+                        
+                        // Show copied toast
+                        showToast.toggle()
                     }
             }
             .padding(.bottom, Spacing.m)
+            .toast(isPresenting: $showToast, duration: 1, tapToDismiss: true) {
+                AlertToast(type: .regular, title: "hint-copied")
+            }
             
             HStack(alignment: .top) {
                 Text("last-run")
@@ -43,7 +51,7 @@ struct ScriptDetailsView: View {
                 Spacer()
                 
                 if (script.lastRun != nil) {
-                    Text(scriptHandler.getFormattedDate(date: script.lastRun!))
+                    Text(DateHandler.getFormattedDate(date: script.lastRun!))
                         .font(.system(size: FontSize.text))
                 } else {
                     Text("-")
@@ -54,11 +62,26 @@ struct ScriptDetailsView: View {
             Divider()
             
             HStack(alignment: .center) {
-                ScriptLogButtonView(viewModel: viewModel)
-                
+                // Open logs
+                ScriptDetailButtonView(
+                    onClick: { viewModel.openLogs() },
+                    icon: "folder",
+                    disabled: false,
+                    help: "button-logs"
+                )
+                                
                 Spacer()
                 
-                ScriptEditButtonView(viewModel: viewModel, script: script)
+                // Edit script
+                ScriptDetailButtonView(
+                    onClick: { viewModel.openEdit(script: script) },
+                    icon: "pencil",
+                    disabled: viewModel.isRunning && viewModel.runningScript.id == script.id,
+                    help: "button-edit"
+                )
+                
+                // Delete script
+                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, disabled: viewModel.isRunning && viewModel.runningScript.id == script.id)
             }
             .padding(.all, Spacing.m)
         }
@@ -68,6 +91,6 @@ struct ScriptDetailsView: View {
 
 struct ScriptDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDetailsView(viewModel: ScriptsViewModel(), script: DefaultScript)
+        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript)
     }
 }

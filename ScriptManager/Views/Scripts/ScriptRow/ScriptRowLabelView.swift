@@ -8,19 +8,18 @@
 import SwiftUI
 
 struct ScriptRowLabel: View {
-    var viewModel: ScriptsViewModel
+    @EnvironmentObject var settings: SettingsHandler
+    
+    var viewModel: ScriptViewModel
     var toggleDetails: () -> Void
-    
-    @Binding var script: Script
-    
-    @State var isRunning: Bool = false
+    var script: Script
     
     var body: some View {
         HStack(alignment: .center) {
             Image(systemName: script.icon)
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(Color.Primary)
+                .foregroundColor(settings.mainColor)
                 .frame(height: IconSize.m)
                 .padding(.horizontal, Spacing.m)
                 .onTapGesture {
@@ -29,30 +28,37 @@ struct ScriptRowLabel: View {
                     }
                 }
             
-            Text(script.name)
-                .font(.system(size: FontSize.subTitle))
-                .fontWeight(.bold)
-                .frame(maxWidth: 110, alignment: .leading)
-                .lineLimit(1)
-                .onTapGesture {
-                    withAnimation() {
-                        toggleDetails()
+            HStack(alignment: .center, spacing: Spacing.l) {
+                Text(script.name)
+                    .font(.system(size: FontSize.subTitle))
+                    .fontWeight(.bold)
+                    .lineLimit(1)
+                    .scaledToFit()
+                    .onTapGesture {
+                        withAnimation() {
+                            toggleDetails()
+                        }
                     }
+                    .help(script.name)
+                                
+                let tag = viewModel.getTagById(id: script.tagID)
+                
+                if tag != nil {
+                    BadgeView(color: ColorHandler.getDecodedColor(data: tag!.badgeColor), title: tag!.name, active: false)
                 }
+            }
             
             Spacer()
             
-            ScriptStateButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning)
+            ScriptStateButtonView(viewModel: viewModel, script: script)
             
-            ScriptRunButtonView(viewModel: viewModel, script: $script, isRunning: $isRunning)
-            
-            ScriptDeleteButtonView(viewModel: viewModel, scriptId: $script.id, isRunning: $isRunning)
+            ScriptRunButtonView(viewModel: viewModel, script: script)
         }
     }
 }
 
 struct ScriptRowLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRowLabel(viewModel: ScriptsViewModel(), toggleDetails: {}, script: .constant(DefaultScript))
+        ScriptRowLabel(viewModel: ScriptViewModel(), toggleDetails: {}, script: DefaultScript)
     }
 }
