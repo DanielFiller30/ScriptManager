@@ -2,7 +2,7 @@
 
 <image style="display: inline-block;" src="Media/AppIcons/64.png" />
 
-# Script Manager (SwiftUI)
+# Script Manager V2 (SwiftUI)
 
 An easy and comfortable swiftUI **menu bar-tool**, to organize and use your own terminal-scripts.
 
@@ -26,15 +26,23 @@ Script Manager is a menu bar-tool to organize and simplify running a custom term
 - Local notifications when script finished
 - ...
 
+### New features added in version 2.0
+- Output window for running script
+- Change your main color from settings
+- Add Tags to organize your scripts
+- New UI-Design
+- Keyboard-shortcuts for scripts
+- Toggle to run tool by startup
 
-<image src="Media/Screenshots/start.png" width="250">    
-<image src="Media/Screenshots/settings.png" width="250">    
+<image src="Media/Screenshots/start_v2.png" width="250">    
+<image src="Media/Screenshots/tags_v2.png" width="250">    
+<image src="Media/Screenshots/settings_v2.png" width="250">    
 
 
 ## Setup
 To install and use your personal Script Manager, you have to follow this steps:
 - Clone this project to your local space
-- Open the project in XCode
+- Open the project in Xcode
 - Run a build
 - Copy the resulting program-file to your programs folder
-> XCode > Product > Show Build Folder in Finder
+> Xcode > Product > Show Build Folder in Finder
