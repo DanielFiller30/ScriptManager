@@ -141,7 +141,9 @@ class SettingsHandler: SettingsHandlerProtocol {
             storage.save(value: AnyCodable(settings), key: .SETTINGS)
             
             // Hide settings-modal
-            showingPopover.toggle()
+            DispatchQueue.main.async {
+                self.showingPopover.toggle()
+            }
         } catch {
             debugPrint("Save settings failed: \(error)")
         }

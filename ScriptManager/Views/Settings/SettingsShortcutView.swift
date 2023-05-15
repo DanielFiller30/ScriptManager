@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsShortcutView: View {
     @EnvironmentObject var settings: SettingsHandler
-    private let dataHandler = DataHandler.shared
+    private let dataHandler = DataHandler()
     
     private let storage: StorageHandler = StorageHandler()
     private let shortcutLimit = 5
@@ -57,6 +57,9 @@ struct SettingsShortcutView: View {
             }
         }
         .padding(.top, Spacing.l)
+        .onAppear {
+            dataHandler.loadScripts()
+        }
     }
 }
 

@@ -41,7 +41,7 @@ struct TagsListView: View {
                             // Remove tag to script connection
                             vmScript.removeTagFromScript(tagId: data.selectedTag)
                             // Delete the tag
-                            vmTag.deleteTag()
+                            vmTag.deleteTag(selectedTagId: data.selectedTag!)
                             data.selectedTag = nil
                         }
                     } message: {

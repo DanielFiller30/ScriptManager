@@ -51,7 +51,7 @@ class ScriptViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 // Update local scripts (filtered)
-                var scriptIndex = self.dataHandler.scripts.firstIndex(where: { $0.id == self.runningScript.id })
+                let scriptIndex = self.dataHandler.scripts.firstIndex(where: { $0.id == self.runningScript.id })
                 guard let index = scriptIndex else { return }
                 self.dataHandler.scripts[index].success = success
                 self.dataHandler.scripts[index].finished = true
@@ -112,6 +112,8 @@ class ScriptViewModel: ObservableObject {
         }
         
         updateSavedScripts()
+        
+        dataHandler.selectedTag = tagId
     }
     
     func getTagById(id: UUID?) -> Tag? {
