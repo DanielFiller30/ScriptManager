@@ -32,10 +32,10 @@ class TagViewModel: ObservableObject {
         }
     }
     
-    func deleteTag() {
+    func deleteTag(selectedTagId: UUID) {
         // Remove tag entry
         dataHandler.tags = dataHandler.tags.filter {
-            $0.id != dataHandler.selectedTag
+            $0.id != selectedTagId
         }
         
         // Update saved tags

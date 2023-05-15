@@ -94,6 +94,8 @@ final class AppState: ObservableObject {
     
     func runScript(index: Int) {
         dataHandler.loadScripts()
+        settingsHandler.loadSettings()
+        
         savedShortcuts = settingsHandler.settings.shortcuts
 
         let id = savedShortcuts[index].scriptId
