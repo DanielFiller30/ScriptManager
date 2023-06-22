@@ -45,6 +45,10 @@ To install the ScriptManager with Homebrew, you have to run the following comman
 
 Or `brew tap danielfiller30/tap` and then `brew install scriptmanager`.
 
+To open the app, you have to trust the application in the system settings:
+- Open settings on your Mac
+- Navigate to **Privacy & Security**
+- Under security, press allow to open the ScriptManager
 
 ## Setup
 To install and use your personal Script Manager, you have to follow this steps:
