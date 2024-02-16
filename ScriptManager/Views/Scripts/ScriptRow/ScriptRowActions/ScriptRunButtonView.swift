@@ -18,13 +18,20 @@ struct ScriptRunButtonView: View {
     
     var body: some View {
         if (viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id })) {
-            ProgressView()
-                .frame(width: IconSize.s, height: IconSize.s)
-                .scaleEffect(0.5)
-                .padding(Spacing.l)
-                .background(AppColor.Light)
-                .clipShape(Circle())
-            
+            if let time = viewModel.sciptTimes.first(where: { $0.scriptId == script.id })?.remainingTime {
+                Text(time)
+                    .font(.caption2)
+                    .padding(Spacing.l)
+                    .background(AppColor.Light)
+                    .cornerRadius(10.0)
+            } else {
+                ProgressView()
+                    .frame(width: IconSize.s, height: IconSize.s)
+                    .scaleEffect(0.5)
+                    .padding(Spacing.l)
+                    .background(AppColor.Light)
+                    .clipShape(Circle())
+            }
         } else {
             Button {
                 showRunPopover.toggle()

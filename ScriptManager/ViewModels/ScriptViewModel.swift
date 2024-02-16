@@ -29,8 +29,12 @@ class ScriptViewModel: ObservableObject {
     
     @Published var isLogEnabled: Bool = DefaultSettings.logs
     @Published var runningScript: [Script] = []
+    @Published var sciptTimes: [ScriptTime] = []
     @Published var isRunning: Bool = false
     
+    private var runningTimer: Timer?
+    
+    @MainActor
     func runScript(showOutput: Bool, scriptId: UUID) {
         Task {
             guard var tempScripts = try storageHandler.load([Script].self, key: .SCRIPTS)?.get() else { return }
@@ -42,23 +46,55 @@ class ScriptViewModel: ObservableObject {
                 openOutputWindow()
             }
             
+            var tempTimes = self.sciptTimes
+            var tempIndex = 0
+            if let timeIndex = tempTimes.firstIndex(where: { $0.scriptId == scriptId }) {
+                tempIndex = timeIndex
+            } else {
+                tempTimes.append(ScriptTime(scriptId: scriptId))
+                tempIndex = tempTimes.count - 1
+            }
+            
+            let runningIndex = tempIndex
+            let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                tempTimes[runningIndex].currentTime += 1
+            }
+            
+            startRunningTimer(tempTimes[runningIndex].runningTimes, runningIndex)
+            
             // Update all scripts
             let success = await scriptHandler.runScript(tempScripts[index], test: false)
+            
+            timer.invalidate()
+            runningTimer?.invalidate()
+            
+            let finishedTime = tempTimes[runningIndex].currentTime
+            
+            if success == .successfull {
+                tempTimes[runningIndex].runningTimes.append(finishedTime)
+            }
+            
+            tempTimes[runningIndex].currentTime = 0
+            tempTimes[runningIndex].remainingTime = nil
+            tempTimes[runningIndex].progressValue = 1.0
+
+            storageHandler.save(value: AnyCodable(tempTimes), key: .TIMES)
+            
             tempScripts[index].success = success
             tempScripts[index].finished = true
             tempScripts[index].lastRun = Date.now
             storageHandler.save(value: AnyCodable(tempScripts), key: .SCRIPTS)
             
-            DispatchQueue.main.async {
-                // Update local scripts (filtered)
-                let scriptIndex = self.dataHandler.scripts.firstIndex(where: { $0.id == scriptId })
-                guard let index = scriptIndex else { return }
-                self.dataHandler.scripts[index].success = success
-                self.dataHandler.scripts[index].finished = true
-                self.dataHandler.scripts[index].lastRun = Date.now
-            }
+            // Update local scripts (filtered)
+            let scriptIndex = self.dataHandler.scripts.firstIndex(where: { $0.id == scriptId })
+            guard let index = scriptIndex else { return }
+            self.dataHandler.scripts[index].success = success
+            self.dataHandler.scripts[index].finished = true
+            self.dataHandler.scripts[index].lastRun = Date.now
+            self.sciptTimes = tempTimes
             
             changeIsRunningState(state: false)
+            
             self.runningScript = self.runningScript.filter { $0.id != scriptId }
             
             // Check if logs enabled
@@ -66,15 +102,45 @@ class ScriptViewModel: ObservableObject {
         }
     }
     
-    func changeIsRunningState(state: Bool) {
-        DispatchQueue.main.async {
-            if !state {
-                if self.runningScript.isEmpty {
-                    self.isRunning = false
+    private func startRunningTimer(_ previousTimes: [Int],_ runningIndex: Int) {
+        if previousTimes.count > 3 {
+            var totalTime = previousTimes.reduce(0, +) / previousTimes.count
+            let tempTotalTime = totalTime
+            
+            runningTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                if totalTime >= 1 {
+                    totalTime -= 1
+                    
+                    let mins = String(format: "%02d", totalTime / 60)
+                    let secs = String(format: "%02d", totalTime % 60)
+                    let progress = Double(totalTime) / Double(tempTotalTime)
+                    
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            self.sciptTimes[runningIndex].remainingTime = "\(mins):\(secs)"
+                            self.sciptTimes[runningIndex].progressValue = progress
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            self.sciptTimes[runningIndex].remainingTime = nil
+                            self.sciptTimes[runningIndex].progressValue = 0.0
+                        }
+                    }
                 }
-            } else {
-                self.isRunning = true
             }
+        }
+    }
+    
+    @MainActor
+    func changeIsRunningState(state: Bool) {
+        if !state {
+            if self.runningScript.isEmpty {
+                self.isRunning = false
+            }
+        } else {
+            self.isRunning = true
         }
     }
     
@@ -92,14 +158,13 @@ class ScriptViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func loadSettings() {
         // Get current settings
         settingsHandler.loadSettings()
         
         // Enable logs button
-        DispatchQueue.main.async {
-            self.isLogEnabled = self.settingsHandler.settings.logs
-        }
+        self.isLogEnabled = self.settingsHandler.settings.logs
     }
     
     func filterScripts(tag: Tag) {
@@ -197,6 +262,7 @@ class ScriptViewModel: ObservableObject {
         closeEdit()
     }
     
+    @MainActor
     func openEdit(script: Script) {
         editMode = true
         editId = script.id
@@ -206,9 +272,7 @@ class ScriptViewModel: ObservableObject {
         selectedIcon = ScriptIcons.firstIndex(of: script.icon) ?? 0
         selectedTag = script.tagID ?? UUID()
         
-        DispatchQueue.main.async {
-            self.showAddScript = true
-        }
+        self.showAddScript = true
     }
     
     func closeEdit() {
@@ -222,5 +286,14 @@ class ScriptViewModel: ObservableObject {
         guard let url = URL(string: "file://\(settings.pathLogs)") else {return}
         
         NSWorkspace.shared.open(url)
+    }
+    
+    @MainActor
+    func loadScriptTimes() {
+        do {
+            self.sciptTimes = try self.storageHandler.load([ScriptTime].self, key: .TIMES)?.get() ?? []
+        } catch {
+            debugPrint("Error while loading script times")
+        }
     }
 }
