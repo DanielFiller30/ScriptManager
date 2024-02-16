@@ -20,7 +20,7 @@ struct HeaderView: View {
             Text("Script Manager")
                 .fontWeight(.bold)
             
-            Text("v2")
+            Text("v3")
                 .fontWeight(.light)
             
             Spacer()

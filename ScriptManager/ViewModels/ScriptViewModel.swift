@@ -28,13 +28,13 @@ class ScriptViewModel: ObservableObject {
     @Published var selectedTag: UUID = UUID()
     
     @Published var isLogEnabled: Bool = DefaultSettings.logs
-    @Published var runningScript: Script = DefaultScript
+    @Published var runningScript: [Script] = []
     @Published var isRunning: Bool = false
     
-    func runScript(showOutput: Bool) {
+    func runScript(showOutput: Bool, scriptId: UUID) {
         Task {
             guard var tempScripts = try storageHandler.load([Script].self, key: .SCRIPTS)?.get() else { return }
-            guard let index = tempScripts.firstIndex(where: { $0.id == runningScript.id }) else { return }
+            guard let index = tempScripts.firstIndex(where: { $0.id == scriptId }) else { return }
             
             changeIsRunningState(state: true)
             
@@ -43,7 +43,7 @@ class ScriptViewModel: ObservableObject {
             }
             
             // Update all scripts
-            let success = await scriptHandler.runScript(runningScript, test: false)
+            let success = await scriptHandler.runScript(tempScripts[index], test: false)
             tempScripts[index].success = success
             tempScripts[index].finished = true
             tempScripts[index].lastRun = Date.now
@@ -51,7 +51,7 @@ class ScriptViewModel: ObservableObject {
             
             DispatchQueue.main.async {
                 // Update local scripts (filtered)
-                let scriptIndex = self.dataHandler.scripts.firstIndex(where: { $0.id == self.runningScript.id })
+                let scriptIndex = self.dataHandler.scripts.firstIndex(where: { $0.id == scriptId })
                 guard let index = scriptIndex else { return }
                 self.dataHandler.scripts[index].success = success
                 self.dataHandler.scripts[index].finished = true
@@ -59,6 +59,7 @@ class ScriptViewModel: ObservableObject {
             }
             
             changeIsRunningState(state: false)
+            self.runningScript = self.runningScript.filter { $0.id != scriptId }
             
             // Check if logs enabled
             loadSettings()
@@ -67,7 +68,13 @@ class ScriptViewModel: ObservableObject {
     
     func changeIsRunningState(state: Bool) {
         DispatchQueue.main.async {
-            self.isRunning = state
+            if !state {
+                if self.runningScript.isEmpty {
+                    self.isRunning = false
+                }
+            } else {
+                self.isRunning = true
+            }
         }
     }
     
@@ -199,7 +206,9 @@ class ScriptViewModel: ObservableObject {
         selectedIcon = ScriptIcons.firstIndex(of: script.icon) ?? 0
         selectedTag = script.tagID ?? UUID()
         
-        showAddScript = true
+        DispatchQueue.main.async {
+            self.showAddScript = true
+        }
     }
     
     func closeEdit() {

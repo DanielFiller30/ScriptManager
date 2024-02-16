@@ -17,7 +17,7 @@ struct ScriptRunButtonView: View {
     @State var showRunPopover: Bool = false
     
     var body: some View {
-        if (viewModel.isRunning && viewModel.runningScript.id == script.id) {
+        if (viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id })) {
             ProgressView()
                 .frame(width: IconSize.s, height: IconSize.s)
                 .scaleEffect(0.5)
@@ -37,13 +37,12 @@ struct ScriptRunButtonView: View {
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
-            .disabled(viewModel.isRunning)
             .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {
                 VStack(alignment: .center, spacing: Spacing.m) {
                     Button {
                         showRunPopover.toggle()
-                        viewModel.runningScript = script                        
-                        viewModel.runScript(showOutput: false)
+                        viewModel.runningScript.append(script)
+                        viewModel.runScript(showOutput: false, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
@@ -67,8 +66,8 @@ struct ScriptRunButtonView: View {
                     
                     Button {
                         showRunPopover.toggle()
-                        viewModel.runningScript = script
-                        viewModel.runScript(showOutput: true)
+                        viewModel.runningScript.append(script)
+                        viewModel.runScript(showOutput: true, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()

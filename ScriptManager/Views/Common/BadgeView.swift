@@ -24,6 +24,7 @@ struct BadgeView: View {
                 .frame(maxWidth: 10, maxHeight: 10)
                 .foregroundColor(color)
         }
+        .frame(maxWidth: 100)
         .padding(.horizontal, Spacing.l)
         .padding(.vertical, Spacing.m)
         .background(active ? AppColor.Creme : AppColor.Light)
@@ -34,6 +35,6 @@ struct BadgeView: View {
 
 struct BadgeView_Previews: PreviewProvider {
     static var previews: some View {
-        BadgeView(color: AppColor.Primary, title: "Badge", active: false)
+        BadgeView(color: AppColor.Primary, title: "Einsehrsehrlangertext", active: false)
     }
 }

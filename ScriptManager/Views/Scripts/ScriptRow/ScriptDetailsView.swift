@@ -76,12 +76,12 @@ struct ScriptDetailsView: View {
                 ScriptDetailButtonView(
                     onClick: { viewModel.openEdit(script: script) },
                     icon: "pencil",
-                    disabled: viewModel.isRunning && viewModel.runningScript.id == script.id,
+                    disabled: viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id }),
                     help: "button-edit"
                 )
                 
                 // Delete script
-                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, disabled: viewModel.isRunning && viewModel.runningScript.id == script.id)
+                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, disabled: viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id }))
             }
             .padding(.all, Spacing.m)
         }
