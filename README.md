@@ -30,7 +30,7 @@ Script Manager is a menu bar-tool to organize and simplify running a custom term
 ### New features added in version 3.0 (v1.0.2)
 - Fixed dismissing sheet to use ScriptManager with macOS Sonoma
 - Added dynamic time calculation to monitor your progress
-- The execution of multiple scripts in parallel has been enabled
+- Parallel execution of multiple scripts has been enabled
 
 ### New features added in version 2.0 (v1.0.1)
 - Output window for running script
