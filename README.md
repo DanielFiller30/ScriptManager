@@ -38,6 +38,17 @@ Script Manager is a menu bar-tool to organize and simplify running a custom term
 <image src="Media/Screenshots/tags_v2.png" width="250">    
 <image src="Media/Screenshots/settings_v2.png" width="250">    
 
+## Setup via Homebrew
+To install the ScriptManager with Homebrew, you have to run the following command in your terminal:
+
+`brew install danielfiller30/tap/scriptmanager`
+
+Or `brew tap danielfiller30/tap` and then `brew install scriptmanager`.
+
+To open the app, you have to trust the application in the system settings:
+- Open settings on your Mac
+- Navigate to **Privacy & Security**
+- Under security, press allow to open the ScriptManager
 
 ## Setup
 To install and use your personal Script Manager, you have to follow this steps:
@@ -46,3 +57,4 @@ To install and use your personal Script Manager, you have to follow this steps:
 - Run a build
 - Copy the resulting program-file to your programs folder
 > Xcode > Product > Show Build Folder in Finder
+

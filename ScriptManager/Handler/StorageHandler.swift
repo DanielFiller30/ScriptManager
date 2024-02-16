@@ -23,6 +23,10 @@ class StorageHandler: StorageHandlerProtocol {
         }
     }
     
+    public func resetByKey(_ key: StorageKey) {
+        UserDefaults.standard.removeObject(forKey: key.rawValue)
+    }
+    
     public func reset() {
         UserDefaults.standard.reset()
     }
@@ -39,4 +43,5 @@ enum StorageKey: String, CaseIterable {
     case SCRIPTS
     case SETTINGS
     case TAG
+    case TIMES
 }

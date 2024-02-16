@@ -51,7 +51,7 @@ struct MenuSheetView<Content>: View where Content: View {
                 .help(hint)
         }
         .buttonStyle(.plain)
-        .sheet(isPresented: $isPresented) {
+        .popover(isPresented: $isPresented) {
             VStack(spacing: .zero) {
                 HStack(alignment: .center) {
                     Text(sheetTitle)
