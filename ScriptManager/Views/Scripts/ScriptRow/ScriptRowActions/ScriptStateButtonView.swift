@@ -37,7 +37,7 @@ struct ScriptStateButtonView: View {
                         .clipShape(Circle())
                 }
                 .buttonStyle(.plain)
-                .disabled(viewModel.isRunning && viewModel.runningScript.id == script.id)
+                .disabled(viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id }))
             } else {
                 // Script failed but logging is disabled
                 Image(systemName: "xmark")

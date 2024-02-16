@@ -43,6 +43,9 @@ struct MainView: View {
         }
         .frame(width: 380, height: 550)
         .environmentObject(settings)
+        .onAppear {
+            vmScript.loadScriptTimes()
+        }
     }
 }
 

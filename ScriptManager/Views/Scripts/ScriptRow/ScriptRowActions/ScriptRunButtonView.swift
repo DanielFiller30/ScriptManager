@@ -17,14 +17,21 @@ struct ScriptRunButtonView: View {
     @State var showRunPopover: Bool = false
     
     var body: some View {
-        if (viewModel.isRunning && viewModel.runningScript.id == script.id) {
-            ProgressView()
-                .frame(width: IconSize.s, height: IconSize.s)
-                .scaleEffect(0.5)
-                .padding(Spacing.l)
-                .background(AppColor.Light)
-                .clipShape(Circle())
-            
+        if (viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id })) {
+            if let time = viewModel.sciptTimes.first(where: { $0.scriptId == script.id })?.remainingTime {
+                Text(time)
+                    .font(.caption2)
+                    .padding(Spacing.l)
+                    .background(AppColor.Light)
+                    .cornerRadius(10.0)
+            } else {
+                ProgressView()
+                    .frame(width: IconSize.s, height: IconSize.s)
+                    .scaleEffect(0.5)
+                    .padding(Spacing.l)
+                    .background(AppColor.Light)
+                    .clipShape(Circle())
+            }
         } else {
             Button {
                 showRunPopover.toggle()
@@ -37,13 +44,12 @@ struct ScriptRunButtonView: View {
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
-            .disabled(viewModel.isRunning)
             .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {
                 VStack(alignment: .center, spacing: Spacing.m) {
                     Button {
                         showRunPopover.toggle()
-                        viewModel.runningScript = script                        
-                        viewModel.runScript(showOutput: false)
+                        viewModel.runningScript.append(script)
+                        viewModel.runScript(showOutput: false, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
@@ -67,8 +73,8 @@ struct ScriptRunButtonView: View {
                     
                     Button {
                         showRunPopover.toggle()
-                        viewModel.runningScript = script
-                        viewModel.runScript(showOutput: true)
+                        viewModel.runningScript.append(script)
+                        viewModel.runScript(showOutput: true, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()

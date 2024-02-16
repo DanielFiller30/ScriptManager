@@ -20,7 +20,7 @@ struct ScriptManagerApp: App {
     init() {
         do {
             // Reset all data
-            //storage.reset()
+            //  storage.reset()
             
             // Open welcome-screen on first launch
             let hasLaunchedBefore = try storage.load(Bool.self, key: .FIRSTLAUNCH)?.get() ?? false
@@ -65,7 +65,7 @@ final class AppState: ObservableObject {
     
     private var savedShortcuts: [Shortcut] = []
     
-    init() {        
+    init() {
         KeyboardShortcuts.onKeyUp(for: .runScript1) {
             debugPrint("Run Script 1")
             self.runScript(index: 0)
@@ -97,7 +97,7 @@ final class AppState: ObservableObject {
         settingsHandler.loadSettings()
         
         savedShortcuts = settingsHandler.settings.shortcuts
-
+        
         let id = savedShortcuts[index].scriptId
         
         if id != EmptyScript.id {
