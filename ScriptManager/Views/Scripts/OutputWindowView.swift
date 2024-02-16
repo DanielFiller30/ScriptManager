@@ -12,8 +12,12 @@ struct OutputWindowView: View {
     
     var body: some View {
         ScrollView {
-            Text(scriptHandler.output)
+            VStack(alignment: .leading) {
+                Text(scriptHandler.output)
+                    .multilineTextAlignment(.leading)
+            }
         }
+        .padding(Spacing.l)
         .frame(minWidth: 500, minHeight: 600)
     }
 }
