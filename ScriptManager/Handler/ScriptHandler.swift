@@ -6,16 +6,42 @@
 //
 
 import Foundation
+import Resolver
 
+@Observable
 class ScriptHandler: ScriptHandlerProtocol {
-    internal var settingsHandler = SettingsHandler()
+    @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol
     
-    @Published var output: String = ""
+    var output = ""
+    var finishedCounter = 0
+    
+    var scripts: [Script] = []
+    var savedScripts: [Script] {
+        storageHandler.scripts
+    }
+    
+    var editScript: Script = EmptyScript
+    var editMode: Bool = false
+    var selectedIcon: Int = 0
+    
+    var times: [ScriptTime] = []
+    var savedTimes: [ScriptTime] {
+        storageHandler.times
+    }
+    
+    private var process: Process?
+    private var settings: Settings {
+        storageHandler.settings
+    }
+    
+    init() {
+        scripts = storageHandler.scripts
+        times = storageHandler.times
+    }
     
     func runScript(_ script: Script, test: Bool) async -> ResultState {
         do {
-            let settings = settingsHandler.settings
-            let task = Process()
+            process = Process()
             let pipe = Pipe()
             self.output = ""
             
@@ -24,47 +50,65 @@ class ScriptHandler: ScriptHandlerProtocol {
             let profilePath = settings.shell.profile != nil ? "source \(settings.shell.profile!);" : ""
             let validatedCommand = unicode + profilePath + script.command
             
-            task.standardError = pipe
-            task.arguments = ["--login","-c", validatedCommand]
-            task.executableURL = URL(fileURLWithPath: settings.shell.path)
-            task.standardInput = nil
-            task.standardOutput = pipe
-            
-            let outHandle = pipe.fileHandleForReading
-            outHandle.readabilityHandler = { pipe in
-                if let line = String(data: pipe.availableData, encoding: .utf8) {
-                    DispatchQueue.main.async {
-                        self.output += line
+            if let process {
+                process.standardError = pipe
+                process.arguments = ["--login","-c", validatedCommand]
+                process.executableURL = URL(fileURLWithPath: settings.shell.path)
+                process.standardInput = nil
+                process.standardOutput = pipe
+                
+                let outHandle = pipe.fileHandleForReading
+                outHandle.readabilityHandler = { pipe in
+                    if let line = String(data: pipe.availableData, encoding: .utf8) {
+                        DispatchQueue.main.async {
+                            self.output += line
+                        }
+                    } else {
+                        print("Error decoding data: \(pipe.availableData)")
                     }
-                } else {
-                    print("Error decoding data: \(pipe.availableData)")
                 }
-            }
-                        
-            try task.run()
-            task.waitUntilExit()
+                            
+                try process.run()
+                process.waitUntilExit()
 
-            try outHandle.close()
-            
-            return handleScriptResult(
-                result: task.terminationStatus,
-                test: test,
-                scriptName: script.name
-            )
-            
+                try outHandle.close()
+                
+                return handleScriptResult(
+                    result: process.terminationStatus,
+                    test: test,
+                    scriptName: script.name
+                )
+            } else {
+                return .failed
+            }
         } catch {
             print(error)
             return .failed
         }
     }
     
-    internal func handleScriptResult(result: Int32, test: Bool, scriptName: String) -> ResultState {
-        let settings = settingsHandler.settings
+    func interruptRunningProcess() {
+        if let process {
+            process.terminate()
+        } else {
+            debugPrint("Process not defined")
+        }
+    }
+    
+    func saveScripts() {
+        storageHandler.scripts = scripts
+    }
+}
+
+// MARK: - Handle process result
+extension ScriptHandler {
+    private func handleScriptResult(result: Int32, test: Bool, scriptName: String) -> ResultState {
         if (result == 0) {
             if (settings.notifications && !test) {
                 NotificationHandler.sendResultNotification(state: true, name: scriptName)
             }
             
+            self.finishedCounter += 1
             return .successfull
         } else {
             if (settings.logs && !test) {
@@ -77,13 +121,13 @@ class ScriptHandler: ScriptHandlerProtocol {
             
             return .failed
         }
-    }    
+    }
     
-    internal func writeLog(pathLogs: String) {
+    private func writeLog(pathLogs: String) {
         let url = URL(string: "file://\(pathLogs)")
         guard let validUrl = url else { return }
         
-        let fileName = validUrl.appendingPathComponent("log_\(DateHandler.getFormattedDate(date: Date())).txt")
+        let fileName = validUrl.appendingPathComponent("log_\(Date().toFormattedDate()).txt")
         
         do {
             try output.write(to: fileName, atomically: true, encoding: String.Encoding.utf8)

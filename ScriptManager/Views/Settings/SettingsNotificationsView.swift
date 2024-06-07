@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SettingsNotificationsView: View {
-    @EnvironmentObject var settings: SettingsHandler
-    
+    @State private var vm = SettingsViewModel()
+
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
@@ -20,10 +20,10 @@ struct SettingsNotificationsView: View {
                 
                 Spacer()
                 
-                Toggle("", isOn: $settings.notificationState)
+                Toggle("", isOn: $vm.settingsHandler.settings.notifications)
                     .toggleStyle(.switch)
-                    .onChange(of: settings.notificationState) { state in
-                        settings.activateNotifications()
+                    .onChange(of: vm.settingsHandler.settings.notifications) { _,_ in
+                        vm.activateNotifications()
                     }
                 
             }

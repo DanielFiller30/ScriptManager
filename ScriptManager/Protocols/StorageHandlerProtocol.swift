@@ -6,11 +6,14 @@
 //
 
 import Foundation
-import AnyCodable
 
-protocol StorageHandlerProtocol: ObservableObject {
-    func save(value: AnyCodable, key: StorageKey)
-    func load<T: Decodable>(_ dynamicType: T.Type, key: StorageKey) -> Result<T,Error>?
-    func reset()
-    func resetByKey(_ key: StorageKey)
+protocol StorageHandlerProtocol {
+    var firstLaunch: Bool { get set }
+    var scripts: [Script] { get set }
+    var tags: [Tag] { get set }
+    var times: [ScriptTime] { get set }
+    var settings: Settings { get set }
+    
+    func resetData()
+    func setFirstLaunchToFalse()
 }

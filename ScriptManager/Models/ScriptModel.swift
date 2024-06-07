@@ -15,18 +15,18 @@ struct Script: Identifiable, Codable {
     var success: ResultState
     var finished: Bool
     var lastRun: Date?
-    var tagID: UUID?
+    var tagID: UUID = EmptyTag.id
 }
 
 let EmptyScript = Script(
     id: UUID(uuidString: "8ac5590d-68cf-48c6-83da-4a886f26f528") ?? UUID(),
     name: "",
-    icon: "",
+    icon: "applescript",
     command: "",
     success: .ready,
     finished: false,
     lastRun: Date.now,
-    tagID: nil
+    tagID: EmptyTag.id
 )
 
 let DefaultScript = Script(

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScriptStateButtonView: View {
-    let viewModel: ScriptViewModel
+    @State private var vm = ScriptViewModel()
     var script: Script
     
     var body: some View {
@@ -23,10 +23,10 @@ struct ScriptStateButtonView: View {
                     .padding(Spacing.l)
                     .background(AppColor.Light)
                     .clipShape(Circle())
-            } else if (viewModel.isLogEnabled) {
+            } else if (vm.isLogEnabled) {
                 // Script failed and logging is active
                 Button {
-                    viewModel.openLogs()
+                    vm.openLogs()
                 } label: {
                     Image(systemName: "xmark")
                         .resizable()
@@ -37,7 +37,7 @@ struct ScriptStateButtonView: View {
                         .clipShape(Circle())
                 }
                 .buttonStyle(.plain)
-                .disabled(viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id }))
+                .disabled(vm.isRunning && vm.runningScript.contains(where: { $0.id == script.id }))
             } else {
                 // Script failed but logging is disabled
                 Image(systemName: "xmark")
@@ -54,6 +54,6 @@ struct ScriptStateButtonView: View {
 
 struct ScriptStateButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptStateButtonView(viewModel: ScriptViewModel(), script: DefaultScript)
+        ScriptStateButtonView(script: DefaultScript)
     }
 }

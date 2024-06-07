@@ -1,13 +1,12 @@
 //
-//  Constants.swift
+//  ShortcutExtension.swift
 //  ScriptManager
 //
-//  Created by Filler, Daniel on 17.03.23.
+//  Created by Filler, Daniel on 28.03.24.
 //
 
 import Foundation
 import KeyboardShortcuts
-import SwiftUI
 
 extension KeyboardShortcuts.Name {
     static let runScript1 = Self("runScript1")

@@ -5,10 +5,11 @@
 //  Created by Filler, Daniel on 03.04.23.
 //
 
+import Resolver
 import SwiftUI
 
 struct OutputWindowView: View {
-    @StateObject var scriptHandler: ScriptHandler
+    @Injected private var scriptHandler: ScriptHandler
     
     var body: some View {
         ScrollView {
@@ -24,6 +25,6 @@ struct OutputWindowView: View {
 
 struct OutputWindowView_Previews: PreviewProvider {
     static var previews: some View {
-        OutputWindowView(scriptHandler: ScriptHandler())
+        OutputWindowView()
     }
 }

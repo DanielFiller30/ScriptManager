@@ -5,12 +5,15 @@
 //  Created by Filler, Daniel on 05.02.23.
 //
 
+import Resolver
 import SwiftUI
 import AlertToast
 
 struct ScriptDetailsView: View {
-    var viewModel: ScriptViewModel
-    let scriptHandler: ScriptHandler = ScriptHandler()
+    @State private var vm = ScriptViewModel()
+    
+    @Binding var showAddScriptModal: Bool
+    
     var script: Script
     
     @State private var showToast = false
@@ -33,7 +36,7 @@ struct ScriptDetailsView: View {
                         pasteboard.clearContents()
                         pasteboard.setString(script.command, forType: .string)
                         
-                        // Show copied toast
+                        // Show 'copied' toast
                         showToast.toggle()
                     }
             }
@@ -50,21 +53,24 @@ struct ScriptDetailsView: View {
                 
                 Spacer()
                 
-                if (script.lastRun != nil) {
-                    Text(DateHandler.getFormattedDate(date: script.lastRun!))
+                if let date = script.lastRun {
+                    Text(date.toFormattedDate())
                         .font(.system(size: FontSize.text))
                 } else {
                     Text("-")
                         .font(.system(size: FontSize.text))
                 }
             }
+            .padding(.bottom, Spacing.l)
             
             Divider()
+                .foregroundStyle(.white)
+                .padding(.bottom, Spacing.m)
             
             HStack(alignment: .center) {
                 // Open logs
                 ScriptDetailButtonView(
-                    onClick: { viewModel.openLogs() },
+                    onClick: { vm.openLogs() },
                     icon: "folder",
                     disabled: false,
                     help: "button-logs"
@@ -72,25 +78,36 @@ struct ScriptDetailsView: View {
                                 
                 Spacer()
                 
+                // Interrupt script
+                ScriptDetailButtonView(
+                    onClick: {
+                        debugPrint("Interrupt script")
+                        vm.scriptHandler.interruptRunningProcess()
+                    },
+                    icon: "stop.fill",
+                    disabled: !vm.isRunning || vm.runningScript.contains(where: { $0.id != script.id }),
+                    help: "button-interrupt"
+                )
+                
                 // Edit script
                 ScriptDetailButtonView(
-                    onClick: { viewModel.openEdit(script: script) },
+                    onClick: {
+                        vm.openEdit(script: script)                        
+                    },
                     icon: "pencil",
-                    disabled: viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id }),
+                    disabled: vm.isRunning && vm.runningScript.contains(where: { $0.id == script.id }),
                     help: "button-edit"
                 )
                 
                 // Delete script
-                ScriptDeleteButtonView(viewModel: viewModel, scriptId: script.id, disabled: viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id }))
+                ScriptDeleteButtonView(scriptId: script.id, disabled: vm.isRunning && vm.runningScript.contains(where: { $0.id == script.id }))
             }
-            .padding(.all, Spacing.m)
         }
-        .padding(.all, Spacing.m)
     }
 }
 
 struct ScriptDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptDetailsView(viewModel: ScriptViewModel(), script: DefaultScript)
+        ScriptDetailsView(showAddScriptModal: .constant(false), script: DefaultScript)
     }
 }

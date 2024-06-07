@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct AddTagView: View {
-    @StateObject var viewModel: TagViewModel
+struct TagModalView: View {
+    @State private var vm = TagViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,7 +18,7 @@ struct AddTagView: View {
                 
                 Spacer()
                 
-                TextField("", text: $viewModel.name)
+                TextField("", text: $vm.name)
                     .frame(maxWidth: 120)
             }
             .padding(.bottom, Spacing.l)
@@ -29,35 +29,34 @@ struct AddTagView: View {
                                 
                 Spacer()
                 
-                ColorPicker("", selection: $viewModel.badgeColor)
+                ColorPicker("", selection: $vm.badgeColor)
             }
             .padding(.bottom, Spacing.l)
                         
             // Save tag
             CustomButtonView(
-                onClick: { viewModel.saveTag() },
+                onClick: { vm.saveTag() },
                 label: "save-tag",
                 color: AppColor.Success,
                 outlined: false,
-                disabled: viewModel.name.isEmpty
+                disabled: vm.name.isEmpty
             )
             .padding(.bottom, Spacing.m)
             
             // Cancel
             CustomButtonView(
-                onClick: { viewModel.showAddTag.toggle() },
+                onClick: { vm.modalHandler.hideModal() },
                 label: "cancel",
                 color: AppColor.Creme,
                 outlined: true,
                 disabled: false
             )
         }
-        .padding(.all, Spacing.xl)
     }
 }
 
-struct AddTagView_Previews: PreviewProvider {
+struct TagModalView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTagView(viewModel: TagViewModel())
+        TagModalView()
     }
 }

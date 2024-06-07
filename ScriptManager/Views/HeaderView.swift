@@ -8,25 +8,26 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @EnvironmentObject var settings: SettingsHandler
-    
-    @State var showCloseAlert: Bool = false
+    @State private var vm = SettingsViewModel()
     
     var body: some View {
         HStack(alignment: .center) {
-            Image("StatusBarIcon")
-                .foregroundColor(settings.mainColor)
+            Image("Logo")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 25.0)
+                .padding(.trailing, Spacing.m)
             
             Text("Script Manager")
                 .fontWeight(.bold)
             
-            Text("v3")
+            Text("v4")
                 .fontWeight(.light)
             
             Spacer()
             
             Button {
-                settings.showingPopover.toggle()
+                vm.modalHandler.showSettingsModal()
             } label: {
                 Image(systemName: "gear")
                     .resizable()
@@ -34,14 +35,12 @@ struct HeaderView: View {
                     .padding(Spacing.m)
                     .background(AppColor.Light)
                     .clipShape(Circle())
+                    .shadow(radius: 3, x: 1, y: 2)
             }
             .buttonStyle(.plain)
-            .popover(isPresented: $settings.showingPopover) {
-                SettingsView()
-            }
             
             Button {
-                showCloseAlert.toggle()
+                vm.showCloseAlert()
             } label: {
                 Image(systemName: "xmark.circle")
                     .resizable()
@@ -49,25 +48,12 @@ struct HeaderView: View {
                     .padding(Spacing.m)
                     .background(AppColor.Light)
                     .clipShape(Circle())
+                    .shadow(radius: 3, x: 1, y: 2)
             }
             .buttonStyle(.plain)
-            .alert("close-app-title", isPresented: $showCloseAlert) {
-                Button("cancel", role: .cancel) {}
-                Button("close-app-btn") {
-                    terminateApp()
-                }
-                
-            } message: {
-                Text("close-app-msg")
-            }
-            
         }
         .padding(.vertical, 15)
         .padding(.horizontal, Spacing.xl)
-    }
-    
-    func terminateApp() {
-        NSApp.terminate(self)
     }
 }
 

@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct TagsListView: View {
-    @StateObject var vmTag: TagViewModel
-    @StateObject var vmScript: ScriptViewModel
-
-    @ObservedObject var data = DataHandler.shared
-
-    @State private var showDeleteAlert = false
-
+    @State private var vm = TagViewModel()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.l) {
             HStack(alignment: .center) {
@@ -24,9 +19,9 @@ struct TagsListView: View {
                 
                 Spacer()
                 
-                if data.selectedTag != nil {
+                if let selectedTag = vm.selectedTag {
                     Button {
-                        showDeleteAlert.toggle()
+                        vm.showDeleteAlert(selectedTag)
                     } label: {
                         Image(systemName: "trash")
                             .resizable()
@@ -35,60 +30,45 @@ struct TagsListView: View {
                             .help("hint-remove-tag")
                     }
                     .buttonStyle(.plain)
-                    .alert("delete-tag-title", isPresented: $showDeleteAlert) {
-                        Button("cancel", role: .cancel) {}
-                        Button("delete") {
-                            // Remove tag to script connection
-                            vmScript.removeTagFromScript(tagId: data.selectedTag)
-                            // Delete the tag
-                            vmTag.deleteTag(selectedTagId: data.selectedTag!)
-                            data.selectedTag = nil
-                        }
-                    } message: {
-                        Text("delete-tag-msg")
-                    }
                 }
                 
-                MenuSheetView(
-                    hint: "add-new-tag",
-                    sheetTitle: "add-new-tag",
-                    onClick: {
-                        vmTag.showAddTag.toggle()
-                    },
-                    onClose: {},
-                    isPresented: $vmTag.showAddTag,
-                    height: 270
-                ) {
-                    AddTagView(viewModel: vmTag)
+                Button {
+                    vm.modalHandler.showTagModal()
+                } label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: IconSize.s, height: IconSize.s)
+                        .foregroundColor(Color.white)
+                        .help("add-new-tag")
                 }
+                .buttonStyle(.plain)
             }
             .padding(.bottom, Spacing.l)
             
             ScrollView(.horizontal) {
                 HStack(spacing: Spacing.l) {
-                    if (!data.tags.isEmpty) {
-                        ForEach($data.tags, id: \.id) { $tag in
+                    if (!vm.tags.isEmpty) {
+                        ForEach(vm.tags, id: \.id) { tag in
                             if tag.id != EmptyTag.id {
                                 Button {
                                     withAnimation() {
-                                        data.loadScripts()
-                                        
-                                        if tag.id == data.selectedTag {
-                                            data.selectedTag = nil
+                                        if tag.id == vm.selectedTag {
+                                            vm.setActiveTag(nil)
                                         } else {
-                                            data.selectedTag = tag.id
-                                            vmScript.filterScripts(tag: tag)
+                                            vm.setActiveTag(tag.id)
                                         }
                                     }
                                 } label: {
+                                    let badgeColor = try? ColorConverter.decodeColor(from: tag.badgeColor)
+                                    
                                     BadgeView(
-                                        color: ColorHandler.getDecodedColor(data: tag.badgeColor),
+                                        color: badgeColor ?? AppColor.Primary,
                                         title: tag.name,
-                                        active: tag.id == data.selectedTag
+                                        active: tag.id == vm.selectedTag
                                     )
                                 }
                                 .buttonStyle(.plain)
-                            }                            
+                            }
                         }
                     } else {
                         Text("empty-tags")
@@ -101,6 +81,7 @@ struct TagsListView: View {
                     }
                 }
                 .padding(.bottom, Spacing.xl)
+                .padding(.horizontal, Spacing.l)
             }
         }
         .padding(.horizontal, Spacing.xl)
@@ -110,6 +91,6 @@ struct TagsListView: View {
 
 struct TagsListView_Previews: PreviewProvider {
     static var previews: some View {
-        TagsListView(vmTag: TagViewModel(), vmScript: ScriptViewModel())
+        TagsListView()
     }
 }

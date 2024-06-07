@@ -10,22 +10,28 @@ import SwiftUI
 struct ScriptProgressView: View {
     let height: CGFloat
     let value: Double
+    @Binding var showDetails: Bool
     
     var body: some View {
         VStack {
             ProgressView(value: value)
                 .progressViewStyle(customProgressView(height: height))
+                .onTapGesture {
+                    withAnimation {
+                        showDetails.toggle()
+                    }                    
+                }
         }
     }
 }
 
 struct customProgressView: ProgressViewStyle {
     var stroke: Color = Color.white
-    var fill: Color = AppColor.Dark
+    var fill = Material.ultraThickMaterial
     var caption: String = ""
     var cornerRadius: CGFloat = 15
     var height: CGFloat
-
+    
     func makeBody(configuration: Configuration) -> some View {
         let fractionCompleted = configuration.fractionCompleted ?? 0
         
@@ -37,11 +43,19 @@ struct customProgressView: ProgressViewStyle {
             }
         }
         .frame(height: height)
-        .background(AppColor.Dark.opacity(0.6))
         .cornerRadius(cornerRadius)
+        .overlay(
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .stroke(.white, lineWidth: 0.5)
+        )
+        .shadow(radius: 3, x: 1, y: 2)
     }
 }
 
 #Preview {
-    ScriptProgressView(height: 60, value: 1.0)
+    HStack {
+        ScriptProgressView(height: 60, value: 1.0, showDetails: .constant(false))
+    }
+    .padding(20)
+    .background(.ultraThinMaterial)
 }

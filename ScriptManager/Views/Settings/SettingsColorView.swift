@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsColorView: View {
-    @EnvironmentObject var settings: SettingsHandler
+    @State private var vm = SettingsViewModel()
 
     var body: some View {
         VStack(alignment: .center) {
@@ -18,7 +18,7 @@ struct SettingsColorView: View {
                                 
                 Spacer()
                 
-                ColorPicker("", selection: $settings.mainColor)                
+//                ColorPicker("", selection: ColorConverter.decodeColor(from: vm.settingsHandler.settings.mainColor))
             }
         }
         .padding(.vertical, Spacing.m)

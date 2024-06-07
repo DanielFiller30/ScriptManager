@@ -8,35 +8,33 @@
 import SwiftUI
 
 struct ScriptsListView: View {
-    @StateObject var viewModel: ScriptViewModel
-    @ObservedObject var data = DataHandler.shared
+    @State private var vm = ScriptViewModel()
+    @State private var showAddScriptModal = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.l) {
             HStack(alignment: .center) {
-                Text("saved \(String(data.scripts.count))")
+                Text("saved \(String(vm.scripts.count))")
                     .fontWeight(.bold)
                     .font(.system(size: FontSize.subTitle))
                 
                 Spacer()
                 
-                MenuSheetView(
-                    hint: "add-new-script",
-                    sheetTitle: viewModel.editMode ? "edit-script-title" : "add-new-script",
-                    onClick: {
-                        viewModel.editMode = false
-                        viewModel.showAddScript.toggle()
-                    },
-                    onClose: viewModel.editMode ? { viewModel.closeEdit() } : {},
-                    isPresented: $viewModel.showAddScript,
-                    height: 480
-                ) {
-                    ScriptFormView(viewModel: viewModel)
+                Button {
+                    vm.scriptHandler.editScript = EmptyScript
+                    vm.modalHandler.showAddScriptModal()
+                } label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: IconSize.s, height: IconSize.s)
+                        .foregroundColor(Color.white)
+                        .help("add-new-tag")
                 }
+                .buttonStyle(.plain)
             }
             .padding(.bottom, Spacing.l)
             
-            if (viewModel.dataHandler.scripts.isEmpty) {
+            if (vm.scripts.isEmpty) {
                 Text("empty-scripts")
                     .font(.system(size: FontSize.text))
                     .foregroundColor(AppColor.Creme)
@@ -47,8 +45,8 @@ struct ScriptsListView: View {
                 Spacer()
             } else {
                 ScrollView {
-                    ForEach($data.scripts) { $script in
-                        ScriptRowView(viewModel: viewModel, script: $script)
+                    ForEach(vm.scripts) { script in
+                        ScriptRowView(showAddScriptModal: $showAddScriptModal, script: script)
                             .padding(.horizontal, Spacing.l)
                             .padding(.bottom, Spacing.m)
                     }
@@ -64,6 +62,6 @@ struct ScriptsListView: View {
 
 struct ScriptsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptsListView(viewModel: ScriptViewModel())
+        ScriptsListView()
     }
 }

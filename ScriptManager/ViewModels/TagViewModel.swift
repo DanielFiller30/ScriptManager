@@ -6,25 +6,33 @@
 //
 
 import Foundation
+import Resolver
 import SwiftUI
-import AnyCodable
 
-class TagViewModel: ObservableObject {
-    internal let storage = StorageHandler()
-    internal let dataHandler = DataHandler.shared
+@Observable
+class TagViewModel {
+    @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
+    @LazyInjected @ObservationIgnored private var scriptHandler: ScriptHandlerProtocol
+    @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
+    @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
 
-    @Published var showAddTag: Bool = false
+    var tags: [Tag] {
+        tagHandler.tags
+    }
     
-    @Published var name: String = ""
-    @Published var badgeColor: Color = AppColor.Primary
-        
+    var selectedTag: UUID? {
+        tagHandler.selectedTag
+    }
+    
+    var name: String = ""
+    var badgeColor: Color = AppColor.Primary
+    
     func saveTag() {
         do {
-            let colorData = try ColorHandler.encodeColor(color: badgeColor)
+            let colorData = try ColorConverter.encodeColor(color: badgeColor)
             let newTag: Tag = Tag(name: name, badgeColor: colorData)
-            
-            dataHandler.tags.append(newTag)
-            storage.save(value: AnyCodable(dataHandler.tags), key: .TAG)
+            tagHandler.tags.append(newTag)
+            tagHandler.saveTags()
                         
             resetForm()
         } catch {
@@ -32,19 +40,54 @@ class TagViewModel: ObservableObject {
         }
     }
     
-    func deleteTag(selectedTagId: UUID) {
-        // Remove tag entry
-        dataHandler.tags = dataHandler.tags.filter {
-            $0.id != selectedTagId
-        }
+    func setActiveTag(_ uuid: UUID?) {
+        tagHandler.selectedTag = uuid
         
-        // Update saved tags
-        storage.save(value: AnyCodable(dataHandler.tags), key: .TAG)
+        if let uuid {
+            // Set active tag
+            scriptHandler.scripts = scriptHandler.savedScripts.filter({ $0.tagID == uuid })
+        } else {
+            // Reset tag
+            scriptHandler.scripts = scriptHandler.savedScripts
+        }
+    }
+    
+    func showDeleteAlert(_ tagId: UUID) {
+        alertHandler.showAlert(
+            title: String(localized: "delete-tag-title"),
+            message: String(localized: "delete-tag-msg"),
+            btnTitle: String(localized: "delete"),
+            action: {
+                self.deleteTag(tagId: tagId)
+                self.alertHandler.hideAlert()
+            }
+        )
+    }
+    
+    func deleteTag(tagId: UUID) {
+        // Remove tag from scripts
+        scriptHandler.scripts = scriptHandler.savedScripts
+                
+        for (index, script) in scriptHandler.scripts.enumerated() {
+            if script.tagID == tagId {
+                scriptHandler.scripts[index].tagID = EmptyTag.id
+            }
+        }
+         
+        scriptHandler.saveScripts()
+        
+        // Delete tag
+        tagHandler.tags = tagHandler.tags.filter {
+            $0.id != tagId
+        }
+                
+        tagHandler.saveTags()
+        tagHandler.selectedTag = nil
     }
     
     func resetForm() {
         name = ""
         badgeColor = AppColor.Primary
-        showAddTag.toggle()
+        modalHandler.hideModal()
     }
 }

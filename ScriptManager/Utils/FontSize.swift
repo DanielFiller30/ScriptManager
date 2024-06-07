@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 struct FontSize {
     static let title = 14.0

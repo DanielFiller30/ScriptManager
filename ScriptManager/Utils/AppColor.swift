@@ -17,5 +17,6 @@ struct AppColor {
     static let Background = Color("Background")
     static let AppBg = Color("AppBg")
     static let Primary = Color("Primary")
+    static let Secondary = Color("Secondary")
     static let Header = Color("Header")
 }

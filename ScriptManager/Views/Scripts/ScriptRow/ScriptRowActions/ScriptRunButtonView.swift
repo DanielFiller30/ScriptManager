@@ -9,16 +9,15 @@ import SwiftUI
 import AnyCodable
 
 struct ScriptRunButtonView: View {
-    let viewModel: ScriptViewModel
-    let scriptHandler: ScriptHandler = ScriptHandler()
+    @State private var vm = ScriptViewModel()
     
     var script: Script
     
     @State var showRunPopover: Bool = false
     
     var body: some View {
-        if (viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id })) {
-            if let time = viewModel.sciptTimes.first(where: { $0.scriptId == script.id })?.remainingTime {
+        if (vm.isRunning && vm.runningScript.contains(where: { $0.id == script.id })) {
+            if let time = vm.sciptTimes.first(where: { $0.scriptId == script.id })?.remainingTime {
                 Text(time)
                     .font(.caption2)
                     .padding(Spacing.l)
@@ -45,11 +44,11 @@ struct ScriptRunButtonView: View {
             }
             .buttonStyle(.plain)
             .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {
-                VStack(alignment: .center, spacing: Spacing.m) {
+                VStack(alignment: .center, spacing: Spacing.l) {
                     Button {
                         showRunPopover.toggle()
-                        viewModel.runningScript.append(script)
-                        viewModel.runScript(showOutput: false, scriptId: script.id)
+                        vm.runningScript.append(script)
+                        vm.runScript(showOutput: false, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
@@ -61,20 +60,22 @@ struct ScriptRunButtonView: View {
                             
                             Image(systemName: "play")
                                 .resizable()
+                                .foregroundStyle(AppColor.Primary)
                                 .frame(width: IconSize.s, height: IconSize.s)
                         }
                         .frame(width: 150)
                         .padding(.horizontal, Spacing.l)
                         .padding(.vertical, Spacing.l)
-                        .background(AppColor.Dark)
+                        .background(.ultraThinMaterial)
                         .cornerRadius(8)
+                        .shadow(radius: 3, x: 1, y: 2)
                     }
                     .buttonStyle(.plain)
                     
                     Button {
                         showRunPopover.toggle()
-                        viewModel.runningScript.append(script)
-                        viewModel.runScript(showOutput: true, scriptId: script.id)
+                        vm.runningScript.append(script)
+                        vm.runScript(showOutput: true, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
@@ -86,18 +87,19 @@ struct ScriptRunButtonView: View {
                             
                             Image(systemName: "play.display")
                                 .resizable()
+                                .foregroundStyle(AppColor.Secondary)
                                 .frame(width: IconSize.s, height: IconSize.s)
                         }
                         .frame(width: 150)
                         .padding(.horizontal, Spacing.l)
                         .padding(.vertical, Spacing.l)
-                        .background(AppColor.Dark)
+                        .background(.ultraThinMaterial)
                         .cornerRadius(8)
+                        .shadow(radius: 3, x: 1, y: 2)
                     }
                     .buttonStyle(.plain)
                 }
-                .padding(.all, Spacing.m)
-                .background(AppColor.AppBg)
+                .padding(.all, Spacing.l)
             }
         }
     }
@@ -105,6 +107,6 @@ struct ScriptRunButtonView: View {
 
 struct ScriptRunButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRunButtonView(viewModel: ScriptViewModel(), script: DefaultScript)
+        ScriptRunButtonView(script: DefaultScript)
     }
 }

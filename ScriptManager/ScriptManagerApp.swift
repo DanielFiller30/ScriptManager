@@ -5,30 +5,23 @@
 //  Created by Filler, Daniel on 03.02.23.
 //
 
-import SwiftUI
 import KeyboardShortcuts
-import AnyCodable
+import Resolver
+import SwiftUI
 
 @main
 struct ScriptManagerApp: App {
-    let storage = StorageHandler()
+    @Injected private var storageHandler: StorageHandlerProtocol
+    
     let window = NSWindow()
     
     @State var hideWelcomeScreen: Bool = true
     @StateObject private var appState = AppState()
     
     init() {
-        do {
-            // Reset all data
-            //  storage.reset()
-            
-            // Open welcome-screen on first launch
-            let hasLaunchedBefore = try storage.load(Bool.self, key: .FIRSTLAUNCH)?.get() ?? false
-            if !hasLaunchedBefore {
-                openWindow()
-            }
-        } catch {
-            debugPrint("Failed to load first launch: \(error)")
+        // Open welcome-screen on first launch
+        if storageHandler.firstLaunch {
+            openWindow()
         }
     }
     
@@ -43,7 +36,7 @@ struct ScriptManagerApp: App {
     
     func closeWindow() {
         if hideWelcomeScreen {
-            storage.save(value: AnyCodable(true), key: .FIRSTLAUNCH)
+            storageHandler.setFirstLaunchToFalse()
         }
         
         window.close()
@@ -59,9 +52,8 @@ struct ScriptManagerApp: App {
 
 @MainActor
 final class AppState: ObservableObject {
-    private let dataHandler = DataHandler()
-    private let scriptHandler = ScriptHandler()
-    private let settingsHandler = SettingsHandler()
+    @Injected private var storageHandler: StorageHandlerProtocol
+    @Injected private var scriptHandler: ScriptHandlerProtocol
     
     private var savedShortcuts: [Shortcut] = []
     
@@ -93,15 +85,12 @@ final class AppState: ObservableObject {
     }
     
     func runScript(index: Int) {
-        dataHandler.loadScripts()
-        settingsHandler.loadSettings()
-        
-        savedShortcuts = settingsHandler.settings.shortcuts
+        savedShortcuts = storageHandler.settings.shortcuts
         
         let id = savedShortcuts[index].scriptId
         
         if id != EmptyScript.id {
-            if let script = dataHandler.scripts.first(where: { $0.id == id }) {
+            if let script = storageHandler.scripts.first(where: { $0.id == id }) {
                 NotificationHandler.sendStartNotification(name: script.name)
                 
                 Task {

@@ -13,4 +13,5 @@ struct Spacing {
     static let m = 5.0
     static let l = 10.0
     static let xl = 20.0
+    static let xxl = 25.0
 }

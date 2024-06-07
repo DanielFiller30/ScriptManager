@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct SettingsShellView: View {
-    @EnvironmentObject var settings: SettingsHandler
-    
-    @State var showHintShell: Bool = false
+    @State private var viewModel = SettingsViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,16 +21,16 @@ struct SettingsShellView: View {
                 
                 Spacer()
                 
-                Picker("", selection: $settings.shell) {
-                    ForEach(Shells) { shell in
-                        Text(shell.type.rawValue)
-                            .tag(shell.type)
-                    }
-                }
-                .onChange(of: settings.shell) { type in
-                    changeShellType(stype: type)
-                }
-                .frame(width: 160)
+//                Picker("", selection: $viewModel.settingsHandler.settings.shell) {
+//                    ForEach(Shells) { shell in
+//                        Text(shell.type.rawValue)
+//                            .tag(shell.type)
+//                    }
+//                }
+//                .onChange(of: viewModel.settingsHandler.settings.shell) { type, _ in
+//                    changeShellType(stype: type)
+//                }
+//                .frame(width: 160)
             }
             .padding(.bottom, Spacing.l)
             
@@ -42,7 +40,7 @@ struct SettingsShellView: View {
                 
                 Spacer()
                 
-                TextField("", text: $settings.shellPath)
+                TextField("", text: $viewModel.settingsHandler.settings.shell.path)
                     .frame(width: 150)
             }
             .padding(.bottom, Spacing.l)
@@ -55,17 +53,17 @@ struct SettingsShellView: View {
                 
                 Spacer()
                 
-                TextField("", text: $settings.profilePath)
-                    .frame(width: 150)
+//                TextField("", text: $viewModel.settingsHandler.settings.shell.profile)
+//                    .frame(width: 150)
             }
         }
         .padding(.vertical, Spacing.m)        
     }
     
     func changeShellType(stype: ShellType) {
-        let shell: Shell = Shells.filter{ $0.type == settings.shell }.first!
-        settings.shellPath = shell.path
-        settings.profilePath = settings.homeDir + (shell.profile ?? "")
+        let shell: Shell = Shells.filter{ $0.type == viewModel.settingsHandler.settings.shell.type }.first!
+        viewModel.settingsHandler.settings.shell.path = shell.path
+        viewModel.settingsHandler.settings.shell.profile = viewModel.homeDir + (shell.profile ?? "")
     }
 }
 

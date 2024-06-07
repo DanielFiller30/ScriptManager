@@ -14,27 +14,37 @@ struct BadgeView: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Text(title)
-                .fontWeight(.light)
-                .font(.system(size: FontSize.text))
-                .lineLimit(1)
-                .foregroundColor(active ? AppColor.AppBg : nil)
-            
-            Circle()
-                .frame(maxWidth: 10, maxHeight: 10)
-                .foregroundColor(color)
+            HStack {
+                Text(title)
+                    .fontWeight(.light)
+                    .font(.system(size: FontSize.text))
+                    .lineLimit(1)
+                    .foregroundColor(active ? AppColor.AppBg : nil)
+                
+                Circle()
+                    .frame(maxWidth: 10, maxHeight: 10)
+                    .foregroundColor(color)
+            }
+            .padding(.horizontal, Spacing.l)
+            .padding(.vertical, 7.0)
+            .background(active ? AnyShapeStyle(AppColor.Creme) : AnyShapeStyle(.ultraThickMaterial))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12.0)
+                    .stroke(.white, lineWidth: 1.5)
+            )
+            .shadow(radius: 3, x: 1, y: 2)
+            .cornerRadius(12.0)
+            .help(title)
         }
         .frame(maxWidth: 100)
-        .padding(.horizontal, Spacing.l)
-        .padding(.vertical, Spacing.m)
-        .background(active ? AppColor.Creme : AppColor.Light)
-        .clipShape(RoundedRectangle(cornerRadius: 9.0))
-        .help(title)
     }
 }
 
 struct BadgeView_Previews: PreviewProvider {
     static var previews: some View {
-        BadgeView(color: AppColor.Primary, title: "Einsehrsehrlangertext", active: false)
+        VStack {
+            BadgeView(color: AppColor.Primary, title: "Kurz", active: false)
+        }
+        .padding()
     }
 }

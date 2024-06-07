@@ -28,7 +28,7 @@ struct CustomButtonView: View {
             .cornerRadius(10.0)
             .overlay(
                 RoundedRectangle(cornerRadius: 10.0)
-                    .stroke(color, lineWidth: outlined ? 2 : 0)
+                    .stroke(color, lineWidth: outlined ? 1 : 0)
             )
             
         }

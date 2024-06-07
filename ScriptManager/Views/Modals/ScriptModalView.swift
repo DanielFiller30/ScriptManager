@@ -1,15 +1,15 @@
 //
-//  AddScriptView.swift
+//  ScriptModalView.swift
 //  ScriptManager
 //
-//  Created by Filler, Daniel on 03.02.23.
+//  Created by Filler, Daniel on 06.06.24.
 //
 
+import Resolver
 import SwiftUI
 
-struct ScriptFormView: View {
-    @StateObject var viewModel: ScriptViewModel
-    let scriptHandler: ScriptHandler = ScriptHandler()
+struct ScriptModalView: View {
+    @State private var vm = ScriptViewModel()
     
     @State var testIsRunning: Bool = false
     @State var testResult: LocalizedStringKey = ""
@@ -17,14 +17,13 @@ struct ScriptFormView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            
             HStack(alignment: .center) {
                 Text("name-add-script")
                     .font(.system(size: FontSize.text))
                 
                 Spacer()
                 
-                TextField("", text: $viewModel.name)
+                TextField("", text: $vm.scriptHandler.editScript.name)
                     .frame(maxWidth: 140)
             }
             .padding(.bottom, Spacing.l)
@@ -35,7 +34,7 @@ struct ScriptFormView: View {
                 
                 Spacer()
                 
-                IconPickerView(viewModel: viewModel)
+                IconPickerView()
             }
             .padding(.bottom, Spacing.l)
             
@@ -45,7 +44,7 @@ struct ScriptFormView: View {
                 
                 Spacer()
                 
-                TagPickerView(viewModel: viewModel)
+                TagPickerView()
             }
             
             Divider()
@@ -65,7 +64,7 @@ struct ScriptFormView: View {
                         .foregroundColor(testIsSuccessfull == .successfull ? AppColor.Success : AppColor.Danger)
                 }
                 
-                TextField("cd /Desktop/ sh ...", text: $viewModel.command, axis: .vertical)
+                TextField("cd /Desktop/ sh ...", text: $vm.scriptHandler.editScript.command, axis: .vertical)
                     .lineLimit(4, reservesSpace: true)
                 
             }.padding(.bottom, Spacing.l)
@@ -73,18 +72,18 @@ struct ScriptFormView: View {
             // Save script
             CustomButtonView(
                 onClick: {
-                    if viewModel.editMode {
-                        viewModel.saveChangedScript()
+                    if vm.editMode {
+                        vm.saveChangedScript()
                     } else {
-                        viewModel.saveScript()
+                        vm.saveScript()
                     }
                     
-                    viewModel.showAddScript.toggle()
+                    vm.modalHandler.hideModal()
                 },
-                label: viewModel.editMode ? "edit-save" : "save-script",
+                label: vm.editMode ? "edit-save" : "save-script",
                 color: AppColor.Success,
                 outlined: false,
-                disabled: testIsRunning || viewModel.name.isEmpty || viewModel.command.isEmpty
+                disabled: testIsRunning || vm.scriptHandler.editScript.name.isEmpty || vm.scriptHandler.editScript.command.isEmpty
             )
             .padding(.bottom, Spacing.m)
             
@@ -94,29 +93,35 @@ struct ScriptFormView: View {
                 label: "test-script",
                 color: AppColor.Success,
                 outlined: true,
-                disabled: testIsRunning || viewModel.command.isEmpty
+                disabled: testIsRunning || vm.scriptHandler.editScript.command.isEmpty
             )
             .padding(.bottom, Spacing.m)
             
             // Cancel
             CustomButtonView(
-                onClick: { viewModel.showAddScript.toggle() },
+                onClick: { vm.modalHandler.hideModal() },
                 label: "cancel",
                 color: AppColor.Creme,
                 outlined: true,
                 disabled: false
             )
-        }
-        .padding(.all, Spacing.xl)
+        }      
     }
     
+    // TODO: Move function to vm
     func testScript() {
         testIsRunning = true
         
-        let tempScript: Script = Script(name: viewModel.name, icon: "", command: viewModel.command, success: .ready, finished: false)
+        let tempScript: Script = Script(
+            name: vm.scriptHandler.editScript.name,
+            icon: "terminal",
+            command: vm.scriptHandler.editScript.command,
+            success: .ready,
+            finished: false
+        )
         
         Task {
-            testIsSuccessfull = await scriptHandler.runScript(tempScript, test: true)
+            testIsSuccessfull = await vm.scriptHandler.runScript(tempScript, test: true)
             testResult = testIsSuccessfull == .successfull ? "test-success" : "test-failed"
             
             testIsRunning = false
@@ -124,8 +129,8 @@ struct ScriptFormView: View {
     }
 }
 
-struct AddScriptView_Previews: PreviewProvider {
+struct ScriptModalView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptFormView(viewModel: ScriptViewModel())
+        ScriptModalView()
     }
 }
