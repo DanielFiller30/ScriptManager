@@ -75,7 +75,7 @@ struct TagsListView: View {
                 }
                 
                 Button {
-                    vm.modalHandler.showTagModal()
+                    vm.modalHandler.showModal(.TAG)
                 } label: {
                     Image(systemName: "plus")
                         .resizable()

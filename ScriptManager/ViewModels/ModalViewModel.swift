@@ -28,6 +28,8 @@ class ModalViewModel {
             String(localized: "settings")
         case .SHORTCUT:
             String(localized: "shortcut")
+        case .ADD:
+            String(localized: "add")
         }
     }
 }

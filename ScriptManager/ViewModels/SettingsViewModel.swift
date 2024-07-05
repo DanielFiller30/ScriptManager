@@ -13,11 +13,11 @@ import SwiftUI
 @Observable
 class SettingsViewModel {
     @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol
-    @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     
     var homeDir: String = ""
+    @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored var settingsHandler: SettingsHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
     

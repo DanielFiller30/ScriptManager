@@ -27,22 +27,25 @@ struct HeaderView: View {
             Spacer()
             
             Button {
-                vm.modalHandler.showSettingsModal()
+                vm.modalHandler.showModal(.ADD)
             } label: {
-                Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: IconSize.l, height: IconSize.l)
-                    .padding(Spacing.m)
-                    .background(.ultraThinMaterial)
-                    .clipShape(Circle())
-                    .shadow(radius: 3, x: 1, y: 2)
+                HStack {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: IconSize.m, height: IconSize.m)
+                }
+                .frame(width: IconSize.l, height: IconSize.l)
+                .padding(Spacing.m)
+                .background(.ultraThinMaterial)
+                .clipShape(Circle())
+                .shadow(radius: 3, x: 1, y: 2)
             }
             .buttonStyle(.plain)
             
             Button {
-                vm.showCloseAlert()
+                vm.modalHandler.showModal(.SETTINGS)
             } label: {
-                Image(systemName: "xmark.circle")
+                Image(systemName: "gear")
                     .resizable()
                     .frame(width: IconSize.l, height: IconSize.l)
                     .padding(Spacing.m)

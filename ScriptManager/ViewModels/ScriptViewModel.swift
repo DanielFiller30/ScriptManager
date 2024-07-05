@@ -171,7 +171,7 @@ class ScriptViewModel {
         scriptHandler.editMode = true
         scriptHandler.editScript = script
         
-        modalHandler.showEditScriptModal()
+        modalHandler.showModal(.EDIT_SCRIPT)
     }
 
     func openLogs() {

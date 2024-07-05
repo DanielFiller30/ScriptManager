@@ -43,8 +43,10 @@ struct ModalView: View {
                     SettingsModalView()
                 case .SHORTCUT:
                     ShortcutModalView()
-                case .ADD_SCRIPT, .EDIT_SCRIPT:                
+                case .ADD_SCRIPT, .EDIT_SCRIPT:
                     ScriptModalView()
+                case .ADD:
+                    AddModalView()
                 }
             }
             .padding(.all, Spacing.xl)

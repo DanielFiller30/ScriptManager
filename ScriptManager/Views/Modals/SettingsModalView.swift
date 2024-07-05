@@ -95,6 +95,17 @@ struct SettingsModalView: View {
                     outlined: true,
                     disabled: false
                 )
+                
+                CustomButtonView(
+                    onClick: {
+                        vm.modalHandler.hideModal()
+                        vm.showCloseAlert()
+                    },
+                    label: "close-app-title",
+                    color: AnyShapeStyle(.ultraThickMaterial),
+                    outlined: true,
+                    disabled: false
+                )
                 .padding(.bottom, Spacing.xl)
 
             }

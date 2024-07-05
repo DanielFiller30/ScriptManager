@@ -46,7 +46,7 @@ struct ShortcutListView: View {
                 Spacer()
                 
                 Button {
-                    vm.modalHandler.showShortcutModal()
+                    vm.modalHandler.showModal(.SHORTCUT)
                 } label: {
                     Image(systemName: "plus")
                         .resizable()

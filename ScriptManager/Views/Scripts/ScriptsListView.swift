@@ -22,7 +22,7 @@ struct ScriptsListView: View {
                 
                 Button {
                     vm.scriptHandler.editScript = EmptyScript
-                    vm.modalHandler.showAddScriptModal()
+                    vm.modalHandler.showModal(.ADD_SCRIPT)
                 } label: {
                     Image(systemName: "plus")
                         .resizable()

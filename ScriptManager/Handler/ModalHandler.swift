@@ -12,38 +12,12 @@ import SwiftUI
 class ModalHandler: ModalHandlerProtocol {
     var modalVisible: Bool = false
     var type: ModalType = .ADD_SCRIPT
-     
-    @MainActor
-    func showAddScriptModal() {
-        type = .ADD_SCRIPT
+    
+    func showModal(_ type: ModalType) {
+        self.type = type
         showModal()
     }
     
-    @MainActor
-    func showEditScriptModal() {
-        type = .EDIT_SCRIPT
-        showModal()
-    }
-    
-    @MainActor
-    func showTagModal() {
-        type = .TAG
-        showModal()
-    }
-    
-    @MainActor
-    func showSettingsModal() {
-        type = .SETTINGS
-        showModal()
-    }
-    
-    @MainActor
-    func showShortcutModal() {
-        type = .SHORTCUT
-        showModal()
-    }
-    
-    @MainActor
     func hideModal() {
         withAnimation {
             self.modalVisible = false

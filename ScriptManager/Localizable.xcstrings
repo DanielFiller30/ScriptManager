@@ -30,6 +30,16 @@
     "%@" : {
 
     },
+    "add" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skript/ Kategorie hinzufügen"
+          }
+        }
+      }
+    },
     "add-new-script" : {
       "localizations" : {
         "de" : {
@@ -68,6 +78,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add a new tag"
+          }
+        }
+      }
+    },
+    "add-script-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge ein neues Skript hinzu, dass du anschließend über deine gespeicherte Liste ausführen kannst."
+          }
+        }
+      }
+    },
+    "add-tag-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Füge eine neue Kategorie hinzu, um deine gespeicherten Skripte zu organisieren."
           }
         }
       }

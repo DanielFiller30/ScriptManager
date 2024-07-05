@@ -87,6 +87,7 @@
 		DCDFAC4D29CB25FF00D538A2 /* TagModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */; };
 		DCECD16E29D3483500FF3958 /* MenuSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCECD16D29D3483500FF3958 /* MenuSheetView.swift */; };
 		DCEE233A29DAF2AD00814902 /* OutputWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE233929DAF2AD00814902 /* OutputWindowView.swift */; };
+		DCF1E9FA2C3815BB00645223 /* AddModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1E9F92C3815B700645223 /* AddModalView.swift */; };
 		DCF82FB229D1C1250085627D /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF82FB129D1C1250085627D /* TagModel.swift */; };
 		DCF82FB429D1C33F0085627D /* TagsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF82FB329D1C33F0085627D /* TagsListView.swift */; };
 		DCF82FB629D1CDBF0085627D /* TagPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF82FB529D1CDBF0085627D /* TagPickerView.swift */; };
@@ -178,6 +179,7 @@
 		DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModalView.swift; sourceTree = "<group>"; };
 		DCECD16D29D3483500FF3958 /* MenuSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheetView.swift; sourceTree = "<group>"; };
 		DCEE233929DAF2AD00814902 /* OutputWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputWindowView.swift; sourceTree = "<group>"; };
+		DCF1E9F92C3815B700645223 /* AddModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModalView.swift; sourceTree = "<group>"; };
 		DCF82FB129D1C1250085627D /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		DCF82FB329D1C33F0085627D /* TagsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsListView.swift; sourceTree = "<group>"; };
 		DCF82FB529D1CDBF0085627D /* TagPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPickerView.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 		DCDA8F3C2C13216C00AD2B19 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				DCF1E9F92C3815B700645223 /* AddModalView.swift */,
 				DC75B420299BA57F00086806 /* SettingsModalView.swift */,
 				DC105EEF2C11F6A10023ABE7 /* ScriptModalView.swift */,
 				DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */,
@@ -650,6 +653,7 @@
 				DC75B456299BA58000086806 /* HintView.swift in Sources */,
 				DC84CC1C29C9BB51006C8F07 /* ShortcutModel.swift in Sources */,
 				DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */,
+				DCF1E9FA2C3815BB00645223 /* AddModalView.swift in Sources */,
 				DC4E476B2BB5A5B300DBE275 /* TagHandler.swift in Sources */,
 				DC5528E229D86891008CD209 /* ScriptDetailButtonView.swift in Sources */,
 				DC4E34D72BB56427004EB76C /* ShortcutsExtension.swift in Sources */,

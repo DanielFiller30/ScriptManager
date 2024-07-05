@@ -11,12 +11,7 @@ protocol ModalHandlerProtocol {
     var modalVisible: Bool { get }
     var type: ModalType { get }
     
-    func showAddScriptModal()
-    func showEditScriptModal()
-    func showTagModal()
-    func showSettingsModal()
-    func showShortcutModal()
-    
+    func showModal(_ type: ModalType)    
     func hideModal()
 }
 
@@ -26,4 +21,5 @@ enum ModalType {
     case TAG
     case SETTINGS
     case SHORTCUT
+    case ADD
 }
