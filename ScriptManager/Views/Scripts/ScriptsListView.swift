@@ -55,7 +55,7 @@ struct ScriptsListView: View {
                 }
             }
         }
-        .padding(.horizontal, Spacing.xl)
+        .padding(.horizontal, Spacing.xl + 4)
         .padding(.top, Spacing.m)
     }
 }

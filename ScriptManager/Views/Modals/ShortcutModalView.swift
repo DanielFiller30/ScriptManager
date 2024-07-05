@@ -1,38 +1,46 @@
 //
-//  AddTagView.swift
+//  ShortcutModalView.swift
 //  ScriptManager
 //
-//  Created by Filler, Daniel on 22.03.23.
+//  Created by Filler, Daniel on 07.06.24.
 //
 
+import KeyboardShortcuts
 import SwiftUI
 
-struct TagModalView: View {
-    @State private var vm = TagViewModel()
+struct ShortcutModalView: View {
+    @State private var vm = ShortcutViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                Text("name-add-tag")
+                Text("shortcut-script")
                     .font(.system(size: FontSize.text))
                 
                 Spacer()
                 
-                TextField("", text: $vm.name)
-                    .frame(maxWidth: 120)
+                Picker("", selection: $vm.scriptId) {
+                    ForEach(vm.scripts) { script in
+                        Text(script.name)
+                            .tag(script.id)
+                    }
+                }
             }
             .padding(.bottom, Spacing.l)
             
             HStack(alignment: .center) {
-                Text("color-add-tag")
+                Text("shortcut-keys")
                     .font(.system(size: FontSize.text))
-                                
+                
                 Spacer()
                 
-                ColorPicker("", selection: $vm.badgeColor)
+                KeyboardShortcuts.Recorder(for: .runScript1) { keys in
+                    guard let keys else { return }
+                    vm.keys = keys.description
+                }
             }
             .padding(.bottom, Spacing.l)
-                        
+            
             HStack(alignment: .center, spacing: Spacing.xl) {
                 // Cancel
                 CustomButtonView(
@@ -45,19 +53,17 @@ struct TagModalView: View {
                 
                 // Save tag
                 CustomButtonView(
-                    onClick: { vm.saveTag() },
-                    label: "save-tag",
+                    onClick: { vm.saveShortcut() },
+                    label: "save-shortcut",
                     color: AnyShapeStyle(AppColor.Secondary),
                     outlined: false,
-                    disabled: vm.name.isEmpty
+                    disabled: vm.scriptId == EmptyScript.id || vm.keys.isEmpty
                 )
             }
         }
     }
 }
 
-struct TagModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        TagModalView()
-    }
+#Preview {
+    ShortcutModalView()
 }

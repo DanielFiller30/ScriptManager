@@ -32,16 +32,16 @@ struct SettingsShortcutView: View {
     var body: some View {
         VStack(alignment: .center) {
             ForEach(Array(shortcutLimit.enumerated()), id: \.element) { index, number in
-//                let data = getDataByIndex(index: number)
-//                
+                let data = getDataByIndex(index: number)
+                
 //                HStack(alignment: .center) {
 //                    Text(EmptyScript.name)
 //                        .tag(EmptyScript.id)
 //                    
-//                    Picker("", selection: data.selection) {
+//                    Picker("", selection: vm.selectedScript1) {
 //                        Text(EmptyScript.name).tag(EmptyScript.id)
 //                        
-//                        ForEach(vm.settings.scripts, id: \.self.id) {
+//                        ForEach(vm.scriptHandler.scripts, id: \.self.id) {
 //                            Text($0.name).tag($0.id)
 //                        }
 //                    }

@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomButtonView: View {
     var onClick: () -> Void
     var label: LocalizedStringKey
-    var color: Color
+    var color: AnyShapeStyle
     var outlined: Bool
     var disabled: Bool
     
@@ -24,7 +24,7 @@ struct CustomButtonView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(Spacing.l)
-            .background(outlined ? AppColor.AppBg : color)
+            .background(outlined ? AnyShapeStyle(.ultraThinMaterial) : color)
             .cornerRadius(10.0)
             .overlay(
                 RoundedRectangle(cornerRadius: 10.0)
@@ -39,6 +39,6 @@ struct CustomButtonView: View {
 
 struct CustomButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButtonView(onClick: {}, label: "", color: AppColor.AppBg, outlined: false, disabled: false)
+        CustomButtonView(onClick: {}, label: "", color: AnyShapeStyle(AppColor.AppBg), outlined: false, disabled: false)
     }
 }

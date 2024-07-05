@@ -59,6 +59,17 @@ struct ScriptModalView: View {
                     
                     Spacer()
                     
+                    Button {
+                        testScript()
+                    } label: {
+                        Text("test-script")
+                            .padding(.vertical, Spacing.m)
+                            .padding(.horizontal, Spacing.l)
+                            .background(.ultraThickMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 10.0))
+                    }
+                    .buttonStyle(.plain)
+                    
                     Text(testResult)
                         .font(.system(size: FontSize.subTitle))
                         .foregroundColor(testIsSuccessfull == .successfull ? AppColor.Success : AppColor.Danger)
@@ -69,42 +80,33 @@ struct ScriptModalView: View {
                 
             }.padding(.bottom, Spacing.l)
             
-            // Save script
-            CustomButtonView(
-                onClick: {
-                    if vm.editMode {
-                        vm.saveChangedScript()
-                    } else {
-                        vm.saveScript()
-                    }
-                    
-                    vm.modalHandler.hideModal()
-                },
-                label: vm.editMode ? "edit-save" : "save-script",
-                color: AppColor.Success,
-                outlined: false,
-                disabled: testIsRunning || vm.scriptHandler.editScript.name.isEmpty || vm.scriptHandler.editScript.command.isEmpty
-            )
-            .padding(.bottom, Spacing.m)
-            
-            // Test script
-            CustomButtonView(
-                onClick: { testScript() },
-                label: "test-script",
-                color: AppColor.Success,
-                outlined: true,
-                disabled: testIsRunning || vm.scriptHandler.editScript.command.isEmpty
-            )
-            .padding(.bottom, Spacing.m)
-            
-            // Cancel
-            CustomButtonView(
-                onClick: { vm.modalHandler.hideModal() },
-                label: "cancel",
-                color: AppColor.Creme,
-                outlined: true,
-                disabled: false
-            )
+            HStack(alignment: .center, spacing: Spacing.xl) {
+                // Cancel
+                CustomButtonView(
+                    onClick: { vm.modalHandler.hideModal() },
+                    label: "cancel",
+                    color: AnyShapeStyle(.ultraThickMaterial),
+                    outlined: false,
+                    disabled: false
+                )
+                
+                // Save script
+                CustomButtonView(
+                    onClick: {
+                        if vm.editMode {
+                            vm.saveChangedScript()
+                        } else {
+                            vm.saveScript()
+                        }
+                        
+                        vm.modalHandler.hideModal()
+                    },
+                    label: vm.editMode ? "edit-save" : "save-script",
+                    color: AnyShapeStyle(AppColor.Success),
+                    outlined: false,
+                    disabled: testIsRunning || vm.scriptHandler.editScript.name.isEmpty || vm.scriptHandler.editScript.command.isEmpty
+                )
+            }
         }      
     }
     

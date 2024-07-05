@@ -27,6 +27,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "add-new-script" : {
       "localizations" : {
         "de" : {
@@ -39,6 +42,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add a new script"
+          }
+        }
+      }
+    },
+    "add-new-shortcut" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuen Kurzbefehl hinzufügen"
           }
         }
       }
@@ -357,6 +370,9 @@
         }
       }
     },
+    "empty-shortcuts" : {
+
+    },
     "empty-tags" : {
       "localizations" : {
         "de" : {
@@ -550,6 +566,7 @@
       }
     },
     "Info text" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -730,7 +747,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Auszuführendes Skript"
+            "value" : "Skript"
           }
         },
         "en" : {
@@ -790,6 +807,7 @@
       }
     },
     "Preview" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -821,12 +839,22 @@
         }
       }
     },
+    "save-shortcut" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurzbefehl speichern"
+          }
+        }
+      }
+    },
     "save-tag" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kategorie speichern"
+            "value" : "Speichern"
           }
         },
         "en" : {
@@ -953,7 +981,14 @@
 
     },
     "settings-delete-title" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen löschen"
+          }
+        }
+      }
     },
     "settings-logging" : {
       "localizations" : {
@@ -988,7 +1023,14 @@
       }
     },
     "settings-save" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen speichern"
+          }
+        }
+      }
     },
     "settings-shell" : {
       "localizations" : {
@@ -1054,6 +1096,46 @@
         }
       }
     },
+    "shortcut" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurzbefehle"
+          }
+        }
+      }
+    },
+    "shortcut-keys" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tastaturbefehl"
+          }
+        }
+      }
+    },
+    "shortcut-script" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auszuführendes Skript"
+          }
+        }
+      }
+    },
+    "shortcuts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurzbefehle"
+          }
+        }
+      }
+    },
     "tag-script" : {
       "localizations" : {
         "de" : {
@@ -1087,6 +1169,7 @@
       }
     },
     "Test" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

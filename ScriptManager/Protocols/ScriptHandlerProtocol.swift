@@ -16,6 +16,9 @@ protocol ScriptHandlerProtocol {
     var savedScripts: [Script] { get }
     var times: [ScriptTime] { get set }
     var selectedIcon: Int { get set }
+    var runningScript: [Script] { get set }
+    var sciptTimes: [ScriptTime] {get set }
+    var isRunning: Bool { get set }
 
     func runScript(_ script: Script, test: Bool) async -> ResultState
     func interruptRunningProcess()

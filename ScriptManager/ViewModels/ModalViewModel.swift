@@ -26,6 +26,8 @@ class ModalViewModel {
             String(localized: "add-new-tag")
         case .SETTINGS:
             String(localized: "settings")
+        case .SHORTCUT:
+            String(localized: "shortcut")
         }
     }
 }

@@ -9,9 +9,51 @@ import SwiftUI
 
 struct TagsListView: View {
     @State private var vm = TagViewModel()
+    @State private var showTags = true
     
     var body: some View {
-        VStack(alignment: .leading, spacing: Spacing.l) {
+        DisclosureGroup(isExpanded: $showTags) {
+            VStack(alignment: .leading, spacing: Spacing.l) {
+                ScrollView(.horizontal) {
+                    HStack(spacing: Spacing.l) {
+                        if (!vm.tags.isEmpty) {
+                            ForEach(vm.tags, id: \.id) { tag in
+                                if tag.id != EmptyTag.id {
+                                    Button {
+                                        withAnimation() {
+                                            if tag.id == vm.selectedTag {
+                                                vm.setActiveTag(nil)
+                                            } else {
+                                                vm.setActiveTag(tag.id)
+                                            }
+                                        }
+                                    } label: {
+                                        let badgeColor = try? ColorConverter.decodeColor(from: tag.badgeColor)
+                                        
+                                        BadgeView(
+                                            color: badgeColor ?? AppColor.Primary,
+                                            title: tag.name,
+                                            active: tag.id == vm.selectedTag
+                                        )
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                        } else {
+                            Text("empty-tags")
+                                .font(.system(size: FontSize.text))
+                                .foregroundColor(AppColor.Creme)
+                                .frame(maxWidth: .infinity)
+                                .multilineTextAlignment(.center)
+                            
+                            Spacer()
+                        }
+                    }
+                    .padding(.bottom, Spacing.l)
+                }
+            }
+            .padding(.top, Spacing.xl)
+        } label: {
             HStack(alignment: .center) {
                 Text("tags-title")
                     .fontWeight(.bold)
@@ -43,49 +85,16 @@ struct TagsListView: View {
                 }
                 .buttonStyle(.plain)
             }
-            .padding(.bottom, Spacing.l)
-            
-            ScrollView(.horizontal) {
-                HStack(spacing: Spacing.l) {
-                    if (!vm.tags.isEmpty) {
-                        ForEach(vm.tags, id: \.id) { tag in
-                            if tag.id != EmptyTag.id {
-                                Button {
-                                    withAnimation() {
-                                        if tag.id == vm.selectedTag {
-                                            vm.setActiveTag(nil)
-                                        } else {
-                                            vm.setActiveTag(tag.id)
-                                        }
-                                    }
-                                } label: {
-                                    let badgeColor = try? ColorConverter.decodeColor(from: tag.badgeColor)
-                                    
-                                    BadgeView(
-                                        color: badgeColor ?? AppColor.Primary,
-                                        title: tag.name,
-                                        active: tag.id == vm.selectedTag
-                                    )
-                                }
-                                .buttonStyle(.plain)
-                            }
-                        }
-                    } else {
-                        Text("empty-tags")
-                            .font(.system(size: FontSize.text))
-                            .foregroundColor(AppColor.Creme)
-                            .frame(maxWidth: .infinity)
-                            .multilineTextAlignment(.center)
-                        
-                        Spacer()
-                    }
+            .padding(.leading, Spacing.m)
+            .onTapGesture {
+                withAnimation {
+                    showTags.toggle()
                 }
-                .padding(.bottom, Spacing.xl)
-                .padding(.horizontal, Spacing.l)
             }
         }
         .padding(.horizontal, Spacing.xl)
-        .padding(.top, Spacing.xl)
+        .padding(.vertical, Spacing.l)
+        .fixedSize(horizontal: false, vertical: true)
     }
 }
 

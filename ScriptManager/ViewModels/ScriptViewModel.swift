@@ -28,9 +28,6 @@ class ScriptViewModel {
     }
     
     var isLogEnabled: Bool = DefaultSettings.logs
-    var runningScript: [Script] = []
-    var sciptTimes: [ScriptTime] = []
-    var isRunning: Bool = false
         
     @MainActor
     func runScript(showOutput: Bool, scriptId: UUID) {
@@ -44,7 +41,7 @@ class ScriptViewModel {
                 openOutputWindow()
             }
             
-            var tempTimes = self.sciptTimes
+            var tempTimes = scriptHandler.sciptTimes
             var tempIndex = 0
             if let timeIndex = tempTimes.firstIndex(where: { $0.scriptId == scriptId }) {
                 tempIndex = timeIndex
@@ -89,7 +86,7 @@ class ScriptViewModel {
                         
             changeIsRunningState(state: false)
             
-            self.runningScript = self.runningScript.filter { $0.id != scriptId }
+            scriptHandler.runningScript = scriptHandler.runningScript.filter { $0.id != scriptId }
         }
     }
     
@@ -199,11 +196,11 @@ extension ScriptViewModel {
     @MainActor
     private func changeIsRunningState(state: Bool) {
         if !state {
-            if runningScript.isEmpty {
-                isRunning = false
+            if scriptHandler.runningScript.isEmpty {
+                scriptHandler.isRunning = false
             }
         } else {
-            isRunning = true
+            scriptHandler.isRunning = true
         }
     }
     
@@ -261,8 +258,8 @@ extension ScriptViewModel {
     @MainActor
     private func updateTime(index: Int, remainingTime: String?, progressVal: Double) {
         withAnimation {
-            sciptTimes[index].remainingTime = remainingTime
-            sciptTimes[index].progressValue = progressVal
+            scriptHandler.sciptTimes[index].remainingTime = remainingTime
+            scriptHandler.sciptTimes[index].progressValue = progressVal
         }
     }
 }

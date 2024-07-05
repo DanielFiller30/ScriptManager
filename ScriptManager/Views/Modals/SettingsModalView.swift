@@ -68,7 +68,7 @@ struct SettingsModalView: View {
                 CustomButtonView(
                     onClick: { vm.saveSettings() },
                     label: "settings-save",
-                    color: AppColor.Success,
+                    color: AnyShapeStyle(AppColor.Success),
                     outlined: false,
                     disabled: vm.settingsHandler.settings.shell.path.isEmpty
                     || vm.settingsHandler.settings.unicode.isEmpty
@@ -91,7 +91,7 @@ struct SettingsModalView: View {
                 CustomButtonView(
                     onClick: { vm.modalHandler.hideModal() },
                     label: "cancel",
-                    color: AppColor.Creme,
+                    color: AnyShapeStyle(.ultraThickMaterial),
                     outlined: true,
                     disabled: false
                 )

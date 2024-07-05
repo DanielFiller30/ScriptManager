@@ -15,6 +15,7 @@ protocol ModalHandlerProtocol {
     func showEditScriptModal()
     func showTagModal()
     func showSettingsModal()
+    func showShortcutModal()
     
     func hideModal()
 }
@@ -24,4 +25,5 @@ enum ModalType {
     case EDIT_SCRIPT
     case TAG
     case SETTINGS
+    case SHORTCUT
 }

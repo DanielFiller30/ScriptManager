@@ -21,7 +21,7 @@ struct ScriptDetailButtonView: View {
                 .resizable()
                 .frame(width: IconSize.s, height: IconSize.s)
                 .padding(Spacing.l)
-                .background(AppColor.Background)
+                .background(.ultraThickMaterial)
                 .clipShape(Circle())
         }
         .buttonStyle(.plain)

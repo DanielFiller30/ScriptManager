@@ -11,6 +11,8 @@ struct BadgeView: View {
     var color: Color
     var title: String
     var active: Bool
+    var outlined: Bool?
+    var filled: Bool?
     
     var body: some View {
         HStack(alignment: .center) {
@@ -21,16 +23,18 @@ struct BadgeView: View {
                     .lineLimit(1)
                     .foregroundColor(active ? AppColor.AppBg : nil)
                 
-                Circle()
-                    .frame(maxWidth: 10, maxHeight: 10)
-                    .foregroundColor(color)
+                if (filled ?? false == false) {
+                    Circle()
+                        .frame(maxWidth: 10, maxHeight: 10)
+                        .foregroundColor(color)
+                }
             }
             .padding(.horizontal, Spacing.l)
             .padding(.vertical, 7.0)
-            .background(active ? AnyShapeStyle(AppColor.Creme) : AnyShapeStyle(.ultraThickMaterial))
+            .background(active ? AnyShapeStyle(AppColor.Creme) : (filled ?? false ? AnyShapeStyle(color) : AnyShapeStyle(.ultraThinMaterial)))
             .overlay(
                 RoundedRectangle(cornerRadius: 12.0)
-                    .stroke(.white, lineWidth: 1.5)
+                    .stroke(outlined ?? true ? color : .clear, lineWidth: 1.5)
             )
             .shadow(radius: 3, x: 1, y: 2)
             .cornerRadius(12.0)

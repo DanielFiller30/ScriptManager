@@ -21,8 +21,9 @@ struct ScriptStateButtonView: View {
                     .foregroundColor(AppColor.Success)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(AppColor.Light)
+                    .background(.ultraThickMaterial)
                     .clipShape(Circle())
+
             } else if (vm.isLogEnabled) {
                 // Script failed and logging is active
                 Button {
@@ -35,16 +36,17 @@ struct ScriptStateButtonView: View {
                         .foregroundColor(AppColor.Creme)
                         .background(AppColor.Danger)
                         .clipShape(Circle())
+                    
                 }
                 .buttonStyle(.plain)
-                .disabled(vm.isRunning && vm.runningScript.contains(where: { $0.id == script.id }))
+                .disabled(vm.scriptHandler.isRunning && vm.scriptHandler.runningScript.contains(where: { $0.id == script.id }))
             } else {
                 // Script failed but logging is disabled
                 Image(systemName: "xmark")
                     .foregroundColor(AppColor.Danger)
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(AppColor.Light)
+                    .background(.ultraThickMaterial)
                     .clipShape(Circle())
             }
             

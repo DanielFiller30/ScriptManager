@@ -38,6 +38,12 @@ class ModalHandler: ModalHandlerProtocol {
     }
     
     @MainActor
+    func showShortcutModal() {
+        type = .SHORTCUT
+        showModal()
+    }
+    
+    @MainActor
     func hideModal() {
         withAnimation {
             self.modalVisible = false

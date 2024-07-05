@@ -20,6 +20,10 @@ class ScriptHandler: ScriptHandlerProtocol {
         storageHandler.scripts
     }
     
+    var runningScript: [Script] = []
+    var sciptTimes: [ScriptTime] = []
+    var isRunning: Bool = false
+    
     var editScript: Script = EmptyScript
     var editMode: Bool = false
     var selectedIcon: Int = 0
@@ -79,10 +83,12 @@ class ScriptHandler: ScriptHandlerProtocol {
                     scriptName: script.name
                 )
             } else {
+                isRunning = false
                 return .failed
             }
         } catch {
             print(error)
+            isRunning = false
             return .failed
         }
     }
@@ -109,6 +115,8 @@ extension ScriptHandler {
             }
             
             self.finishedCounter += 1
+            
+            isRunning = false
             return .successfull
         } else {
             if (settings.logs && !test) {
@@ -119,6 +127,7 @@ extension ScriptHandler {
                 NotificationHandler.sendResultNotification(state: false, name: scriptName)
             }
             
+            isRunning = false
             return .failed
         }
     }

@@ -33,7 +33,7 @@ struct HeaderView: View {
                     .resizable()
                     .frame(width: IconSize.l, height: IconSize.l)
                     .padding(Spacing.m)
-                    .background(AppColor.Light)
+                    .background(.ultraThinMaterial)
                     .clipShape(Circle())
                     .shadow(radius: 3, x: 1, y: 2)
             }
@@ -46,7 +46,7 @@ struct HeaderView: View {
                     .resizable()
                     .frame(width: IconSize.l, height: IconSize.l)
                     .padding(Spacing.m)
-                    .background(AppColor.Light)
+                    .background(.ultraThinMaterial)
                     .clipShape(Circle())
                     .shadow(radius: 3, x: 1, y: 2)
             }

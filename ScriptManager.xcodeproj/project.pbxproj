@@ -73,10 +73,14 @@
 		DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DC129A3B9210006B0DF /* EditScriptView.swift */; };
 		DC89BF1D29DC387B0029D9CA /* ScriptHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */; };
 		DC8E08BB29C498C100AA9B32 /* SettingsColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8E08BA29C498C100AA9B32 /* SettingsColorView.swift */; };
+		DC9558242C171A5A00BA7C34 /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9558232C171A5A00BA7C34 /* ShortcutView.swift */; };
 		DCDA8F3E2C1323DD00AD2B19 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */; };
 		DCDA8F402C1323F300AD2B19 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */; };
 		DCDA8F422C13273E00AD2B19 /* ModalHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F412C13273E00AD2B19 /* ModalHandlerProtocol.swift */; };
 		DCDA8F452C13320E00AD2B19 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCDA8F442C13320E00AD2B19 /* ConfettiSwiftUI */; };
+		DCDA8F482C1350B200AD2B19 /* ShortcutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F472C1350B200AD2B19 /* ShortcutListView.swift */; };
+		DCDA8F4A2C1350E100AD2B19 /* ShortcutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F492C1350E100AD2B19 /* ShortcutViewModel.swift */; };
+		DCDA8F4C2C1354B100AD2B19 /* ShortcutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */; };
 		DCDCD6BE29D7305E00529752 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DCDCD6BD29D7305E00529752 /* AlertToast */; };
 		DCDCD6C129D7342F00529752 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDCD6C029D7342F00529752 /* CustomButtonView.swift */; };
 		DCDFAC4A29CB251600D538A2 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4929CB251600D538A2 /* TagViewModel.swift */; };
@@ -162,9 +166,13 @@
 		DC89BF1F29DC3DB70029D9CA /* TagViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModelTest.swift; sourceTree = "<group>"; };
 		DC89BF2129DC3DCD0029D9CA /* SettingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModelTest.swift; sourceTree = "<group>"; };
 		DC8E08BA29C498C100AA9B32 /* SettingsColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsColorView.swift; sourceTree = "<group>"; };
+		DC9558232C171A5A00BA7C34 /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
 		DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
 		DCDA8F412C13273E00AD2B19 /* ModalHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandlerProtocol.swift; sourceTree = "<group>"; };
+		DCDA8F472C1350B200AD2B19 /* ShortcutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutListView.swift; sourceTree = "<group>"; };
+		DCDA8F492C1350E100AD2B19 /* ShortcutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutViewModel.swift; sourceTree = "<group>"; };
+		DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutModalView.swift; sourceTree = "<group>"; };
 		DCDCD6C029D7342F00529752 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		DCDFAC4929CB251600D538A2 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModalView.swift; sourceTree = "<group>"; };
@@ -281,6 +289,7 @@
 				DC5813D52BF7806900C5C727 /* AlertViewModel.swift */,
 				DC5813D72BF7812400C5C727 /* MainViewModel.swift */,
 				DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */,
+				DCDA8F492C1350E100AD2B19 /* ShortcutViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -312,6 +321,7 @@
 		DC75B41E299BA57F00086806 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DCDA8F462C1350A200AD2B19 /* Shortcuts */,
 				DCDA8F3C2C13216C00AD2B19 /* Modals */,
 				DCDCD6BF29D733E200529752 /* Common */,
 				DCDFAC4B29CB25E500D538A2 /* Tags */,
@@ -435,8 +445,18 @@
 				DC105EEF2C11F6A10023ABE7 /* ScriptModalView.swift */,
 				DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */,
 				DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */,
+				DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */,
 			);
 			path = Modals;
+			sourceTree = "<group>";
+		};
+		DCDA8F462C1350A200AD2B19 /* Shortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				DCDA8F472C1350B200AD2B19 /* ShortcutListView.swift */,
+				DC9558232C171A5A00BA7C34 /* ShortcutView.swift */,
+			);
+			path = Shortcuts;
 			sourceTree = "<group>";
 		};
 		DCDCD6BF29D733E200529752 /* Common */ = {
@@ -594,6 +614,7 @@
 				DC75B466299BA58000086806 /* GroupView.swift in Sources */,
 				DCDFAC4D29CB25FF00D538A2 /* TagModalView.swift in Sources */,
 				DC75B45C299BA58000086806 /* ScriptsListView.swift in Sources */,
+				DCDA8F482C1350B200AD2B19 /* ShortcutListView.swift in Sources */,
 				DC75B46B299BA58000086806 /* ScriptModel.swift in Sources */,
 				DC4E34CB2BB55A35004EB76C /* DependencyRegistry.swift in Sources */,
 				DC5813D22BF77EC100C5C727 /* AlertHandler.swift in Sources */,
@@ -611,6 +632,7 @@
 				DC75B443299BA57F00086806 /* ScriptManagerApp.swift in Sources */,
 				DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */,
 				DC75B463299BA58000086806 /* ScriptRunButtonView.swift in Sources */,
+				DCDA8F4C2C1354B100AD2B19 /* ShortcutModalView.swift in Sources */,
 				DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */,
 				DCFA33F329DD592500807A0E /* NotificationHandlerProtocol.swift in Sources */,
 				DC75B455299BA58000086806 /* SettingsUnicodeView.swift in Sources */,
@@ -624,6 +646,7 @@
 				DC2A807629C892B700BF6DE7 /* SettingsShortcutView.swift in Sources */,
 				DCFA33F129DD590E00807A0E /* NotificationProvider.swift in Sources */,
 				DCF82FB429D1C33F0085627D /* TagsListView.swift in Sources */,
+				DCDA8F4A2C1350E100AD2B19 /* ShortcutViewModel.swift in Sources */,
 				DC75B456299BA58000086806 /* HintView.swift in Sources */,
 				DC84CC1C29C9BB51006C8F07 /* ShortcutModel.swift in Sources */,
 				DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */,
@@ -654,6 +677,7 @@
 				DC75B45F299BA58000086806 /* ScriptFormView.swift in Sources */,
 				DC5813D02BF77B4A00C5C727 /* AlertView.swift in Sources */,
 				DC75B44F299BA58000086806 /* SettingsModalView.swift in Sources */,
+				DC9558242C171A5A00BA7C34 /* ShortcutView.swift in Sources */,
 				DC275E402B7F9872003E35C6 /* ScriptProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -806,6 +830,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.df.ScriptManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -840,6 +865,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.df.ScriptManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

@@ -85,7 +85,7 @@ struct ScriptDetailsView: View {
                         vm.scriptHandler.interruptRunningProcess()
                     },
                     icon: "stop.fill",
-                    disabled: !vm.isRunning || vm.runningScript.contains(where: { $0.id != script.id }),
+                    disabled: !vm.scriptHandler.isRunning || vm.scriptHandler.runningScript.contains(where: { $0.id != script.id }),
                     help: "button-interrupt"
                 )
                 
@@ -95,12 +95,15 @@ struct ScriptDetailsView: View {
                         vm.openEdit(script: script)                        
                     },
                     icon: "pencil",
-                    disabled: vm.isRunning && vm.runningScript.contains(where: { $0.id == script.id }),
+                    disabled: vm.scriptHandler.isRunning && vm.scriptHandler.runningScript.contains(where: { $0.id == script.id }),
                     help: "button-edit"
                 )
                 
                 // Delete script
-                ScriptDeleteButtonView(scriptId: script.id, disabled: vm.isRunning && vm.runningScript.contains(where: { $0.id == script.id }))
+                ScriptDeleteButtonView(
+                    scriptId: script.id,
+                    disabled: vm.scriptHandler.isRunning && vm.scriptHandler.runningScript.contains(where: { $0.id == script.id })
+                )
             }
         }
     }

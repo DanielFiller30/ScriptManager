@@ -13,7 +13,7 @@ import SwiftUI
 @Observable
 class SettingsViewModel {
     @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol
-    @LazyInjected @ObservationIgnored private var scriptHandler: ScriptHandlerProtocol
+    @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     

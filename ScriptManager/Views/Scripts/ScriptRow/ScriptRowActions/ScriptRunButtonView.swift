@@ -16,8 +16,8 @@ struct ScriptRunButtonView: View {
     @State var showRunPopover: Bool = false
     
     var body: some View {
-        if (vm.isRunning && vm.runningScript.contains(where: { $0.id == script.id })) {
-            if let time = vm.sciptTimes.first(where: { $0.scriptId == script.id })?.remainingTime {
+        if (vm.scriptHandler.isRunning && vm.scriptHandler.runningScript.contains(where: { $0.id == script.id })) {
+            if let time = vm.scriptHandler.sciptTimes.first(where: { $0.scriptId == script.id })?.remainingTime {
                 Text(time)
                     .font(.caption2)
                     .padding(Spacing.l)
@@ -39,15 +39,16 @@ struct ScriptRunButtonView: View {
                     .resizable()
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(AppColor.Light)
+                    .background(.ultraThickMaterial)
                     .clipShape(Circle())
             }
+            .disabled(vm.scriptHandler.isRunning)
             .buttonStyle(.plain)
             .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {
                 VStack(alignment: .center, spacing: Spacing.l) {
                     Button {
                         showRunPopover.toggle()
-                        vm.runningScript.append(script)
+                        vm.scriptHandler.runningScript.append(script)
                         vm.runScript(showOutput: false, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
@@ -74,7 +75,7 @@ struct ScriptRunButtonView: View {
                     
                     Button {
                         showRunPopover.toggle()
-                        vm.runningScript.append(script)
+                        vm.scriptHandler.runningScript.append(script)
                         vm.runScript(showOutput: true, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {

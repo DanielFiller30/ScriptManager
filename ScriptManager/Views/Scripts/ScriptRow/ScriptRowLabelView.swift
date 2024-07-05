@@ -43,7 +43,9 @@ struct ScriptRowLabel: View {
                         BadgeView(
                             color: badgeColor ?? AppColor.Primary,
                             title: tag.name,
-                            active: false
+                            active: false,
+                            outlined: false,
+                            filled: true
                         )
                     }
                 }

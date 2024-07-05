@@ -36,11 +36,14 @@ struct ModalView: View {
                 }
                 .padding(.bottom, Spacing.xl)
                 
-                if vm.modalType == .TAG {
+                switch vm.modalType {
+                case .TAG:
                     TagModalView()
-                } else if vm.modalType == .SETTINGS {
+                case .SETTINGS:
                     SettingsModalView()
-                } else {
+                case .SHORTCUT:
+                    ShortcutModalView()
+                case .ADD_SCRIPT, .EDIT_SCRIPT:                
                     ScriptModalView()
                 }
             }

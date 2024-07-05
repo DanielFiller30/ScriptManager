@@ -27,7 +27,7 @@ struct ScriptProgressView: View {
 
 struct customProgressView: ProgressViewStyle {
     var stroke: Color = Color.white
-    var fill = Material.ultraThickMaterial
+    var fill = Material.ultraThinMaterial
     var caption: String = ""
     var cornerRadius: CGFloat = 15
     var height: CGFloat
@@ -57,5 +57,5 @@ struct customProgressView: ProgressViewStyle {
         ScriptProgressView(height: 60, value: 1.0, showDetails: .constant(false))
     }
     .padding(20)
-    .background(.ultraThinMaterial)
+    .background(.ultraThickMaterial)
 }

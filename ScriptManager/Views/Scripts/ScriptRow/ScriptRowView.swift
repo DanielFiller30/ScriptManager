@@ -17,7 +17,7 @@ struct ScriptRowView: View {
         
     var body: some View {
         ZStack {
-            let value = vm.sciptTimes.first(where: {$0.scriptId == script.id})?.progressValue
+            let value = vm.scriptHandler.sciptTimes.first(where: {$0.scriptId == script.id})?.progressValue
             if !showDetails {
                 ScriptProgressView(height: 60, value: value ?? 1.0, showDetails: $showDetails)
             }
