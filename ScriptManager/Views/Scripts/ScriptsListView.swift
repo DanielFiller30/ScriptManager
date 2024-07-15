@@ -13,26 +13,12 @@ struct ScriptsListView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.l) {
-            HStack(alignment: .center) {
-                Text("saved \(String(vm.scripts.count))")
-                    .fontWeight(.bold)
-                    .font(.system(size: FontSize.subTitle))
-                
-                Spacer()
-                
-                Button {
-                    vm.scriptHandler.editScript = EmptyScript
-                    vm.modalHandler.showModal(.ADD_SCRIPT)
-                } label: {
-                    Image(systemName: "plus")
-                        .resizable()
-                        .frame(width: IconSize.s, height: IconSize.s)
-                        .foregroundColor(Color.white)
-                        .help("add-new-tag")
-                }
-                .buttonStyle(.plain)
-            }
-            .padding(.bottom, Spacing.l)
+            Text("saved \(String(vm.scripts.count))")
+                .fontWeight(.bold)
+                .font(.system(size: FontSize.subTitle))
+                .padding(.bottom, Spacing.l)
+            
+            TagsListView()
             
             if (vm.scripts.isEmpty) {
                 Text("empty-scripts")

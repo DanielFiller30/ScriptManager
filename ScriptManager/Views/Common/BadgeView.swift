@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct BadgeView: View {
+    @State private var vm = TagViewModel()
+    
     var color: Color
     var title: String
     var active: Bool
     var outlined: Bool?
-    var filled: Bool?
     
     var body: some View {
         HStack(alignment: .center) {
@@ -23,15 +24,13 @@ struct BadgeView: View {
                     .lineLimit(1)
                     .foregroundColor(active ? AppColor.AppBg : nil)
                 
-                if (filled ?? false == false) {
-                    Circle()
-                        .frame(maxWidth: 10, maxHeight: 10)
-                        .foregroundColor(color)
-                }
+                Circle()
+                    .frame(maxWidth: 10, maxHeight: 10)
+                    .foregroundColor(color)
             }
             .padding(.horizontal, Spacing.l)
             .padding(.vertical, 7.0)
-            .background(active ? AnyShapeStyle(AppColor.Creme) : (filled ?? false ? AnyShapeStyle(color) : AnyShapeStyle(.ultraThinMaterial)))
+            .background(active ? AnyShapeStyle(AppColor.Creme) : AnyShapeStyle(.ultraThinMaterial))
             .overlay(
                 RoundedRectangle(cornerRadius: 12.0)
                     .stroke(outlined ?? true ? color : .clear, lineWidth: 1.5)

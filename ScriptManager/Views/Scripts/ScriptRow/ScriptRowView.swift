@@ -17,16 +17,12 @@ struct ScriptRowView: View {
         
     var body: some View {
         ZStack {
-            let value = vm.scriptHandler.sciptTimes.first(where: {$0.scriptId == script.id})?.progressValue
-            if !showDetails {
-                ScriptProgressView(height: 60, value: value ?? 1.0, showDetails: $showDetails)
-            }
-            
             DisclosureGroup(isExpanded: $showDetails) {
                 VStack {
                     ScriptDetailsView(showAddScriptModal: $showAddScriptModal, script: script)
                 }
                 .padding(.all, Spacing.l)
+
             } label: {
                     ScriptRowLabel(
                         toggleDetails: {
@@ -38,14 +34,10 @@ struct ScriptRowView: View {
                     )
             }
             .padding(.all, Spacing.l)
-            .background(showDetails ? AnyShapeStyle(.ultraThickMaterial) : AnyShapeStyle(.clear))
-            .overlay(
-                RoundedRectangle(cornerRadius: 15.0)
-                    .stroke(.white, lineWidth: 1)
-            )
+            .background(.ultraThickMaterial)
+            .cornerRadius(15)
             .shadow(radius: 3, x: 1, y: 2)
-            .cornerRadius(showDetails ? 10.0 : 0)
-        }     
+        }
     }
 }
 

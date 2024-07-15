@@ -404,6 +404,7 @@
 
     },
     "empty-tags" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1156,6 +1157,16 @@
         }
       }
     },
+    "shortcut-title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kurzbefehl:"
+          }
+        }
+      }
+    },
     "shortcuts" : {
       "localizations" : {
         "de" : {
@@ -1183,6 +1194,7 @@
       }
     },
     "tags-title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

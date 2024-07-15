@@ -20,6 +20,7 @@ struct ScriptRowLabel: View {
                 .scaledToFit()
                 .frame(height: IconSize.m)
                 .padding(.horizontal, Spacing.m)
+                .foregroundStyle(vm.getTagColor(script.tagID))
                 .onTapGesture {
                     withAnimation() {
                         toggleDetails()
@@ -44,8 +45,7 @@ struct ScriptRowLabel: View {
                             color: badgeColor ?? AppColor.Primary,
                             title: tag.name,
                             active: false,
-                            outlined: false,
-                            filled: true
+                            outlined: true
                         )
                     }
                 }

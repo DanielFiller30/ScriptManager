@@ -41,7 +41,7 @@ class ColorConverter {
     /// Default encoced color object as `Data`
     static var defaultEncodedColor: Data {
         do {
-            return try encodeColor(color: AppColor.Primary)
+            return try encodeColor(color: .white)
         } catch {
             debugPrint(error)
             return Data()

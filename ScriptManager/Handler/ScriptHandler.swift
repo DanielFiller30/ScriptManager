@@ -9,7 +9,7 @@ import Foundation
 import Resolver
 
 @Observable
-class ScriptHandler: ScriptHandlerProtocol {
+class ScriptHandler: ScriptHandlerProtocol {    
     @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol
     
     var output = ""
@@ -21,7 +21,6 @@ class ScriptHandler: ScriptHandlerProtocol {
     }
     
     var runningScript: [Script] = []
-    var sciptTimes: [ScriptTime] = []
     var isRunning: Bool = false
     
     var editScript: Script = EmptyScript
@@ -103,6 +102,10 @@ class ScriptHandler: ScriptHandlerProtocol {
     
     func saveScripts() {
         storageHandler.scripts = scripts
+    }
+    
+    func saveTimes() {
+        storageHandler.times = times
     }
 }
 

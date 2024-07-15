@@ -17,18 +17,16 @@ struct ScriptRunButtonView: View {
     
     var body: some View {
         if (vm.scriptHandler.isRunning && vm.scriptHandler.runningScript.contains(where: { $0.id == script.id })) {
-            if let time = vm.scriptHandler.sciptTimes.first(where: { $0.scriptId == script.id })?.remainingTime {
+            if let time = vm.scriptHandler.times.first(where: { $0.scriptId == script.id })?.remainingTime {
                 Text(time)
                     .font(.caption2)
                     .padding(Spacing.l)
-                    .background(AppColor.Light)
                     .cornerRadius(10.0)
             } else {
                 ProgressView()
                     .frame(width: IconSize.s, height: IconSize.s)
                     .scaleEffect(0.5)
                     .padding(Spacing.l)
-                    .background(AppColor.Light)
                     .clipShape(Circle())
             }
         } else {
@@ -39,7 +37,6 @@ struct ScriptRunButtonView: View {
                     .resizable()
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(.ultraThickMaterial)
                     .clipShape(Circle())
             }
             .disabled(vm.scriptHandler.isRunning)

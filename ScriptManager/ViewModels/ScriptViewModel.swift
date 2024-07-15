@@ -41,7 +41,7 @@ class ScriptViewModel {
                 openOutputWindow()
             }
             
-            var tempTimes = scriptHandler.sciptTimes
+            var tempTimes = scriptHandler.times
             var tempIndex = 0
             if let timeIndex = tempTimes.firstIndex(where: { $0.scriptId == scriptId }) {
                 tempIndex = timeIndex
@@ -76,6 +76,7 @@ class ScriptViewModel {
             tempTimes[runningIndex].remainingTime = nil
             tempTimes[runningIndex].progressValue = 1.0
             scriptHandler.times = tempTimes
+            scriptHandler.saveTimes()
             
             // Save script result
             tempScripts[index].success = success
@@ -113,6 +114,10 @@ class ScriptViewModel {
             // Empty tag
             return nil
         }
+    }
+    
+    func getMatchingShortcut(_ id: UUID) -> Shortcut? {
+        return settingsHandler.settings.shortcuts.first(where: { $0.scriptId == id })
     }
     
     @MainActor
@@ -179,6 +184,19 @@ class ScriptViewModel {
         guard let url = URL(string: "file://\(settings.pathLogs)") else {return}
         
         NSWorkspace.shared.open(url)
+    }
+    
+    func getTagColor(_ tagId: UUID?) -> Color {
+        var iconColor = Color.white
+        if let tagId {
+            do {
+                iconColor = try ColorConverter.decodeColor(from: self.getTagById(id: tagId)?.badgeColor ?? EmptyTag.badgeColor)
+            } catch {
+                // Fallback default color
+            }
+        }
+        
+        return iconColor
     }
 }
 
@@ -258,8 +276,8 @@ extension ScriptViewModel {
     @MainActor
     private func updateTime(index: Int, remainingTime: String?, progressVal: Double) {
         withAnimation {
-            scriptHandler.sciptTimes[index].remainingTime = remainingTime
-            scriptHandler.sciptTimes[index].progressValue = progressVal
+            scriptHandler.times[index].remainingTime = remainingTime
+            scriptHandler.times[index].progressValue = progressVal
         }
     }
 }

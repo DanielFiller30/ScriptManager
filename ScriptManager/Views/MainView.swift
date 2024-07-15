@@ -20,19 +20,6 @@ struct MainView: View {
                     .frame(minHeight: 2)
                     .foregroundColor(AppColor.AppBg)
                 
-                ShortcutListView()
-                
-                Divider()
-                    .frame(minHeight: 2)
-                    .foregroundColor(AppColor.AppBg)
-
-                TagsListView()
-                
-                Divider()
-                    .frame(minHeight: 2)
-                    .foregroundColor(AppColor.AppBg)
-                
-                
                 ScriptsListView()
                     .padding(.top, Spacing.l)
             }

@@ -25,6 +25,29 @@ struct HeaderView: View {
                 .fontWeight(.light)
             
             Spacer()
+
+            if vm.selectedTag != nil {
+                Button {
+                    vm.showDeleteTagAlert()
+                } label: {
+                    HStack {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .frame(width: IconSize.m, height: IconSize.m)
+                    }
+                    .frame(width: IconSize.l, height: IconSize.l)
+                    .padding(Spacing.m)
+                    .background(.ultraThinMaterial)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(vm.getTagColor(), lineWidth: 1)
+                    )
+                    .shadow(radius: 3, x: 1, y: 2)
+                    .help("hint-remove-tag")
+                }
+                .buttonStyle(.plain)
+            }
             
             Button {
                 vm.modalHandler.showModal(.ADD)

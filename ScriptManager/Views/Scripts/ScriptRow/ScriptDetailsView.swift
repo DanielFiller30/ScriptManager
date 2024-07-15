@@ -20,16 +20,17 @@ struct ScriptDetailsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(alignment: .top) {
+            HStack(alignment: .center) {
                 Text("path")
                     .font(.system(size: FontSize.text))
                     .fontWeight(.bold)
-                    .frame(width: 80, alignment: .leading)
+                    .frame(width: 120, alignment: .leading)
                 
                 Spacer()
                 
                 Text(script.command)
                     .font(.system(size: FontSize.text))
+                    .lineLimit(1)
                     .onTapGesture() {
                         // Copy path
                         let pasteboard = NSPasteboard.general
@@ -39,17 +40,35 @@ struct ScriptDetailsView: View {
                         // Show 'copied' toast
                         showToast.toggle()
                     }
+                    .help(script.command)
             }
-            .padding(.bottom, Spacing.m)
+            .padding(.bottom, Spacing.l)
             .toast(isPresenting: $showToast, duration: 1, tapToDismiss: true) {
                 AlertToast(type: .regular, title: "hint-copied")
             }
+
+            HStack(alignment: .center) {
+                Text("shortcut-title")
+                    .font(.system(size: FontSize.text))
+                    .fontWeight(.bold)
+                    .frame(width: 120, alignment: .leading)
+                
+                Spacer()
+                
+                if let shortcut = vm.getMatchingShortcut(script.id) {
+                    ShortcutView(shortcut: shortcut)
+                } else {
+                    Text("-")
+                        .font(.system(size: FontSize.text))
+                }
+            }
+            .padding(.bottom, Spacing.l)
             
-            HStack(alignment: .top) {
+            HStack(alignment: .center) {
                 Text("last-run")
                     .font(.system(size: FontSize.text))
                     .fontWeight(.bold)
-                    .frame(width: 80, alignment: .leading)
+                    .frame(width: 120, alignment: .leading)
                 
                 Spacer()
                 

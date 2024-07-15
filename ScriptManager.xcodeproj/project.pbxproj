@@ -13,7 +13,6 @@
 		DC105EEE2C11F5BA0023ABE7 /* ModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC105EED2C11F5BA0023ABE7 /* ModalHandler.swift */; };
 		DC105EF02C11F6A10023ABE7 /* ScriptModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC105EEF2C11F6A10023ABE7 /* ScriptModalView.swift */; };
 		DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC275E3D2B7F885C003E35C6 /* ScriptTimeModel.swift */; };
-		DC275E402B7F9872003E35C6 /* ScriptProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC275E3F2B7F9872003E35C6 /* ScriptProgressView.swift */; };
 		DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D429A382A800DBCAAD /* IconPickerView.swift */; };
 		DC2991D729A3830C00DBCAAD /* ScriptIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */; };
 		DC2A807629C892B700BF6DE7 /* SettingsShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */; };
@@ -107,7 +106,6 @@
 		DC105EED2C11F5BA0023ABE7 /* ModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandler.swift; sourceTree = "<group>"; };
 		DC105EEF2C11F6A10023ABE7 /* ScriptModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptModalView.swift; sourceTree = "<group>"; };
 		DC275E3D2B7F885C003E35C6 /* ScriptTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptTimeModel.swift; sourceTree = "<group>"; };
-		DC275E3F2B7F9872003E35C6 /* ScriptProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptProgressView.swift; sourceTree = "<group>"; };
 		DC2991D429A382A800DBCAAD /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptIcons.swift; sourceTree = "<group>"; };
 		DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsShortcutView.swift; sourceTree = "<group>"; };
@@ -394,7 +392,6 @@
 				DC75B436299BA57F00086806 /* ScriptRowActions */,
 				DC75B43A299BA57F00086806 /* ScriptRowLabelView.swift */,
 				DC75B435299BA57F00086806 /* ScriptDetailsView.swift */,
-				DC275E3F2B7F9872003E35C6 /* ScriptProgressView.swift */,
 			);
 			path = ScriptRow;
 			sourceTree = "<group>";
@@ -682,7 +679,6 @@
 				DC5813D02BF77B4A00C5C727 /* AlertView.swift in Sources */,
 				DC75B44F299BA58000086806 /* SettingsModalView.swift in Sources */,
 				DC9558242C171A5A00BA7C34 /* ShortcutView.swift in Sources */,
-				DC275E402B7F9872003E35C6 /* ScriptProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

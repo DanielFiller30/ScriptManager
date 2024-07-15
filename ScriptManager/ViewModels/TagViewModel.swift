@@ -52,39 +52,6 @@ class TagViewModel {
         }
     }
     
-    func showDeleteAlert(_ tagId: UUID) {
-        alertHandler.showAlert(
-            title: String(localized: "delete-tag-title"),
-            message: String(localized: "delete-tag-msg"),
-            btnTitle: String(localized: "delete"),
-            action: {
-                self.deleteTag(tagId: tagId)
-                self.alertHandler.hideAlert()
-            }
-        )
-    }
-    
-    func deleteTag(tagId: UUID) {
-        // Remove tag from scripts
-        scriptHandler.scripts = scriptHandler.savedScripts
-                
-        for (index, script) in scriptHandler.scripts.enumerated() {
-            if script.tagID == tagId {
-                scriptHandler.scripts[index].tagID = EmptyTag.id
-            }
-        }
-         
-        scriptHandler.saveScripts()
-        
-        // Delete tag
-        tagHandler.tags = tagHandler.tags.filter {
-            $0.id != tagId
-        }
-                
-        tagHandler.saveTags()
-        tagHandler.selectedTag = nil
-    }
-    
     func resetForm() {
         name = ""
         badgeColor = AppColor.Primary
