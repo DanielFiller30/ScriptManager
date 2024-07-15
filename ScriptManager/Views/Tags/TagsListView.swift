@@ -12,10 +12,10 @@ struct TagsListView: View {
     @State private var showTags = true
     
     var body: some View {
-        VStack(alignment: .leading, spacing: Spacing.l) {
-            ScrollView(.horizontal) {
-                HStack(spacing: Spacing.l) {
-                    if (!vm.tags.isEmpty) {
+        if (!vm.tags.isEmpty) {
+            VStack(alignment: .leading, spacing: Spacing.l) {
+                ScrollView(.horizontal) {
+                    HStack(spacing: Spacing.l) {
                         ForEach(vm.tags, id: \.id) { tag in
                             if tag.id != EmptyTag.id {
                                 Button {
@@ -39,11 +39,12 @@ struct TagsListView: View {
                             }
                         }
                     }
+                    .padding(.bottom, Spacing.l + 5)
+                    
                 }
-                .padding(.bottom, Spacing.l + 5)
             }
+            .padding(.horizontal, Spacing.l)            
         }
-        .padding(.horizontal, Spacing.l)
     }
 }
 

@@ -389,13 +389,23 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Füge ein neues Skript hinzu, um es über diese Liste auszuführen"
+            "value" : "Du hast noch keine Skripte gespeichert. Füge ein neues Skript deiner Liste hinzu, um es auszuführen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add a new script, to run it here"
+          }
+        }
+      }
+    },
+    "empty-scripts-filter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du hast einen aktiven Filter gesetzt, für den du keine passenden Skripte gespeichert hast. Entferne deinen Filter um alle Skripte anzuzeigen"
           }
         }
       }
@@ -850,6 +860,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Preview"
+          }
+        }
+      }
+    },
+    "remove-filter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter entfernen"
           }
         }
       }

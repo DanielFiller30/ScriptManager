@@ -44,17 +44,10 @@ struct AddModalView: View {
                             .bold()
                         
                         Spacer()
-                        
-                        Image(systemName: "applescript")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(AppColor.Primary)
-                            .frame(height: IconSize.m)
                     }
                     .frame(width: 250)
-                    .padding(.horizontal, Spacing.l)
-                    .padding(.vertical, Spacing.l)
-                    .background(.ultraThinMaterial)
+                    .padding()
+                    .background(.ultraThickMaterial)
                     .cornerRadius(8)
                     .shadow(radius: 3, x: 1, y: 2)
                 }
@@ -96,17 +89,10 @@ struct AddModalView: View {
                             .bold()
                         
                         Spacer()
-                        
-                        Image(systemName: "tag")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(AppColor.Primary)
-                            .frame(height: IconSize.m)
                     }
                     .frame(width: 250)
-                    .padding(.horizontal, Spacing.l)
-                    .padding(.vertical, Spacing.l)
-                    .background(.ultraThinMaterial)
+                    .padding()
+                    .background(.ultraThickMaterial)
                     .cornerRadius(8)
                     .shadow(radius: 3, x: 1, y: 2)
                 }

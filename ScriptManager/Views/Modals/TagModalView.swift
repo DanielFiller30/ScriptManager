@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TagModalView: View {
     @State private var vm = TagViewModel()
+    let colors: [Color] = [.brown, .cyan, .indigo, .mint, .pink, .green, .blue, .orange, .purple, .red]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,7 +20,8 @@ struct TagModalView: View {
                 Spacer()
                 
                 TextField("", text: $vm.name)
-                    .frame(maxWidth: 120)
+                    .frame(maxWidth: 155)
+                    .cornerRadius(8)
             }
             .padding(.bottom, Spacing.l)
             
@@ -28,6 +30,15 @@ struct TagModalView: View {
                     .font(.system(size: FontSize.text))
                                 
                 Spacer()
+                
+                Picker("", selection: $vm.badgeColor) {
+                    ForEach(colors, id: \.self) { color in
+                        Text(color.description.capitalized)
+                            .foregroundStyle(color)
+                    }
+                }
+                .pickerStyle(.menu)
+                .frame(width: 100)
                 
                 ColorPicker("", selection: $vm.badgeColor)
             }

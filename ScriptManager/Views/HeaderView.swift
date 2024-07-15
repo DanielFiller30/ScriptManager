@@ -15,7 +15,7 @@ struct HeaderView: View {
             Image("Logo")
                 .resizable()
                 .scaledToFit()
-                .frame(height: 25.0)
+                .frame(height: 20.0)
                 .padding(.trailing, Spacing.m)
             
             Text("Script Manager")
@@ -47,6 +47,7 @@ struct HeaderView: View {
                     .help("hint-remove-tag")
                 }
                 .buttonStyle(.plain)
+                .padding(.trailing, Spacing.m)
             }
             
             Button {
@@ -64,6 +65,7 @@ struct HeaderView: View {
                 .shadow(radius: 3, x: 1, y: 2)
             }
             .buttonStyle(.plain)
+            .padding(.trailing, Spacing.m)
             
             Button {
                 vm.modalHandler.showModal(.SETTINGS)

@@ -14,7 +14,7 @@ class ScriptViewModel {
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
-    @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
+    @LazyInjected @ObservationIgnored var tagHandler: TagHandlerProtocol
     @LazyInjected @ObservationIgnored private var settingsHandler: SettingsHandlerProtocol
 
     private var runningTimer: Timer?
