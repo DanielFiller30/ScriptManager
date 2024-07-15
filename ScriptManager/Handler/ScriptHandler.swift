@@ -27,11 +27,6 @@ class ScriptHandler: ScriptHandlerProtocol {
     var editMode: Bool = false
     var selectedIcon: Int = 0
     
-    var times: [ScriptTime] = []
-    var savedTimes: [ScriptTime] {
-        storageHandler.times
-    }
-    
     private var process: Process?
     private var settings: Settings {
         storageHandler.settings
@@ -39,7 +34,6 @@ class ScriptHandler: ScriptHandlerProtocol {
     
     init() {
         scripts = storageHandler.scripts
-        times = storageHandler.times
     }
     
     func runScript(_ script: Script, test: Bool) async -> ResultState {
@@ -102,10 +96,6 @@ class ScriptHandler: ScriptHandlerProtocol {
     
     func saveScripts() {
         storageHandler.scripts = scripts
-    }
-    
-    func saveTimes() {
-        storageHandler.times = times
     }
 }
 

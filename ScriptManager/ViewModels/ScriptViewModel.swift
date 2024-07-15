@@ -34,59 +34,50 @@ class ScriptViewModel {
         Task {
             var tempScripts = scriptHandler.scripts
             guard let index = tempScripts.firstIndex(where: { $0.id == scriptId }) else { return }
-            
-            changeIsRunningState(state: true)
-            
+            var finishedTime = 0
+                        
             if showOutput {
                 openOutputWindow()
             }
             
-            var tempTimes = scriptHandler.times
-            var tempIndex = 0
-            if let timeIndex = tempTimes.firstIndex(where: { $0.scriptId == scriptId }) {
-                tempIndex = timeIndex
-            } else {
-                tempTimes.append(ScriptTime(scriptId: scriptId))
-                tempIndex = tempTimes.count - 1
+            // Track new running time
+            if tempScripts[index].time == nil {
+                tempScripts[index].time = DefaultScriptTime
             }
             
-            let runningIndex = tempIndex
             let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
                 DispatchQueue.main.async {
-                    tempTimes[runningIndex].currentTime += 1
+                    finishedTime += 1
                 }
             }
             
-            startRunningTimer(tempTimes[runningIndex].runningTimes, runningIndex)
+            // Start timer for countdown
+            startRunningTimer(tempScripts[index], runningIndex: index)
             
             // Update all scripts
             let success = await scriptHandler.runScript(tempScripts[index], test: false)
             
+            // Stop track timer for new last time
             timer.invalidate()
+            // Stop countdown timer for displaying
             runningTimer?.invalidate()
-            
-            let finishedTime = tempTimes[runningIndex].currentTime
-            
+                    
+            // If successfull, save new last run time
             if success == .successfull {
-                tempTimes[runningIndex].runningTimes.append(finishedTime)
+                tempScripts[index].time!.lastTime = finishedTime
+                // Reset time values for script
+                tempScripts[index].time!.currentTime = 0
+                tempScripts[index].time!.remainingTime = nil
+                tempScripts[index].time!.progressValue = 1.0
             }
-            
-            // Save process time
-            tempTimes[runningIndex].currentTime = 0
-            tempTimes[runningIndex].remainingTime = nil
-            tempTimes[runningIndex].progressValue = 1.0
-            scriptHandler.times = tempTimes
-            scriptHandler.saveTimes()
-            
+                        
             // Save script result
             tempScripts[index].success = success
             tempScripts[index].finished = true
             tempScripts[index].lastRun = Date.now
             scriptHandler.scripts = tempScripts
             scriptHandler.saveScripts()
-                        
-            changeIsRunningState(state: false)
-            
+                                    
             scriptHandler.runningScript = scriptHandler.runningScript.filter { $0.id != scriptId }
         }
     }
@@ -212,17 +203,6 @@ extension ScriptViewModel {
     }
     
     @MainActor
-    private func changeIsRunningState(state: Bool) {
-        if !state {
-            if scriptHandler.runningScript.isEmpty {
-                scriptHandler.isRunning = false
-            }
-        } else {
-            scriptHandler.isRunning = true
-        }
-    }
-    
-    @MainActor
     private func openOutputWindow() {
         let window = NSWindow()
         let contentView = OutputWindowView()
@@ -248,26 +228,26 @@ extension ScriptViewModel {
 
 // MARK: - Process timer handling
 extension ScriptViewModel {
-    private func startRunningTimer(_ previousTimes: [Int],_ runningIndex: Int) {
-        if previousTimes.count > 3 {
-            var totalTime = previousTimes.reduce(0, +) / previousTimes.count
-            let tempTotalTime = totalTime
-            
-            self.runningTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                if totalTime >= 1 {
-                    totalTime -= 1
-                    
-                    let mins = String(format: "%02d", totalTime / 60)
-                    let secs = String(format: "%02d", totalTime % 60)
-                    let progress = Double(totalTime) / Double(tempTotalTime)
-                    
-                    DispatchQueue.main.async {
-                        self.updateTime(index: runningIndex, remainingTime: "\(mins):\(secs)", progressVal: progress)
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.updateTime(index: runningIndex, remainingTime: nil, progressVal: 0.0)
-                    }
+    private func startRunningTimer(_ script: Script, runningIndex: Int) {
+        guard script.time!.lastTime != nil else { return }
+        
+        var totalTime = script.time!.lastTime!
+        let tempTotalTime = totalTime
+        
+        self.runningTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            if totalTime >= 1 {
+                totalTime -= 1
+                
+                let mins = String(format: "%02d", totalTime / 60)
+                let secs = String(format: "%02d", totalTime % 60)
+                let progress = Double(totalTime) / Double(tempTotalTime)
+                
+                DispatchQueue.main.async {
+                    self.updateTime(index: runningIndex, remainingTime: "\(mins):\(secs)", progressVal: progress)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.updateTime(index: runningIndex, remainingTime: nil, progressVal: 0.0)
                 }
             }
         }
@@ -276,8 +256,8 @@ extension ScriptViewModel {
     @MainActor
     private func updateTime(index: Int, remainingTime: String?, progressVal: Double) {
         withAnimation {
-            scriptHandler.times[index].remainingTime = remainingTime
-            scriptHandler.times[index].progressValue = progressVal
+            scriptHandler.scripts[index].time!.remainingTime = remainingTime
+            scriptHandler.scripts[index].time!.progressValue = progressVal
         }
     }
 }

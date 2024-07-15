@@ -119,7 +119,8 @@ struct ScriptModalView: View {
             icon: "terminal",
             command: vm.scriptHandler.editScript.command,
             success: .ready,
-            finished: false
+            finished: false,
+            time: DefaultScriptTime
         )
         
         Task {

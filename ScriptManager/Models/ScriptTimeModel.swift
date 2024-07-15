@@ -8,9 +8,15 @@
 import Foundation
 
 struct ScriptTime: Codable {
-    var scriptId: UUID
-    var runningTimes: [Int] = []
+    var lastTime: Int?
     var currentTime = 0
     var remainingTime: String?
     var progressValue = 1.0
 }
+
+let DefaultScriptTime = ScriptTime(
+    lastTime: nil,
+    currentTime: 0,
+    remainingTime: nil,
+    progressValue: 1.0
+)

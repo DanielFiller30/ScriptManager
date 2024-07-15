@@ -39,6 +39,12 @@ extension StorageHandler {
             UserDefaults.standard.removeObject(forKey: key.rawValue)
         }
     }
+    
+    /// Reset values of key in UserDefaults. (Used for debugging)
+    /// Key-values will be reset to default
+    func resetValues(_ key: StorageKeys) {
+        UserDefaults.standard.removeObject(forKey: key.rawValue)
+    }
 }
 
 enum StorageKeys: String, CaseIterable {

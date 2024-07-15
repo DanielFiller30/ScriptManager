@@ -15,5 +15,6 @@ protocol StorageHandlerProtocol {
     var settings: Settings { get set }
     
     func resetData()
+    func resetValues(_ key: StorageKeys)
     func setFirstLaunchToFalse()
 }

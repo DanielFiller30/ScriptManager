@@ -16,8 +16,8 @@ struct ScriptRunButtonView: View {
     @State var showRunPopover: Bool = false
     
     var body: some View {
-        if (vm.scriptHandler.isRunning && vm.scriptHandler.runningScript.contains(where: { $0.id == script.id })) {
-            if let time = vm.scriptHandler.times.first(where: { $0.scriptId == script.id })?.remainingTime {
+        if (vm.scriptHandler.runningScript.contains(where: { $0.id == script.id })) {
+            if let time = vm.scriptHandler.scripts.first(where: { $0.id == script.id })?.time?.remainingTime {
                 Text(time)
                     .font(.caption2)
                     .padding(Spacing.l)
@@ -39,7 +39,6 @@ struct ScriptRunButtonView: View {
                     .padding(Spacing.l)
                     .clipShape(Circle())
             }
-            .disabled(vm.scriptHandler.isRunning)
             .buttonStyle(.plain)
             .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {
                 VStack(alignment: .center, spacing: Spacing.l) {

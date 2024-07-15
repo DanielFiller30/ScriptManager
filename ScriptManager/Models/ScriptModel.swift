@@ -16,6 +16,7 @@ struct Script: Identifiable, Codable {
     var finished: Bool
     var lastRun: Date?
     var tagID: UUID = EmptyTag.id
+    var time: ScriptTime?
 }
 
 let EmptyScript = Script(
@@ -26,7 +27,8 @@ let EmptyScript = Script(
     success: .ready,
     finished: false,
     lastRun: Date.now,
-    tagID: EmptyTag.id
+    tagID: EmptyTag.id,
+    time: DefaultScriptTime
 )
 
 let DefaultScript = Script(
@@ -34,5 +36,6 @@ let DefaultScript = Script(
     icon: "terminal",
     command: "/test",
     success: .ready,
-    finished: false
+    finished: false,
+    time: DefaultScriptTime
 )
