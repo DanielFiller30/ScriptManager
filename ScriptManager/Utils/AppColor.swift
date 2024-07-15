@@ -13,6 +13,7 @@ struct AppColor {
     static let Light = Color("Light")
     static let Success = Color("Success")
     static let Danger = Color("Danger")
+    static let Warning = Color("Warning")
     static let Creme = Color("Creme")
     static let Background = Color("Background")
     static let AppBg = Color("AppBg")

@@ -10,7 +10,7 @@ import Resolver
 
 @Observable
 class ScriptHandler: ScriptHandlerProtocol {    
-    @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol
+    @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol    
     
     var output = ""
     var finishedCounter = 0
@@ -112,7 +112,9 @@ class ScriptHandler: ScriptHandlerProtocol {
 // MARK: - Handle process result
 extension ScriptHandler {
     private func handleScriptResult(result: Int32, test: Bool, scriptName: String) -> ResultState {
+        debugPrint("State: \(result)")
         if (result == 0) {
+            // Script successfull
             if (settings.notifications && !test) {
                 NotificationHandler.sendResultNotification(state: true, name: scriptName)
             }
@@ -121,7 +123,12 @@ extension ScriptHandler {
             
             isRunning = false
             return .successfull
+        } else if (result == 15) {
+            // Script interrupted
+            isRunning = false
+            return .interrupted
         } else {
+            // Script failed
             if (settings.logs && !test) {
                 writeLog(pathLogs: settings.pathLogs)
             }

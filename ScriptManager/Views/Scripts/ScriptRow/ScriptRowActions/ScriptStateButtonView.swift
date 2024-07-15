@@ -14,6 +14,7 @@ struct ScriptStateButtonView: View {
     var body: some View {
         if (script.finished) {
             let success = script.success == ResultState.successfull
+            let interrupted = script.success == ResultState.interrupted
             
             if (success) {
                 // Script run successfull
@@ -24,6 +25,14 @@ struct ScriptStateButtonView: View {
                     .background(.ultraThickMaterial)
                     .clipShape(Circle())
 
+            } else if (interrupted) {
+                // Script interrupted
+                Image(systemName: "xmark")
+                    .foregroundColor(AppColor.Warning)
+                    .frame(width: IconSize.s, height: IconSize.s)
+                    .padding(Spacing.l)
+                    .background(.ultraThickMaterial)
+                    .clipShape(Circle())
             } else if (vm.isLogEnabled) {
                 // Script failed and logging is active
                 Button {

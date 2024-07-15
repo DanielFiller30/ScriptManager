@@ -10,5 +10,6 @@ import Foundation
 enum ResultState: Codable {
     case successfull
     case failed
+    case interrupted
     case ready
 }
