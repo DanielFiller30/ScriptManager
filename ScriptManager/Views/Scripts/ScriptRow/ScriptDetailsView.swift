@@ -104,7 +104,7 @@ struct ScriptDetailsView: View {
                         vm.scriptHandler.interruptRunningProcess()
                     },
                     icon: "stop.fill",
-                    disabled: vm.scriptHandler.runningScript.contains(where: { $0.id != script.id }),
+                    disabled: vm.scriptHandler.runningScript.count == 0 || vm.scriptHandler.runningScript.contains(where: { $0.id != script.id }),
                     help: "button-interrupt"
                 )
                 

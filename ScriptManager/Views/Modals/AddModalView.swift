@@ -16,11 +16,21 @@ struct AddModalView: View {
             Spacer()
             
             VStack(alignment: .center) {
-                Image("Icon_add")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 80)
-                    .padding(.bottom, Spacing.l)
+                if #available(macOS 15.0, *) {
+                    Image(systemName: "doc.badge.plus")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .padding(.bottom, Spacing.l)
+                        .symbolEffect(.bounce, options: .nonRepeating)
+                } else {
+                    // Fallback on earlier versions
+                    Image(systemName: "doc.badge.plus")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .padding(.bottom, Spacing.l)
+                }
                 
                 Button {
                     vm.modalHandler.hideModal()
@@ -56,6 +66,23 @@ struct AddModalView: View {
                     .padding(.bottom, Spacing.xl)
                     .padding(.top, Spacing.m)
                     .padding(.horizontal, Spacing.m)
+                    .multilineTextAlignment(.center)
+                
+                if #available(macOS 15.0, *) {
+                    Image(systemName: "tag")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .padding(.bottom, Spacing.l)
+                        .symbolEffect(.bounce, options: .nonRepeating)
+                } else {
+                    // Fallback on earlier versions
+                    Image(systemName: "tag")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .padding(.bottom, Spacing.l)
+                }
                 
                 Button {
                     vm.modalHandler.hideModal()
@@ -91,6 +118,7 @@ struct AddModalView: View {
                     .padding(.bottom, Spacing.xl)
                     .padding(.top, Spacing.m)
                     .padding(.horizontal, Spacing.m)
+                    .multilineTextAlignment(.center)
             }
             
             Spacer()
