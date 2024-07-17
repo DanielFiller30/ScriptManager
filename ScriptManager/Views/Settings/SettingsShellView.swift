@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsShellView: View {
-    @State private var viewModel = SettingsViewModel()
+    @Binding var vm: SettingsViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,16 +21,13 @@ struct SettingsShellView: View {
                 
                 Spacer()
                 
-//                Picker("", selection: $viewModel.settingsHandler.settings.shell) {
-//                    ForEach(Shells) { shell in
-//                        Text(shell.type.rawValue)
-//                            .tag(shell.type)
-//                    }
-//                }
-//                .onChange(of: viewModel.settingsHandler.settings.shell) { type, _ in
-//                    changeShellType(stype: type)
-//                }
-//                .frame(width: 160)
+                Picker("", selection: $vm.tempSettings.shell.type) {
+                    ForEach(Shells) { shell in
+                        Text(shell.type.rawValue)
+                            .tag(shell.type)
+                    }
+                }
+                .frame(width: 160)
             }
             .padding(.bottom, Spacing.l)
             
@@ -40,7 +37,7 @@ struct SettingsShellView: View {
                 
                 Spacer()
                 
-                TextField("", text: $viewModel.settingsHandler.settings.shell.path)
+                TextField("", text: $vm.tempSettings.shell.path)
                     .frame(width: 150)
             }
             .padding(.bottom, Spacing.l)
@@ -53,22 +50,16 @@ struct SettingsShellView: View {
                 
                 Spacer()
                 
-//                TextField("", text: $viewModel.settingsHandler.settings.shell.profile)
-//                    .frame(width: 150)
+                TextField("", text: $vm.tempProfilePath)
+                    .frame(width: 150)
             }
         }
         .padding(.vertical, Spacing.m)        
-    }
-    
-    func changeShellType(stype: ShellType) {
-        let shell: Shell = Shells.filter{ $0.type == viewModel.settingsHandler.settings.shell.type }.first!
-        viewModel.settingsHandler.settings.shell.path = shell.path
-        viewModel.settingsHandler.settings.shell.profile = viewModel.homeDir + (shell.profile ?? "")
     }
 }
 
 struct SettingsShellView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsShellView()
+        SettingsShellView(vm: .constant(SettingsViewModel()))
     }
 }

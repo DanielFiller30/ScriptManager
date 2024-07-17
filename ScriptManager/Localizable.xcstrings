@@ -1013,6 +1013,7 @@
       }
     },
     "settings-color" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

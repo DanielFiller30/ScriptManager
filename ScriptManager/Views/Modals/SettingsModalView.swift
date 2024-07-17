@@ -24,9 +24,9 @@ struct SettingsModalView: View {
                     padding: Spacing.zero,
                     animation: false
                 ) {
-                    SettingsShellView()
+                    SettingsShellView(vm: $vm)
                                     
-                    SettingsUnicodeView()
+                    SettingsUnicodeView(vm: $vm)
                 }
                 
                 Divider()
@@ -39,25 +39,21 @@ struct SettingsModalView: View {
                     padding: Spacing.zero,
                     animation: false
                 ) {
-                    SettingsShortcutView()
+                    SettingsShortcutView(vm: $vm)
                 }
                 
                 Divider()
                 
                 Group {
-                    SettingsLoggingView()
+                    SettingsLoggingView(vm: $vm)
                     
                     Divider()
                     
-                    SettingsNotificationsView()
+                    SettingsNotificationsView(vm: $vm)
                     
                     Divider()
                     
                     SettingsAutostartView()
-                    
-                    Divider()
-                    
-                    SettingsColorView()
                 }
             }
             
@@ -70,18 +66,18 @@ struct SettingsModalView: View {
                     label: "settings-save",
                     color: AnyShapeStyle(AppColor.Success),
                     outlined: false,
-                    disabled: vm.settingsHandler.settings.shell.path.isEmpty
-                    || vm.settingsHandler.settings.unicode.isEmpty
-                    || (vm.settingsHandler.settings.logs && vm.settingsHandler.settings.pathLogs.isEmpty)
+                    disabled: vm.tempSettings.shell.path.isEmpty
+                    || vm.tempSettings.unicode.isEmpty
+                    || (vm.tempSettings.logs && vm.tempSettings.pathLogs.isEmpty)
                 )
                 .padding(.bottom, Spacing.m)
                 .padding(.top, Spacing.l)
         
-//                // Remove scripts
+                // Remove scripts -> Not needed
 //                CustomButtonView(
 //                    onClick: { vm.showResetAlert() },
 //                    label: "settings-reset",
-//                    color: AppColor.Creme,
+//                    color: AnyShapeStyle(.ultraThickMaterial),
 //                    outlined: true,
 //                    disabled: false
 //                )

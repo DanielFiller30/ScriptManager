@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsUnicodeView: View {
-    @State private var vm = SettingsViewModel()
+    @Binding var vm: SettingsViewModel
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,7 +18,7 @@ struct SettingsUnicodeView: View {
                 
                 Spacer()
                 
-                TextField("", text: $vm.settingsHandler.settings.unicode)
+                TextField("", text: $vm.tempSettings.unicode)
                     .frame(width: 150)
             }
         }
@@ -28,6 +28,6 @@ struct SettingsUnicodeView: View {
 
 struct SettingsUnicodeView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsUnicodeView()
+        SettingsUnicodeView(vm: .constant(SettingsViewModel()))
     }
 }

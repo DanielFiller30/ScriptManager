@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsNotificationsView: View {
-    @State private var vm = SettingsViewModel()
+    @Binding var vm: SettingsViewModel
 
     var body: some View {
         VStack(alignment: .center) {
@@ -20,9 +20,9 @@ struct SettingsNotificationsView: View {
                 
                 Spacer()
                 
-                Toggle("", isOn: $vm.settingsHandler.settings.notifications)
+                Toggle("", isOn: $vm.tempSettings.notifications)
                     .toggleStyle(.switch)
-                    .onChange(of: vm.settingsHandler.settings.notifications) { _,_ in
+                    .onChange(of: vm.tempSettings.notifications) { _,_ in
                         vm.activateNotifications()
                     }
                 
@@ -35,6 +35,6 @@ struct SettingsNotificationsView: View {
 
 struct SettingsNotificationsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsNotificationsView()
+        SettingsNotificationsView(vm: .constant(SettingsViewModel()))
     }
 }

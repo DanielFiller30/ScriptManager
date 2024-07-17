@@ -15,6 +15,7 @@
 		DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC275E3D2B7F885C003E35C6 /* ScriptTimeModel.swift */; };
 		DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D429A382A800DBCAAD /* IconPickerView.swift */; };
 		DC2991D729A3830C00DBCAAD /* ScriptIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */; };
+		DC29E8242C46B28100F5FB3C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC29E8232C46B27F00F5FB3C /* DataModel.swift */; };
 		DC2A807629C892B700BF6DE7 /* SettingsShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */; };
 		DC2E7A9A29C4A40200B6CFFE /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = DC2E7A9929C4A40200B6CFFE /* LaunchAtLogin */; };
 		DC2E7A9C29C4A41C00B6CFFE /* SettingsAutostartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */; };
@@ -70,7 +71,6 @@
 		DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC851CFB2BF4D442007EB396 /* SettingsHandlerProtocol.swift */; };
 		DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DC129A3B9210006B0DF /* EditScriptView.swift */; };
 		DC89BF1D29DC387B0029D9CA /* ScriptHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */; };
-		DC8E08BB29C498C100AA9B32 /* SettingsColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8E08BA29C498C100AA9B32 /* SettingsColorView.swift */; };
 		DC9558242C171A5A00BA7C34 /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9558232C171A5A00BA7C34 /* ShortcutView.swift */; };
 		DCDA8F3E2C1323DD00AD2B19 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */; };
 		DCDA8F402C1323F300AD2B19 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */; };
@@ -107,6 +107,7 @@
 		DC275E3D2B7F885C003E35C6 /* ScriptTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptTimeModel.swift; sourceTree = "<group>"; };
 		DC2991D429A382A800DBCAAD /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptIcons.swift; sourceTree = "<group>"; };
+		DC29E8232C46B27F00F5FB3C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsShortcutView.swift; sourceTree = "<group>"; };
 		DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAutostartView.swift; sourceTree = "<group>"; };
 		DC4D2D9629CAFC99006CDF16 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
@@ -162,7 +163,6 @@
 		DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptHandlerProtocol.swift; sourceTree = "<group>"; };
 		DC89BF1F29DC3DB70029D9CA /* TagViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModelTest.swift; sourceTree = "<group>"; };
 		DC89BF2129DC3DCD0029D9CA /* SettingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModelTest.swift; sourceTree = "<group>"; };
-		DC8E08BA29C498C100AA9B32 /* SettingsColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsColorView.swift; sourceTree = "<group>"; };
 		DC9558232C171A5A00BA7C34 /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
 		DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
@@ -339,7 +339,6 @@
 				DC75B422299BA57F00086806 /* SettingsShellView.swift */,
 				DC75B423299BA57F00086806 /* SettingsNotificationsView.swift */,
 				DC75B427299BA57F00086806 /* SettingsUnicodeView.swift */,
-				DC8E08BA29C498C100AA9B32 /* SettingsColorView.swift */,
 				DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */,
 				DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */,
 			);
@@ -372,6 +371,7 @@
 		DC75B43D299BA57F00086806 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC29E8232C46B27F00F5FB3C /* DataModel.swift */,
 				DC75B43E299BA57F00086806 /* ShellModel.swift */,
 				DC75B43F299BA57F00086806 /* SettingsModel.swift */,
 				DC75B441299BA57F00086806 /* ResultModel.swift */,
@@ -615,7 +615,6 @@
 				DC75B46B299BA58000086806 /* ScriptModel.swift in Sources */,
 				DC4E34CB2BB55A35004EB76C /* DependencyRegistry.swift in Sources */,
 				DC5813D22BF77EC100C5C727 /* AlertHandler.swift in Sources */,
-				DC8E08BB29C498C100AA9B32 /* SettingsColorView.swift in Sources */,
 				DC851CFA2BF4D2FF007EB396 /* SettingsHandler.swift in Sources */,
 				DC2991D729A3830C00DBCAAD /* ScriptIcons.swift in Sources */,
 				DC75B451299BA58000086806 /* SettingsShellView.swift in Sources */,
@@ -633,6 +632,7 @@
 				DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */,
 				DCFA33F329DD592500807A0E /* NotificationHandlerProtocol.swift in Sources */,
 				DC75B455299BA58000086806 /* SettingsUnicodeView.swift in Sources */,
+				DC29E8242C46B28100F5FB3C /* DataModel.swift in Sources */,
 				DC75B461299BA58000086806 /* ScriptStateButtonView.swift in Sources */,
 				DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */,
 				DCF82FB629D1CDBF0085627D /* TagPickerView.swift in Sources */,

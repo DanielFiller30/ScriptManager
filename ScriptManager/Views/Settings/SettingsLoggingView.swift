@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsLoggingView: View {
-    @State private var vm = SettingsViewModel()
+    @Binding var vm: SettingsViewModel
     
     var body: some View {
         VStack(alignment: .center) {
@@ -18,7 +18,7 @@ struct SettingsLoggingView: View {
                 
                 Spacer()
                 
-                Toggle("", isOn: $vm.settingsHandler.settings.logs)
+                Toggle("", isOn: $vm.tempSettings.logs)
                     .toggleStyle(.switch)
             }
             
@@ -28,7 +28,7 @@ struct SettingsLoggingView: View {
                 
                 Spacer()
                 
-                TextField("", text: $vm.settingsHandler.settings.pathLogs)
+                TextField("", text: $vm.tempSettings.pathLogs)
                     .frame(width: 150)
             }
         }
@@ -39,6 +39,6 @@ struct SettingsLoggingView: View {
 
 struct SettingsLoggingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsLoggingView()
+        SettingsLoggingView(vm: .constant(SettingsViewModel()))
     }
 }

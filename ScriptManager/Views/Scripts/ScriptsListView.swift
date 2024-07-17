@@ -23,6 +23,8 @@ struct ScriptsListView: View {
             
             if (vm.scripts.isEmpty) {
                 VStack(alignment: .center) {
+                    Spacer()
+                    
                     if vm.tagHandler.selectedTag != nil {
                         Image(systemName: "doc.text.magnifyingglass")
                             .resizable()

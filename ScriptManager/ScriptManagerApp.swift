@@ -23,6 +23,9 @@ struct ScriptManagerApp: App {
         if storageHandler.firstLaunch {
             openWindow()
         }
+        
+//        appState.resetShortcuts()
+//        storageHandler.resetValues(.SETTINGS)
     }
     
     func openWindow() {
@@ -87,9 +90,12 @@ final class AppState: ObservableObject {
     func runScript(index: Int) {
         savedShortcuts = storageHandler.settings.shortcuts
         
+        guard !savedShortcuts.isEmpty else { return }
         let id = savedShortcuts[index].scriptId
         
         if id != EmptyScript.id {
+            print(id)
+            print(storageHandler.scripts)
             if let script = storageHandler.scripts.first(where: { $0.id == id }) {
                 NotificationHandler.sendStartNotification(name: script.name)
                 
@@ -98,5 +104,13 @@ final class AppState: ObservableObject {
                 }
             }
         }
+    }
+    
+    func resetShortcuts() {
+        KeyboardShortcuts.reset(.runScript1)
+        KeyboardShortcuts.reset(.runScript2)
+        KeyboardShortcuts.reset(.runScript3)
+        KeyboardShortcuts.reset(.runScript4)
+        KeyboardShortcuts.reset(.runScript5)
     }
 }
