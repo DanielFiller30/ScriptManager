@@ -8,6 +8,7 @@
 import Foundation
 import Resolver
 import SwiftUI
+import KeyboardShortcuts
 
 @Observable
 class ScriptViewModel {
@@ -200,6 +201,42 @@ extension ScriptViewModel {
         }
         
         scriptHandler.saveScripts()
+        
+        deleteShortcut(id)
+    }
+    
+    @MainActor
+    private func deleteShortcut(_ id: UUID) {
+        // Remove shortcut from keyboardshortcuts-register
+        settingsHandler.settings.shortcuts.forEach { shortcut in
+            if shortcut.scriptId == id {
+                let shortcutName = getShortcutName(index: shortcut.shortcutIndex)
+                guard let shortcutName else { return }
+                KeyboardShortcuts.reset(shortcutName)
+            }
+        }
+        
+        // Remove shortcut from settings
+        settingsHandler.settings.shortcuts = settingsHandler.settings.shortcuts.filter { $0.scriptId != id }
+        settingsHandler.saveSettings()
+    }
+    
+    @MainActor
+    private func getShortcutName(index: Int) -> KeyboardShortcuts.Name? {
+        switch index {
+        case 0:
+            return .runScript1
+        case 1:
+            return .runScript2
+        case 2:
+            return .runScript3
+        case 3:
+            return .runScript4
+        case 4:
+            return .runScript5
+        default:
+            return nil
+        }
     }
     
     @MainActor

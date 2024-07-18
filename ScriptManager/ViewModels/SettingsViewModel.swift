@@ -63,14 +63,12 @@ class SettingsViewModel {
         self.tempSettings = settings
         self.tempProfilePath = settings.shell.profile ?? ""
         self.tempShellType = settings.shell.type
-        
-        if settings.shortcuts.count > 0 {
-            self.selectedScript1 = settings.shortcuts[0].scriptId
-            self.selectedScript2 = settings.shortcuts[1].scriptId
-            self.selectedScript3 = settings.shortcuts[2].scriptId
-            self.selectedScript4 = settings.shortcuts[3].scriptId
-            self.selectedScript5 = settings.shortcuts[4].scriptId
-        }
+                
+        self.selectedScript1 = settings.shortcuts.count > 0 ? settings.shortcuts[0].scriptId : EmptyScript.id
+        self.selectedScript2 = settings.shortcuts.count > 1 ? settings.shortcuts[1].scriptId : EmptyScript.id
+        self.selectedScript3 = settings.shortcuts.count > 2 ? settings.shortcuts[2].scriptId : EmptyScript.id
+        self.selectedScript4 = settings.shortcuts.count > 3 ? settings.shortcuts[3].scriptId : EmptyScript.id
+        self.selectedScript5 = settings.shortcuts.count > 4 ? settings.shortcuts[4].scriptId : EmptyScript.id
     }
     
     func initSettings() {
