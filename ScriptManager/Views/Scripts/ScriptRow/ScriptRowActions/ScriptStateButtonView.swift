@@ -42,7 +42,7 @@ struct ScriptStateButtonView: View {
                         .resizable()
                         .frame(width: IconSize.s, height: IconSize.s)
                         .padding(Spacing.l)
-                        .foregroundColor(AppColor.Creme)
+                        .foregroundColor(.white)
                         .background(AppColor.Danger)
                         .clipShape(Circle())
                     

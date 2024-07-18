@@ -20,9 +20,9 @@ struct ScriptManagerApp: App {
     
     init() {
         // Open welcome-screen on first launch
-        if storageHandler.firstLaunch {
+//        if storageHandler.firstLaunch {
             openWindow()
-        }
+//        }
         
 //        appState.resetShortcuts()
 //        storageHandler.resetValues(.SETTINGS)
@@ -31,7 +31,7 @@ struct ScriptManagerApp: App {
     func openWindow() {
         let contentView = WelcomeView(close: { closeWindow() }, hideWelcomeScreen: $hideWelcomeScreen)
         window.contentViewController = NSHostingController(rootView: contentView)
-        window.styleMask = [.closable, .titled]
+        window.styleMask = [.closable, .titled]        
         window.center()
         window.orderFrontRegardless()
         window.makeKeyAndOrderFront(nil)

@@ -92,6 +92,16 @@
         }
       }
     },
+    "add-script-tag-instruction" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstelle über das Plus neue Tags oder Skripte um mit dem ScriptManager loszulegen"
+          }
+        }
+      }
+    },
     "add-tag-info" : {
       "localizations" : {
         "de" : {
@@ -430,6 +440,46 @@
         }
       }
     },
+    "extras-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Viele weitere Features erwarten Dich bei deinem Skript-Manager"
+          }
+        }
+      }
+    },
+    "failed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehlgeschlagen"
+          }
+        }
+      }
+    },
+    "failed-logs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehlgeschlagen (Logs)"
+          }
+        }
+      }
+    },
+    "features-title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
+          }
+        }
+      }
+    },
     "hint-notifications-text" : {
       "localizations" : {
         "de" : {
@@ -623,6 +673,26 @@
         }
       }
     },
+    "instructions-title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anleitung"
+          }
+        }
+      }
+    },
+    "interrupted" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgebrochen"
+          }
+        }
+      }
+    },
     "last-run" : {
       "localizations" : {
         "de" : {
@@ -699,6 +769,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skript '%@' failed"
+          }
+        }
+      }
+    },
+    "notification-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Werde über eine Mitteilung informiert, sobald Deine Skripte ausgeführt wurden"
           }
         }
       }
@@ -847,6 +927,16 @@
         }
       }
     },
+    "play-instruction" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst deine Skripte mit Ausgabe oder im Hintergrund ausführen"
+          }
+        }
+      }
+    },
     "Preview" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -980,6 +1070,36 @@
         }
       }
     },
+    "ScriptManager" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ScriptManager"
+          }
+        }
+      }
+    },
+    "scripts-details-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erhalte Einblick in die Details deiner Skripte"
+          }
+        }
+      }
+    },
+    "scripts-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erstelle Skripte und speichere sie in Deiner Liste für ein schnelleres Ausführen"
+          }
+        }
+      }
+    },
     "settings" : {
       "localizations" : {
         "de" : {
@@ -1038,6 +1158,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellungen löschen"
+          }
+        }
+      }
+    },
+    "settings-instruction" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über das Zahnrad kannst du deine Einstellungen festlegen, um den Skript-Manager deinen Anforderungen zuzuschneiden"
           }
         }
       }
@@ -1198,6 +1328,36 @@
         }
       }
     },
+    "shortcuts-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze Tastatur-Kurzbefehle um deine Skripte von überall auszuführen"
+          }
+        }
+      }
+    },
+    "states-title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skript-Ergebnis"
+          }
+        }
+      }
+    },
+    "success" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erfolgreich"
+          }
+        }
+      }
+    },
     "tag-script" : {
       "localizations" : {
         "de" : {
@@ -1210,6 +1370,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "tag"
+          }
+        }
+      }
+    },
+    "tags-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze Tags um deine Skripte besser zu organisieren"
           }
         }
       }
@@ -1312,12 +1482,22 @@
         }
       }
     },
+    "version" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "v4"
+          }
+        }
+      }
+    },
     "welcome-close" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fenster schließen"
+            "value" : "Loslegen"
           }
         },
         "en" : {
@@ -1345,6 +1525,7 @@
       }
     },
     "welcome-info2" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1361,6 +1542,7 @@
       }
     },
     "welcome-info3" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1377,6 +1559,7 @@
       }
     },
     "welcome-info4" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1393,6 +1576,7 @@
       }
     },
     "welcome-info5" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

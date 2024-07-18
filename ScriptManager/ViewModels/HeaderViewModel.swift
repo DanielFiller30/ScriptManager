@@ -23,7 +23,8 @@ class HeaderViewModel {
         var iconColor = Color.white
         
         do {
-            iconColor = try ColorConverter.decodeColor(from: tagHandler.tags.first {$0.id == tagHandler.selectedTag}?.badgeColor ?? EmptyTag.badgeColor)
+            iconColor = try ColorConverter.decodeColor(from: tagHandler.tags.first { 
+                $0.id == tagHandler.selectedTag }?.badgeColor ?? EmptyTag.badgeColor)
         } catch {
             // Fallback default color
         }
