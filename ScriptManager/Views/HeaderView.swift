@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @State private var vm = SettingsViewModel()
+    @State private var vm = HeaderViewModel()
     
     var body: some View {
         HStack(alignment: .center) {

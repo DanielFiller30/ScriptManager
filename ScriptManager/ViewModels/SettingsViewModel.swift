@@ -13,13 +13,14 @@ import SwiftUI
 @Observable
 class SettingsViewModel {
     @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol
-    @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     @LazyInjected @ObservationIgnored private var settingsHandler: SettingsHandlerProtocol
-    
+    @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
+
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
     
+    var homeDir: String = ""
     var settings: Settings {
         settingsHandler.settings
     }
@@ -40,12 +41,7 @@ class SettingsViewModel {
             tempProfilePath = homeDir + (shell.profile ?? "")
         }
     }
-    
-    var homeDir: String = ""
-    var selectedTag: UUID? {
-        tagHandler.selectedTag
-    }
-    
+        
     // Shortcut-Picker
     var selectedScript1: UUID = EmptyScript.id
     var selectedScript2: UUID = EmptyScript.id
@@ -74,51 +70,6 @@ class SettingsViewModel {
     func initSettings() {
         // Set initial home path
         homeDir = FileManager.default.homeDirectoryForCurrentUser.relativePath
-    }
-    
-    func getTagColor() -> Color {
-        var iconColor = Color.white
-        
-        do {
-            iconColor = try ColorConverter.decodeColor(from: tagHandler.tags.first {$0.id == tagHandler.selectedTag}?.badgeColor ?? EmptyTag.badgeColor)
-        } catch {
-            // Fallback default color
-        }
-        
-        return iconColor
-    }
-    
-    func showDeleteTagAlert() {        
-        alertHandler.showAlert(
-            title: String(localized: "delete-tag-title"),
-            message: String(localized: "delete-tag-msg"),
-            btnTitle: String(localized: "delete"),
-            action: {
-                self.deleteTag()
-                self.alertHandler.hideAlert()
-            }
-        )
-    }
-    
-    private func deleteTag() {
-        // Remove tag from scripts
-        scriptHandler.scripts = scriptHandler.savedScripts
-                
-        for (index, script) in scriptHandler.scripts.enumerated() {
-            if script.tagID == selectedTag {
-                scriptHandler.scripts[index].tagID = EmptyTag.id
-            }
-        }
-         
-        scriptHandler.saveScripts()
-        
-        // Delete tag
-        tagHandler.tags = tagHandler.tags.filter {
-            $0.id != selectedTag
-        }
-                
-        tagHandler.saveTags()
-        tagHandler.selectedTag = nil
     }
     
     func loadUserDir() -> String {
