@@ -20,6 +20,13 @@ class ScriptViewModel {
 
     private var runningTimer: Timer?
     
+    let presets: [Preset] = [
+        Preset(title: String(localized: "open-file"), icon: "doc.richtext", script: "open <path to file>;"),
+        Preset(title: String(localized: "say-name"), icon: "waveform", script: "say <name>;"),
+        Preset(title: String(localized: "git-pull"), icon: "arrow.down.circle.dotted", script: "cd <path to repo>; git pull;"),
+        Preset(title: String(localized: "countdown"), icon: "clock.arrow.circlepath", script: "sleep <time>; say 'Timer finished'")
+    ]
+    
     var scripts: [Script] {
         scriptHandler.scripts
     }

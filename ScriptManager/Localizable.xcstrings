@@ -283,6 +283,16 @@
         }
       }
     },
+    "countdown" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Countdown"
+          }
+        }
+      }
+    },
     "delete" : {
       "localizations" : {
         "de" : {
@@ -477,6 +487,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Features"
+          }
+        }
+      }
+    },
+    "git-pull" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Git Pull"
           }
         }
       }
@@ -848,6 +868,16 @@
         }
       }
     },
+    "open-file" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datei öffnen"
+          }
+        }
+      }
+    },
     "path" : {
       "localizations" : {
         "de" : {
@@ -938,6 +968,16 @@
         }
       }
     },
+    "presets" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorlagen"
+          }
+        }
+      }
+    },
     "Preview" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1019,6 +1059,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saved scripts (%@)"
+          }
+        }
+      }
+    },
+    "say-name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Say My Name"
           }
         }
       }

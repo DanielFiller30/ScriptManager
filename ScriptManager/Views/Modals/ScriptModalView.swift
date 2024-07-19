@@ -20,7 +20,7 @@ struct ScriptModalView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("name-add-script")
-                    .font(.system(size: FontSize.text))
+                    .font(.headline)
                 
                 Spacer()
                 
@@ -41,7 +41,7 @@ struct ScriptModalView: View {
             
             HStack(alignment: .center) {
                 Text("tag-script")
-                    .font(.system(size: FontSize.text))
+                    .font(.headline)
                 
                 Spacer()
                 
@@ -51,10 +51,37 @@ struct ScriptModalView: View {
             Divider()
                 .padding(.vertical, Spacing.l)
             
+            Text("presets")
+                .font(.headline)
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(vm.presets, id: \.self) { preset in
+                        Button {
+                            vm.scriptHandler.editScript.command = preset.script
+                        } label: {
+                            HStack(alignment: .center) {
+                                Image(systemName: preset.icon)
+                                
+                                Text(preset.title)
+                                    .font(.caption)
+                            }
+                            .padding()
+                            .background(.ultraThickMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }                
+            }
+            
+            Divider()
+                .padding(.vertical, Spacing.l)
+            
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
                     Text("path-add-script")
-                        .font(.system(size: FontSize.text))
+                        .font(.headline)
                     
                     HintView(title: "hint-script-title", text: "hint-script-text")
                     
