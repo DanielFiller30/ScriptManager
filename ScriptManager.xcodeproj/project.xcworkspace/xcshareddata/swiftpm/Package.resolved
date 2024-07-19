@@ -1,5 +1,5 @@
 {
-  "originHash" : "9001ebf6952d093390280505aa3f354243ed3b2111fbef697f8a1a719a835405",
+  "originHash" : "d0b71ca5181309dfb206f9e170a52d70d7b7c0b61ca33c39fdf8526b0311d63f",
   "pins" : [
     {
       "identity" : "alerttoast",
@@ -20,12 +20,30 @@
       }
     },
     {
+      "identity" : "codeeditor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ZeeZide/CodeEditor.git",
+      "state" : {
+        "revision" : "f5c076b94f4ceb05abff88ba91d75a8d57143f0c",
+        "version" : "1.2.6"
+      }
+    },
+    {
       "identity" : "confettiswiftui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/simibac/ConfettiSwiftUI.git",
       "state" : {
         "revision" : "f45961f97bbae6fff6e2e64546fea0189425ad92",
         "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "highlightr",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/helje5/Highlightr",
+      "state" : {
+        "revision" : "bd0358056ff1f12ea83833a9fc1b3b5a396a9da0",
+        "version" : "3.0.2"
       }
     },
     {

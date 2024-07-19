@@ -23,7 +23,7 @@ let EmptyScript = Script(
     id: UUID(uuidString: "8ac5590d-68cf-48c6-83da-4a886f26f528") ?? UUID(),
     name: "",
     icon: "applescript",
-    command: "",
+    command: "cd /Desktop/ sh..",
     success: .ready,
     finished: false,
     lastRun: Date.now,

@@ -7,6 +7,7 @@
 
 import Resolver
 import SwiftUI
+import CodeEditor
 
 struct ScriptModalView: View {
     @State private var vm = ScriptViewModel()
@@ -75,9 +76,13 @@ struct ScriptModalView: View {
                         .foregroundColor(testIsSuccessfull == .successfull ? AppColor.Success : AppColor.Danger)
                 }
                 
-                TextField("cd /Desktop/ sh ...", text: $vm.scriptHandler.editScript.command, axis: .vertical)
-                    .lineLimit(4, reservesSpace: true)
-                
+                CodeEditor(
+                    source: $vm.scriptHandler.editScript.command,
+                    language: .bash,
+                    theme: CodeEditor.ThemeName(rawValue: "vs2015"),
+                    flags: [ .selectable, .editable, .smartIndent ],
+                    autoPairs: [ "{": "}", "<": ">", "'": "'" ]
+                )
             }.padding(.bottom, Spacing.l)
             
             HStack(alignment: .center, spacing: Spacing.xl) {
@@ -107,7 +112,7 @@ struct ScriptModalView: View {
                     disabled: testIsRunning || vm.scriptHandler.editScript.name.isEmpty || vm.scriptHandler.editScript.command.isEmpty
                 )
             }
-        }      
+        }
     }
     
     // TODO: Move function to vm

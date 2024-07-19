@@ -193,6 +193,7 @@
       }
     },
     "cd /Desktop/ sh ..." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

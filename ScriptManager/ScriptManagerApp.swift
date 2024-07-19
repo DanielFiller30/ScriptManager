@@ -20,9 +20,9 @@ struct ScriptManagerApp: App {
     
     init() {
         // Open welcome-screen on first launch
-//        if storageHandler.firstLaunch {
+        if storageHandler.firstLaunch {
             openWindow()
-//        }
+        }
         
 //        appState.resetShortcuts()
 //        storageHandler.resetValues(.SETTINGS)

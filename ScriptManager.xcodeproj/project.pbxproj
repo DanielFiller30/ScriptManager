@@ -73,6 +73,7 @@
 		DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DC129A3B9210006B0DF /* EditScriptView.swift */; };
 		DC89BF1D29DC387B0029D9CA /* ScriptHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */; };
 		DC9558242C171A5A00BA7C34 /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9558232C171A5A00BA7C34 /* ShortcutView.swift */; };
+		DCAEF26B2C4A50C4004C922B /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = DCAEF26A2C4A50C4004C922B /* CodeEditor */; };
 		DCDA8F3E2C1323DD00AD2B19 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */; };
 		DCDA8F402C1323F300AD2B19 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */; };
 		DCDA8F422C13273E00AD2B19 /* ModalHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F412C13273E00AD2B19 /* ModalHandlerProtocol.swift */; };
@@ -196,6 +197,7 @@
 				DC2E7A9A29C4A40200B6CFFE /* LaunchAtLogin in Frameworks */,
 				DCFA344529DD985400807A0E /* AnyCodable in Frameworks */,
 				DC4E34C52BB55A17004EB76C /* Resolver in Frameworks */,
+				DCAEF26B2C4A50C4004C922B /* CodeEditor in Frameworks */,
 				DC4E34C92BB55A17004EB76C /* Resolver-Static in Frameworks */,
 				DC2E7A9F29C4A6FE00B6CFFE /* KeyboardShortcuts in Frameworks */,
 				DCDA8F452C13320E00AD2B19 /* ConfettiSwiftUI in Frameworks */,
@@ -515,6 +517,7 @@
 				DC4E34C42BB55A17004EB76C /* Resolver */,
 				DC4E34C82BB55A17004EB76C /* Resolver-Static */,
 				DCDA8F442C13320E00AD2B19 /* ConfettiSwiftUI */,
+				DCAEF26A2C4A50C4004C922B /* CodeEditor */,
 			);
 			productName = ScriptManager;
 			productReference = DC0448F2298D2F38004B6389 /* ScriptManager.app */;
@@ -553,6 +556,7 @@
 				DCFA344329DD985400807A0E /* XCRemoteSwiftPackageReference "AnyCodable" */,
 				DC4E34C32BB55A17004EB76C /* XCRemoteSwiftPackageReference "Resolver" */,
 				DCDA8F432C13320E00AD2B19 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				DCAEF2692C4A50C4004C922B /* XCRemoteSwiftPackageReference "CodeEditor" */,
 			);
 			productRefGroup = DC0448F3298D2F38004B6389 /* Products */;
 			projectDirPath = "";
@@ -918,6 +922,14 @@
 				minimumVersion = 1.5.0;
 			};
 		};
+		DCAEF2692C4A50C4004C922B /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ZeeZide/CodeEditor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.6;
+			};
+		};
 		DCDA8F432C13320E00AD2B19 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
@@ -964,6 +976,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC4E34C32BB55A17004EB76C /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = "Resolver-Static";
+		};
+		DCAEF26A2C4A50C4004C922B /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCAEF2692C4A50C4004C922B /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
 		};
 		DCDA8F442C13320E00AD2B19 /* ConfettiSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
