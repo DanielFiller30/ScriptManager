@@ -36,6 +36,7 @@ class ScriptViewModel {
     }
     
     var isLogEnabled: Bool = DefaultSettings.logs
+    var searchString: String = ""
         
     @MainActor
     func runScript(showOutput: Bool, scriptId: UUID) {
@@ -87,6 +88,17 @@ class ScriptViewModel {
             scriptHandler.saveScripts()
                                     
             scriptHandler.runningScript = scriptHandler.runningScript.filter { $0.id != scriptId }
+        }
+    }
+    
+    @MainActor
+    func searchForScript() {
+        tagHandler.selectedTag = nil
+        
+        if searchString.isEmpty {
+            scriptHandler.scripts = scriptHandler.savedScripts
+        } else {
+            scriptHandler.scripts = scriptHandler.savedScripts.filter { $0.name.contains(searchString) }
         }
     }
     

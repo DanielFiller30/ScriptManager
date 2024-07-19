@@ -431,6 +431,16 @@
         }
       }
     },
+    "empty-scripts-search" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Skripte zu deiner aktiven Suche gefunden. Lösche deine Suche um alle Skripte anzuzeigen"
+          }
+        }
+      }
+    },
     "empty-shortcuts" : {
 
     },
@@ -1005,6 +1015,16 @@
         }
       }
     },
+    "remove-search" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suche löschen"
+          }
+        }
+      }
+    },
     "save-script" : {
       "localizations" : {
         "de" : {
@@ -1147,6 +1167,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erstelle Skripte und speichere sie in Deiner Liste für ein schnelleres Ausführen"
+          }
+        }
+      }
+    },
+    "search-script-name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suche nach Skript"
           }
         }
       }

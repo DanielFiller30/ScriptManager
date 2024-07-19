@@ -70,11 +70,11 @@
 		DC84CC1C29C9BB51006C8F07 /* ShortcutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC84CC1B29C9BB51006C8F07 /* ShortcutModel.swift */; };
 		DC851CFA2BF4D2FF007EB396 /* SettingsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC851CF92BF4D2FF007EB396 /* SettingsHandler.swift */; };
 		DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC851CFB2BF4D442007EB396 /* SettingsHandlerProtocol.swift */; };
-		DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC889DC129A3B9210006B0DF /* EditScriptView.swift */; };
 		DC89BF1D29DC387B0029D9CA /* ScriptHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */; };
 		DC9558242C171A5A00BA7C34 /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9558232C171A5A00BA7C34 /* ShortcutView.swift */; };
 		DCAEF26B2C4A50C4004C922B /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = DCAEF26A2C4A50C4004C922B /* CodeEditor */; };
 		DCAEF26D2C4A549C004C922B /* PresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAEF26C2C4A549A004C922B /* PresetModel.swift */; };
+		DCAEF26F2C4A5A17004C922B /* SearchbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAEF26E2C4A5A14004C922B /* SearchbarView.swift */; };
 		DCDA8F3E2C1323DD00AD2B19 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */; };
 		DCDA8F402C1323F300AD2B19 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */; };
 		DCDA8F422C13273E00AD2B19 /* ModalHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F412C13273E00AD2B19 /* ModalHandlerProtocol.swift */; };
@@ -161,7 +161,6 @@
 		DC84CC1B29C9BB51006C8F07 /* ShortcutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutModel.swift; sourceTree = "<group>"; };
 		DC851CF92BF4D2FF007EB396 /* SettingsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
 		DC851CFB2BF4D442007EB396 /* SettingsHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHandlerProtocol.swift; sourceTree = "<group>"; };
-		DC889DC129A3B9210006B0DF /* EditScriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScriptView.swift; sourceTree = "<group>"; };
 		DC89BF1629DC37670029D9CA /* ScriptViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptViewModelTest.swift; sourceTree = "<group>"; };
 		DC89BF1A29DC38650029D9CA /* ScriptHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptHandlerMock.swift; sourceTree = "<group>"; };
 		DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptHandlerProtocol.swift; sourceTree = "<group>"; };
@@ -169,6 +168,7 @@
 		DC89BF2129DC3DCD0029D9CA /* SettingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModelTest.swift; sourceTree = "<group>"; };
 		DC9558232C171A5A00BA7C34 /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
 		DCAEF26C2C4A549A004C922B /* PresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetModel.swift; sourceTree = "<group>"; };
+		DCAEF26E2C4A5A14004C922B /* SearchbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarView.swift; sourceTree = "<group>"; };
 		DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
 		DCDA8F412C13273E00AD2B19 /* ModalHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandlerProtocol.swift; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 		DC75B42D299BA57F00086806 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				DC889DC129A3B9210006B0DF /* EditScriptView.swift */,
+				DCAEF26E2C4A5A14004C922B /* SearchbarView.swift */,
 				DCDF0F9229A4B6AA00057C1E /* AddScript */,
 				DC889DBC29A3B65E0006B0DF /* ScriptRow */,
 				DC75B430299BA57F00086806 /* ScriptsListView.swift */,
@@ -658,13 +658,13 @@
 				DCDA8F4A2C1350E100AD2B19 /* ShortcutViewModel.swift in Sources */,
 				DC75B456299BA58000086806 /* HintView.swift in Sources */,
 				DC84CC1C29C9BB51006C8F07 /* ShortcutModel.swift in Sources */,
-				DC889DC229A3B9210006B0DF /* EditScriptView.swift in Sources */,
 				DCF1E9FA2C3815BB00645223 /* AddModalView.swift in Sources */,
 				DC4E476B2BB5A5B300DBE275 /* TagHandler.swift in Sources */,
 				DC5528E229D86891008CD209 /* ScriptDetailButtonView.swift in Sources */,
 				DC4E34D72BB56427004EB76C /* ShortcutsExtension.swift in Sources */,
 				DC75B468299BA58000086806 /* SettingsModel.swift in Sources */,
 				DC75B44E299BA58000086806 /* AppColor.swift in Sources */,
+				DCAEF26F2C4A5A17004C922B /* SearchbarView.swift in Sources */,
 				DC75B446299BA57F00086806 /* ScriptViewModel.swift in Sources */,
 				DC75B444299BA57F00086806 /* SettingsViewModel.swift in Sources */,
 				DCDCD6C129D7342F00529752 /* CustomButtonView.swift in Sources */,

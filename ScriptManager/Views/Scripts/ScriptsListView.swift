@@ -11,6 +11,7 @@ struct ScriptsListView: View {
     @State private var vm = ScriptViewModel()
     @State private var vmTags = TagViewModel()
     @State private var showAddScriptModal = false
+    @State private var showSearch = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.l) {
@@ -18,14 +19,19 @@ struct ScriptsListView: View {
                 .fontWeight(.bold)
                 .font(.system(size: FontSize.subTitle))
                 .padding(.bottom, Spacing.l)
-                        
-            TagsListView()
+            
+            HStack(alignment: .center) {
+                TagsListView()
+
+                SearchbarView(vm: $vm, show: $showSearch)
+            }
             
             if (vm.scripts.isEmpty) {
                 VStack(alignment: .center) {
                     Spacer()
                     
                     if vm.tagHandler.selectedTag != nil {
+                        // Tag is active
                         Image(systemName: "doc.text.magnifyingglass")
                             .resizable()
                             .scaledToFit()
@@ -38,7 +44,7 @@ struct ScriptsListView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                             .multilineTextAlignment(.center)
-
+                        
                         Button {
                             vmTags.setActiveTag(nil)
                         } label: {
@@ -50,13 +56,45 @@ struct ScriptsListView: View {
                             }
                             .frame(width: 150)
                             .padding()
-                            .background(.ultraThickMaterial)
+                            .background(.ultraThinMaterial)
                             .cornerRadius(15)
                             .shadow(radius: 3, x: 1, y: 2)
                         }
                         .buttonStyle(.plain)
                         
+                    } else if !vm.searchString.isEmpty {
+                        // Search is active
+                        Image(systemName: "doc.text.magnifyingglass")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 60)
+                            .symbolEffect(.bounce, options: .nonRepeating)
+                        
+                        Text("empty-scripts-search")
+                            .font(.caption2)
+                            .foregroundColor(AppColor.Creme)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .multilineTextAlignment(.center)
+                        
+                        Button {
+                            vm.searchString.removeAll()
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Text("remove-search")
+                                Spacer()
+                                Image(systemName: "minus.magnifyingglass")
+                            }
+                            .frame(width: 150)
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(15)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        }
+                        .buttonStyle(.plain)
                     } else {
+                        // No scripts saved
                         Image(systemName: "doc.badge.plus")
                             .resizable()
                             .scaledToFit()
@@ -81,7 +119,7 @@ struct ScriptsListView: View {
                             }
                             .frame(width: 200)
                             .padding()
-                            .background(.ultraThickMaterial)
+                            .background(.ultraThinMaterial)
                             .cornerRadius(15)
                             .shadow(radius: 3, x: 1, y: 2)
                         }
@@ -110,5 +148,6 @@ struct ScriptsListView: View {
 struct ScriptsListView_Previews: PreviewProvider {
     static var previews: some View {
         ScriptsListView()
+            .background(.gray)
     }
 }

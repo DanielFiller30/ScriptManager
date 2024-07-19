@@ -30,7 +30,7 @@ struct BadgeView: View {
             }
             .padding(.horizontal, Spacing.l)
             .padding(.vertical, 7.0)
-            .background(active ? AnyShapeStyle(AppColor.Creme) : AnyShapeStyle(.ultraThinMaterial))
+            .background(active ? AnyShapeStyle(.white) : AnyShapeStyle(.ultraThinMaterial))
             .overlay(
                 RoundedRectangle(cornerRadius: 12.0)
                     .stroke(outlined ?? true ? color : .clear, lineWidth: 1.5)
