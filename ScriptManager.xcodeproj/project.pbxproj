@@ -73,7 +73,7 @@
 		DC89BF1D29DC387B0029D9CA /* ScriptHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */; };
 		DC9558242C171A5A00BA7C34 /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9558232C171A5A00BA7C34 /* ShortcutView.swift */; };
 		DCAEF26B2C4A50C4004C922B /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = DCAEF26A2C4A50C4004C922B /* CodeEditor */; };
-		DCAEF26D2C4A549C004C922B /* PresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAEF26C2C4A549A004C922B /* PresetModel.swift */; };
+		DCAEF26D2C4A549C004C922B /* ScriptPresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAEF26C2C4A549A004C922B /* ScriptPresetModel.swift */; };
 		DCAEF26F2C4A5A17004C922B /* SearchbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAEF26E2C4A5A14004C922B /* SearchbarView.swift */; };
 		DCDA8F3E2C1323DD00AD2B19 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */; };
 		DCDA8F402C1323F300AD2B19 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */; };
@@ -84,6 +84,7 @@
 		DCDA8F4C2C1354B100AD2B19 /* ShortcutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */; };
 		DCDCD6BE29D7305E00529752 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DCDCD6BD29D7305E00529752 /* AlertToast */; };
 		DCDCD6C129D7342F00529752 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDCD6C029D7342F00529752 /* CustomButtonView.swift */; };
+		DCDEB9DC2C4B94EB00C6BA31 /* TagPresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */; };
 		DCDFAC4A29CB251600D538A2 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4929CB251600D538A2 /* TagViewModel.swift */; };
 		DCDFAC4D29CB25FF00D538A2 /* TagModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */; };
 		DCECD16E29D3483500FF3958 /* MenuSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCECD16D29D3483500FF3958 /* MenuSheetView.swift */; };
@@ -167,7 +168,7 @@
 		DC89BF1F29DC3DB70029D9CA /* TagViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModelTest.swift; sourceTree = "<group>"; };
 		DC89BF2129DC3DCD0029D9CA /* SettingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModelTest.swift; sourceTree = "<group>"; };
 		DC9558232C171A5A00BA7C34 /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
-		DCAEF26C2C4A549A004C922B /* PresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetModel.swift; sourceTree = "<group>"; };
+		DCAEF26C2C4A549A004C922B /* ScriptPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptPresetModel.swift; sourceTree = "<group>"; };
 		DCAEF26E2C4A5A14004C922B /* SearchbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarView.swift; sourceTree = "<group>"; };
 		DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
@@ -176,6 +177,7 @@
 		DCDA8F492C1350E100AD2B19 /* ShortcutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutViewModel.swift; sourceTree = "<group>"; };
 		DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutModalView.swift; sourceTree = "<group>"; };
 		DCDCD6C029D7342F00529752 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPresetModel.swift; sourceTree = "<group>"; };
 		DCDFAC4929CB251600D538A2 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModalView.swift; sourceTree = "<group>"; };
 		DCECD16D29D3483500FF3958 /* MenuSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheetView.swift; sourceTree = "<group>"; };
@@ -378,7 +380,8 @@
 		DC75B43D299BA57F00086806 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DCAEF26C2C4A549A004C922B /* PresetModel.swift */,
+				DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */,
+				DCAEF26C2C4A549A004C922B /* ScriptPresetModel.swift */,
 				DC29E8232C46B27F00F5FB3C /* DataModel.swift */,
 				DC75B43E299BA57F00086806 /* ShellModel.swift */,
 				DC75B43F299BA57F00086806 /* SettingsModel.swift */,
@@ -616,6 +619,7 @@
 				DC4D2D9729CAFC99006CDF16 /* BadgeView.swift in Sources */,
 				DC105EF02C11F6A10023ABE7 /* ScriptModalView.swift in Sources */,
 				DCDA8F3E2C1323DD00AD2B19 /* ModalView.swift in Sources */,
+				DCDEB9DC2C4B94EB00C6BA31 /* TagPresetModel.swift in Sources */,
 				DC75B467299BA58000086806 /* ShellModel.swift in Sources */,
 				DCDA8F402C1323F300AD2B19 /* ModalViewModel.swift in Sources */,
 				DC75B466299BA58000086806 /* GroupView.swift in Sources */,
@@ -639,7 +643,7 @@
 				DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */,
 				DC75B463299BA58000086806 /* ScriptRunButtonView.swift in Sources */,
 				DCDA8F4C2C1354B100AD2B19 /* ShortcutModalView.swift in Sources */,
-				DCAEF26D2C4A549C004C922B /* PresetModel.swift in Sources */,
+				DCAEF26D2C4A549C004C922B /* ScriptPresetModel.swift in Sources */,
 				DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */,
 				DCFA33F329DD592500807A0E /* NotificationHandlerProtocol.swift in Sources */,
 				DC79D0CA2C49A004001BF56F /* HeaderViewModel.swift in Sources */,

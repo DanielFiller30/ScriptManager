@@ -20,4 +20,11 @@ struct AppColor {
     static let Primary = Color("Primary")
     static let Secondary = Color("Secondary")
     static let Header = Color("Header")
+    
+    // Tag-Presets
+    static let Favs = Color("Favs")
+    static let Archive = Color("Archive")
+    static let Fixes = Color("Fixes")
+    static let Files = Color("Files")
+    static let GitLab = Color("GitLab")
 }

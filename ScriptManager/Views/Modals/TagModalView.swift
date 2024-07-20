@@ -15,19 +15,20 @@ struct TagModalView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("name-add-tag")
-                    .font(.system(size: FontSize.text))
+                    .font(.headline)
                 
                 Spacer()
                 
                 TextField("", text: $vm.name)
                     .frame(maxWidth: 155)
                     .cornerRadius(8)
+                    .textFieldStyle(.roundedBorder)
             }
             .padding(.bottom, Spacing.l)
             
             HStack(alignment: .center) {
                 Text("color-add-tag")
-                    .font(.system(size: FontSize.text))
+                    .font(.headline)
                                 
                 Spacer()
                 
@@ -43,6 +44,38 @@ struct TagModalView: View {
                 ColorPicker("", selection: $vm.badgeColor)
             }
             .padding(.bottom, Spacing.l)
+            
+            Divider()
+                .padding(.vertical, Spacing.l)
+            
+            Text("presets")
+                .font(.headline)
+            
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(vm.presets, id: \.self) { preset in
+                        Button {
+                            vm.name = preset.title
+                            vm.badgeColor = preset.color
+                        } label: {
+                            HStack(alignment: .center) {
+                                Image(systemName: preset.icon)
+                                
+                                Text(preset.title)
+                                    .font(.caption)
+                            }
+                            .padding(.horizontal)
+                            .padding(.vertical, 10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+            }
+            
+            Divider()
+                .padding(.vertical, Spacing.l)
                         
             HStack(alignment: .center, spacing: Spacing.xl) {
                 // Cancel

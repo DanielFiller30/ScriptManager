@@ -132,6 +132,9 @@
         }
       }
     },
+    "archive" : {
+
+    },
     "button-delete" : {
       "localizations" : {
         "de" : {
@@ -521,6 +524,16 @@
         }
       }
     },
+    "favorites" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriten"
+          }
+        }
+      }
+    },
     "features-title" : {
       "localizations" : {
         "de" : {
@@ -531,12 +544,42 @@
         }
       }
     },
+    "files" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dateien"
+          }
+        }
+      }
+    },
+    "fixes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fixes"
+          }
+        }
+      }
+    },
     "git-pull" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Git Pull"
+          }
+        }
+      }
+    },
+    "gitlab" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitLab"
           }
         }
       }

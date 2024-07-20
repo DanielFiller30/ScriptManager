@@ -20,13 +20,13 @@ class ScriptViewModel {
 
     private var runningTimer: Timer?
     
-    let presets: [Preset] = [
-        Preset(title: String(localized: "open-file"), icon: "doc.richtext", script: "open <path to file>;"),
-        Preset(title: String(localized: "say-name"), icon: "waveform", script: "say <name>;"),
-        Preset(title: String(localized: "git-pull"), icon: "arrow.down.circle.dotted", script: "cd <path to repo>; git pull;"),
-        Preset(title: String(localized: "countdown"), icon: "clock.arrow.circlepath", script: "sleep <time>; say 'Timer finished'"),
-        Preset(title: String(localized: "calculator"), icon: "x.squareroot", script: "bc", input: "2+2"),
-        Preset(title: String(localized: "user-input"), icon: "person.bubble", script: "vared -p 'Enter your username: ' -c username; say $username", input: "<name>")
+    let presets: [ScriptPreset] = [
+        ScriptPreset(title: String(localized: "open-file"), icon: "doc.richtext", script: "open <path to file>;"),
+        ScriptPreset(title: String(localized: "say-name"), icon: "waveform", script: "say <name>;"),
+        ScriptPreset(title: String(localized: "git-pull"), icon: "arrow.down.circle.dotted", script: "cd <path to repo>; git pull;"),
+        ScriptPreset(title: String(localized: "countdown"), icon: "clock.arrow.circlepath", script: "sleep <time>; say 'Timer finished'"),
+        ScriptPreset(title: String(localized: "calculator"), icon: "x.squareroot", script: "bc", input: "2+2"),
+        ScriptPreset(title: String(localized: "user-input"), icon: "person.bubble", script: "vared -p 'Enter your username: ' -c username; say $username", input: "<name>")
     ]
     
     var scripts: [Script] {
