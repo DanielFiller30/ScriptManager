@@ -41,8 +41,8 @@ struct ModalView: View {
                     TagModalView()
                 case .SETTINGS:
                     SettingsModalView()
-                case .SHORTCUT:
-                    ShortcutModalView()
+                case .INFO:
+                    InfoModalView()
                 case .ADD_SCRIPT, .EDIT_SCRIPT:
                     ScriptModalView()
                 case .ADD:

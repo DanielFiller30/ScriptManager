@@ -64,7 +64,7 @@ struct SettingsModalView: View {
                 CustomButtonView(
                     onClick: { vm.saveSettings() },
                     label: "settings-save",
-                    color: AnyShapeStyle(AppColor.Success),
+                    color: AnyShapeStyle(AppColor.Primary),
                     outlined: false,
                     disabled: vm.tempSettings.shell.path.isEmpty
                     || vm.tempSettings.unicode.isEmpty
@@ -72,16 +72,6 @@ struct SettingsModalView: View {
                 )
                 .padding(.bottom, Spacing.m)
                 .padding(.top, Spacing.l)
-        
-                // Remove scripts -> Not needed
-//                CustomButtonView(
-//                    onClick: { vm.showResetAlert() },
-//                    label: "settings-reset",
-//                    color: AnyShapeStyle(.ultraThickMaterial),
-//                    outlined: true,
-//                    disabled: false
-//                )
-//                .padding(.bottom, Spacing.m)
                 
                 // Cancel
                 CustomButtonView(
@@ -92,18 +82,31 @@ struct SettingsModalView: View {
                     disabled: false
                 )
                 
-                CustomButtonView(
-                    onClick: {
-                        vm.modalHandler.hideModal()
-                        vm.showCloseAlert()
-                    },
-                    label: "close-app-title",
-                    color: AnyShapeStyle(.ultraThickMaterial),
-                    outlined: true,
-                    disabled: false
-                )
-                .padding(.bottom, Spacing.xl)
-
+                HStack {
+                    CustomButtonView(
+                        onClick: {
+                            vm.modalHandler.hideModal()
+                            vm.modalHandler.showModal(.INFO)
+                        },
+                        label: "info-title",
+                        color: AnyShapeStyle(.ultraThickMaterial),
+                        outlined: true,
+                        disabled: false
+                    )
+                    .padding(.bottom, Spacing.xl)
+                    
+                    CustomButtonView(
+                        onClick: {
+                            vm.modalHandler.hideModal()
+                            vm.showCloseAlert()
+                        },
+                        label: "close-app-title",
+                        color: AnyShapeStyle(.ultraThickMaterial),
+                        outlined: true,
+                        disabled: false
+                    )
+                    .padding(.bottom, Spacing.xl)
+                }
             }
             .padding(.horizontal, Spacing.xl)
 

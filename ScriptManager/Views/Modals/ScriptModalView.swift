@@ -140,7 +140,7 @@ struct ScriptModalView: View {
                         vm.modalHandler.hideModal()
                     },
                     label: vm.editMode ? "edit-save" : "save-script",
-                    color: AnyShapeStyle(AppColor.Success),
+                    color: AnyShapeStyle(AppColor.Primary),
                     outlined: false,
                     disabled: testIsRunning || vm.scriptHandler.editScript.name.isEmpty || vm.scriptHandler.editScript.command.isEmpty
                 )

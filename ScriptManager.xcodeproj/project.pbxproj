@@ -79,13 +79,13 @@
 		DCDA8F402C1323F300AD2B19 /* ModalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */; };
 		DCDA8F422C13273E00AD2B19 /* ModalHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F412C13273E00AD2B19 /* ModalHandlerProtocol.swift */; };
 		DCDA8F452C13320E00AD2B19 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCDA8F442C13320E00AD2B19 /* ConfettiSwiftUI */; };
-		DCDA8F482C1350B200AD2B19 /* ShortcutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F472C1350B200AD2B19 /* ShortcutListView.swift */; };
 		DCDA8F4A2C1350E100AD2B19 /* ShortcutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F492C1350E100AD2B19 /* ShortcutViewModel.swift */; };
-		DCDA8F4C2C1354B100AD2B19 /* ShortcutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */; };
 		DCDCD6BE29D7305E00529752 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DCDCD6BD29D7305E00529752 /* AlertToast */; };
 		DCDCD6C129D7342F00529752 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDCD6C029D7342F00529752 /* CustomButtonView.swift */; };
 		DCDEB9DC2C4B94EB00C6BA31 /* TagPresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */; };
 		DCDEB9DE2C4BA8E400C6BA31 /* ScriptProcessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DD2C4BA8E100C6BA31 /* ScriptProcessModel.swift */; };
+		DCDEB9E02C4BB80D00C6BA31 /* InfoModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DF2C4BB80800C6BA31 /* InfoModal.swift */; };
+		DCDEB9E22C4BB84E00C6BA31 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9E12C4BB84B00C6BA31 /* InfoViewModel.swift */; };
 		DCDFAC4A29CB251600D538A2 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4929CB251600D538A2 /* TagViewModel.swift */; };
 		DCDFAC4D29CB25FF00D538A2 /* TagModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */; };
 		DCECD16E29D3483500FF3958 /* MenuSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCECD16D29D3483500FF3958 /* MenuSheetView.swift */; };
@@ -174,12 +174,12 @@
 		DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
 		DCDA8F412C13273E00AD2B19 /* ModalHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandlerProtocol.swift; sourceTree = "<group>"; };
-		DCDA8F472C1350B200AD2B19 /* ShortcutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutListView.swift; sourceTree = "<group>"; };
 		DCDA8F492C1350E100AD2B19 /* ShortcutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutViewModel.swift; sourceTree = "<group>"; };
-		DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutModalView.swift; sourceTree = "<group>"; };
 		DCDCD6C029D7342F00529752 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPresetModel.swift; sourceTree = "<group>"; };
 		DCDEB9DD2C4BA8E100C6BA31 /* ScriptProcessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptProcessModel.swift; sourceTree = "<group>"; };
+		DCDEB9DF2C4BB80800C6BA31 /* InfoModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModal.swift; sourceTree = "<group>"; };
+		DCDEB9E12C4BB84B00C6BA31 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		DCDFAC4929CB251600D538A2 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModalView.swift; sourceTree = "<group>"; };
 		DCECD16D29D3483500FF3958 /* MenuSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheetView.swift; sourceTree = "<group>"; };
@@ -291,6 +291,7 @@
 		DC75B410299BA57F00086806 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DCDEB9E12C4BB84B00C6BA31 /* InfoViewModel.swift */,
 				DC79D0C92C499FFF001BF56F /* HeaderViewModel.swift */,
 				DC75B413299BA57F00086806 /* ScriptViewModel.swift */,
 				DC75B411299BA57F00086806 /* SettingsViewModel.swift */,
@@ -452,12 +453,12 @@
 		DCDA8F3C2C13216C00AD2B19 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				DCDEB9DF2C4BB80800C6BA31 /* InfoModal.swift */,
 				DCF1E9F92C3815B700645223 /* AddModalView.swift */,
 				DC75B420299BA57F00086806 /* SettingsModalView.swift */,
 				DC105EEF2C11F6A10023ABE7 /* ScriptModalView.swift */,
 				DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */,
 				DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */,
-				DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -465,7 +466,6 @@
 		DCDA8F462C1350A200AD2B19 /* Shortcuts */ = {
 			isa = PBXGroup;
 			children = (
-				DCDA8F472C1350B200AD2B19 /* ShortcutListView.swift */,
 				DC9558232C171A5A00BA7C34 /* ShortcutView.swift */,
 			);
 			path = Shortcuts;
@@ -620,6 +620,7 @@
 				DCEE233A29DAF2AD00814902 /* OutputWindowView.swift in Sources */,
 				DC75B44B299BA58000086806 /* IconSize.swift in Sources */,
 				DC4D2D9729CAFC99006CDF16 /* BadgeView.swift in Sources */,
+				DCDEB9E22C4BB84E00C6BA31 /* InfoViewModel.swift in Sources */,
 				DC105EF02C11F6A10023ABE7 /* ScriptModalView.swift in Sources */,
 				DCDA8F3E2C1323DD00AD2B19 /* ModalView.swift in Sources */,
 				DCDEB9DC2C4B94EB00C6BA31 /* TagPresetModel.swift in Sources */,
@@ -628,7 +629,6 @@
 				DC75B466299BA58000086806 /* GroupView.swift in Sources */,
 				DCDFAC4D29CB25FF00D538A2 /* TagModalView.swift in Sources */,
 				DC75B45C299BA58000086806 /* ScriptsListView.swift in Sources */,
-				DCDA8F482C1350B200AD2B19 /* ShortcutListView.swift in Sources */,
 				DC75B46B299BA58000086806 /* ScriptModel.swift in Sources */,
 				DC4E34CB2BB55A35004EB76C /* DependencyRegistry.swift in Sources */,
 				DC5813D22BF77EC100C5C727 /* AlertHandler.swift in Sources */,
@@ -646,7 +646,6 @@
 				DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */,
 				DCDEB9DE2C4BA8E400C6BA31 /* ScriptProcessModel.swift in Sources */,
 				DC75B463299BA58000086806 /* ScriptRunButtonView.swift in Sources */,
-				DCDA8F4C2C1354B100AD2B19 /* ShortcutModalView.swift in Sources */,
 				DCAEF26D2C4A549C004C922B /* ScriptPresetModel.swift in Sources */,
 				DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */,
 				DCFA33F329DD592500807A0E /* NotificationHandlerProtocol.swift in Sources */,
@@ -688,6 +687,7 @@
 				DC75B464299BA58000086806 /* ScriptRowLabelView.swift in Sources */,
 				DC75B460299BA58000086806 /* ScriptDetailsView.swift in Sources */,
 				DC5813D82BF7812400C5C727 /* MainViewModel.swift in Sources */,
+				DCDEB9E02C4BB80D00C6BA31 /* InfoModal.swift in Sources */,
 				DC75B449299BA57F00086806 /* FontSize.swift in Sources */,
 				DCDFAC4A29CB251600D538A2 /* TagViewModel.swift in Sources */,
 				DC75B459299BA58000086806 /* HeaderView.swift in Sources */,

@@ -91,7 +91,7 @@ struct TagModalView: View {
                 CustomButtonView(
                     onClick: { vm.saveTag() },
                     label: "save-tag",
-                    color: AnyShapeStyle(AppColor.Secondary),
+                    color: AnyShapeStyle(AppColor.Primary),
                     outlined: false,
                     disabled: vm.name.isEmpty
                 )

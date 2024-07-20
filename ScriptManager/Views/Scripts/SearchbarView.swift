@@ -31,7 +31,9 @@ struct SearchbarView: View {
                 .buttonStyle(.plain)
             }
             .frame(maxWidth: 200)
-            .padding(7)
+            .padding(.vertical, 6.5)
+            .padding(.trailing, 7)
+            .padding(.leading, 10)
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .shadow(radius: 3, x: 1, y: 2)

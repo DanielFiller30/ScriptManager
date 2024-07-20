@@ -20,6 +20,6 @@ enum ModalType {
     case EDIT_SCRIPT
     case TAG
     case SETTINGS
-    case SHORTCUT
+    case INFO
     case ADD
 }
