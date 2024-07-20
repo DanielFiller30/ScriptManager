@@ -20,6 +20,15 @@
 		DC2E7A9A29C4A40200B6CFFE /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = DC2E7A9929C4A40200B6CFFE /* LaunchAtLogin */; };
 		DC2E7A9C29C4A41C00B6CFFE /* SettingsAutostartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */; };
 		DC2E7A9F29C4A6FE00B6CFFE /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = DC2E7A9E29C4A6FE00B6CFFE /* KeyboardShortcuts */; };
+		DC44B8B22C4BF7E5000D20E2 /* BackupProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8B12C4BF7DF000D20E2 /* BackupProvider.swift */; };
+		DC44B8B42C4BF832000D20E2 /* JSONProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8B32C4BF82F000D20E2 /* JSONProvider.swift */; };
+		DC44B8B62C4BF85F000D20E2 /* UserdataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8B52C4BF85C000D20E2 /* UserdataModel.swift */; };
+		DC44B8B82C4BF97A000D20E2 /* HintHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8B72C4BF978000D20E2 /* HintHandler.swift */; };
+		DC44B8BA2C4BF9C3000D20E2 /* HintHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8B92C4BF9BF000D20E2 /* HintHandlerProtocol.swift */; };
+		DC44B8BC2C4BFAA9000D20E2 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8BB2C4BFA9E000D20E2 /* HintView.swift */; };
+		DC44B8BE2C4BFADA000D20E2 /* HintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8BD2C4BFAD7000D20E2 /* HintViewModel.swift */; };
+		DC44B8C02C4BFEA6000D20E2 /* SettingsBackupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8BF2C4BFEA2000D20E2 /* SettingsBackupView.swift */; };
+		DC44B8C22C4BFEEB000D20E2 /* BackupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8C12C4BFEE8000D20E2 /* BackupViewModel.swift */; };
 		DC4D2D9729CAFC99006CDF16 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D9629CAFC99006CDF16 /* BadgeView.swift */; };
 		DC4E34C52BB55A17004EB76C /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = DC4E34C42BB55A17004EB76C /* Resolver */; };
 		DC4E34C92BB55A17004EB76C /* Resolver-Static in Frameworks */ = {isa = PBXBuildFile; productRef = DC4E34C82BB55A17004EB76C /* Resolver-Static */; };
@@ -50,7 +59,7 @@
 		DC75B451299BA58000086806 /* SettingsShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B422299BA57F00086806 /* SettingsShellView.swift */; };
 		DC75B452299BA58000086806 /* SettingsNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B423299BA57F00086806 /* SettingsNotificationsView.swift */; };
 		DC75B455299BA58000086806 /* SettingsUnicodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B427299BA57F00086806 /* SettingsUnicodeView.swift */; };
-		DC75B456299BA58000086806 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B428299BA57F00086806 /* HintView.swift */; };
+		DC75B456299BA58000086806 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B428299BA57F00086806 /* HelpView.swift */; };
 		DC75B458299BA58000086806 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B42B299BA57F00086806 /* WelcomeView.swift */; };
 		DC75B459299BA58000086806 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B42C299BA57F00086806 /* HeaderView.swift */; };
 		DC75B45B299BA58000086806 /* ScriptRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC75B42F299BA57F00086806 /* ScriptRowView.swift */; };
@@ -115,6 +124,15 @@
 		DC29E8232C46B27F00F5FB3C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		DC2A807529C892B700BF6DE7 /* SettingsShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsShortcutView.swift; sourceTree = "<group>"; };
 		DC2E7A9B29C4A41C00B6CFFE /* SettingsAutostartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAutostartView.swift; sourceTree = "<group>"; };
+		DC44B8B12C4BF7DF000D20E2 /* BackupProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupProvider.swift; sourceTree = "<group>"; };
+		DC44B8B32C4BF82F000D20E2 /* JSONProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONProvider.swift; sourceTree = "<group>"; };
+		DC44B8B52C4BF85C000D20E2 /* UserdataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserdataModel.swift; sourceTree = "<group>"; };
+		DC44B8B72C4BF978000D20E2 /* HintHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintHandler.swift; sourceTree = "<group>"; };
+		DC44B8B92C4BF9BF000D20E2 /* HintHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintHandlerProtocol.swift; sourceTree = "<group>"; };
+		DC44B8BB2C4BFA9E000D20E2 /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
+		DC44B8BD2C4BFAD7000D20E2 /* HintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintViewModel.swift; sourceTree = "<group>"; };
+		DC44B8BF2C4BFEA2000D20E2 /* SettingsBackupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBackupView.swift; sourceTree = "<group>"; };
+		DC44B8C12C4BFEE8000D20E2 /* BackupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupViewModel.swift; sourceTree = "<group>"; };
 		DC4D2D9629CAFC99006CDF16 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		DC4E34CA2BB55A35004EB76C /* DependencyRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
 		DC4E34CD2BB55FF9004EB76C /* StorageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWrapper.swift; sourceTree = "<group>"; };
@@ -143,7 +161,7 @@
 		DC75B422299BA57F00086806 /* SettingsShellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsShellView.swift; sourceTree = "<group>"; };
 		DC75B423299BA57F00086806 /* SettingsNotificationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNotificationsView.swift; sourceTree = "<group>"; };
 		DC75B427299BA57F00086806 /* SettingsUnicodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsUnicodeView.swift; sourceTree = "<group>"; };
-		DC75B428299BA57F00086806 /* HintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
+		DC75B428299BA57F00086806 /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		DC75B42B299BA57F00086806 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		DC75B42C299BA57F00086806 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DC75B42F299BA57F00086806 /* ScriptRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptRowView.swift; sourceTree = "<group>"; };
@@ -283,6 +301,8 @@
 		DC4E34D52BB56318004EB76C /* Provider */ = {
 			isa = PBXGroup;
 			children = (
+				DC44B8B32C4BF82F000D20E2 /* JSONProvider.swift */,
+				DC44B8B12C4BF7DF000D20E2 /* BackupProvider.swift */,
 				DCFA33F029DD590E00807A0E /* NotificationProvider.swift */,
 			);
 			path = Provider;
@@ -291,6 +311,8 @@
 		DC75B410299BA57F00086806 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DC44B8C12C4BFEE8000D20E2 /* BackupViewModel.swift */,
+				DC44B8BD2C4BFAD7000D20E2 /* HintViewModel.swift */,
 				DCDEB9E12C4BB84B00C6BA31 /* InfoViewModel.swift */,
 				DC79D0C92C499FFF001BF56F /* HeaderViewModel.swift */,
 				DC75B413299BA57F00086806 /* ScriptViewModel.swift */,
@@ -308,6 +330,7 @@
 		DC75B414299BA57F00086806 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
+				DC44B8B72C4BF978000D20E2 /* HintHandler.swift */,
 				DC75B415299BA57F00086806 /* ScriptHandler.swift */,
 				DC851CF92BF4D2FF007EB396 /* SettingsHandler.swift */,
 				DC4E476A2BB5A5B300DBE275 /* TagHandler.swift */,
@@ -348,6 +371,7 @@
 		DC75B41F299BA57F00086806 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				DC44B8BF2C4BFEA2000D20E2 /* SettingsBackupView.swift */,
 				DC75B421299BA57F00086806 /* SettingsLoggingView.swift */,
 				DC75B422299BA57F00086806 /* SettingsShellView.swift */,
 				DC75B423299BA57F00086806 /* SettingsNotificationsView.swift */,
@@ -384,6 +408,7 @@
 		DC75B43D299BA57F00086806 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC44B8B52C4BF85C000D20E2 /* UserdataModel.swift */,
 				DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */,
 				DCAEF26C2C4A549A004C922B /* ScriptPresetModel.swift */,
 				DC29E8232C46B27F00F5FB3C /* DataModel.swift */,
@@ -439,6 +464,7 @@
 		DC89BF1E29DC38830029D9CA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				DC44B8B92C4BF9BF000D20E2 /* HintHandlerProtocol.swift */,
 				DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */,
 				DCFA33F229DD592500807A0E /* NotificationHandlerProtocol.swift */,
 				DCFA33F429DD5F2C00807A0E /* StorageHandlerProtocol.swift */,
@@ -474,8 +500,9 @@
 		DCDCD6BF29D733E200529752 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DC44B8BB2C4BFA9E000D20E2 /* HintView.swift */,
 				DC75B43C299BA57F00086806 /* GroupView.swift */,
-				DC75B428299BA57F00086806 /* HintView.swift */,
+				DC75B428299BA57F00086806 /* HelpView.swift */,
 				DC4D2D9629CAFC99006CDF16 /* BadgeView.swift */,
 				DCECD16D29D3483500FF3958 /* MenuSheetView.swift */,
 				DCDCD6C029D7342F00529752 /* CustomButtonView.swift */,
@@ -645,16 +672,22 @@
 				DC75B443299BA57F00086806 /* ScriptManagerApp.swift in Sources */,
 				DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */,
 				DCDEB9DE2C4BA8E400C6BA31 /* ScriptProcessModel.swift in Sources */,
+				DC44B8B42C4BF832000D20E2 /* JSONProvider.swift in Sources */,
 				DC75B463299BA58000086806 /* ScriptRunButtonView.swift in Sources */,
 				DCAEF26D2C4A549C004C922B /* ScriptPresetModel.swift in Sources */,
 				DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */,
+				DC44B8BC2C4BFAA9000D20E2 /* HintView.swift in Sources */,
 				DCFA33F329DD592500807A0E /* NotificationHandlerProtocol.swift in Sources */,
+				DC44B8B22C4BF7E5000D20E2 /* BackupProvider.swift in Sources */,
+				DC44B8C02C4BFEA6000D20E2 /* SettingsBackupView.swift in Sources */,
 				DC79D0CA2C49A004001BF56F /* HeaderViewModel.swift in Sources */,
+				DC44B8B82C4BF97A000D20E2 /* HintHandler.swift in Sources */,
 				DC75B455299BA58000086806 /* SettingsUnicodeView.swift in Sources */,
 				DC29E8242C46B28100F5FB3C /* DataModel.swift in Sources */,
 				DC75B461299BA58000086806 /* ScriptStateButtonView.swift in Sources */,
 				DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */,
 				DCF82FB629D1CDBF0085627D /* TagPickerView.swift in Sources */,
+				DC44B8BA2C4BF9C3000D20E2 /* HintHandlerProtocol.swift in Sources */,
 				DC4E34D22BB56298004EB76C /* DateExtension.swift in Sources */,
 				DC75B448299BA57F00086806 /* StorageHandler.swift in Sources */,
 				DC2E7A9C29C4A41C00B6CFFE /* SettingsAutostartView.swift in Sources */,
@@ -663,7 +696,7 @@
 				DCFA33F129DD590E00807A0E /* NotificationProvider.swift in Sources */,
 				DCF82FB429D1C33F0085627D /* TagsListView.swift in Sources */,
 				DCDA8F4A2C1350E100AD2B19 /* ShortcutViewModel.swift in Sources */,
-				DC75B456299BA58000086806 /* HintView.swift in Sources */,
+				DC75B456299BA58000086806 /* HelpView.swift in Sources */,
 				DC84CC1C29C9BB51006C8F07 /* ShortcutModel.swift in Sources */,
 				DCF1E9FA2C3815BB00645223 /* AddModalView.swift in Sources */,
 				DC4E476B2BB5A5B300DBE275 /* TagHandler.swift in Sources */,
@@ -679,6 +712,7 @@
 				DCFA33F529DD5F2C00807A0E /* StorageHandlerProtocol.swift in Sources */,
 				DCDA8F422C13273E00AD2B19 /* ModalHandlerProtocol.swift in Sources */,
 				DC75B462299BA58000086806 /* ScriptDeleteButtonView.swift in Sources */,
+				DC44B8BE2C4BFADA000D20E2 /* HintViewModel.swift in Sources */,
 				DC75B46A299BA58000086806 /* ResultModel.swift in Sources */,
 				DC75B458299BA58000086806 /* WelcomeView.swift in Sources */,
 				DC4E34CE2BB55FF9004EB76C /* StorageWrapper.swift in Sources */,
@@ -687,8 +721,10 @@
 				DC75B464299BA58000086806 /* ScriptRowLabelView.swift in Sources */,
 				DC75B460299BA58000086806 /* ScriptDetailsView.swift in Sources */,
 				DC5813D82BF7812400C5C727 /* MainViewModel.swift in Sources */,
+				DC44B8B62C4BF85F000D20E2 /* UserdataModel.swift in Sources */,
 				DCDEB9E02C4BB80D00C6BA31 /* InfoModal.swift in Sources */,
 				DC75B449299BA57F00086806 /* FontSize.swift in Sources */,
+				DC44B8C22C4BFEEB000D20E2 /* BackupViewModel.swift in Sources */,
 				DCDFAC4A29CB251600D538A2 /* TagViewModel.swift in Sources */,
 				DC75B459299BA58000086806 /* HeaderView.swift in Sources */,
 				DC5813D62BF7806900C5C727 /* AlertViewModel.swift in Sources */,

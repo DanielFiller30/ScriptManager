@@ -2,52 +2,60 @@
 //  HintView.swift
 //  ScriptManager
 //
-//  Created by Filler, Daniel on 10.02.23.
+//  Created by Filler, Daniel on 20.07.24.
 //
 
 import SwiftUI
 
-struct HintView: View {
-    var title: LocalizedStringKey
-    var text: LocalizedStringKey
+public struct HintView: View {
+    private var vm = HintViewModel()
     
-    @State var showHint: Bool = false
+    var color: Color {
+        switch (vm.hintType) {
+        case .error: AppColor.Danger
+        case .warning: AppColor.Warning
+        case .success: AppColor.Success
+        }
+    }
     
-    var body: some View {
-        Button {
-            showHint.toggle()
-        } label: {
-            Image(systemName: "questionmark.square.dashed")
+    public init() {}
+    
+    public var body: some View {
+        HStack(alignment: .center) {
+            Image(systemName: vm.icon)
                 .resizable()
-                .frame(width: IconSize.m, height: IconSize.m)
-        }
-        .buttonStyle(.plain)
-        .popover(isPresented: $showHint) {
-            VStack(alignment: .center) {
-                Text(title)
-                    .font(.system(size: FontSize.title))
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, Spacing.l)
-                    .padding(.top, Spacing.xl)
-                
-                Divider()
-                
-                Text(text)
-                    .font(.system(size: FontSize.text))
-                    .multilineTextAlignment(.center)
-                    .lineLimit(10)
-                    .padding(Spacing.l)
-                
-                Spacer()
-                
+                .scaledToFit()
+                .frame(height: 20)
+                .foregroundStyle(color)
+            
+            Spacer()
+            
+            Text(vm.hintText)
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.white)
+            
+            Spacer()
+            
+            Button {
+                vm.hideHint()
+            } label: {
+                Image(systemName: "xmark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 12)
+                    .foregroundStyle(.white)
             }
-            .frame(maxWidth: 200, minHeight: 200)
+            .buttonStyle(.plain)
         }
+        .padding(15)
+        .background(.ultraThickMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 15))
+        .frame(width: 300)
+        .shadow(radius: 3, x:1, y:2)
     }
 }
 
-struct HintView_Previews: PreviewProvider {
-    static var previews: some View {
-        HintView(title: "Test", text: "Info text")
-    }
+#Preview {
+    HintView()
 }

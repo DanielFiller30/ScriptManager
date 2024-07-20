@@ -17,8 +17,9 @@ class AlertHandler: AlertHandlerProtocol {
     var message: String = ""
     var btnTitle: String = ""
     var action: () -> Void = {}
+    var cancelVisible: Bool = true
     
-    func showAlert(title: String, message: String, btnTitle: String, action: @escaping () -> Void) {
+    func showAlert(title: String, message: String, btnTitle: String, cancelVisible: Bool? = true, action: @escaping () -> Void) {
         self.title = title
         self.message = message
         self.btnTitle = btnTitle

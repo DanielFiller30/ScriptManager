@@ -12,8 +12,9 @@ protocol AlertHandlerProtocol {
     var title: String { get }
     var message: String { get }
     var btnTitle: String { get }
+    var cancelVisible: Bool { get }
     var action: () -> Void { get }
     
-    func showAlert(title: String, message: String, btnTitle: String, action: @escaping () -> Void)
+    func showAlert(title: String, message: String, btnTitle: String, cancelVisible: Bool?, action: @escaping () -> Void)
     func hideAlert()
 }

@@ -31,6 +31,11 @@ struct MainView: View {
             if vm.modalVisible {
                 ModalView()
             }
+            
+            if vm.hintVisible {
+                HintView()
+                    .position(x: 380 / 2, y: 50)
+            }
         }
         .frame(width: 380, height: 550)
         .background(.ultraThinMaterial)

@@ -13,6 +13,7 @@ class MainViewModel {
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     @LazyInjected @ObservationIgnored private var modalHandler: ModalHandlerProtocol
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
+    @LazyInjected @ObservationIgnored var hintHandler: HintHandlerProtocol
 
     var alertVisible: Bool {
         alertHandler.alertVisible
@@ -20,6 +21,10 @@ class MainViewModel {
     
     var modalVisible: Bool {
         modalHandler.modalVisible
+    }
+    
+    var hintVisible: Bool {
+        hintHandler.hintVisible
     }
     
     var modalType: ModalType {

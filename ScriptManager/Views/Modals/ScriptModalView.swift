@@ -78,7 +78,7 @@ struct ScriptModalView: View {
                     Text("path-add-script")
                         .font(.headline)
                     
-                    HintView(title: "hint-script-title", text: "hint-script-text")
+                    HelpView(title: "hint-script-title", text: "hint-script-text")
                     
                     Spacer()
                     

@@ -130,6 +130,7 @@ class SettingsViewModel {
             title: String(localized: "close-app-title"),
             message: String(localized: "close-app-msg"),
             btnTitle: String(localized: "close-app-btn"),
+            cancelVisible: true,
             action: {
                 NSApp.terminate(self)
             }
@@ -142,6 +143,7 @@ class SettingsViewModel {
             title: String(localized: "settings-delete-title"),
             message: String(localized: "settings-delete-msg"),
             btnTitle: String(localized: "delete"),
+            cancelVisible: true,
             action: {
                 self.reset()
             }

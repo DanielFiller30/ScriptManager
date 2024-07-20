@@ -143,6 +143,16 @@
         }
       }
     },
+    "backup" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup"
+          }
+        }
+      }
+    },
     "button-delete" : {
       "localizations" : {
         "de" : {
@@ -367,6 +377,16 @@
         }
       }
     },
+    "Data exported" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten exportiert"
+          }
+        }
+      }
+    },
     "delete" : {
       "localizations" : {
         "de" : {
@@ -521,6 +541,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fehler"
+          }
+        }
+      }
+    },
+    "export-data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportieren"
+          }
+        }
+      }
+    },
+    "export-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportiere deine Benutzerdaten als Backup-Datei, um sie später wieder zu importieren"
           }
         }
       }
@@ -785,6 +825,46 @@
         }
       }
     },
+    "import-data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten importieren"
+          }
+        }
+      }
+    },
+    "import-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst eine Backup Datei des ScriptManagers importieren. Beachte, dass anschließend ein Neustart notwendig ist"
+          }
+        }
+      }
+    },
+    "import-restart" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Damit deine importierten Daten geladen werden, musst du den ScriptManager neustarten"
+          }
+        }
+      }
+    },
+    "import-successfull" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import erfolgreich"
+          }
+        }
+      }
+    },
     "info" : {
       "localizations" : {
         "de" : {
@@ -999,6 +1079,16 @@
         }
       }
     },
+    "Oops, something went wrong" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ups, da ist etwas schief gelaufen"
+          }
+        }
+      }
+    },
     "open-file" : {
       "localizations" : {
         "de" : {
@@ -1135,6 +1225,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suche löschen"
+          }
+        }
+      }
+    },
+    "restart" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anwendung beenden"
           }
         }
       }

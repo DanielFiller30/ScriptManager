@@ -168,6 +168,7 @@ class ScriptViewModel {
             title: String(localized: "delete-title"),
             message: String(localized: "delete-msg"),
             btnTitle: String(localized: "delete"),
+            cancelVisible: true,
             action: {
                 self.deleteScript(id: id)
                 self.alertHandler.hideAlert()

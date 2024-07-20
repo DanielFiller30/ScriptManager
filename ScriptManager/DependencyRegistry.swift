@@ -9,7 +9,7 @@ import Foundation
 import Resolver
 
 // Register all dependencies for injection
-extension Resolver: ResolverRegistering {
+extension Resolver: @retroactive ResolverRegistering {
     public static func registerAllServices() {
         register { StorageHandler() as StorageHandlerProtocol }
             .scope(.application)
@@ -30,6 +30,9 @@ extension Resolver: ResolverRegistering {
             .scope(.application)
         
         register { NotificationHandler() as NotificationHandlerProtocol }
+        
+        register { HintHandler() as HintHandlerProtocol }           
+            .scope(.application)
     }
 }
 

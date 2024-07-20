@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsModalView: View {
     @State private var toggleShell = false
     @State private var toggleShortcuts = false
+    @State private var toggleBackup = false
     
     @State private var vm = SettingsViewModel()
     
@@ -25,7 +26,7 @@ struct SettingsModalView: View {
                     animation: false
                 ) {
                     SettingsShellView(vm: $vm)
-                                    
+                    
                     SettingsUnicodeView(vm: $vm)
                 }
                 
@@ -40,6 +41,19 @@ struct SettingsModalView: View {
                     animation: false
                 ) {
                     SettingsShortcutView(vm: $vm)
+                }
+                
+                Divider()
+                
+                GroupView(
+                    toggleVar: $toggleBackup,
+                    toggle: { toggleBackup.toggle() },
+                    label: "backup",
+                    info: nil,
+                    padding: Spacing.zero,
+                    animation: false
+                ) {
+                    SettingsBackupView()
                 }
                 
                 Divider()
@@ -109,7 +123,7 @@ struct SettingsModalView: View {
                 }
             }
             .padding(.horizontal, Spacing.xl)
-
+            
         }
     }
 }

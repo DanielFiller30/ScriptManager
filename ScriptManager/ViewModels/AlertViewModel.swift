@@ -24,6 +24,10 @@ class AlertViewModel {
         alertHandler.btnTitle
     }
     
+    var cancelVisible: Bool {
+        alertHandler.cancelVisible
+    }
+    
     var action: () -> () {
         alertHandler.action
     }

@@ -37,6 +37,7 @@ class HeaderViewModel {
             title: String(localized: "delete-tag-title"),
             message: String(localized: "delete-tag-msg"),
             btnTitle: String(localized: "delete"),
+            cancelVisible: true,
             action: {
                 self.deleteTag()
                 self.alertHandler.hideAlert()

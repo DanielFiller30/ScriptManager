@@ -44,22 +44,24 @@ struct AlertView: View {
                 .buttonStyle(.plain)
                 .padding(.bottom, 3)
                 
-                Button {
-                    vm.hideAlert()
-                } label: {
-                    HStack {
-                        Spacer()
-                        Text("close-alert")
-                            .font(.callout)
-                        Spacer()
+                if vm.cancelVisible {
+                    Button {
+                        vm.hideAlert()
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("close-alert")
+                                .font(.callout)
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 10)
+                        .background(AppColor.Light)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 10)
-                    .background(AppColor.Light)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                }
-                .buttonStyle(.plain)
-                .padding(.top, 3)
+                    .buttonStyle(.plain)
+                    .padding(.top, 3)
+                }                
             }
             .padding(25)
             .background(.ultraThinMaterial)
