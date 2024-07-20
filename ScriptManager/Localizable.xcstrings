@@ -243,6 +243,16 @@
         }
       }
     },
+    "clean-desktop" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibtisch aufräumen"
+          }
+        }
+      }
+    },
     "close-alert" : {
       "localizations" : {
         "de" : {
@@ -1209,6 +1219,16 @@
         }
       }
     },
+    "presets-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze Vorlagen und passe sie an"
+          }
+        }
+      }
+    },
     "remove-filter" : {
       "localizations" : {
         "de" : {
@@ -1320,6 +1340,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Script Manager"
+          }
+        }
+      }
+    },
+    "script-details" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skript-Details"
+          }
+        }
+      }
+    },
+    "script-details-info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen zu deinem Script"
           }
         }
       }

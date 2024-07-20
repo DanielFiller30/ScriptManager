@@ -11,6 +11,8 @@ import CodeEditor
 
 struct ScriptModalView: View {
     @State private var vm = ScriptViewModel()
+    @State var showPresets: Bool = false
+    @State var showDetails: Bool = true
     
     @State var testIsRunning: Bool = false
     @State var testResult: LocalizedStringKey = ""
@@ -18,56 +20,70 @@ struct ScriptModalView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(alignment: .center) {
-                Text("name-add-script")
-                    .font(.headline)
+            GroupView(
+                toggleVar: $showDetails,
+                toggle: {showDetails.toggle()},
+                label: "script-details",
+                info: "script-details-info",
+                padding: Spacing.zero,
+                animation: true)
+            {
+                HStack(alignment: .center) {
+                    Text("name-add-script")
+                        .font(.subheadline)
+                    
+                    Spacer()
+                    
+                    TextField("", text: $vm.scriptHandler.editScript.name)
+                        .frame(maxWidth: 120)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    IconPickerView()
+                }
+                .padding(.bottom, Spacing.l)
+                .padding(.top, Spacing.m)
                 
-                Spacer()
-                
-                TextField("", text: $vm.scriptHandler.editScript.name)
-                    .frame(maxWidth: 120)
-                    .textFieldStyle(.roundedBorder)
-                
-                IconPickerView()
+                HStack(alignment: .center) {
+                    Text("tag-script")
+                        .font(.subheadline)
+                    
+                    Spacer()
+                    
+                    TagPickerView()
+                }
             }
-            .padding(.bottom, Spacing.l)
             
-            HStack(alignment: .center) {
-                Text("tag-script")
-                    .font(.headline)
-                
-                Spacer()
-                
-                TagPickerView()
-            }
-            
-            Divider()
-                .padding(.vertical, Spacing.l)
-            
-            Text("presets")
-                .font(.headline)
-            
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(vm.presets, id: \.self) { preset in
-                        Button {
-                            vm.scriptHandler.editScript.command = preset.script
-                            vm.scriptHandler.input = preset.input ?? ""
-                        } label: {
-                            HStack(alignment: .center) {
-                                Image(systemName: preset.icon)
-                                
-                                Text(preset.title)
-                                    .font(.caption)
+            GroupView(
+                toggleVar: $showPresets,
+                toggle: {showPresets.toggle()},
+                label: "presets",
+                info: "presets-info",
+                padding: Spacing.zero,
+                animation: true)
+            {
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(vm.presets, id: \.self) { preset in
+                            Button {
+                                vm.scriptHandler.editScript.command = preset.script
+                                vm.scriptHandler.input = preset.input ?? ""
+                            } label: {
+                                HStack(alignment: .center) {
+                                    Image(systemName: preset.icon)
+                                    
+                                    Text(preset.title)
+                                        .font(.caption)
+                                }
+                                .padding(.horizontal)
+                                .padding(.vertical, 10)
+                                .background(.ultraThickMaterial)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
-                            .padding(.horizontal)
-                            .padding(.vertical, 10)
-                            .background(.ultraThickMaterial)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
-                }                
+                }
+                .padding(.top, Spacing.m)
             }
             
             Divider()
@@ -112,7 +128,7 @@ struct ScriptModalView: View {
                     .font(.headline)
                 
                 Spacer()
-                                
+                
                 TextField("input", text: $vm.scriptHandler.input)
                     .textFieldStyle(.roundedBorder)
             }

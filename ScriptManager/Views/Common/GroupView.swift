@@ -44,8 +44,7 @@ struct GroupView<Content>: View where Content: View {
         } label: {
             HStack(alignment: .center) {
                 Text(label)
-                    .fontWeight(.medium)
-                    .font(.system(size: FontSize.subTitle))
+                    .font(.headline)
                     .onTapGesture {
                         if animation {
                             withAnimation {
@@ -80,7 +79,6 @@ struct GroupView<Content>: View where Content: View {
             .padding(.leading, Spacing.m)
             .fixedSize(horizontal: false, vertical: true)
         }
-        .padding(.horizontal, Spacing.xl)
     }
 }
 
