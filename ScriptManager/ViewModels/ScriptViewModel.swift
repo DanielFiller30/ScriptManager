@@ -24,7 +24,9 @@ class ScriptViewModel {
         Preset(title: String(localized: "open-file"), icon: "doc.richtext", script: "open <path to file>;"),
         Preset(title: String(localized: "say-name"), icon: "waveform", script: "say <name>;"),
         Preset(title: String(localized: "git-pull"), icon: "arrow.down.circle.dotted", script: "cd <path to repo>; git pull;"),
-        Preset(title: String(localized: "countdown"), icon: "clock.arrow.circlepath", script: "sleep <time>; say 'Timer finished'")
+        Preset(title: String(localized: "countdown"), icon: "clock.arrow.circlepath", script: "sleep <time>; say 'Timer finished'"),
+        Preset(title: String(localized: "calculator"), icon: "x.squareroot", script: "bc", input: "2+2"),
+        Preset(title: String(localized: "user-input"), icon: "person.bubble", script: "vared -p 'Enter your username: ' -c username; say $username", input: "<name>")
     ]
     
     var scripts: [Script] {
@@ -35,7 +37,10 @@ class ScriptViewModel {
         scriptHandler.editMode
     }
     
-    var isLogEnabled: Bool = DefaultSettings.logs
+    var isLogEnabled: Bool {
+        settingsHandler.settings.logs
+    }
+    
     var searchString: String = ""
         
     @MainActor
@@ -98,7 +103,7 @@ class ScriptViewModel {
         if searchString.isEmpty {
             scriptHandler.scripts = scriptHandler.savedScripts
         } else {
-            scriptHandler.scripts = scriptHandler.savedScripts.filter { $0.name.contains(searchString) }
+            scriptHandler.scripts = scriptHandler.savedScripts.filter { $0.name.lowercased().contains(searchString.lowercased()) }
         }
     }
     
@@ -139,6 +144,7 @@ class ScriptViewModel {
         
         // Change uuid for new script
         scriptHandler.editScript.id = UUID()
+        scriptHandler.editScript.input = scriptHandler.input
         scriptHandler.editScript.icon = ScriptIcons[scriptHandler.selectedIcon]
         updatedScripts.append(scriptHandler.editScript)
         
@@ -174,6 +180,7 @@ class ScriptViewModel {
         selectedScript.icon = ScriptIcons[scriptHandler.selectedIcon]
         selectedScript.command = editScript.command
         selectedScript.tagID = editScript.tagID
+        selectedScript.input = scriptHandler.input
         
         scriptHandler.scripts[index] = selectedScript
         scriptHandler.saveScripts()
@@ -186,6 +193,7 @@ class ScriptViewModel {
     func openEdit(script: Script) {
         scriptHandler.editMode = true
         scriptHandler.editScript = script
+        scriptHandler.input = script.input ?? ""
         
         modalHandler.showModal(.EDIT_SCRIPT)
     }

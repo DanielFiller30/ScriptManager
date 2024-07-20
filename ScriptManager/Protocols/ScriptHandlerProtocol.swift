@@ -9,9 +9,14 @@ import Foundation
 
 protocol ScriptHandlerProtocol {    
     var output: String { get }
+    var error: String { get }
+    
     var finishedCounter: Int { get set }
+    
     var scripts: [Script] { get set }
     var editScript: Script { get set }
+    var input: String { get set }
+
     var editMode: Bool { get set }
     var savedScripts: [Script] { get }
     var selectedIcon: Int { get set }

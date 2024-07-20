@@ -9,4 +9,5 @@ struct Preset: Hashable {
     var title: String
     var icon: String
     var script: String
+    var input: String?
 }

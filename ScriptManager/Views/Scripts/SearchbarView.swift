@@ -30,11 +30,11 @@ struct SearchbarView: View {
                 }
                 .buttonStyle(.plain)
             }
+            .frame(maxWidth: 200)
             .padding(7)
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .shadow(radius: 3, x: 1, y: 2)
-            .padding(.bottom, Spacing.l + 5)
 
         } else {
             Button {
@@ -49,8 +49,6 @@ struct SearchbarView: View {
                     .shadow(radius: 3, x: 1, y: 2)
             }
             .buttonStyle(.plain)
-            .padding(.bottom, Spacing.l + 5)
-
         }
     }
 }

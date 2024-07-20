@@ -30,6 +30,26 @@
     "%@" : {
 
     },
+    "%@ result" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Ergebnis"
+          }
+        }
+      }
+    },
+    "%@ results" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Ergebnisse"
+          }
+        }
+      }
+    },
     "add" : {
       "localizations" : {
         "de" : {
@@ -172,6 +192,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open logs"
+          }
+        }
+      }
+    },
+    "calculator" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taschenrechner"
           }
         }
       }
@@ -656,6 +686,7 @@
       }
     },
     "icon-script" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -700,6 +731,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Info text"
+          }
+        }
+      }
+    },
+    "input" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Input"
+          }
+        }
+      }
+    },
+    "input-script" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skript-Input"
           }
         }
       }
@@ -1021,6 +1072,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suche löschen"
+          }
+        }
+      }
+    },
+    "results %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Ergebnisse"
           }
         }
       }
@@ -1543,6 +1605,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Script worked"
+          }
+        }
+      }
+    },
+    "user-input" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzereingabe"
           }
         }
       }

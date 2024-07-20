@@ -23,7 +23,7 @@ struct TagPickerView: View {
                     .tag(tag.id)
             }
         }
-        .frame(width: 145)  
+        .frame(width: 185)  
     }
 }
 

@@ -13,6 +13,7 @@ class ScriptHandler: ScriptHandlerProtocol {
     @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol    
     
     var output = ""
+    var error = ""
     var finishedCounter = 0
     
     var scripts: [Script] = []
@@ -26,6 +27,7 @@ class ScriptHandler: ScriptHandlerProtocol {
     var editScript: Script = EmptyScript
     var editMode: Bool = false
     var selectedIcon: Int = 0
+    var input: String = ""
     
     private var process: Process?
     private var settings: Settings {
@@ -37,10 +39,15 @@ class ScriptHandler: ScriptHandlerProtocol {
     }
     
     func runScript(_ script: Script, test: Bool) async -> ResultState {
+        self.output = ""
+        self.error = ""
+        
         do {
             process = Process()
-            let pipe = Pipe()
-            self.output = ""
+            
+            let inputPipe = Pipe()
+            let outputPipe = Pipe()
+            let errorPipe = Pipe()
             
             // Build valid shell command
             let unicode = "export LANG=\(settings.unicode);"
@@ -48,13 +55,24 @@ class ScriptHandler: ScriptHandlerProtocol {
             let validatedCommand = unicode + profilePath + script.command
             
             if let process {
-                process.standardError = pipe
                 process.arguments = ["--login","-c", validatedCommand]
                 process.executableURL = URL(fileURLWithPath: settings.shell.path)
-                process.standardInput = nil
-                process.standardOutput = pipe
                 
-                let outHandle = pipe.fileHandleForReading
+                process.standardError = errorPipe
+                process.standardInput = inputPipe
+                process.standardOutput = outputPipe
+                
+                try process.run()
+
+                // Input handling
+                let inputHandle = inputPipe.fileHandleForWriting
+                let userInput = script.input ?? ""
+                
+                inputHandle.write(userInput.data(using: .utf8)!)
+                inputHandle.closeFile()
+                
+                // Output handling
+                let outHandle = outputPipe.fileHandleForReading
                 outHandle.readabilityHandler = { pipe in
                     if let line = String(data: pipe.availableData, encoding: .utf8) {
                         DispatchQueue.main.async {
@@ -64,8 +82,12 @@ class ScriptHandler: ScriptHandlerProtocol {
                         print("Error decoding data: \(pipe.availableData)")
                     }
                 }
-                            
-                try process.run()
+                
+                // Error handling
+                let errorHandle = errorPipe.fileHandleForReading
+                let errorData = errorHandle.readDataToEndOfFile()
+                error = String(data: errorData, encoding: .utf8) ?? ""
+                
                 process.waitUntilExit()
 
                 try outHandle.close()
@@ -139,7 +161,8 @@ extension ScriptHandler {
         let fileName = validUrl.appendingPathComponent("log_\(Date().toFormattedDate()).txt")
         
         do {
-            try output.write(to: fileName, atomically: true, encoding: String.Encoding.utf8)
+            let log = output + "\n\n" + error
+            try log.write(to: fileName, atomically: true, encoding: String.Encoding.utf8)
         } catch {
             print(error)
         }

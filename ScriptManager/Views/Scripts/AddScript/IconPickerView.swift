@@ -17,13 +17,13 @@ struct IconPickerView: View {
                     ForEach(ScriptIcons.indices, id: \.self) { (i) in
                         HStack {
                             Image(systemName: ScriptIcons[i])
-                            Text(ScriptIcons[i].replacingOccurrences(of: ".", with: " "))
                         }
                         .tag(i)
                     }
                 }
             }
-            .frame(maxWidth: 145)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: 60)
             .padding(.leading, -8)
         }
     }

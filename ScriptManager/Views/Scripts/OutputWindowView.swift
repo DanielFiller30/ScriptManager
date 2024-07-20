@@ -9,13 +9,18 @@ import Resolver
 import SwiftUI
 
 struct OutputWindowView: View {
-    @Injected private var scriptHandler: ScriptHandler
-    
+    @Injected private var scriptHandler: ScriptHandlerProtocol
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 Text(scriptHandler.output)
                     .multilineTextAlignment(.leading)
+                    .padding(.bottom, Spacing.l)
+                
+                Text(scriptHandler.error)
+                    .multilineTextAlignment(.leading)
+                    .foregroundStyle(AppColor.Danger)
             }
         }
         .padding(Spacing.l)

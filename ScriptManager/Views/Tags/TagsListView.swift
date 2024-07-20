@@ -40,8 +40,23 @@ struct TagsListView: View {
                         }
                     }
                     .padding(.bottom, Spacing.l + 5)
+//                    .padding(.trailing, 50)
                     
                 }
+//                .mask(
+//                    HStack(spacing: 0) {
+//                        // Middle
+//                        Rectangle().fill(Color.black)
+//
+//                        // Right gradient
+//                        LinearGradient(gradient:
+//                           Gradient(
+//                               colors: [Color.black, Color.black.opacity(0)]),
+//                               startPoint: .leading, endPoint: .trailing
+//                           )
+//                           .frame(width: 80)
+//                    }
+//                 )
             }
             .padding(.horizontal, Spacing.l)            
         }

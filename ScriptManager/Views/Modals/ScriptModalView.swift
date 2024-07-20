@@ -25,15 +25,8 @@ struct ScriptModalView: View {
                 Spacer()
                 
                 TextField("", text: $vm.scriptHandler.editScript.name)
-                    .frame(maxWidth: 140)
-            }
-            .padding(.bottom, Spacing.l)
-            
-            HStack(alignment: .center) {
-                Text("icon-script")
-                    .font(.system(size: FontSize.text))
-                
-                Spacer()
+                    .frame(maxWidth: 120)
+                    .textFieldStyle(.roundedBorder)
                 
                 IconPickerView()
             }
@@ -59,6 +52,7 @@ struct ScriptModalView: View {
                     ForEach(vm.presets, id: \.self) { preset in
                         Button {
                             vm.scriptHandler.editScript.command = preset.script
+                            vm.scriptHandler.input = preset.input ?? ""
                         } label: {
                             HStack(alignment: .center) {
                                 Image(systemName: preset.icon)
@@ -66,7 +60,8 @@ struct ScriptModalView: View {
                                 Text(preset.title)
                                     .font(.caption)
                             }
-                            .padding()
+                            .padding(.horizontal)
+                            .padding(.vertical, 10)
                             .background(.ultraThickMaterial)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
@@ -87,20 +82,20 @@ struct ScriptModalView: View {
                     
                     Spacer()
                     
+                    Text(testResult)
+                        .font(.system(size: FontSize.subTitle))
+                        .foregroundColor(testIsSuccessfull == .successfull ? AppColor.Success : AppColor.Danger)
+                    
                     Button {
                         testScript()
                     } label: {
                         Text("test-script")
                             .padding(.vertical, Spacing.m)
-                            .padding(.horizontal, Spacing.l)
+                            .padding(.horizontal, Spacing.xl)
                             .background(.ultraThickMaterial)
                             .clipShape(RoundedRectangle(cornerRadius: 10.0))
                     }
                     .buttonStyle(.plain)
-                    
-                    Text(testResult)
-                        .font(.system(size: FontSize.subTitle))
-                        .foregroundColor(testIsSuccessfull == .successfull ? AppColor.Success : AppColor.Danger)
                 }
                 
                 CodeEditor(
@@ -111,6 +106,17 @@ struct ScriptModalView: View {
                     autoPairs: [ "{": "}", "<": ">", "'": "'" ]
                 )
             }.padding(.bottom, Spacing.l)
+            
+            HStack(alignment: .center) {
+                Text("input-script")
+                    .font(.headline)
+                
+                Spacer()
+                                
+                TextField("input", text: $vm.scriptHandler.input)
+                    .textFieldStyle(.roundedBorder)
+            }
+            .padding(.bottom, Spacing.xl)
             
             HStack(alignment: .center, spacing: Spacing.xl) {
                 // Cancel
@@ -152,7 +158,8 @@ struct ScriptModalView: View {
             command: vm.scriptHandler.editScript.command,
             success: .ready,
             finished: false,
-            time: DefaultScriptTime
+            time: DefaultScriptTime,
+            input: vm.scriptHandler.input
         )
         
         Task {
@@ -166,6 +173,9 @@ struct ScriptModalView: View {
 
 struct ScriptModalView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptModalView()
+        HStack {
+            ScriptModalView()
+        }
+        .background(.gray)
     }
 }

@@ -15,17 +15,34 @@ struct ScriptsListView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.l) {
-            Text("saved \(String(vm.scripts.count))")
-                .fontWeight(.bold)
-                .font(.system(size: FontSize.subTitle))
-                .padding(.bottom, Spacing.l)
-            
             HStack(alignment: .center) {
-                TagsListView()
-
+                if !showSearch {
+                    Text("saved \(String(vm.scripts.count))")
+                        .fontWeight(.bold)
+                        .font(.system(size: FontSize.subTitle))
+                        .padding(.trailing, Spacing.m)                    
+                } else {
+                    if vm.scripts.count == 1 {
+                        Text("\(String(vm.scripts.count)) result")
+                            .fontWeight(.bold)
+                            .font(.system(size: FontSize.subTitle))
+                            .padding(.trailing, Spacing.m)
+                    } else {
+                        Text("\(String(vm.scripts.count)) results")
+                            .fontWeight(.bold)
+                            .font(.system(size: FontSize.subTitle))
+                            .padding(.trailing, Spacing.m)
+                    }
+                }
+                
+                Spacer()
+                
                 SearchbarView(vm: $vm, show: $showSearch)
             }
+            .padding(.bottom, Spacing.l)
             
+            TagsListView()
+
             if (vm.scripts.isEmpty) {
                 VStack(alignment: .center) {
                     Spacer()
