@@ -18,6 +18,8 @@ struct Script: Identifiable, Codable {
     var tagID: UUID = EmptyTag.id
     var time: ScriptTime?
     var input: String?
+    var output: String?
+    var error: String?
 }
 
 let EmptyScript = Script(
@@ -30,7 +32,9 @@ let EmptyScript = Script(
     lastRun: Date.now,
     tagID: EmptyTag.id,
     time: DefaultScriptTime,
-    input: ""
+    input: "",
+    output: "",
+    error: ""
 )
 
 let DefaultScript = Script(
@@ -40,5 +44,7 @@ let DefaultScript = Script(
     success: .ready,
     finished: false,
     time: DefaultScriptTime,
-    input: ""
+    input: "",
+    output: "",
+    error: ""
 )

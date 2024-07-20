@@ -94,6 +94,7 @@ struct ScriptRunButtonView: View {
                         .cornerRadius(8)
                         .shadow(radius: 3, x: 1, y: 2)
                     }
+//                    .disabled(vm.scriptHandler.isRunningWithOutput)
                     .buttonStyle(.plain)
                 }
                 .padding(.all, Spacing.l)

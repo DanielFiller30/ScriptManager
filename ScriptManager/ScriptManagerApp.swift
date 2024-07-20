@@ -94,8 +94,6 @@ final class AppState: ObservableObject {
         let id = savedShortcuts[index].scriptId
         
         if id != EmptyScript.id {
-            print(id)
-            print(storageHandler.scripts)
             if let script = storageHandler.scripts.first(where: { $0.id == id }) {
                 NotificationHandler.sendStartNotification(name: script.name)
                 

@@ -7,10 +7,7 @@
 
 import Foundation
 
-protocol ScriptHandlerProtocol {    
-    var output: String { get }
-    var error: String { get }
-    
+protocol ScriptHandlerProtocol {        
     var finishedCounter: Int { get set }
     
     var scripts: [Script] { get set }
@@ -22,7 +19,7 @@ protocol ScriptHandlerProtocol {
     var selectedIcon: Int { get set }
     var runningScript: [Script] { get set }
 
-    func runScript(_ script: Script, test: Bool) async -> ResultState
-    func interruptRunningProcess()
+    func runScript(_ script: Script, test: Bool) async -> Result
+    func interruptRunningProcess(scriptId: UUID)
     func saveScripts()
 }

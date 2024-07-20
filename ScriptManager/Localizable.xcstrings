@@ -133,7 +133,14 @@
       }
     },
     "archive" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiv"
+          }
+        }
+      }
     },
     "button-delete" : {
       "localizations" : {
@@ -225,23 +232,6 @@
         }
       }
     },
-    "cd /Desktop/ sh ..." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cd /Desktop/ sh ..."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "cd /Desktop/ sh ..."
-          }
-        }
-      }
-    },
     "close-alert" : {
       "localizations" : {
         "de" : {
@@ -300,6 +290,16 @@
         }
       }
     },
+    "close-window" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fenster schließen"
+          }
+        }
+      }
+    },
     "color-add-tag" : {
       "localizations" : {
         "de" : {
@@ -312,6 +312,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Color"
+          }
+        }
+      }
+    },
+    "command" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skript-Befehl"
+          }
+        }
+      }
+    },
+    "copy-error" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler kopieren"
           }
         }
       }
@@ -477,19 +497,12 @@
     "empty-shortcuts" : {
 
     },
-    "empty-tags" : {
-      "extractionState" : "stale",
+    "errors" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Füge eine neue Kategorie hinzu, um deine Skripte zu filtern"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add a new tag, to filter your scripts"
+            "value" : "Fehler"
           }
         }
       }
@@ -580,6 +593,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitLab"
+          }
+        }
+      }
+    },
+    "hint-copied" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In die Zwischenablage kopiert"
           }
         }
       }
@@ -728,23 +751,6 @@
         }
       }
     },
-    "icon-script" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Skript-Symbol"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Script-icon"
-          }
-        }
-      }
-    },
     "Icons" : {
       "localizations" : {
         "de" : {
@@ -757,23 +763,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Icons"
-          }
-        }
-      }
-    },
-    "Info text" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Info Text"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Info text"
           }
         }
       }
@@ -982,6 +971,16 @@
         }
       }
     },
+    "output" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgabe"
+          }
+        }
+      }
+    },
     "path" : {
       "localizations" : {
         "de" : {
@@ -1082,23 +1081,6 @@
         }
       }
     },
-    "Preview" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vorschau"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preview"
-          }
-        }
-      }
-    },
     "remove-filter" : {
       "localizations" : {
         "de" : {
@@ -1115,17 +1097,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suche löschen"
-          }
-        }
-      }
-    },
-    "results %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ Ergebnisse"
           }
         }
       }
@@ -1314,23 +1285,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Launch at login"
-          }
-        }
-      }
-    },
-    "settings-color" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Primärfarbe anpassen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change primary color"
           }
         }
       }
@@ -1570,40 +1524,6 @@
         }
       }
     },
-    "tags-title" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filter"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filter"
-          }
-        }
-      }
-    },
-    "Test" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Test"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Test"
-          }
-        }
-      }
-    },
     "test-failed" : {
       "localizations" : {
         "de" : {
@@ -1716,74 +1636,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You can open your Script-Manager with the menubar symbol of your Mac. Before you add your first script, please have a look in your settings, they are important to offer that your scripts run successfully."
-          }
-        }
-      }
-    },
-    "welcome-info2" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deine Einstellungen öffnest du in deinem Skript-Manager über das Zahnrad Symbol:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can open the settings with the gear symbol:"
-          }
-        }
-      }
-    },
-    "welcome-info3" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ein neues Skript kannst du über die Auswahl 'Neues Skript hinzufügen' speichern. Über die Liste ist es dir dann ermöglicht, ganz einfach deine gespeicherten Skripte auszuführen. Ist dein Skript durchgelaufen, kannst du dir mithilfe von Mitteilungen (Aktivierung in den Einstellungen) das Ergebnis zeigen lassen, oder du öffnest deinen Skript-Manager."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A new script can be added with the field 'Add new script'. With the displayed list you can run your script by a simple click. If your script is finished, you can get a notification (Activate in your settings) or you open your script-manager."
-          }
-        }
-      }
-    },
-    "welcome-info4" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hier siehst du zwei verschiedene Resultate für dein abgeschlossenes Skript:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This are the different result states for your script:"
-          }
-        }
-      }
-    },
-    "welcome-info5" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ein grüner Haken bedeutet, dass dein Skript ohne Fehler abgeschlossen wurde. Ein rotes Kreuz bedeutet ein Fehler ist aufgetreten. Hier hilft es dir die Logging-Funktion über die Einstellung zu aktivieren. Bei aktivierter Logging-Funktion wird das Bild zu einer Schaltfläche mit rotem Hintergrund, über die du ganz einfach zu deinem für die Logs hinterlegten Pfad gelangst."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A green checkmark signalizes that your script run successfully. A red cross symbol shows that your script has failed by an error. Therefore you can activate the logging function in your settings to get further informations. If you have activated the logging, you will see a red button which opens the specified path to your logs."
           }
         }
       }

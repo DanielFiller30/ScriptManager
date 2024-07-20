@@ -85,6 +85,7 @@
 		DCDCD6BE29D7305E00529752 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DCDCD6BD29D7305E00529752 /* AlertToast */; };
 		DCDCD6C129D7342F00529752 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDCD6C029D7342F00529752 /* CustomButtonView.swift */; };
 		DCDEB9DC2C4B94EB00C6BA31 /* TagPresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */; };
+		DCDEB9DE2C4BA8E400C6BA31 /* ScriptProcessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DD2C4BA8E100C6BA31 /* ScriptProcessModel.swift */; };
 		DCDFAC4A29CB251600D538A2 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4929CB251600D538A2 /* TagViewModel.swift */; };
 		DCDFAC4D29CB25FF00D538A2 /* TagModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */; };
 		DCECD16E29D3483500FF3958 /* MenuSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCECD16D29D3483500FF3958 /* MenuSheetView.swift */; };
@@ -178,6 +179,7 @@
 		DCDA8F4B2C1354B100AD2B19 /* ShortcutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutModalView.swift; sourceTree = "<group>"; };
 		DCDCD6C029D7342F00529752 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPresetModel.swift; sourceTree = "<group>"; };
+		DCDEB9DD2C4BA8E100C6BA31 /* ScriptProcessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptProcessModel.swift; sourceTree = "<group>"; };
 		DCDFAC4929CB251600D538A2 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		DCDFAC4C29CB25FF00D538A2 /* TagModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModalView.swift; sourceTree = "<group>"; };
 		DCECD16D29D3483500FF3958 /* MenuSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSheetView.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				DC5813D72BF7812400C5C727 /* MainViewModel.swift */,
 				DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */,
 				DCDA8F492C1350E100AD2B19 /* ShortcutViewModel.swift */,
+				DCDEB9DD2C4BA8E100C6BA31 /* ScriptProcessModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				DC75B45B299BA58000086806 /* ScriptRowView.swift in Sources */,
 				DC75B443299BA57F00086806 /* ScriptManagerApp.swift in Sources */,
 				DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */,
+				DCDEB9DE2C4BA8E400C6BA31 /* ScriptProcessModel.swift in Sources */,
 				DC75B463299BA58000086806 /* ScriptRunButtonView.swift in Sources */,
 				DCDA8F4C2C1354B100AD2B19 /* ShortcutModalView.swift in Sources */,
 				DCAEF26D2C4A549C004C922B /* ScriptPresetModel.swift in Sources */,

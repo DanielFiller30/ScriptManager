@@ -7,6 +7,12 @@
 
 import Foundation
 
+struct Result {
+    var output: String?
+    var error: String?
+    var state: ResultState
+}
+
 enum ResultState: Codable {
     case successfull
     case failed

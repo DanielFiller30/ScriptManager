@@ -44,7 +44,7 @@ struct ScriptDetailsView: View {
             }
             .padding(.bottom, Spacing.l)
             .toast(isPresenting: $showToast, duration: 1, tapToDismiss: true) {
-                AlertToast(type: .regular, title: "hint-copied")
+                AlertToast(type: .regular, title: String(localized: "hint-copied"))
             }
 
             HStack(alignment: .center) {
@@ -101,10 +101,10 @@ struct ScriptDetailsView: View {
                 ScriptDetailButtonView(
                     onClick: {
                         debugPrint("Interrupt script")
-                        vm.scriptHandler.interruptRunningProcess()
+                        vm.scriptHandler.interruptRunningProcess(scriptId: script.id)
                     },
                     icon: "stop.fill",
-                    disabled: vm.scriptHandler.runningScript.count == 0 || vm.scriptHandler.runningScript.contains(where: { $0.id != script.id }),
+                    disabled: vm.scriptHandler.runningScript.count == 0 || !vm.scriptHandler.runningScript.contains(where: { $0.id == script.id }),
                     help: "button-interrupt"
                 )
                 

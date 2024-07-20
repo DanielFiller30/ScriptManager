@@ -14,7 +14,7 @@ struct ScriptModalView: View {
     
     @State var testIsRunning: Bool = false
     @State var testResult: LocalizedStringKey = ""
-    @State var testIsSuccessfull: ResultState = .ready
+    @State var testIsSuccessfull: Result = Result(state: .ready)
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -84,7 +84,7 @@ struct ScriptModalView: View {
                     
                     Text(testResult)
                         .font(.system(size: FontSize.subTitle))
-                        .foregroundColor(testIsSuccessfull == .successfull ? AppColor.Success : AppColor.Danger)
+                        .foregroundColor(testIsSuccessfull.state == .successfull ? AppColor.Success : AppColor.Danger)
                     
                     Button {
                         testScript()
@@ -164,7 +164,7 @@ struct ScriptModalView: View {
         
         Task {
             testIsSuccessfull = await vm.scriptHandler.runScript(tempScript, test: true)
-            testResult = testIsSuccessfull == .successfull ? "test-success" : "test-failed"
+            testResult = testIsSuccessfull.state == .successfull ? "test-success" : "test-failed"
             
             testIsRunning = false
         }
