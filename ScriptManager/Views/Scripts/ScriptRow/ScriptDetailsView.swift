@@ -97,6 +97,16 @@ struct ScriptDetailsView: View {
                                 
                 Spacer()
                 
+                // Open monitor
+                ScriptDetailButtonView(
+                    onClick: {
+                        vm.openOutputWindow(script: script)
+                    },
+                    icon: "play.tv",
+                    disabled: false,
+                    help: "button-monitor"
+                )
+                
                 // Interrupt script
                 ScriptDetailButtonView(
                     onClick: {

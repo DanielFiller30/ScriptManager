@@ -31,13 +31,20 @@ struct ScriptRunButtonView: View {
             }
         } else {
             Button {
-                showRunPopover.toggle()
+                // Empty - LongPress on Image; Button for animation
             } label: {
                 Image(systemName: "play")
                     .resizable()
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
                     .clipShape(Circle())
+                    .onTapGesture {
+                        vm.scriptHandler.runningScript.append(script)
+                        vm.runScript(showOutput: false, scriptId: script.id)
+                    }
+                    .onLongPressGesture(minimumDuration: 1.0) {
+                        showRunPopover.toggle()
+                    }
             }
             .buttonStyle(.plain)
             .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {

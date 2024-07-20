@@ -53,7 +53,7 @@ struct TagModalView: View {
             
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(vm.presets, id: \.self) { preset in
+                    ForEach(TagPresets, id: \.self) { preset in
                         Button {
                             vm.name = preset.title
                             vm.badgeColor = preset.color

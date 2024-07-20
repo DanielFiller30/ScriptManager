@@ -63,7 +63,7 @@ struct ScriptModalView: View {
             {
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(vm.presets, id: \.self) { preset in
+                        ForEach(ScriptPresets, id: \.self) { preset in
                             Button {
                                 vm.scriptHandler.editScript.command = preset.script
                                 vm.scriptHandler.input = preset.input ?? ""
