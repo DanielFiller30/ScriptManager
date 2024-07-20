@@ -19,7 +19,7 @@ struct ShortcutView: View {
                     .font(.caption)
                     .padding(.vertical, Spacing.s)
                     .padding(.horizontal, Spacing.m)
-                    .background(AppColor.Background)
+                    .background(.gray)
                     .clipShape(RoundedRectangle(cornerRadius: 4.0))
             }
         }

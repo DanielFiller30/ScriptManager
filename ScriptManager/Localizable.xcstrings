@@ -961,6 +961,16 @@
         }
       }
     },
+    "logging" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehlerprotokolle"
+          }
+        }
+      }
+    },
     "name-add-script" : {
       "localizations" : {
         "de" : {
@@ -1166,7 +1176,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pfad zu den Protokollen"
+            "value" : "Pfad zu den Protokollen:"
           }
         },
         "en" : {

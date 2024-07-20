@@ -22,7 +22,7 @@ struct BadgeView: View {
                     .fontWeight(.light)
                     .font(.system(size: FontSize.text))
                     .lineLimit(1)
-                    .foregroundColor(active ? AppColor.AppBg : nil)
+                    .foregroundColor(active ? .black : nil)
                 
                 Circle()
                     .frame(maxWidth: 10, maxHeight: 10)

@@ -39,6 +39,6 @@ struct CustomButtonView: View {
 
 struct CustomButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButtonView(onClick: {}, label: "", color: AnyShapeStyle(AppColor.AppBg), outlined: false, disabled: false)
+        CustomButtonView(onClick: {}, label: "", color: AnyShapeStyle(.black), outlined: false, disabled: false)
     }
 }

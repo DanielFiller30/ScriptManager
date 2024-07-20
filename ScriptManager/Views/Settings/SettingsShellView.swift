@@ -21,7 +21,7 @@ struct SettingsShellView: View {
                 
                 Spacer()
                 
-                Picker("", selection: $vm.tempSettings.shell.type) {
+                Picker("", selection: $vm.tempShellType) {
                     ForEach(Shells) { shell in
                         Text(shell.type.rawValue)
                             .tag(shell.type)

@@ -56,7 +56,7 @@ struct AlertView: View {
                         }
                         .padding(.horizontal)
                         .padding(.vertical, 10)
-                        .background(AppColor.Light)
+                        .background(.ultraThickMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                     .buttonStyle(.plain)

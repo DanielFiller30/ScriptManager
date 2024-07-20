@@ -11,12 +11,23 @@ struct SettingsModalView: View {
     @State private var toggleShell = false
     @State private var toggleShortcuts = false
     @State private var toggleBackup = false
-    
+    @State private var toggleLogging = false
+
     @State private var vm = SettingsViewModel()
     
     var body: some View {
         VStack(alignment: .center) {
             ScrollView {
+                Group {
+                    SettingsNotificationsView(vm: $vm)
+                    
+                    Divider()
+                    
+                    SettingsAutostartView()
+                }
+                
+                Divider()
+                
                 GroupView(
                     toggleVar: $toggleShell,
                     toggle: { toggleShell.toggle() },
@@ -46,6 +57,19 @@ struct SettingsModalView: View {
                 Divider()
                 
                 GroupView(
+                    toggleVar: $toggleLogging,
+                    toggle: { toggleLogging.toggle() },
+                    label: "logging",
+                    info: nil,
+                    padding: Spacing.zero,
+                    animation: false
+                ) {
+                    SettingsLoggingView(vm: $vm)
+                }
+                
+                Divider()
+                
+                GroupView(
                     toggleVar: $toggleBackup,
                     toggle: { toggleBackup.toggle() },
                     label: "backup",
@@ -54,20 +78,6 @@ struct SettingsModalView: View {
                     animation: false
                 ) {
                     SettingsBackupView()
-                }
-                
-                Divider()
-                
-                Group {
-                    SettingsLoggingView(vm: $vm)
-                    
-                    Divider()
-                    
-                    SettingsNotificationsView(vm: $vm)
-                    
-                    Divider()
-                    
-                    SettingsAutostartView()
                 }
             }
             

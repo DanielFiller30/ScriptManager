@@ -17,8 +17,7 @@ struct MainView: View {
                 HeaderView()
                 
                 Divider()
-                    .frame(minHeight: 2)
-                    .foregroundColor(AppColor.AppBg)
+                    .frame(minHeight: 2)                    
                 
                 ScriptsListView()
                     .padding(.top, Spacing.l)

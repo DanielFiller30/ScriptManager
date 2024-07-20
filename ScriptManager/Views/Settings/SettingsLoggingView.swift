@@ -11,7 +11,7 @@ struct SettingsLoggingView: View {
     @Binding var vm: SettingsViewModel
     
     var body: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("settings-logging")
                     .font(.system(size: FontSize.text))
@@ -22,14 +22,22 @@ struct SettingsLoggingView: View {
                     .toggleStyle(.switch)
             }
             
+            Text("path-logs")
+                .font(.system(size: FontSize.text))
+            
             HStack(alignment: .center) {
-                Text("path-logs")
-                    .font(.system(size: FontSize.text))
-                
-                Spacer()
-                
                 TextField("", text: $vm.tempSettings.pathLogs)
-                    .frame(width: 150)
+                    .textFieldStyle(.roundedBorder)
+                
+                Button {
+                    vm.openLoggingDirectory()
+                } label: {
+                    Image(systemName: "folder")
+                        .padding(Spacing.m)
+                        .background(.ultraThickMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                }
+                .buttonStyle(.plain)
             }
         }
         .padding(.vertical, Spacing.m)
