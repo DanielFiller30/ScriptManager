@@ -80,7 +80,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Skript/ Kategorie hinzufügen"
+            "value" : "Skript/ Tag hinzufügen"
           }
         },
         "en" : {
@@ -112,7 +112,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neue Kategorie hinzufügen"
+            "value" : "Neuen Tag hinzufügen"
           }
         },
         "en" : {
@@ -160,7 +160,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Füge eine neue Kategorie hinzu, um deine gespeicherten Skripte zu organisieren."
+            "value" : "Füge einen neuen Tag hinzu, um deine gespeicherten Skripte zu organisieren."
           }
         },
         "en" : {
@@ -416,7 +416,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Farbe der Kategorie"
+            "value" : "Farbe des Tags"
           }
         },
         "en" : {
@@ -560,7 +560,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bist du sicher, dass du die ausgewählte Kategorie löschen möchtest?"
+            "value" : "Bist du sicher, dass du den ausgewählten Tag löschen möchtest?"
           }
         },
         "en" : {
@@ -576,7 +576,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kategorie löschen"
+            "value" : "Tag löschen"
           }
         },
         "en" : {
@@ -960,7 +960,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aktive Kategorie löschen"
+            "value" : "Aktiven Tag löschen"
           }
         },
         "en" : {
@@ -1264,7 +1264,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kategoriename"
+            "value" : "Tag-Name"
           }
         },
         "en" : {
@@ -1611,6 +1611,22 @@
         }
       }
     },
+    "save-edit-script-success" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Änderungen gespeichert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changes saved"
+          }
+        }
+      }
+    },
     "save-script" : {
       "localizations" : {
         "de" : {
@@ -1623,6 +1639,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save"
+          }
+        }
+      }
+    },
+    "save-script-success" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skript gespeichert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Script saved"
           }
         }
       }
@@ -1643,6 +1675,38 @@
         }
       }
     },
+    "save-tag-failed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern fehlgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save tag failed"
+          }
+        }
+      }
+    },
+    "save-tag-success" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag gespeichert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag saved"
+          }
+        }
+      }
+    },
     "saved %@" : {
       "localizations" : {
         "de" : {
@@ -1655,6 +1719,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saved scripts (%@)"
+          }
+        }
+      }
+    },
+    "saved-settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen gespeichert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings saved"
           }
         }
       }
@@ -1691,6 +1771,22 @@
         }
       }
     },
+    "script-deleted" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skript gelöscht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Script deleted"
+          }
+        }
+      }
+    },
     "script-details" : {
       "localizations" : {
         "de" : {
@@ -1719,6 +1815,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Information for you script"
+          }
+        }
+      }
+    },
+    "script-interrupted" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skript abgebrochen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Script interrupted"
           }
         }
       }
@@ -2091,12 +2203,28 @@
         }
       }
     },
+    "tag-deleted" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag gelöscht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag deleted"
+          }
+        }
+      }
+    },
     "tag-script" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kategorie"
+            "value" : "Tag"
           }
         },
         "en" : {

@@ -14,6 +14,7 @@ class TagViewModel {
     @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
     @LazyInjected @ObservationIgnored private var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
+    @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
 
     var tags: [Tag] {
@@ -35,8 +36,12 @@ class TagViewModel {
             tagHandler.saveTags()
                         
             resetForm()
+            
+            modalHandler.hideModal()
+            hintHandler.showHint(String(localized: "save-tag-success"), type: .success)
         } catch {
             debugPrint("Failed to save new tag: \(error)")
+            hintHandler.showHint(String(localized: "save-tag-failed"), type: .error)
         }
     }
     
@@ -55,6 +60,5 @@ class TagViewModel {
     func resetForm() {
         name = ""
         badgeColor = AppColor.Primary
-        modalHandler.hideModal()
     }
 }

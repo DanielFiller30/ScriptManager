@@ -53,6 +53,9 @@ struct ScriptModalView: View {
                 }
             }
             
+            Divider()
+                .padding(.vertical, 8)
+            
             GroupView(
                 toggleVar: $showPresets,
                 toggle: {showPresets.toggle()},
@@ -87,7 +90,7 @@ struct ScriptModalView: View {
             }
             
             Divider()
-                .padding(.vertical, Spacing.l)
+                .padding(.vertical, 8)
             
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
@@ -151,9 +154,7 @@ struct ScriptModalView: View {
                             vm.saveChangedScript()
                         } else {
                             vm.saveScript()
-                        }
-                        
-                        vm.modalHandler.hideModal()
+                        }                        
                     },
                     label: vm.editMode ? "edit-save" : "save-script",
                     color: AnyShapeStyle(AppColor.Primary),

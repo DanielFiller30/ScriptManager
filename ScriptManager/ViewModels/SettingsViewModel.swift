@@ -16,6 +16,7 @@ class SettingsViewModel {
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     @LazyInjected @ObservationIgnored private var settingsHandler: SettingsHandlerProtocol
     @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
+    @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
 
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
@@ -144,6 +145,7 @@ class SettingsViewModel {
         
         // Hide settings-modal
         modalHandler.hideModal()
+        hintHandler.showHint(String(localized: "saved-settings"), type: .success)
     }
     
     @MainActor

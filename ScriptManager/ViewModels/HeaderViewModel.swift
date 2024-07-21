@@ -12,6 +12,7 @@ import SwiftUI
 class HeaderViewModel {
     @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
+    @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
 
@@ -41,6 +42,7 @@ class HeaderViewModel {
             action: {
                 self.deleteTag()
                 self.alertHandler.hideAlert()
+                self.hintHandler.showHint(String(localized: "tag-deleted"), type: .success)
             }
         )
     }

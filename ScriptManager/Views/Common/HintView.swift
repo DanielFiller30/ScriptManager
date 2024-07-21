@@ -25,7 +25,7 @@ public struct HintView: View {
             Image(systemName: vm.icon)
                 .resizable()
                 .scaledToFit()
-                .frame(height: 20)
+                .frame(height: 15)
                 .foregroundStyle(color)
             
             Spacer()
@@ -48,11 +48,11 @@ public struct HintView: View {
             }
             .buttonStyle(.plain)
         }
-        .padding(15)
-        .background(.ultraThickMaterial)
+        .padding(10)
+        .background(.regularMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .frame(width: 300)
-        .shadow(radius: 3, x:1, y:2)
+        .shadow(radius: 5, x:1, y:2)
     }
 }
 

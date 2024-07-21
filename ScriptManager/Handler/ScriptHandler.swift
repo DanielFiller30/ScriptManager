@@ -11,7 +11,8 @@ import Resolver
 @Observable
 class ScriptHandler: ScriptHandlerProtocol {
     @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol
-    
+    @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
+
     var finishedCounter = 0
     
     var scripts: [Script] = []
@@ -111,6 +112,7 @@ class ScriptHandler: ScriptHandlerProtocol {
         runningProcesses.forEach { instance in
             if instance.scriptId == scriptId {
                 instance.process.terminate()
+                hintHandler.showHint(String(localized: "script-interrupted"), type: .warning)
             }
         }
     }

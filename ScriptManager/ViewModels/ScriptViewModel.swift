@@ -12,12 +12,14 @@ import KeyboardShortcuts
 
 @Observable
 class ScriptViewModel {
-    @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored var tagHandler: TagHandlerProtocol
+    
     @LazyInjected @ObservationIgnored private var settingsHandler: SettingsHandlerProtocol
-
+    @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
+    @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
+    
     private var runningTimer: Timer?
     
     var scripts: [Script] {
@@ -151,6 +153,9 @@ class ScriptViewModel {
         scriptHandler.saveScripts()
                 
         resetForm()
+        
+        modalHandler.hideModal()
+        hintHandler.showHint(String(localized: "save-script-success"), type: .success)
     }
     
     @MainActor
@@ -163,6 +168,7 @@ class ScriptViewModel {
             action: {
                 self.deleteScript(id: id)
                 self.alertHandler.hideAlert()
+                self.hintHandler.showHint(String(localized: "script-deleted"), type: .success)
             }
         )
     }
@@ -187,6 +193,9 @@ class ScriptViewModel {
         
         scriptHandler.editMode = false
         resetForm()
+        
+        modalHandler.hideModal()
+        hintHandler.showHint(String(localized: "save-edit-script-success"), type: .success)
     }
     
     @MainActor
