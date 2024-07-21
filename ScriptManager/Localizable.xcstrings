@@ -28,7 +28,20 @@
       }
     },
     "%@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%@ result" : {
       "localizations" : {
@@ -36,6 +49,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ Ergebnis"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ result"
           }
         }
       }
@@ -47,6 +66,12 @@
             "state" : "translated",
             "value" : "%@ Ergebnisse"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ results"
+          }
         }
       }
     },
@@ -56,6 +81,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skript/ Kategorie hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Script/ Tag"
           }
         }
       }
@@ -72,17 +103,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add a new script"
-          }
-        }
-      }
-    },
-    "add-new-shortcut" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neuen Kurzbefehl hinzufügen"
           }
         }
       }
@@ -110,6 +130,12 @@
             "state" : "translated",
             "value" : "Füge ein neues Skript hinzu, dass du anschließend über deine gespeicherte Liste ausführen kannst."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a new script that you can then execute using your saved list."
+          }
         }
       }
     },
@@ -119,6 +145,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erstelle über das Plus neue Tags oder Skripte um mit dem ScriptManager loszulegen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use the plus button to create new tags or scripts to get started with the ScriptManager"
           }
         }
       }
@@ -130,6 +162,12 @@
             "state" : "translated",
             "value" : "Füge eine neue Kategorie hinzu, um deine gespeicherten Skripte zu organisieren."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a new category to organize your saved scripts."
+          }
         }
       }
     },
@@ -140,12 +178,24 @@
             "state" : "translated",
             "value" : "Archiv"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archive"
+          }
         }
       }
     },
     "backup" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Backup"
@@ -224,6 +274,12 @@
             "state" : "translated",
             "value" : "Ausgabe anzeigen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show output"
+          }
         }
       }
     },
@@ -233,6 +289,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Taschenrechner"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculator"
           }
         }
       }
@@ -260,6 +322,12 @@
             "state" : "translated",
             "value" : "Schreibtisch aufräumen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean Desktop"
+          }
         }
       }
     },
@@ -269,6 +337,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abbrechen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         }
       }
@@ -328,6 +402,12 @@
             "state" : "translated",
             "value" : "Fenster schließen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close window"
+          }
         }
       }
     },
@@ -354,6 +434,12 @@
             "state" : "translated",
             "value" : "Skript-Befehl"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Script-command"
+          }
         }
       }
     },
@@ -364,12 +450,24 @@
             "state" : "translated",
             "value" : "Fehler kopieren"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy Error"
+          }
         }
       }
     },
     "countdown" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Countdown"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Countdown"
@@ -384,6 +482,12 @@
             "state" : "translated",
             "value" : "Entwickler - Daniel Filler"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer - Daniel Filler"
+          }
         }
       }
     },
@@ -394,6 +498,12 @@
             "state" : "translated",
             "value" : "Als iOS- / macOS-Entwickler erstelle ich kreative Lösungen um deinen Arbeitsalltag zu erleichtern."
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As an iOS / macOS developer, I develop creative solutions to make your everyday work easier."
+          }
         }
       }
     },
@@ -403,6 +513,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daten exportiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data exported"
           }
         }
       }
@@ -542,6 +658,12 @@
             "state" : "translated",
             "value" : "Du hast einen aktiven Filter gesetzt, für den du keine passenden Skripte gespeichert hast. Entferne deinen Filter um alle Skripte anzuzeigen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have set an active filter for which you have not saved any matching scripts. Remove your filter to display all scripts"
+          }
         }
       }
     },
@@ -551,6 +673,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Keine Skripte zu deiner aktiven Suche gefunden. Lösche deine Suche um alle Skripte anzuzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No scripts found for your active search. Clear your search to show all scripts"
           }
         }
       }
@@ -562,6 +690,12 @@
             "state" : "translated",
             "value" : "Fehler"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errors"
+          }
         }
       }
     },
@@ -571,6 +705,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exportieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export"
           }
         }
       }
@@ -582,6 +722,12 @@
             "state" : "translated",
             "value" : "Exportiere deine Benutzerdaten als Backup-Datei, um sie später wieder zu importieren"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export your user data as a backup file to import it again later"
+          }
         }
       }
     },
@@ -591,6 +737,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Viele weitere Features erwarten Dich bei deinem Skript-Manager"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Many other features await you in your script manager"
           }
         }
       }
@@ -602,6 +754,12 @@
             "state" : "translated",
             "value" : "Fehlgeschlagen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed"
+          }
         }
       }
     },
@@ -611,6 +769,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fehlgeschlagen (Logs)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed (Logs)"
           }
         }
       }
@@ -622,12 +786,24 @@
             "state" : "translated",
             "value" : "Favoriten"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
         }
       }
     },
     "features-title" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Features"
@@ -642,12 +818,24 @@
             "state" : "translated",
             "value" : "Dateien"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Files"
+          }
         }
       }
     },
     "fixes" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fixes"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fixes"
@@ -660,7 +848,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Git Pull"
+            "value" : "Git pull"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Git pull"
           }
         }
       }
@@ -668,6 +862,12 @@
     "gitlab" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitLab"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitLab"
@@ -681,6 +881,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In die Zwischenablage kopiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied to clipboard"
           }
         }
       }
@@ -852,6 +1058,12 @@
             "state" : "translated",
             "value" : "Daten importieren"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import data"
+          }
         }
       }
     },
@@ -861,6 +1073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Du kannst eine Backup Datei des ScriptManagers importieren. Beachte, dass anschließend ein Neustart notwendig ist"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can import a backup file of the ScriptManager. Please note that a restart is necessary afterwards"
           }
         }
       }
@@ -872,6 +1090,12 @@
             "state" : "translated",
             "value" : "Damit deine importierten Daten geladen werden, musst du den ScriptManager neustarten"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In order for your imported data to be loaded, you must restart the ScriptManager"
+          }
         }
       }
     },
@@ -882,12 +1106,24 @@
             "state" : "translated",
             "value" : "Import erfolgreich"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import successful"
+          }
         }
       }
     },
     "info" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Info"
@@ -902,12 +1138,24 @@
             "state" : "translated",
             "value" : "Info"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
+          }
         }
       }
     },
     "input" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Input"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Input"
@@ -922,6 +1170,12 @@
             "state" : "translated",
             "value" : "Skript-Input"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Script input"
+          }
         }
       }
     },
@@ -932,6 +1186,12 @@
             "state" : "translated",
             "value" : "Anleitung"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instructions"
+          }
         }
       }
     },
@@ -941,6 +1201,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abgebrochen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interrupted"
           }
         }
       }
@@ -967,6 +1233,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fehlerprotokolle"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error logs"
           }
         }
       }
@@ -1042,6 +1314,12 @@
             "state" : "translated",
             "value" : "Werde über eine Mitteilung informiert, sobald Deine Skripte ausgeführt wurden"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receive a notification as soon as your scripts have been executed"
+          }
         }
       }
     },
@@ -1116,6 +1394,12 @@
             "state" : "translated",
             "value" : "Ups, da ist etwas schief gelaufen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oops, something went wrong"
+          }
         }
       }
     },
@@ -1126,6 +1410,12 @@
             "state" : "translated",
             "value" : "Datei öffnen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open file"
+          }
         }
       }
     },
@@ -1135,6 +1425,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ausgabe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Output"
           }
         }
       }
@@ -1226,6 +1522,12 @@
             "state" : "translated",
             "value" : "Du kannst deine Skripte mit Ausgabe oder im Hintergrund ausführen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can run your scripts with output or in the background"
+          }
         }
       }
     },
@@ -1235,6 +1537,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vorlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Templates"
           }
         }
       }
@@ -1246,6 +1554,12 @@
             "state" : "translated",
             "value" : "Nutze Vorlagen und passe sie an"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use templates and customize them"
+          }
         }
       }
     },
@@ -1255,6 +1569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filter entfernen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove filter"
           }
         }
       }
@@ -1266,6 +1586,12 @@
             "state" : "translated",
             "value" : "Suche löschen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear search"
+          }
         }
       }
     },
@@ -1275,6 +1601,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anwendung beenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminate Application"
           }
         }
       }
@@ -1291,17 +1623,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save"
-          }
-        }
-      }
-    },
-    "save-shortcut" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kurzbefehl speichern"
           }
         }
       }
@@ -1345,6 +1666,12 @@
             "state" : "translated",
             "value" : "Say My Name"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Say my name"
+          }
         }
       }
     },
@@ -1371,6 +1698,12 @@
             "state" : "translated",
             "value" : "Skript-Details"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Script details"
+          }
         }
       }
     },
@@ -1380,6 +1713,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Informationen zu deinem Script"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information for you script"
           }
         }
       }
@@ -1423,6 +1762,12 @@
             "state" : "translated",
             "value" : "ScriptManager"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ScriptManager"
+          }
         }
       }
     },
@@ -1432,6 +1777,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Der ScriptManager ist ein einfach gestaltetes Tool, um deine tägliche Arbeit zu erleichtern. Das Tool ist eine Open-Source-Anwendung und wird stetig weiterentwickelt. Bei Problemen kannst du ganz einfach ein Issue auf GitHub erstellen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ScriptManager is a simply designed tool to make your daily work easier. The tool is an open source application and is constantly being developed further. If you have any problems, you can easily create an issue on GitHub."
           }
         }
       }
@@ -1443,6 +1794,12 @@
             "state" : "translated",
             "value" : "Erhalte Einblick in die Details deiner Skripte"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain insight into the details of your scripts"
+          }
         }
       }
     },
@@ -1453,6 +1810,12 @@
             "state" : "translated",
             "value" : "Erstelle Skripte und speichere sie in Deiner Liste für ein schnelleres Ausführen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create scripts and save them in your list for faster execution"
+          }
         }
       }
     },
@@ -1462,6 +1825,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suche nach Skript"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for script"
           }
         }
       }
@@ -1499,7 +1868,20 @@
       }
     },
     "settings-delete-msg" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du dir sicher, dass du deine gespeicherten Einstellungen löschen möchtest?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete your saved settings?"
+          }
+        }
+      }
     },
     "settings-delete-title" : {
       "localizations" : {
@@ -1507,6 +1889,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellungen löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete settings"
           }
         }
       }
@@ -1517,6 +1905,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Über das Zahnrad kannst du deine Einstellungen festlegen, um den Skript-Manager deinen Anforderungen zuzuschneiden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can use the cogwheel to define your settings to tailor the Script Manager to your requirements"
           }
         }
       }
@@ -1559,6 +1953,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einstellungen speichern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save settings"
           }
         }
       }
@@ -1627,39 +2027,6 @@
         }
       }
     },
-    "shortcut" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kurzbefehle"
-          }
-        }
-      }
-    },
-    "shortcut-keys" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tastaturbefehl"
-          }
-        }
-      }
-    },
-    "shortcut-script" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Auszuführendes Skript"
-          }
-        }
-      }
-    },
     "shortcut-title" : {
       "localizations" : {
         "de" : {
@@ -1667,16 +2034,11 @@
             "state" : "translated",
             "value" : "Kurzbefehl:"
           }
-        }
-      }
-    },
-    "shortcuts" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kurzbefehle"
+            "value" : "Shortcut:"
           }
         }
       }
@@ -1688,6 +2050,12 @@
             "state" : "translated",
             "value" : "Nutze Tastatur-Kurzbefehle um deine Skripte von überall auszuführen"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use keyboard shortcuts to execute your scripts from anywhere"
+          }
         }
       }
     },
@@ -1698,6 +2066,12 @@
             "state" : "translated",
             "value" : "Skript-Ergebnis"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Script result"
+          }
         }
       }
     },
@@ -1707,6 +2081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erfolgreich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successful"
           }
         }
       }
@@ -1733,6 +2113,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nutze Tags um deine Skripte besser zu organisieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use tags to better organize your scripts"
           }
         }
       }
@@ -1792,6 +2178,12 @@
             "state" : "translated",
             "value" : "Benutzereingabe"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User input"
+          }
         }
       }
     },
@@ -1814,6 +2206,12 @@
     "version" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "v4"
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "v4"

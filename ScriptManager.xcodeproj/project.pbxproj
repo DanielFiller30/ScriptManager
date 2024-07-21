@@ -185,11 +185,7 @@
 		DC84CC1B29C9BB51006C8F07 /* ShortcutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutModel.swift; sourceTree = "<group>"; };
 		DC851CF92BF4D2FF007EB396 /* SettingsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHandler.swift; sourceTree = "<group>"; };
 		DC851CFB2BF4D442007EB396 /* SettingsHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHandlerProtocol.swift; sourceTree = "<group>"; };
-		DC89BF1629DC37670029D9CA /* ScriptViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptViewModelTest.swift; sourceTree = "<group>"; };
-		DC89BF1A29DC38650029D9CA /* ScriptHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptHandlerMock.swift; sourceTree = "<group>"; };
 		DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptHandlerProtocol.swift; sourceTree = "<group>"; };
-		DC89BF1F29DC3DB70029D9CA /* TagViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModelTest.swift; sourceTree = "<group>"; };
-		DC89BF2129DC3DCD0029D9CA /* SettingViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModelTest.swift; sourceTree = "<group>"; };
 		DC9558232C171A5A00BA7C34 /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
 		DCAEF26C2C4A549A004C922B /* ScriptPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptPresetModel.swift; sourceTree = "<group>"; };
 		DCAEF26E2C4A5A14004C922B /* SearchbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarView.swift; sourceTree = "<group>"; };
@@ -259,7 +255,6 @@
 				DC4E34D02BB56288004EB76C /* Extensions */,
 				DC4E34CF2BB5605F004EB76C /* Storage */,
 				DC89BF1E29DC38830029D9CA /* Protocols */,
-				DC89BF1229DC37270029D9CA /* Tests */,
 				DC75B40F299BA57F00086806 /* ScriptManagerApp.swift */,
 				DC75B414299BA57F00086806 /* Handler */,
 				DC75B43D299BA57F00086806 /* Models */,
@@ -446,33 +441,6 @@
 				DC75B435299BA57F00086806 /* ScriptDetailsView.swift */,
 			);
 			path = ScriptRow;
-			sourceTree = "<group>";
-		};
-		DC89BF1229DC37270029D9CA /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				DC89BF1929DC38540029D9CA /* Mocks */,
-				DC89BF1829DC383E0029D9CA /* ViewModels */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		DC89BF1829DC383E0029D9CA /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				DC89BF1629DC37670029D9CA /* ScriptViewModelTest.swift */,
-				DC89BF1F29DC3DB70029D9CA /* TagViewModelTest.swift */,
-				DC89BF2129DC3DCD0029D9CA /* SettingViewModelTest.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		DC89BF1929DC38540029D9CA /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				DC89BF1A29DC38650029D9CA /* ScriptHandlerMock.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		DC89BF1E29DC38830029D9CA /* Protocols */ = {
