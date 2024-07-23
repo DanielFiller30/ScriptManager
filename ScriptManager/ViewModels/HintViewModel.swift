@@ -25,7 +25,7 @@ class HintViewModel {
         case .success: "checkmark.seal.fill"
         }
     }
-
+    
     func showHint(text: String, type: HintType) {
         hintHandler.showHint(text, type: type)
     }

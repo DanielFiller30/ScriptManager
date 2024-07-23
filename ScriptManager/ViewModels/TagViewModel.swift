@@ -16,7 +16,7 @@ class TagViewModel {
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
-
+    
     var tags: [Tag] {
         tagHandler.tags
     }
@@ -34,7 +34,7 @@ class TagViewModel {
             let newTag: Tag = Tag(name: name, badgeColor: colorData)
             tagHandler.tags.append(newTag)
             tagHandler.saveTags()
-                        
+            
             resetForm()
             
             modalHandler.hideModal()

@@ -11,17 +11,17 @@ import AlertToast
 
 struct OutputWindowView: View {
     @Injected private var scriptHandler: ScriptHandlerProtocol
-
+    
     @State private var showToast = false
     
     var script: Script
     var window: NSWindow
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text(script.name)
-                    .font(.title)
+                    .font(.title2)
                 
                 Spacer()
                 

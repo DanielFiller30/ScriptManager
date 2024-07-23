@@ -11,6 +11,8 @@ import Resolver
 class JSONProvider {
     @LazyInjected var storageHandler: StorageHandlerProtocol
     
+    /// Convert saved userdata to json string
+    ///  - Returns: json-object as `String`
     func convertToJson() -> String? {
         let savedUserdata = Userdata(
             scripts: storageHandler.scripts,
@@ -34,6 +36,9 @@ class JSONProvider {
         }
     }
     
+    /// Decode json string to userdata model
+    ///  - Parameter data: The imported data of json file
+    ///  - Returns: The userdata object
     func decodeToObject(data: Data) -> Userdata? {
         do {
             let jsonDecoder = JSONDecoder()

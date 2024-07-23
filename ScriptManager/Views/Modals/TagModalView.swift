@@ -15,7 +15,7 @@ struct TagModalView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("name-add-tag")
-                    .font(.headline)
+                    .font(.subheadline)
                 
                 Spacer()
                 
@@ -28,8 +28,8 @@ struct TagModalView: View {
             
             HStack(alignment: .center) {
                 Text("color-add-tag")
-                    .font(.headline)
-                                
+                    .font(.subheadline)
+                
                 Spacer()
                 
                 Picker("", selection: $vm.badgeColor) {
@@ -49,7 +49,7 @@ struct TagModalView: View {
                 .padding(.vertical, Spacing.l)
             
             Text("presets")
-                .font(.headline)
+                .font(.subheadline)
             
             ScrollView(.horizontal) {
                 HStack {
@@ -76,7 +76,7 @@ struct TagModalView: View {
             
             Divider()
                 .padding(.vertical, Spacing.l)
-                        
+            
             HStack(alignment: .center, spacing: Spacing.xl) {
                 // Cancel
                 CustomButtonView(

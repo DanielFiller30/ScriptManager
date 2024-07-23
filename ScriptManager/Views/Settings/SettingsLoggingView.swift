@@ -14,7 +14,7 @@ struct SettingsLoggingView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("settings-logging")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                 
                 Spacer()
                 
@@ -23,7 +23,7 @@ struct SettingsLoggingView: View {
             }
             
             Text("path-logs")
-                .font(.system(size: FontSize.text))
+                .font(.caption)
             
             HStack(alignment: .center) {
                 TextField("", text: $vm.tempSettings.pathLogs)

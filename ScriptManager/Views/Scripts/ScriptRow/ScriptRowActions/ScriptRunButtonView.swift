@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AnyCodable
 
 struct ScriptRunButtonView: View {
     @State private var vm = ScriptViewModel()
@@ -58,7 +57,7 @@ struct ScriptRunButtonView: View {
                             Spacer()
                             
                             Text("script-run")
-                                .font(.system(size: FontSize.text))
+                                .font(.caption)
                             
                             Spacer()
                             
@@ -85,7 +84,7 @@ struct ScriptRunButtonView: View {
                             Spacer()
                             
                             Text("script-run-output")
-                                .font(.system(size: FontSize.text))
+                                .font(.caption)
                             
                             Spacer()
                             
@@ -101,7 +100,7 @@ struct ScriptRunButtonView: View {
                         .cornerRadius(8)
                         .shadow(radius: 3, x: 1, y: 2)
                     }
-//                    .disabled(vm.scriptHandler.isRunningWithOutput)
+                    //                    .disabled(vm.scriptHandler.isRunningWithOutput)
                     .buttonStyle(.plain)
                 }
                 .padding(.all, Spacing.l)

@@ -44,7 +44,8 @@ struct GroupView<Content>: View where Content: View {
         } label: {
             HStack(alignment: .center) {
                 Text(label)
-                    .font(.headline)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
                     .onTapGesture {
                         if animation {
                             withAnimation {
@@ -60,9 +61,9 @@ struct GroupView<Content>: View where Content: View {
                 
                 if self.info != nil {
                     Text(info!)
+                        .font(.footnote)
                         .fontWeight(.light)
                         .foregroundColor(AppColor.Creme)
-                        .font(.system(size: FontSize.text))
                         .frame(maxWidth: 180)
                         .onTapGesture {
                             if animation {

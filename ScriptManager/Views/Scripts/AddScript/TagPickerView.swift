@@ -11,7 +11,7 @@ import SwiftUI
 struct TagPickerView: View {
     @Injected private var tagHandler: TagHandlerProtocol
     @State private var vm = ScriptViewModel()
-
+    
     var body: some View {
         Picker("", selection: $vm.scriptHandler.editScript.tagID) {
             // Add empty default selection

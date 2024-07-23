@@ -25,7 +25,7 @@ struct HeaderView: View {
                 .fontWeight(.light)
             
             Spacer()
-
+            
             if vm.selectedTag != nil {
                 Button {
                     vm.showDeleteTagAlert()

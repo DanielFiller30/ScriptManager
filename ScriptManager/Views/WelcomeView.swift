@@ -29,8 +29,7 @@ struct WelcomeView: View {
             .padding(.bottom, Spacing.xl)
             
             Text("welcome-title")
-                .font(.system(size: FontSize.title))
-                .fontWeight(.bold)
+                .font(.title2)                
             
             Text("welcome-info")
                 .font(.caption)
@@ -55,7 +54,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("scripts-info")
                             .font(.caption)
                             .frame(maxWidth: 200, maxHeight: 40)
@@ -71,7 +70,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("tags-info")
                             .font(.caption)
                             .frame(maxWidth: 200, maxHeight: 40)
@@ -87,7 +86,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("shortcuts-info")
                             .font(.caption)
                             .frame(maxWidth: 200, maxHeight: 40)
@@ -107,7 +106,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("notification-info")
                             .font(.caption)
                             .frame(maxWidth: 200, maxHeight: 40)
@@ -123,7 +122,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("scripts-details-info")
                             .font(.caption)
                             .frame(maxWidth: 200, maxHeight: 40)
@@ -139,7 +138,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("extras-info")
                             .font(.caption)
                             .frame(maxWidth: 200, maxHeight: 40)
@@ -152,7 +151,7 @@ struct WelcomeView: View {
             
             Divider()
                 .padding(.vertical, 10)
-
+            
             // Instructions
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 10) {
@@ -168,7 +167,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("add-script-tag-instruction")
                             .font(.caption)
                             .lineLimit(3)
@@ -183,7 +182,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("settings-instruction")
                             .font(.caption)
                             .lineLimit(3)
@@ -198,7 +197,7 @@ struct WelcomeView: View {
                             .background(.ultraThickMaterial)
                             .clipShape(.circle)
                             .shadow(radius: 3, x: 1, y: 2)
-
+                        
                         Text("play-instruction")
                             .font(.caption)
                             .frame(maxWidth: 220, maxHeight: 60)
@@ -224,12 +223,12 @@ struct WelcomeView: View {
                                 .background(.ultraThickMaterial)
                                 .clipShape(.circle)
                                 .shadow(radius: 3, x: 1, y: 2)
-
+                            
                             Text("success")
                                 .font(.caption)
                         }
                         .padding(.trailing, 25)
-                                                
+                        
                         HStack(alignment: .center, spacing: 15) {
                             Image(systemName: "xmark")
                                 .resizable()
@@ -240,7 +239,7 @@ struct WelcomeView: View {
                                 .background(.ultraThickMaterial)
                                 .clipShape(.circle)
                                 .shadow(radius: 3, x: 1, y: 2)
-
+                            
                             Text("interrupted")
                                 .font(.caption)
                         }
@@ -257,7 +256,7 @@ struct WelcomeView: View {
                                 .background(.ultraThickMaterial)
                                 .clipShape(.circle)
                                 .shadow(radius: 3, x: 1, y: 2)
-
+                            
                             Text("failed")
                                 .font(.caption)
                         }
@@ -273,7 +272,7 @@ struct WelcomeView: View {
                                 .background(AppColor.Danger)
                                 .clipShape(.circle)
                                 .shadow(radius: 3, x: 1, y: 2)
-
+                            
                             Text("failed-logs")
                                 .font(.caption)
                         }
@@ -290,7 +289,6 @@ struct WelcomeView: View {
             
             HStack(alignment: .center) {
                 Text("welcome-toggle")
-                    .font(.system(size: FontSize.text))
                 
                 Toggle("", isOn: $hideWelcomeScreen)
                 

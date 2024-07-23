@@ -29,7 +29,7 @@ struct ScriptRowLabel: View {
             
             HStack(alignment: .center, spacing: Spacing.l) {
                 Text(script.name)
-                    .font(.system(size: FontSize.subTitle))
+                    .font(.headline)
                     .fontWeight(.bold)
                     .lineLimit(1)
                     .onTapGesture {

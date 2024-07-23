@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SettingsUnicodeView: View {
     @Binding var vm: SettingsViewModel
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("shell-unicode")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                 
                 Spacer()
                 

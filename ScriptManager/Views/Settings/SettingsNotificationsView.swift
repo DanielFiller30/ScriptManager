@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SettingsNotificationsView: View {
     @Binding var vm: SettingsViewModel
-
+    
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
                 Text("settings-notifications")
-                    .font(.system(size: FontSize.text))
+                    .font(.subheadline)
                 
                 HelpView(title: "hint-notifications-title", text: "hint-notifications-text")
                 

@@ -12,7 +12,7 @@ struct SettingsModalView: View {
     @State private var toggleShortcuts = false
     @State private var toggleBackup = false
     @State private var toggleLogging = false
-
+    
     @State private var vm = SettingsViewModel()
     
     var body: some View {

@@ -19,8 +19,8 @@ struct BadgeView: View {
         HStack(alignment: .center) {
             HStack {
                 Text(title)
+                    .font(.caption)
                     .fontWeight(.light)
-                    .font(.system(size: FontSize.text))
                     .lineLimit(1)
                     .foregroundColor(active ? .black : nil)
                 

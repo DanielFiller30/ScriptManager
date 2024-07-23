@@ -16,7 +16,8 @@ class BackupProvider {
     
     private let jsonProvider = JSONProvider()
     
-    public func exportUserdata() {
+    /// Export userdata as json to file
+    func exportUserdata() {
         let folderChooserPoint = CGPoint(x: 0, y: 0)
         let folderChooserSize = CGSize(width: 500, height: 600)
         let folderChooserRectangle = CGRect(origin: folderChooserPoint, size: folderChooserSize)
@@ -51,6 +52,7 @@ class BackupProvider {
         }
     }
     
+    /// Import userdata as json file and replace values of storage
     public func importUserdata() {
         let fileChooserPoint = CGPoint(x: 0, y: 0)
         let fileChooserSize = CGSize(width: 500, height: 600)

@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct ShortcutView: View {
-    @State private var vm = ShortcutViewModel()
-    
+struct ShortcutView: View {    
     var shortcut: Shortcut
     
     var body: some View {

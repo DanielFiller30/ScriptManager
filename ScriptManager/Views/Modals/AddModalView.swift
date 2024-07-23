@@ -40,7 +40,6 @@ struct AddModalView: View {
                         Spacer()
                         
                         Text("add-new-script")
-                            .font(.system(size: FontSize.text))
                             .bold()
                         
                         Spacer()
@@ -85,7 +84,6 @@ struct AddModalView: View {
                         Spacer()
                         
                         Text("add-new-tag")
-                            .font(.system(size: FontSize.text))
                             .bold()
                         
                         Spacer()

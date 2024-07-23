@@ -35,7 +35,7 @@ class ScriptViewModel {
     }
     
     var searchString: String = ""
-        
+    
     @MainActor
     func runScript(showOutput: Bool, scriptId: UUID) {
         Task {
@@ -45,7 +45,7 @@ class ScriptViewModel {
             var finishedTime = 0
             tempScript!.output = ""
             tempScript!.error = ""
-                        
+            
             if showOutput {
                 openOutputWindow(script: tempScript!)
             }
@@ -66,12 +66,12 @@ class ScriptViewModel {
             
             // Update all scripts
             let result = await scriptHandler.runScript(tempScript!, test: false)
-
+            
             // Stop track timer for new last time
             timer.invalidate()
             // Stop countdown timer for displaying
             runningTimer?.invalidate()
-                    
+            
             // If successfull, save new last run time
             if result.state == .successfull {
                 tempScript!.time!.lastTime = finishedTime
@@ -80,19 +80,19 @@ class ScriptViewModel {
                 tempScript!.time!.remainingTime = nil
                 tempScript!.time!.progressValue = 1.0
             }
-
+            
             // Save script result
             tempScript!.success = result.state
             tempScript!.finished = true
             tempScript!.lastRun = Date.now
             tempScript!.output = result.output
             tempScript!.error = result.error
-                        
+            
             let saveIndex = scriptHandler.scripts.firstIndex(where: { $0.id == scriptId })!
             scriptHandler.scripts[saveIndex] = tempScript!
-
+            
             scriptHandler.saveScripts()
-                                    
+            
             scriptHandler.runningScript = scriptHandler.runningScript.filter { $0.id != scriptId }
         }
     }
@@ -111,15 +111,15 @@ class ScriptViewModel {
     @MainActor
     func removeTagFromScript(tagId: UUID?) {
         guard tagId != nil else { return }
-
+        
         resetScripts()
-                
+        
         for (index, script) in scriptHandler.scripts.enumerated() {
             if script.tagID == tagId {
                 scriptHandler.scripts[index].tagID = EmptyTag.id
             }
         }
-         
+        
         scriptHandler.saveScripts()
         tagHandler.selectedTag = tagId
     }
@@ -151,7 +151,7 @@ class ScriptViewModel {
         
         scriptHandler.scripts = updatedScripts
         scriptHandler.saveScripts()
-                
+        
         resetForm()
         
         modalHandler.hideModal()
@@ -176,7 +176,7 @@ class ScriptViewModel {
     @MainActor
     func saveChangedScript() {
         resetScripts()
-                
+        
         let editScript = scriptHandler.editScript
         let index: Int? = scriptHandler.scripts.firstIndex(where: { $0.id == editScript.id })
         
@@ -206,7 +206,7 @@ class ScriptViewModel {
         
         modalHandler.showModal(.EDIT_SCRIPT)
     }
-
+    
     func openLogs() {
         let settings = settingsHandler.settings
         guard let url = URL(string: "file://\(settings.pathLogs)") else {return}

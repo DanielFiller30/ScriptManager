@@ -15,7 +15,7 @@ struct SettingsShellView: View {
             
             HStack(alignment: .center) {
                 Text("shell-type")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                 
                 HelpView(title: "hint-shell-title", text: "hint-shell-text")
                 
@@ -33,7 +33,7 @@ struct SettingsShellView: View {
             
             HStack(alignment: .center) {
                 Text("path-shell")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                 
                 Spacer()
                 
@@ -44,7 +44,7 @@ struct SettingsShellView: View {
             
             HStack(alignment: .center) {
                 Text("path-profile")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                 
                 HelpView(title: "hint-profile-title", text: "hint-profile-text")
                 

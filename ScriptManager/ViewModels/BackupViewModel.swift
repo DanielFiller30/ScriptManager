@@ -17,6 +17,5 @@ class BackupViewModel {
     
     func importUserdate() {
         backupProvider.importUserdata()
-//        modalHandler.hideModal()
     }
 }

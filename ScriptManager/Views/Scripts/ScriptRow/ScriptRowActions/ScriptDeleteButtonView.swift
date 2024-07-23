@@ -11,7 +11,7 @@ struct ScriptDeleteButtonView: View {
     @State private var vm =  ScriptViewModel()
     var scriptId: UUID
     var disabled: Bool
-        
+    
     var body: some View {
         Button {
             vm.showDeleteScriptAlert(id: scriptId)

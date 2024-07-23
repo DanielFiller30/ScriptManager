@@ -24,7 +24,7 @@ struct ScriptStateButtonView: View {
                     .padding(Spacing.l)
                     .background(.ultraThickMaterial)
                     .clipShape(Circle())
-
+                
             } else if (interrupted) {
                 // Script interrupted
                 Image(systemName: "xmark")

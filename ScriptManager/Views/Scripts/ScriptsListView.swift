@@ -19,18 +19,18 @@ struct ScriptsListView: View {
                 if !showSearch {
                     Text("saved \(String(vm.scripts.count))")
                         .fontWeight(.bold)
-                        .font(.system(size: FontSize.subTitle))
-                        .padding(.trailing, Spacing.m)                    
+                        .font(.headline)
+                        .padding(.trailing, Spacing.m)
                 } else {
                     if vm.scripts.count == 1 {
                         Text("\(String(vm.scripts.count)) result")
                             .fontWeight(.bold)
-                            .font(.system(size: FontSize.subTitle))
+                            .font(.headline)
                             .padding(.trailing, Spacing.m)
                     } else {
                         Text("\(String(vm.scripts.count)) results")
                             .fontWeight(.bold)
-                            .font(.system(size: FontSize.subTitle))
+                            .font(.headline)
                             .padding(.trailing, Spacing.m)
                     }
                 }
@@ -42,7 +42,7 @@ struct ScriptsListView: View {
             .padding(.bottom, Spacing.l)
             
             TagsListView()
-
+            
             if (vm.scripts.isEmpty) {
                 VStack(alignment: .center) {
                     Spacer()

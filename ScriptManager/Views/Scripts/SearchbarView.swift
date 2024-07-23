@@ -37,7 +37,7 @@ struct SearchbarView: View {
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .shadow(radius: 3, x: 1, y: 2)
-
+            
         } else {
             Button {
                 withAnimation {

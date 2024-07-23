@@ -5,6 +5,7 @@
 //  Created by Filler, Daniel on 20.07.24.
 //
 
+/// Presets for Scripts to provide it to user
 let ScriptPresets: [ScriptPreset] = [
     ScriptPreset(title: String(localized: "open-file"), icon: "doc.richtext", script: "open <path to file>;"),
     ScriptPreset(title: String(localized: "say-name"), icon: "waveform", script: "say <name>;"),

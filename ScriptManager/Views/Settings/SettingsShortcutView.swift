@@ -28,7 +28,7 @@ struct ScriptShortcutView: View {
     @Binding var selectedScript: UUID
     @Binding var selectedKeys: String
     var selectedShortcut: KeyboardShortcuts.Name
-
+    
     var body: some View {
         HStack(alignment: .center) {
             Text(EmptyScript.name)

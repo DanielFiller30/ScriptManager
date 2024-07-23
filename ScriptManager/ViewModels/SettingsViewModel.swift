@@ -17,7 +17,7 @@ class SettingsViewModel {
     @LazyInjected @ObservationIgnored private var settingsHandler: SettingsHandlerProtocol
     @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
     @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
-
+    
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
     
@@ -42,7 +42,7 @@ class SettingsViewModel {
             tempProfilePath = homeDir + (shell.profile ?? "")
         }
     }
-        
+    
     // Shortcut-Picker
     var selectedScript1: UUID = EmptyScript.id
     var selectedScript2: UUID = EmptyScript.id
@@ -60,7 +60,7 @@ class SettingsViewModel {
         self.tempSettings = settings
         self.tempProfilePath = settings.shell.profile ?? ""
         self.tempShellType = settings.shell.type
-                
+        
         self.selectedScript1 = settings.shortcuts.count > 0 ? settings.shortcuts[0].scriptId : EmptyScript.id
         self.selectedScript2 = settings.shortcuts.count > 1 ? settings.shortcuts[1].scriptId : EmptyScript.id
         self.selectedScript3 = settings.shortcuts.count > 2 ? settings.shortcuts[2].scriptId : EmptyScript.id

@@ -102,7 +102,7 @@ struct ScriptModalView: View {
                     Spacer()
                     
                     Text(testResult)
-                        .font(.system(size: FontSize.subTitle))
+                        .font(.caption)
                         .foregroundColor(testIsSuccessfull.state == .successfull ? AppColor.Success : AppColor.Danger)
                     
                     Button {
@@ -128,7 +128,7 @@ struct ScriptModalView: View {
             
             HStack(alignment: .center) {
                 Text("input-script")
-                    .font(.headline)
+                    .font(.subheadline)
                 
                 Spacer()
                 

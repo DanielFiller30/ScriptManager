@@ -25,7 +25,7 @@ struct HelpView: View {
         .popover(isPresented: $showHint) {
             VStack(alignment: .center) {
                 Text(title)
-                    .font(.system(size: FontSize.title))
+                    .font(.headline)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, Spacing.l)
                     .padding(.top, Spacing.xl)
@@ -33,7 +33,7 @@ struct HelpView: View {
                 Divider()
                 
                 Text(text)
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                     .multilineTextAlignment(.center)
                     .lineLimit(10)
                     .padding(Spacing.l)

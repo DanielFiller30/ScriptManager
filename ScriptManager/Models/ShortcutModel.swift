@@ -13,9 +13,3 @@ struct Shortcut: Codable, Hashable {
     var scriptId: UUID
     var keys: String
 }
-
-let EmptyShortcut = Shortcut(
-    shortcutIndex: 9999,
-    scriptId: EmptyScript.id,
-    keys: "CMD"
-)

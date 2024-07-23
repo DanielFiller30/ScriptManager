@@ -14,7 +14,7 @@ class MainViewModel {
     @LazyInjected @ObservationIgnored private var modalHandler: ModalHandlerProtocol
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored var hintHandler: HintHandlerProtocol
-
+    
     var alertVisible: Bool {
         alertHandler.alertVisible
     }

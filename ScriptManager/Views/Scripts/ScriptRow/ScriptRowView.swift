@@ -14,7 +14,7 @@ struct ScriptRowView: View {
     @Binding var showAddScriptModal: Bool
     
     var script: Script
-        
+    
     var body: some View {
         ZStack {
             DisclosureGroup(isExpanded: $showDetails) {
@@ -22,19 +22,19 @@ struct ScriptRowView: View {
                     ScriptDetailsView(showAddScriptModal: $showAddScriptModal, script: script)
                 }
                 .padding(.all, Spacing.l)
-
+                
             } label: {
-                    ScriptRowLabel(
-                        toggleDetails: {
-                            withAnimation() {
-                                showDetails.toggle()
-                            }
-                        },
-                        script: script
-                    )
+                ScriptRowLabel(
+                    toggleDetails: {
+                        withAnimation() {
+                            showDetails.toggle()
+                        }
+                    },
+                    script: script
+                )
             }
             .padding(.all, Spacing.l)
-            .background(.ultraThickMaterial)
+            .background(.thickMaterial)
             .cornerRadius(15)
             .shadow(radius: 3, x: 1, y: 2)
         }

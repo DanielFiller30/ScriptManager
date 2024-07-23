@@ -22,14 +22,14 @@ struct ScriptDetailsView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("path")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                     .fontWeight(.bold)
                     .frame(width: 120, alignment: .leading)
                 
                 Spacer()
                 
                 Text(script.command)
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                     .lineLimit(1)
                     .onTapGesture() {
                         // Copy path
@@ -46,10 +46,10 @@ struct ScriptDetailsView: View {
             .toast(isPresenting: $showToast, duration: 1, tapToDismiss: true) {
                 AlertToast(type: .regular, title: String(localized: "hint-copied"))
             }
-
+            
             HStack(alignment: .center) {
                 Text("shortcut-title")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                     .fontWeight(.bold)
                     .frame(width: 120, alignment: .leading)
                 
@@ -59,14 +59,14 @@ struct ScriptDetailsView: View {
                     ShortcutView(shortcut: shortcut)
                 } else {
                     Text("-")
-                        .font(.system(size: FontSize.text))
+                        .font(.caption)
                 }
             }
             .padding(.bottom, Spacing.l)
             
             HStack(alignment: .center) {
                 Text("last-run")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                     .fontWeight(.bold)
                     .frame(width: 120, alignment: .leading)
                 
@@ -74,10 +74,10 @@ struct ScriptDetailsView: View {
                 
                 if let date = script.lastRun {
                     Text(date.toFormattedDate())
-                        .font(.system(size: FontSize.text))
+                        .font(.caption)
                 } else {
                     Text("-")
-                        .font(.system(size: FontSize.text))
+                        .font(.caption)
                 }
             }
             .padding(.bottom, Spacing.l)
@@ -94,7 +94,7 @@ struct ScriptDetailsView: View {
                     disabled: false,
                     help: "button-logs"
                 )
-                                
+                
                 Spacer()
                 
                 // Open monitor

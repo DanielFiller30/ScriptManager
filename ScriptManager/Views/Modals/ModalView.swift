@@ -20,7 +20,7 @@ struct ModalView: View {
                     Spacer()
                     
                     Text(vm.modalTitle)
-                        .font(.system(size: FontSize.title))
+                        .font(.title2)
                         .fontWeight(.bold)
                     
                     Spacer()

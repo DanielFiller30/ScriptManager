@@ -28,11 +28,11 @@ extension Resolver: @retroactive ResolverRegistering {
         
         register { ModalHandler() as ModalHandlerProtocol }
             .scope(.application)
-        
-        register { NotificationHandler() as NotificationHandlerProtocol }
-        
+                
         register { HintHandler() as HintHandlerProtocol }           
             .scope(.application)
+        
+        register { NotificationHandler() as NotificationHandlerProtocol }
     }
 }
 

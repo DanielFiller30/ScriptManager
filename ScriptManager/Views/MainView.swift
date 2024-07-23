@@ -10,7 +10,7 @@ import ConfettiSwiftUI
 
 struct MainView: View {
     @State private var vm = MainViewModel()
-        
+    
     var body: some View {
         ZStack {
             VStack(spacing: Spacing.zero) {

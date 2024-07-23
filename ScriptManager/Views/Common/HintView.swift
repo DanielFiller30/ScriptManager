@@ -18,8 +18,6 @@ public struct HintView: View {
         }
     }
     
-    public init() {}
-    
     public var body: some View {
         HStack(alignment: .center) {
             Image(systemName: vm.icon)
