@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct IconPickerView: View {
-    @StateObject var viewModel: ScriptViewModel
+    @State private var vm = ScriptViewModel()
     
     var body: some View {
         Form {
-            Picker(selection: $viewModel.selectedIcon, label: EmptyView()) {
+            Picker(selection: $vm.scriptHandler.selectedIcon, label: EmptyView()) {
                 Section(header: Text("Icons")) {
                     ForEach(ScriptIcons.indices, id: \.self) { (i) in
                         HStack {
                             Image(systemName: ScriptIcons[i])
-                            Text(ScriptIcons[i].replacingOccurrences(of: ".", with: " "))
                         }
                         .tag(i)
                     }
                 }
             }
-            .frame(maxWidth: 145)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: 60)
             .padding(.leading, -8)
         }
     }
@@ -31,6 +31,6 @@ struct IconPickerView: View {
 
 struct IconPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        IconPickerView(viewModel: ScriptViewModel())
+        IconPickerView()
     }
 }

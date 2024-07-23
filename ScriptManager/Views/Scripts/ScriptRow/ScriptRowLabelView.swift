@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ScriptRowLabel: View {
-    @EnvironmentObject var settings: SettingsHandler
+    @State private var vm = ScriptViewModel()
     
-    var viewModel: ScriptViewModel
     var toggleDetails: () -> Void
     var script: Script
     
@@ -19,9 +18,9 @@ struct ScriptRowLabel: View {
             Image(systemName: script.icon)
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(settings.mainColor)
                 .frame(height: IconSize.m)
                 .padding(.horizontal, Spacing.m)
+                .foregroundStyle(vm.getTagColor(script.tagID))
                 .onTapGesture {
                     withAnimation() {
                         toggleDetails()
@@ -30,35 +29,39 @@ struct ScriptRowLabel: View {
             
             HStack(alignment: .center, spacing: Spacing.l) {
                 Text(script.name)
-                    .font(.system(size: FontSize.subTitle))
+                    .font(.headline)
                     .fontWeight(.bold)
                     .lineLimit(1)
-                    .scaledToFit()
                     .onTapGesture {
-                        withAnimation() {
-                            toggleDetails()
-                        }
+                        toggleDetails()
                     }
                     .help(script.name)
-                                
-                let tag = viewModel.getTagById(id: script.tagID)
                 
-                if tag != nil {
-                    BadgeView(color: ColorHandler.getDecodedColor(data: tag!.badgeColor), title: tag!.name, active: false)
+                if script.tagID != EmptyTag.id {
+                    if let tag = vm.getTagById(id: script.tagID) {
+                        let badgeColor = try? ColorConverter.decodeColor(from: tag.badgeColor)
+                        
+                        BadgeView(
+                            color: badgeColor ?? AppColor.Primary,
+                            title: tag.name,
+                            active: false,
+                            outlined: true
+                        )
+                    }
                 }
             }
             
             Spacer()
             
-            ScriptStateButtonView(viewModel: viewModel, script: script)
+            ScriptStateButtonView(script: script)
             
-            ScriptRunButtonView(viewModel: viewModel, script: script)
+            ScriptRunButtonView(script: script)
         }
     }
 }
 
 struct ScriptRowLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRowLabel(viewModel: ScriptViewModel(), toggleDetails: {}, script: DefaultScript)
+        ScriptRowLabel(toggleDetails: {}, script: DefaultScript)
     }
 }

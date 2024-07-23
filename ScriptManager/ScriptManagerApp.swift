@@ -5,37 +5,30 @@
 //  Created by Filler, Daniel on 03.02.23.
 //
 
-import SwiftUI
 import KeyboardShortcuts
-import AnyCodable
+import Resolver
+import SwiftUI
 
 @main
 struct ScriptManagerApp: App {
-    let storage = StorageHandler()
+    @Injected private var storageHandler: StorageHandlerProtocol
+    
     let window = NSWindow()
     
     @State var hideWelcomeScreen: Bool = true
     @StateObject private var appState = AppState()
     
     init() {
-        do {
-            // Reset all data
-            //  storage.reset()
-            
-            // Open welcome-screen on first launch
-            let hasLaunchedBefore = try storage.load(Bool.self, key: .FIRSTLAUNCH)?.get() ?? false
-            if !hasLaunchedBefore {
-                openWindow()
-            }
-        } catch {
-            debugPrint("Failed to load first launch: \(error)")
+        // Open welcome-screen on first launch
+        if storageHandler.firstLaunch {
+            openWindow()
         }
     }
     
     func openWindow() {
         let contentView = WelcomeView(close: { closeWindow() }, hideWelcomeScreen: $hideWelcomeScreen)
         window.contentViewController = NSHostingController(rootView: contentView)
-        window.styleMask = [.closable, .titled]
+        window.styleMask = [.closable, .titled]        
         window.center()
         window.orderFrontRegardless()
         window.makeKeyAndOrderFront(nil)
@@ -43,7 +36,7 @@ struct ScriptManagerApp: App {
     
     func closeWindow() {
         if hideWelcomeScreen {
-            storage.save(value: AnyCodable(true), key: .FIRSTLAUNCH)
+            storageHandler.setFirstLaunchToFalse()
         }
         
         window.close()
@@ -59,13 +52,13 @@ struct ScriptManagerApp: App {
 
 @MainActor
 final class AppState: ObservableObject {
-    private let dataHandler = DataHandler()
-    private let scriptHandler = ScriptHandler()
-    private let settingsHandler = SettingsHandler()
+    @Injected private var storageHandler: StorageHandlerProtocol
+    @Injected private var scriptHandler: ScriptHandlerProtocol
     
     private var savedShortcuts: [Shortcut] = []
     
     init() {
+        // Initialize keyboard shortcuts
         KeyboardShortcuts.onKeyUp(for: .runScript1) {
             debugPrint("Run Script 1")
             self.runScript(index: 0)
@@ -92,16 +85,14 @@ final class AppState: ObservableObject {
         }
     }
     
-    func runScript(index: Int) {
-        dataHandler.loadScripts()
-        settingsHandler.loadSettings()
+    private func runScript(index: Int) {
+        savedShortcuts = storageHandler.settings.shortcuts
         
-        savedShortcuts = settingsHandler.settings.shortcuts
-        
+        guard !savedShortcuts.isEmpty else { return }
         let id = savedShortcuts[index].scriptId
         
         if id != EmptyScript.id {
-            if let script = dataHandler.scripts.first(where: { $0.id == id }) {
+            if let script = storageHandler.scripts.first(where: { $0.id == id }) {
                 NotificationHandler.sendStartNotification(name: script.name)
                 
                 Task {
@@ -110,4 +101,13 @@ final class AppState: ObservableObject {
             }
         }
     }
+    
+    /* // Reset function for debugging and testing
+    private func resetShortcuts() {
+        KeyboardShortcuts.reset(.runScript1)
+        KeyboardShortcuts.reset(.runScript2)
+        KeyboardShortcuts.reset(.runScript3)
+        KeyboardShortcuts.reset(.runScript4)
+        KeyboardShortcuts.reset(.runScript5)
+    }*/
 }

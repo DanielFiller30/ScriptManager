@@ -9,13 +9,17 @@ import Foundation
 import SwiftUI
 
 struct AppColor {
-    static let Dark = Color("Dark")
-    static let Light = Color("Light")
     static let Success = Color("Success")
     static let Danger = Color("Danger")
+    static let Warning = Color("Warning")
     static let Creme = Color("Creme")
-    static let Background = Color("Background")
-    static let AppBg = Color("AppBg")
     static let Primary = Color("Primary")
-    static let Header = Color("Header")
+    static let Secondary = Color("Secondary")
+    
+    // Tag-Presets
+    static let Favs = Color("Favs")
+    static let Archive = Color("Archive")
+    static let Fixes = Color("Fixes")
+    static let Files = Color("Files")
+    static let GitLab = Color("GitLab")
 }

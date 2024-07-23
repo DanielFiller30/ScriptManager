@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct SettingsUnicodeView: View {
-    @EnvironmentObject var settings: SettingsHandler
-
+    @Binding var vm: SettingsViewModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("shell-unicode")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                 
                 Spacer()
                 
-                TextField("", text: $settings.unicode)
+                TextField("", text: $vm.tempSettings.unicode)
                     .frame(width: 150)
             }
         }
@@ -28,6 +28,6 @@ struct SettingsUnicodeView: View {
 
 struct SettingsUnicodeView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsUnicodeView()
+        SettingsUnicodeView(vm: .constant(SettingsViewModel()))
     }
 }

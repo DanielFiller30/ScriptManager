@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Shell: Identifiable, Codable {
+struct Shell: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var type: ShellType
     var path: String
     var profile: String?
 }
 
-enum ShellType: String, Codable {
+enum ShellType: String, Codable, Equatable {
     case zsh = "zsh"
     case bash = "bash"
 }

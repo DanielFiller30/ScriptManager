@@ -13,10 +13,10 @@ struct SettingsAutostartView: View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
                 Text("settings-autostart")
-                    .font(.system(size: FontSize.text))
-                                
+                    .font(.subheadline)
+                
                 Spacer()
-                                
+                
                 LaunchAtLogin.Toggle("")
                     .toggleStyle(.switch)
             }

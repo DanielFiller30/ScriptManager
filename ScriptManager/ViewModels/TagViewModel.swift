@@ -6,45 +6,59 @@
 //
 
 import Foundation
+import Resolver
 import SwiftUI
-import AnyCodable
 
-class TagViewModel: ObservableObject {
-    internal let storage = StorageHandler()
-    internal let dataHandler = DataHandler.shared
-
-    @Published var showAddTag: Bool = false
+@Observable
+class TagViewModel {
+    @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
+    @LazyInjected @ObservationIgnored private var scriptHandler: ScriptHandlerProtocol
+    @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
+    @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
+    @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
     
-    @Published var name: String = ""
-    @Published var badgeColor: Color = AppColor.Primary
-        
+    var tags: [Tag] {
+        tagHandler.tags
+    }
+    
+    var selectedTag: UUID? {
+        tagHandler.selectedTag
+    }
+    
+    var name: String = ""
+    var badgeColor: Color = AppColor.Primary
+    
     func saveTag() {
         do {
-            let colorData = try ColorHandler.encodeColor(color: badgeColor)
+            let colorData = try ColorConverter.encodeColor(color: badgeColor)
             let newTag: Tag = Tag(name: name, badgeColor: colorData)
+            tagHandler.tags.append(newTag)
+            tagHandler.saveTags()
             
-            dataHandler.tags.append(newTag)
-            storage.save(value: AnyCodable(dataHandler.tags), key: .TAG)
-                        
             resetForm()
+            
+            modalHandler.hideModal()
+            hintHandler.showHint(String(localized: "save-tag-success"), type: .success)
         } catch {
             debugPrint("Failed to save new tag: \(error)")
+            hintHandler.showHint(String(localized: "save-tag-failed"), type: .error)
         }
     }
     
-    func deleteTag(selectedTagId: UUID) {
-        // Remove tag entry
-        dataHandler.tags = dataHandler.tags.filter {
-            $0.id != selectedTagId
-        }
+    func setActiveTag(_ uuid: UUID?) {
+        tagHandler.selectedTag = uuid
         
-        // Update saved tags
-        storage.save(value: AnyCodable(dataHandler.tags), key: .TAG)
+        if let uuid {
+            // Set active tag
+            scriptHandler.scripts = scriptHandler.savedScripts.filter({ $0.tagID == uuid })
+        } else {
+            // Reset tag
+            scriptHandler.scripts = scriptHandler.savedScripts
+        }
     }
     
     func resetForm() {
         name = ""
         badgeColor = AppColor.Primary
-        showAddTag.toggle()
     }
 }

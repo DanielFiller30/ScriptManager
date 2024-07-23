@@ -6,46 +6,45 @@
 //
 
 import SwiftUI
+import ConfettiSwiftUI
 
 struct MainView: View {
-    @StateObject private var vmScript = ScriptViewModel()
-    @StateObject private var vmTag = TagViewModel()
-    
-    @StateObject private var settings = SettingsHandler()
+    @State private var vm = MainViewModel()
     
     var body: some View {
-        VStack(spacing: Spacing.zero) {
-            HeaderView()
-                .background(
-                    LinearGradient(colors: [AppColor.Header, AppColor.AppBg], startPoint: .top, endPoint: .bottom)
-                )
-
+        ZStack {
+            VStack(spacing: Spacing.zero) {
+                HeaderView()
+                
+                Divider()
+                    .frame(minHeight: 2)                    
+                
+                ScriptsListView()
+                    .padding(.top, Spacing.l)
+            }
             
-            Divider()
-                .frame(minHeight: 2)
-                .background(AppColor.Header)
-                .foregroundColor(AppColor.AppBg)
+            if vm.alertVisible {
+                AlertView()
+            }
             
-            TagsListView(vmTag: vmTag, vmScript: vmScript)
-                .background(AppColor.AppBg)
-
-    
-            Divider()
-                .frame(minHeight: 2)
-                .background(AppColor.Header)
-                .foregroundColor(AppColor.AppBg)
-               
+            if vm.modalVisible {
+                ModalView()
+            }
             
-            ScriptsListView(viewModel: vmScript)
-                .padding(.top, Spacing.xl)
-                .background(AppColor.AppBg)
-
+            if vm.hintVisible {
+                HintView()
+                    .position(x: 380 / 2, y: 50)
+            }
         }
         .frame(width: 380, height: 550)
-        .environmentObject(settings)
-        .onAppear {
-            vmScript.loadScriptTimes()
-        }
+        .background(.ultraThinMaterial)
+        .confettiCannon(
+            counter: $vm.scriptHandler.finishedCounter,
+            num: 80,
+            colors: [Color(.primary), Color(.secondary)],
+            confettiSize: 10,
+            radius: 350
+        )
     }
 }
 

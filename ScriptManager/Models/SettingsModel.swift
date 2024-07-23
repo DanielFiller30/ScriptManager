@@ -25,6 +25,6 @@ let DefaultSettings = Settings(
     logs: false,
     pathLogs: "",
     notifications: false,
-    mainColor: ColorHandler.defaultEncodedColor,
+    mainColor: ColorConverter.defaultEncodedColor,
     shortcuts: []
 )

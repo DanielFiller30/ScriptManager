@@ -14,72 +14,281 @@ struct WelcomeView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                Image("Icon")
+                Image("Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 25)
                 
-                Spacer()
+                Text("ScriptManager")
+                    .font(.headline)
                 
-                Text("welcome-title")
-                    .font(.system(size: FontSize.title))
-                    .fontWeight(.bold)
+                Text("version")
                 
                 Spacer()
             }
             .padding(.bottom, Spacing.xl)
             
+            Text("welcome-title")
+                .font(.title2)                
+            
             Text("welcome-info")
-                .font(.system(size: FontSize.text))
-                .padding(.bottom, Spacing.s)
+                .font(.caption)
+                .padding(.bottom, Spacing.l)
+                .foregroundColor(AppColor.Creme)
             
-            HStack(alignment: .center) {
-                Text("welcome-info2")
-                    .font(.system(size: FontSize.text))
+            Divider()
+                .padding(.vertical, 10)
+            
+            // Features
+            Text("features-title")
+                .font(.headline)
+            
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "doc")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("scripts-info")
+                            .font(.caption)
+                            .frame(maxWidth: 200, maxHeight: 40)
+                            .lineLimit(2)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "tag")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("tags-info")
+                            .font(.caption)
+                            .frame(maxWidth: 200, maxHeight: 40)
+                            .lineLimit(2)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "command")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("shortcuts-info")
+                            .font(.caption)
+                            .frame(maxWidth: 200, maxHeight: 40)
+                            .lineLimit(2)
+                    }
+                }
                 
-                Image(systemName: "gear")
-                    .resizable()
-                    .frame(width: IconSize.l, height: IconSize.l)
-                    .padding(Spacing.m)
-                    .background(AppColor.Light)
-                    .clipShape(Circle())
+                Spacer()
                 
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "bell.badge")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("notification-info")
+                            .font(.caption)
+                            .frame(maxWidth: 200, maxHeight: 40)
+                            .lineLimit(2)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "doc.text.magnifyingglass")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("scripts-details-info")
+                            .font(.caption)
+                            .frame(maxWidth: 200, maxHeight: 40)
+                            .lineLimit(2)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "star.square.on.square")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("extras-info")
+                            .font(.caption)
+                            .frame(maxWidth: 200, maxHeight: 40)
+                            .lineLimit(2)
+                    }
+                }
+                
+                Spacer()
             }
             
-            Text("welcome-info3")
-                .font(.system(size: FontSize.text))
+            Divider()
+                .padding(.vertical, 10)
             
-            HStack(alignment: .center) {
-                Text("welcome-info4")
-                    .font(.system(size: FontSize.text))
+            // Instructions
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("instructions-title")
+                        .font(.headline)
+                    
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("add-script-tag-instruction")
+                            .font(.caption)
+                            .lineLimit(3)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "gear")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("settings-instruction")
+                            .font(.caption)
+                            .lineLimit(3)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 15) {
+                        Image(systemName: "play")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .padding(10)
+                            .background(.ultraThickMaterial)
+                            .clipShape(.circle)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        
+                        Text("play-instruction")
+                            .font(.caption)
+                            .frame(maxWidth: 220, maxHeight: 60)
+                            .lineLimit(3)
+                    }
+                }
+                .padding(.trailing, 30)
                 
-                Image(systemName: "checkmark")
-                    .foregroundColor(AppColor.Success)
-                    .frame(width: IconSize.s, height: IconSize.s)
-                    .padding(Spacing.l)
-                    .background(AppColor.Background)
-                    .clipShape(Circle())
+                Spacer()
                 
-                Image(systemName: "xmark")
-                    .foregroundColor(AppColor.Danger)
-                    .frame(width: IconSize.s, height: IconSize.s)
-                    .padding(Spacing.l)
-                    .background(AppColor.Background)
-                    .clipShape(Circle())
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("states-title")
+                        .font(.headline)
+                    
+                    HStack(alignment: .center) {
+                        HStack(alignment: .center, spacing: 15) {
+                            Image(systemName: "checkmark")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(AppColor.Success)
+                                .frame(height: 10)
+                                .padding(10)
+                                .background(.ultraThickMaterial)
+                                .clipShape(.circle)
+                                .shadow(radius: 3, x: 1, y: 2)
+                            
+                            Text("success")
+                                .font(.caption)
+                        }
+                        .padding(.trailing, 25)
+                        
+                        HStack(alignment: .center, spacing: 15) {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .foregroundColor(AppColor.Warning)
+                                .scaledToFit()
+                                .frame(height: 10)
+                                .padding(10)
+                                .background(.ultraThickMaterial)
+                                .clipShape(.circle)
+                                .shadow(radius: 3, x: 1, y: 2)
+                            
+                            Text("interrupted")
+                                .font(.caption)
+                        }
+                    }
+                    
+                    HStack(alignment: .center) {
+                        HStack(alignment: .center, spacing: 15) {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .foregroundColor(AppColor.Danger)
+                                .scaledToFit()
+                                .frame(height: 10)
+                                .padding(10)
+                                .background(.ultraThickMaterial)
+                                .clipShape(.circle)
+                                .shadow(radius: 3, x: 1, y: 2)
+                            
+                            Text("failed")
+                                .font(.caption)
+                        }
+                        .padding(.trailing, 25)
+                        
+                        HStack(alignment: .center, spacing: 15) {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.white)
+                                .frame(height: 10)
+                                .padding(10)
+                                .background(AppColor.Danger)
+                                .clipShape(.circle)
+                                .shadow(radius: 3, x: 1, y: 2)
+                            
+                            Text("failed-logs")
+                                .font(.caption)
+                        }
+                    }
+                }
                 
-                Image(systemName: "xmark")
-                    .foregroundColor(AppColor.Dark)
-                    .frame(width: IconSize.s, height: IconSize.s)
-                    .padding(Spacing.l)
-                    .background(AppColor.Danger)
-                    .clipShape(Circle())
+                Spacer()
             }
             
-            Text("welcome-info5")
-                .font(.system(size: FontSize.text))
+            Divider()
+                .padding(.vertical, 10)
             
             Spacer()
             
             HStack(alignment: .center) {
                 Text("welcome-toggle")
-                    .font(.system(size: FontSize.text))
                 
                 Toggle("", isOn: $hideWelcomeScreen)
                 
@@ -92,22 +301,22 @@ struct WelcomeView: View {
                         Text("welcome-close")
                             .padding(.trailing, Spacing.l)
                         
-                        Image(systemName: "xmark")
+                        Image(systemName: "arrow.right.circle")
                             .resizable()
                             .frame(width: IconSize.m, height: IconSize.m)
-                            .foregroundColor(AppColor.Creme)
+                            .foregroundColor(.white)
                         
                     }
                     .padding(Spacing.l)
-                    .background(AppColor.Dark)
+                    .background(AppColor.Primary)
                     .clipShape(RoundedRectangle(cornerRadius: 10.0))
-                    
+                    .shadow(radius: 3, x: 1, y: 2)
                 }
                 .buttonStyle(.plain)
             }
             
         }
-        .frame(width: 500, height: 420)
+        .frame(width: 600, height: 550)
         .padding(Spacing.xl)
         
     }

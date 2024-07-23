@@ -7,13 +7,19 @@
 
 import Foundation
 
-protocol ScriptHandlerProtocol: ObservableObject {
-    var settingsHandler: SettingsHandler { get }
+protocol ScriptHandlerProtocol {        
+    var finishedCounter: Int { get set }
     
-    var output: String { get }
-    
-    func runScript(_ script: Script, test: Bool) async -> ResultState
-    
-    func handleScriptResult(result: Int32, test: Bool, scriptName: String) -> ResultState
-    func writeLog(pathLogs: String)
+    var scripts: [Script] { get set }
+    var editScript: Script { get set }
+    var input: String { get set }
+
+    var editMode: Bool { get set }
+    var savedScripts: [Script] { get }
+    var selectedIcon: Int { get set }
+    var runningScript: [Script] { get set }
+
+    func runScript(_ script: Script, test: Bool) async -> Result
+    func interruptRunningProcess(scriptId: UUID)
+    func saveScripts()
 }

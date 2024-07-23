@@ -6,294 +6,332 @@
 //
 
 import Foundation
-import AppKit
+import Resolver
 import SwiftUI
-import AnyCodable
+import KeyboardShortcuts
 
-class ScriptViewModel: ObservableObject {
-    internal let dataHandler = DataHandler.shared
-    internal let settingsHandler = SettingsHandler()
-    internal let storageHandler = StorageHandler()
-    internal let scriptHandler = ScriptHandler()
+@Observable
+class ScriptViewModel {
+    @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
+    @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
+    @LazyInjected @ObservationIgnored var tagHandler: TagHandlerProtocol
     
-    @Published var showAddScript: Bool = false
-    
-    @Published var editMode: Bool = false
-    @Published var editId: UUID = UUID()
-    
-    // Form values
-    @Published var name: String = ""
-    @Published var command: String = ""
-    @Published var selectedIcon: Int = 0
-    @Published var selectedTag: UUID = UUID()
-    
-    @Published var isLogEnabled: Bool = DefaultSettings.logs
-    @Published var runningScript: [Script] = []
-    @Published var sciptTimes: [ScriptTime] = []
-    @Published var isRunning: Bool = false
+    @LazyInjected @ObservationIgnored private var settingsHandler: SettingsHandlerProtocol
+    @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
+    @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
     
     private var runningTimer: Timer?
+    
+    var scripts: [Script] {
+        scriptHandler.scripts
+    }
+    
+    var editMode: Bool {
+        scriptHandler.editMode
+    }
+    
+    var isLogEnabled: Bool {
+        settingsHandler.settings.logs
+    }
+    
+    var searchString: String = ""
     
     @MainActor
     func runScript(showOutput: Bool, scriptId: UUID) {
         Task {
-            guard var tempScripts = try storageHandler.load([Script].self, key: .SCRIPTS)?.get() else { return }
-            guard let index = tempScripts.firstIndex(where: { $0.id == scriptId }) else { return }
+            var tempScript = scriptHandler.scripts.first { $0.id == scriptId }
+            if tempScript == nil { return }
             
-            changeIsRunningState(state: true)
+            var finishedTime = 0
+            tempScript!.output = ""
+            tempScript!.error = ""
             
             if showOutput {
-                openOutputWindow()
+                openOutputWindow(script: tempScript!)
             }
             
-            var tempTimes = self.sciptTimes
-            var tempIndex = 0
-            if let timeIndex = tempTimes.firstIndex(where: { $0.scriptId == scriptId }) {
-                tempIndex = timeIndex
-            } else {
-                tempTimes.append(ScriptTime(scriptId: scriptId))
-                tempIndex = tempTimes.count - 1
+            // Track new running time
+            if tempScript!.time == nil {
+                tempScript!.time = DefaultScriptTime
             }
             
-            let runningIndex = tempIndex
             let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                tempTimes[runningIndex].currentTime += 1
-            }
-            
-            startRunningTimer(tempTimes[runningIndex].runningTimes, runningIndex)
-            
-            // Update all scripts
-            let success = await scriptHandler.runScript(tempScripts[index], test: false)
-            
-            timer.invalidate()
-            runningTimer?.invalidate()
-            
-            let finishedTime = tempTimes[runningIndex].currentTime
-            
-            if success == .successfull {
-                tempTimes[runningIndex].runningTimes.append(finishedTime)
-            }
-            
-            tempTimes[runningIndex].currentTime = 0
-            tempTimes[runningIndex].remainingTime = nil
-            tempTimes[runningIndex].progressValue = 1.0
-
-            storageHandler.save(value: AnyCodable(tempTimes), key: .TIMES)
-            
-            tempScripts[index].success = success
-            tempScripts[index].finished = true
-            tempScripts[index].lastRun = Date.now
-            storageHandler.save(value: AnyCodable(tempScripts), key: .SCRIPTS)
-            
-            // Update local scripts (filtered)
-            let scriptIndex = self.dataHandler.scripts.firstIndex(where: { $0.id == scriptId })
-            guard let index = scriptIndex else { return }
-            self.dataHandler.scripts[index].success = success
-            self.dataHandler.scripts[index].finished = true
-            self.dataHandler.scripts[index].lastRun = Date.now
-            self.sciptTimes = tempTimes
-            
-            changeIsRunningState(state: false)
-            
-            self.runningScript = self.runningScript.filter { $0.id != scriptId }
-            
-            // Check if logs enabled
-            loadSettings()
-        }
-    }
-    
-    private func startRunningTimer(_ previousTimes: [Int],_ runningIndex: Int) {
-        if previousTimes.count > 3 {
-            var totalTime = previousTimes.reduce(0, +) / previousTimes.count
-            let tempTotalTime = totalTime
-            
-            runningTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                if totalTime >= 1 {
-                    totalTime -= 1
-                    
-                    let mins = String(format: "%02d", totalTime / 60)
-                    let secs = String(format: "%02d", totalTime % 60)
-                    let progress = Double(totalTime) / Double(tempTotalTime)
-                    
-                    DispatchQueue.main.async {
-                        withAnimation {
-                            self.sciptTimes[runningIndex].remainingTime = "\(mins):\(secs)"
-                            self.sciptTimes[runningIndex].progressValue = progress
-                        }
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        withAnimation {
-                            self.sciptTimes[runningIndex].remainingTime = nil
-                            self.sciptTimes[runningIndex].progressValue = 0.0
-                        }
-                    }
+                DispatchQueue.main.async {
+                    finishedTime += 1
                 }
             }
+            
+            // Start timer for countdown
+            startRunningTimer(tempScript!)
+            
+            // Update all scripts
+            let result = await scriptHandler.runScript(tempScript!, test: false)
+            
+            // Stop track timer for new last time
+            timer.invalidate()
+            // Stop countdown timer for displaying
+            runningTimer?.invalidate()
+            
+            // If successfull, save new last run time
+            if result.state == .successfull {
+                tempScript!.time!.lastTime = finishedTime
+                // Reset time values for script
+                tempScript!.time!.currentTime = 0
+                tempScript!.time!.remainingTime = nil
+                tempScript!.time!.progressValue = 1.0
+            }
+            
+            // Save script result
+            tempScript!.success = result.state
+            tempScript!.finished = true
+            tempScript!.lastRun = Date.now
+            tempScript!.output = result.output
+            tempScript!.error = result.error
+            
+            let saveIndex = scriptHandler.scripts.firstIndex(where: { $0.id == scriptId })!
+            scriptHandler.scripts[saveIndex] = tempScript!
+            
+            scriptHandler.saveScripts()
+            
+            scriptHandler.runningScript = scriptHandler.runningScript.filter { $0.id != scriptId }
         }
     }
     
     @MainActor
-    func changeIsRunningState(state: Bool) {
-        if !state {
-            if self.runningScript.isEmpty {
-                self.isRunning = false
-            }
+    func searchForScript() {
+        tagHandler.selectedTag = nil
+        
+        if searchString.isEmpty {
+            scriptHandler.scripts = scriptHandler.savedScripts
         } else {
-            self.isRunning = true
-        }
-    }
-    
-    private func openOutputWindow() {
-        DispatchQueue.main.async {
-            let window = NSWindow()
-            let contentView = OutputWindowView(scriptHandler: self.scriptHandler)
-            window.contentViewController = NSHostingController(rootView: contentView)
-            window.styleMask = [.titled, .resizable, .closable, .miniaturizable]
-            window.center()
-            window.title = "Output"
-            window.isReleasedWhenClosed = false
-            window.orderFrontRegardless()
-            window.makeKeyAndOrderFront(nil)
+            scriptHandler.scripts = scriptHandler.savedScripts.filter { $0.name.lowercased().contains(searchString.lowercased()) }
         }
     }
     
     @MainActor
-    func loadSettings() {
-        // Get current settings
-        settingsHandler.loadSettings()
-        
-        // Enable logs button
-        self.isLogEnabled = self.settingsHandler.settings.logs
-    }
-    
-    func filterScripts(tag: Tag) {
-        dataHandler.scripts = dataHandler.scripts.filter({ $0.tagID == tag.id })
-    }
-    
     func removeTagFromScript(tagId: UUID?) {
-        // Refresh scripts to remove filter
-        dataHandler.selectedTag = nil
-        dataHandler.loadScripts()
-        
         guard tagId != nil else { return }
-        for (index, script) in dataHandler.scripts.enumerated() {
+        
+        resetScripts()
+        
+        for (index, script) in scriptHandler.scripts.enumerated() {
             if script.tagID == tagId {
-                dataHandler.scripts[index].tagID = nil
+                scriptHandler.scripts[index].tagID = EmptyTag.id
             }
         }
         
-        updateSavedScripts()
-        
-        dataHandler.selectedTag = tagId
+        scriptHandler.saveScripts()
+        tagHandler.selectedTag = tagId
     }
     
-    func getTagById(id: UUID?) -> Tag? {
+    func getTagById(id: UUID) -> Tag? {
         if id != EmptyTag.id {
-            return dataHandler.tags.first(where: {$0.id == id})
+            return tagHandler.tags.first(where: {$0.id == id})
         } else {
             // Empty tag
             return nil
         }
     }
     
+    func getMatchingShortcut(_ id: UUID) -> Shortcut? {
+        return settingsHandler.settings.shortcuts.first(where: { $0.scriptId == id })
+    }
+    
+    @MainActor
     func saveScript() {
-        // Refresh scripts to remove filter
-        dataHandler.selectedTag = nil
-        dataHandler.loadScripts()
+        resetScripts()
         
-        var savedScripts = dataHandler.scripts
+        var updatedScripts = scriptHandler.scripts
         
-        let tempScript = Script(name: name, icon: ScriptIcons[selectedIcon], command: command, success: .ready, finished: false, tagID: selectedTag)
+        // Change uuid for new script
+        scriptHandler.editScript.id = UUID()
+        scriptHandler.editScript.input = scriptHandler.input
+        scriptHandler.editScript.icon = ScriptIcons[scriptHandler.selectedIcon]
+        updatedScripts.append(scriptHandler.editScript)
         
-        savedScripts.append(tempScript)
-        storageHandler.save(value: AnyCodable(savedScripts), key: .SCRIPTS)
+        scriptHandler.scripts = updatedScripts
+        scriptHandler.saveScripts()
         
-        // Refresh data
-        dataHandler.loadScripts()
-        
-        // Reset form
         resetForm()
-    }
-    
-    func resetForm() {
-        name = ""
-        command = ""
-        selectedIcon = 0
-        selectedTag = UUID()
-    }
-    
-    func updateSavedScripts() {
-        storageHandler.save(value: AnyCodable(dataHandler.scripts), key: .SCRIPTS)
-    }
-    
-    func deleteScript(id: UUID) {
-        // Refresh scripts to remove filter
-        dataHandler.loadScripts()
         
-        dataHandler.scripts = dataHandler.scripts.filter {
-            $0.id != id
-        }
-        
-        updateSavedScripts()
+        modalHandler.hideModal()
+        hintHandler.showHint(String(localized: "save-script-success"), type: .success)
     }
     
+    @MainActor
+    func showDeleteScriptAlert(id: UUID) {
+        alertHandler.showAlert(
+            title: String(localized: "delete-title"),
+            message: String(localized: "delete-msg"),
+            btnTitle: String(localized: "delete"),
+            cancelVisible: true,
+            action: {
+                self.deleteScript(id: id)
+                self.alertHandler.hideAlert()
+                self.hintHandler.showHint(String(localized: "script-deleted"), type: .success)
+            }
+        )
+    }
+    
+    @MainActor
     func saveChangedScript() {
-        // Refresh scripts to remove filter
-        dataHandler.selectedTag = nil
-        dataHandler.loadScripts()
+        resetScripts()
         
-        let index: Int? = dataHandler.scripts.firstIndex(where: { $0.id == editId })
+        let editScript = scriptHandler.editScript
+        let index: Int? = scriptHandler.scripts.firstIndex(where: { $0.id == editScript.id })
         
         guard let index else { return }
-        var selectedScript = dataHandler.scripts[index]
-        selectedScript.name = name
-        selectedScript.icon = ScriptIcons[selectedIcon]
-        selectedScript.command = command
-        selectedScript.tagID = selectedTag
+        var selectedScript = scriptHandler.scripts[index]
+        selectedScript.name = editScript.name
+        selectedScript.icon = ScriptIcons[scriptHandler.selectedIcon]
+        selectedScript.command = editScript.command
+        selectedScript.tagID = editScript.tagID
+        selectedScript.input = scriptHandler.input
         
-        dataHandler.scripts[index] = selectedScript
+        scriptHandler.scripts[index] = selectedScript
+        scriptHandler.saveScripts()
         
-        updateSavedScripts()
+        scriptHandler.editMode = false
+        resetForm()
         
-        // Refresh data
-        dataHandler.loadScripts()
-        
-        closeEdit()
+        modalHandler.hideModal()
+        hintHandler.showHint(String(localized: "save-edit-script-success"), type: .success)
     }
     
     @MainActor
     func openEdit(script: Script) {
-        editMode = true
-        editId = script.id
+        scriptHandler.editMode = true
+        scriptHandler.editScript = script
+        scriptHandler.input = script.input ?? ""
         
-        name = script.name
-        command = script.command
-        selectedIcon = ScriptIcons.firstIndex(of: script.icon) ?? 0
-        selectedTag = script.tagID ?? UUID()
-        
-        self.showAddScript = true
-    }
-    
-    func closeEdit() {
-        editMode = false
-        resetForm()
+        modalHandler.showModal(.EDIT_SCRIPT)
     }
     
     func openLogs() {
-        let savedSettings: Settings? = settingsHandler.settings
-        guard let settings = savedSettings else {return}
+        let settings = settingsHandler.settings
         guard let url = URL(string: "file://\(settings.pathLogs)") else {return}
         
         NSWorkspace.shared.open(url)
     }
     
+    func getTagColor(_ tagId: UUID?) -> Color {
+        var iconColor = Color.white
+        if let tagId {
+            do {
+                iconColor = try ColorConverter.decodeColor(from: self.getTagById(id: tagId)?.badgeColor ?? EmptyTag.badgeColor)
+            } catch {
+                // Fallback default color
+            }
+        }
+        
+        return iconColor
+    }
+    
     @MainActor
-    func loadScriptTimes() {
-        do {
-            self.sciptTimes = try self.storageHandler.load([ScriptTime].self, key: .TIMES)?.get() ?? []
-        } catch {
-            debugPrint("Error while loading script times")
+    func openOutputWindow(script: Script) {
+        let window = NSWindow()
+        let contentView = OutputWindowView(script: script, window: window)
+        window.contentViewController = NSHostingController(rootView: contentView)
+        window.styleMask = [.titled, .resizable, .closable, .miniaturizable]
+        window.center()
+        window.title = "Output"
+        window.isReleasedWhenClosed = false
+        window.orderFrontRegardless()
+        window.makeKeyAndOrderFront(nil)
+    }
+}
+
+// MARK: - Helper functions
+extension ScriptViewModel {
+    @MainActor
+    private func deleteScript(id: UUID) {
+        scriptHandler.scripts = scriptHandler.scripts.filter {
+            $0.id != id
+        }
+        
+        scriptHandler.saveScripts()
+        
+        deleteShortcut(id)
+    }
+    
+    @MainActor
+    private func deleteShortcut(_ id: UUID) {
+        // Remove shortcut from keyboardshortcuts-register
+        settingsHandler.settings.shortcuts.forEach { shortcut in
+            if shortcut.scriptId == id {
+                let shortcutName = getShortcutName(index: shortcut.shortcutIndex)
+                guard let shortcutName else { return }
+                KeyboardShortcuts.reset(shortcutName)
+            }
+        }
+        
+        // Remove shortcut from settings
+        settingsHandler.settings.shortcuts = settingsHandler.settings.shortcuts.filter { $0.scriptId != id }
+        settingsHandler.saveSettings()
+    }
+    
+    @MainActor
+    private func getShortcutName(index: Int) -> KeyboardShortcuts.Name? {
+        switch index {
+        case 0:
+            return .runScript1
+        case 1:
+            return .runScript2
+        case 2:
+            return .runScript3
+        case 3:
+            return .runScript4
+        case 4:
+            return .runScript5
+        default:
+            return nil
+        }
+    }
+    
+    @MainActor
+    private func resetForm() {
+        scriptHandler.editScript.name = ""
+    }
+    
+    @MainActor
+    private func resetScripts() {
+        tagHandler.selectedTag = nil
+    }
+}
+
+// MARK: - Process timer handling
+extension ScriptViewModel {
+    private func startRunningTimer(_ script: Script) {
+        guard script.time!.lastTime != nil else { return }
+        
+        var totalTime = script.time!.lastTime!
+        let tempTotalTime = totalTime
+        
+        self.runningTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            if totalTime >= 1 {
+                totalTime -= 1
+                
+                let mins = String(format: "%02d", totalTime / 60)
+                let secs = String(format: "%02d", totalTime % 60)
+                let progress = Double(totalTime) / Double(tempTotalTime)
+                
+                DispatchQueue.main.async {
+                    self.updateTime(scriptId: script.id, remainingTime: "\(mins):\(secs)", progressVal: progress)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.updateTime(scriptId: script.id, remainingTime: nil, progressVal: 0.0)
+                }
+            }
+        }
+    }
+    
+    @MainActor
+    private func updateTime(scriptId: UUID, remainingTime: String?, progressVal: Double) {
+        withAnimation {
+            guard let index = scriptHandler.scripts.firstIndex(where: { $0.id == scriptId }) else { return }
+            scriptHandler.scripts[index].time!.remainingTime = remainingTime
+            scriptHandler.scripts[index].time!.progressValue = progressVal
         }
     }
 }

@@ -6,98 +6,104 @@
 //
 
 import SwiftUI
-import AnyCodable
 
 struct ScriptRunButtonView: View {
-    let viewModel: ScriptViewModel
-    let scriptHandler: ScriptHandler = ScriptHandler()
+    @State private var vm = ScriptViewModel()
     
     var script: Script
     
     @State var showRunPopover: Bool = false
     
     var body: some View {
-        if (viewModel.isRunning && viewModel.runningScript.contains(where: { $0.id == script.id })) {
-            if let time = viewModel.sciptTimes.first(where: { $0.scriptId == script.id })?.remainingTime {
+        if (vm.scriptHandler.runningScript.contains(where: { $0.id == script.id })) {
+            if let time = vm.scriptHandler.scripts.first(where: { $0.id == script.id })?.time?.remainingTime {
                 Text(time)
                     .font(.caption2)
                     .padding(Spacing.l)
-                    .background(AppColor.Light)
                     .cornerRadius(10.0)
             } else {
                 ProgressView()
                     .frame(width: IconSize.s, height: IconSize.s)
                     .scaleEffect(0.5)
                     .padding(Spacing.l)
-                    .background(AppColor.Light)
                     .clipShape(Circle())
             }
         } else {
             Button {
-                showRunPopover.toggle()
+                // Empty - LongPress on Image; Button for animation
             } label: {
                 Image(systemName: "play")
                     .resizable()
                     .frame(width: IconSize.s, height: IconSize.s)
                     .padding(Spacing.l)
-                    .background(AppColor.Light)
                     .clipShape(Circle())
+                    .onTapGesture {
+                        vm.scriptHandler.runningScript.append(script)
+                        vm.runScript(showOutput: false, scriptId: script.id)
+                    }
+                    .onLongPressGesture(minimumDuration: 1.0) {
+                        showRunPopover.toggle()
+                    }
             }
             .buttonStyle(.plain)
             .popover(isPresented: $showRunPopover, arrowEdge: .bottom) {
-                VStack(alignment: .center, spacing: Spacing.m) {
+                VStack(alignment: .center, spacing: Spacing.l) {
                     Button {
                         showRunPopover.toggle()
-                        viewModel.runningScript.append(script)
-                        viewModel.runScript(showOutput: false, scriptId: script.id)
+                        vm.scriptHandler.runningScript.append(script)
+                        vm.runScript(showOutput: false, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
                             
                             Text("script-run")
-                                .font(.system(size: FontSize.text))
+                                .font(.caption)
                             
                             Spacer()
                             
                             Image(systemName: "play")
                                 .resizable()
+                                .foregroundStyle(AppColor.Primary)
                                 .frame(width: IconSize.s, height: IconSize.s)
                         }
                         .frame(width: 150)
                         .padding(.horizontal, Spacing.l)
                         .padding(.vertical, Spacing.l)
-                        .background(AppColor.Dark)
+                        .background(.ultraThinMaterial)
                         .cornerRadius(8)
+                        .shadow(radius: 3, x: 1, y: 2)
                     }
                     .buttonStyle(.plain)
                     
                     Button {
                         showRunPopover.toggle()
-                        viewModel.runningScript.append(script)
-                        viewModel.runScript(showOutput: true, scriptId: script.id)
+                        vm.scriptHandler.runningScript.append(script)
+                        vm.runScript(showOutput: true, scriptId: script.id)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
                             
                             Text("script-run-output")
-                                .font(.system(size: FontSize.text))
+                                .font(.caption)
                             
                             Spacer()
                             
                             Image(systemName: "play.display")
                                 .resizable()
+                                .foregroundStyle(AppColor.Secondary)
                                 .frame(width: IconSize.s, height: IconSize.s)
                         }
                         .frame(width: 150)
                         .padding(.horizontal, Spacing.l)
                         .padding(.vertical, Spacing.l)
-                        .background(AppColor.Dark)
+                        .background(.ultraThinMaterial)
                         .cornerRadius(8)
+                        .shadow(radius: 3, x: 1, y: 2)
                     }
+                    //                    .disabled(vm.scriptHandler.isRunningWithOutput)
                     .buttonStyle(.plain)
                 }
-                .padding(.all, Spacing.m)
-                .background(AppColor.AppBg)
+                .padding(.all, Spacing.l)
             }
         }
     }
@@ -105,6 +111,6 @@ struct ScriptRunButtonView: View {
 
 struct ScriptRunButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptRunButtonView(viewModel: ScriptViewModel(), script: DefaultScript)
+        ScriptRunButtonView(script: DefaultScript)
     }
 }

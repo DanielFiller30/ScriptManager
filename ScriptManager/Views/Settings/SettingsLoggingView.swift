@@ -8,28 +8,36 @@
 import SwiftUI
 
 struct SettingsLoggingView: View {
-    @EnvironmentObject var settings: SettingsHandler
+    @Binding var vm: SettingsViewModel
     
     var body: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .leading) {
             HStack(alignment: .center) {
                 Text("settings-logging")
-                    .font(.system(size: FontSize.text))
+                    .font(.caption)
                 
                 Spacer()
                 
-                Toggle("", isOn: $settings.loggingState)
+                Toggle("", isOn: $vm.tempSettings.logs)
                     .toggleStyle(.switch)
             }
             
+            Text("path-logs")
+                .font(.caption)
+            
             HStack(alignment: .center) {
-                Text("path-logs")
-                    .font(.system(size: FontSize.text))
+                TextField("", text: $vm.tempSettings.pathLogs)
+                    .textFieldStyle(.roundedBorder)
                 
-                Spacer()
-                
-                TextField("", text: $settings.logsPath)
-                    .frame(width: 150)
+                Button {
+                    vm.openLoggingDirectory()
+                } label: {
+                    Image(systemName: "folder")
+                        .padding(Spacing.m)
+                        .background(.ultraThickMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                }
+                .buttonStyle(.plain)
             }
         }
         .padding(.vertical, Spacing.m)
@@ -39,6 +47,6 @@ struct SettingsLoggingView: View {
 
 struct SettingsLoggingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsLoggingView()
+        SettingsLoggingView(vm: .constant(SettingsViewModel()))
     }
 }

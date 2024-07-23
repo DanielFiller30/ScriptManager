@@ -1,4 +1,5 @@
 {
+  "originHash" : "15e0a112f73fd8c1722da30c7a807ec2f8a681662f68ba9561e25c53270eb3e6",
   "pins" : [
     {
       "identity" : "alerttoast",
@@ -10,12 +11,30 @@
       }
     },
     {
-      "identity" : "anycodable",
+      "identity" : "codeeditor",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Flight-School/AnyCodable.git",
+      "location" : "https://github.com/ZeeZide/CodeEditor.git",
       "state" : {
-        "revision" : "862808b2070cd908cb04f9aafe7de83d35f81b05",
-        "version" : "0.6.7"
+        "revision" : "f5c076b94f4ceb05abff88ba91d75a8d57143f0c",
+        "version" : "1.2.6"
+      }
+    },
+    {
+      "identity" : "confettiswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/simibac/ConfettiSwiftUI.git",
+      "state" : {
+        "revision" : "f45961f97bbae6fff6e2e64546fea0189425ad92",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "highlightr",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/helje5/Highlightr",
+      "state" : {
+        "revision" : "bd0358056ff1f12ea83833a9fc1b3b5a396a9da0",
+        "version" : "3.0.2"
       }
     },
     {
@@ -35,7 +54,16 @@
         "branch" : "main",
         "revision" : "9c41991631605c8ccfe0347bbcb5c659169f2ec5"
       }
+    },
+    {
+      "identity" : "resolver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Resolver.git",
+      "state" : {
+        "revision" : "97de0b0320036607564af4a60025b48f8d041221",
+        "version" : "1.5.0"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

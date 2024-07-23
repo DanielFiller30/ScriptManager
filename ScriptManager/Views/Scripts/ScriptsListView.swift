@@ -8,47 +8,147 @@
 import SwiftUI
 
 struct ScriptsListView: View {
-    @StateObject var viewModel: ScriptViewModel
-    @ObservedObject var data = DataHandler.shared
+    @State private var vm = ScriptViewModel()
+    @State private var vmTags = TagViewModel()
+    @State private var showAddScriptModal = false
+    @State private var showSearch = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.l) {
             HStack(alignment: .center) {
-                Text("saved \(String(data.scripts.count))")
-                    .fontWeight(.bold)
-                    .font(.system(size: FontSize.subTitle))
+                if !showSearch {
+                    Text("saved \(String(vm.scripts.count))")
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .padding(.trailing, Spacing.m)
+                } else {
+                    if vm.scripts.count == 1 {
+                        Text("\(String(vm.scripts.count)) result")
+                            .fontWeight(.bold)
+                            .font(.headline)
+                            .padding(.trailing, Spacing.m)
+                    } else {
+                        Text("\(String(vm.scripts.count)) results")
+                            .fontWeight(.bold)
+                            .font(.headline)
+                            .padding(.trailing, Spacing.m)
+                    }
+                }
                 
                 Spacer()
                 
-                MenuSheetView(
-                    hint: "add-new-script",
-                    sheetTitle: viewModel.editMode ? "edit-script-title" : "add-new-script",
-                    onClick: {
-                        viewModel.editMode = false
-                        viewModel.showAddScript.toggle()
-                    },
-                    onClose: viewModel.editMode ? { viewModel.closeEdit() } : {},
-                    isPresented: $viewModel.showAddScript,
-                    height: 480
-                ) {
-                    ScriptFormView(viewModel: viewModel)
-                }
+                SearchbarView(vm: $vm, show: $showSearch)
             }
             .padding(.bottom, Spacing.l)
             
-            if (viewModel.dataHandler.scripts.isEmpty) {
-                Text("empty-scripts")
-                    .font(.system(size: FontSize.text))
-                    .foregroundColor(AppColor.Creme)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-                
-                Spacer()
+            TagsListView()
+            
+            if (vm.scripts.isEmpty) {
+                VStack(alignment: .center) {
+                    Spacer()
+                    
+                    if vm.tagHandler.selectedTag != nil {
+                        // Tag is active
+                        Image(systemName: "doc.text.magnifyingglass")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 60)
+                            .symbolEffect(.bounce, options: .nonRepeating)
+                        
+                        Text("empty-scripts-filter")
+                            .font(.caption2)
+                            .foregroundColor(AppColor.Creme)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .multilineTextAlignment(.center)
+                        
+                        Button {
+                            vmTags.setActiveTag(nil)
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Text("remove-filter")
+                                Spacer()
+                                Image(systemName: "tag.slash")
+                            }
+                            .frame(width: 150)
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(15)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        }
+                        .buttonStyle(.plain)
+                        
+                    } else if !vm.searchString.isEmpty {
+                        // Search is active
+                        Image(systemName: "doc.text.magnifyingglass")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 60)
+                            .symbolEffect(.bounce, options: .nonRepeating)
+                        
+                        Text("empty-scripts-search")
+                            .font(.caption2)
+                            .foregroundColor(AppColor.Creme)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .multilineTextAlignment(.center)
+                        
+                        Button {
+                            vm.searchString.removeAll()
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Text("remove-search")
+                                Spacer()
+                                Image(systemName: "minus.magnifyingglass")
+                            }
+                            .frame(width: 150)
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(15)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        }
+                        .buttonStyle(.plain)
+                    } else {
+                        // No scripts saved
+                        Image(systemName: "doc.badge.plus")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 60)
+                            .symbolEffect(.bounce, options: .nonRepeating)
+                        
+                        Text("empty-scripts")
+                            .font(.caption2)
+                            .foregroundColor(AppColor.Creme)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .multilineTextAlignment(.center)
+                        
+                        Button {
+                            vm.modalHandler.showModal(.ADD_SCRIPT)
+                        } label: {
+                            HStack {
+                                Spacer()
+                                Text("add-new-script")
+                                Spacer()
+                                Image(systemName: "doc")
+                            }
+                            .frame(width: 200)
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(15)
+                            .shadow(radius: 3, x: 1, y: 2)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    
+                    Spacer()
+                }
             } else {
                 ScrollView {
-                    ForEach($data.scripts) { $script in
-                        ScriptRowView(viewModel: viewModel, script: $script)
+                    ForEach(vm.scripts) { script in
+                        ScriptRowView(showAddScriptModal: $showAddScriptModal, script: script)
                             .padding(.horizontal, Spacing.l)
                             .padding(.bottom, Spacing.m)
                     }
@@ -57,13 +157,14 @@ struct ScriptsListView: View {
                 }
             }
         }
-        .padding(.horizontal, Spacing.xl)
+        .padding(.horizontal, Spacing.xl + 4)
         .padding(.top, Spacing.m)
     }
 }
 
 struct ScriptsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ScriptsListView(viewModel: ScriptViewModel())
+        ScriptsListView()
+            .background(.gray)
     }
 }

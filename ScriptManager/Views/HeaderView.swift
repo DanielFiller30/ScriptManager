@@ -8,66 +8,80 @@
 import SwiftUI
 
 struct HeaderView: View {
-    @EnvironmentObject var settings: SettingsHandler
-    
-    @State var showCloseAlert: Bool = false
+    @State private var vm = HeaderViewModel()
     
     var body: some View {
         HStack(alignment: .center) {
-            Image("StatusBarIcon")
-                .foregroundColor(settings.mainColor)
+            Image("Logo")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 20.0)
+                .padding(.trailing, Spacing.m)
             
             Text("Script Manager")
                 .fontWeight(.bold)
             
-            Text("v3")
+            Text("v4")
                 .fontWeight(.light)
             
             Spacer()
             
+            if vm.selectedTag != nil {
+                Button {
+                    vm.showDeleteTagAlert()
+                } label: {
+                    HStack {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .frame(width: IconSize.m, height: IconSize.m)
+                    }
+                    .frame(width: IconSize.l, height: IconSize.l)
+                    .padding(Spacing.m)
+                    .background(.ultraThinMaterial)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(vm.getTagColor(), lineWidth: 1)
+                    )
+                    .shadow(radius: 3, x: 1, y: 2)
+                    .help("hint-remove-tag")
+                }
+                .buttonStyle(.plain)
+                .padding(.trailing, Spacing.m)
+            }
+            
             Button {
-                settings.showingPopover.toggle()
+                vm.modalHandler.showModal(.ADD)
+            } label: {
+                HStack {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: IconSize.m, height: IconSize.m)
+                }
+                .frame(width: IconSize.l, height: IconSize.l)
+                .padding(Spacing.m)
+                .background(.ultraThinMaterial)
+                .clipShape(Circle())
+                .shadow(radius: 3, x: 1, y: 2)
+            }
+            .buttonStyle(.plain)
+            .padding(.trailing, Spacing.m)
+            
+            Button {
+                vm.modalHandler.showModal(.SETTINGS)
             } label: {
                 Image(systemName: "gear")
                     .resizable()
                     .frame(width: IconSize.l, height: IconSize.l)
                     .padding(Spacing.m)
-                    .background(AppColor.Light)
+                    .background(.ultraThinMaterial)
                     .clipShape(Circle())
+                    .shadow(radius: 3, x: 1, y: 2)
             }
             .buttonStyle(.plain)
-            .popover(isPresented: $settings.showingPopover) {
-                SettingsView()
-            }
-            
-            Button {
-                showCloseAlert.toggle()
-            } label: {
-                Image(systemName: "xmark.circle")
-                    .resizable()
-                    .frame(width: IconSize.l, height: IconSize.l)
-                    .padding(Spacing.m)
-                    .background(AppColor.Light)
-                    .clipShape(Circle())
-            }
-            .buttonStyle(.plain)
-            .alert("close-app-title", isPresented: $showCloseAlert) {
-                Button("cancel", role: .cancel) {}
-                Button("close-app-btn") {
-                    terminateApp()
-                }
-                
-            } message: {
-                Text("close-app-msg")
-            }
-            
         }
         .padding(.vertical, 15)
         .padding(.horizontal, Spacing.xl)
-    }
-    
-    func terminateApp() {
-        NSApp.terminate(self)
     }
 }
 

@@ -17,5 +17,5 @@ struct Tag: Identifiable, Codable {
 let EmptyTag = Tag(
     id: UUID(uuidString: "6f7bcd9e-23dc-466c-85d3-4fc0ec5df5bb") ?? UUID(),
     name: "",
-    badgeColor: ColorHandler.defaultEncodedColor
+    badgeColor: ColorConverter.defaultEncodedColor
 )
