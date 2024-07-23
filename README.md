@@ -1,6 +1,6 @@
 
 
-<image style="display: inline-block;" src="Media/AppIcons/64.png" />
+<image style="display: inline-block;" src="Media/AppIcons/logo_64.png" />
 
 # Script Manager (macOS)
 
@@ -25,7 +25,17 @@ Script Manager is a menu bar-tool to organize and simplify running a custom term
 - Full customizable settings to use your personal configurations
 - Error-logging with custom directory
 - Local notifications when script finished
+- Global shortcuts for faster execution of scripts
 - ...
+
+### New features added in version 4.0 (v1.0.3)
+- New animations and brand new design
+- Highlighted text editor for easier creation of scripts
+- Now possible to interrupt running scripts
+- More possibilities with new input function for scripts
+- Presets for scripts and tags added
+- New searchbar for filtering your saved scripts
+- Better time analysis of your scripts
 
 ### New features added in version 3.0 (v1.0.2)
 - Fixed dismissing sheet to use ScriptManager with macOS Sonoma
@@ -40,8 +50,19 @@ Script Manager is a menu bar-tool to organize and simplify running a custom term
 - Keyboard-shortcuts for scripts
 - Toggle to run tool by startup
 
-<image src="Media/Screenshots/start_v2.png" width="250">    
-<image src="Media/Screenshots/settings_v2.png" width="250">    
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="DanielFiller" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+
+## Start
+<image src="Media/Screenshots/v4/start_v4.png" width="250">
+
+## Script
+<image src="Media/Screenshots/v4/script_v4.png" width="250">
+
+## Settings
+<image src="Media/Screenshots/v4/settings_v4.png" width="250">
+
+## Output window
+<image src="Media/Screenshots/v4/output_v4.png" width="250">
 
 ## Setup via Homebrew
 To install the ScriptManager with Homebrew, you have to run the following command in your terminal:
