@@ -390,7 +390,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Terminate application"
+            "value" : "Terminate"
           }
         }
       }
@@ -928,13 +928,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Falls du eine Profilkonfiguration für deine Shell verwendest, passe den Pfad zu dieser Datei an."
+            "value" : "Falls du eine Profilkonfiguration für deine Shell verwendest, passe den Pfad zu dieser Datei an. (Standardeinstellungen: zsh: /bin/zsh; profile: /.zshrc | bash: /bin/bash; profile: /.bash_profile)"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "If you are using a profile configuration for your shell then change your path to your profile file."
+            "value" : "If you are using a profile configuration for your shell then change your path to your profile file.(Default paths: zsh: /bin/zsh; profile: /.zshrc | bash: /bin/bash; profile: /.bash_profile) "
           }
         }
       }

@@ -37,9 +37,9 @@ class SettingsViewModel {
         didSet {
             tempSettings.shell.type = tempShellType
             
-            let shell: Shell = Shells.filter{ $0.type == tempSettings.shell.type }.first!
-            tempSettings.shell.path = shell.path
-            tempProfilePath = homeDir + (shell.profile ?? "")
+//            let shell: Shell = Shells.filter{ $0.type == tempSettings.shell.type }.first!
+//            tempSettings.shell.path = shell.path
+//            tempProfilePath = homeDir + (shell.profile ?? "")
         }
     }
     
@@ -140,6 +140,8 @@ class SettingsViewModel {
             Shortcut(shortcutIndex: 4, scriptId: selectedScript5, keys: selectedKeys5)
         ]
         
+        tempSettings.shell.type = tempShellType
+        tempSettings.shell.profile = tempProfilePath
         settingsHandler.settings = tempSettings
         settingsHandler.saveSettings()
         
