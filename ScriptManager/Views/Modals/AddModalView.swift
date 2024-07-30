@@ -78,7 +78,7 @@ struct AddModalView: View {
                 
                 Button {
                     vm.modalHandler.hideModal()
-                    vm.modalHandler.showModal(.TAG)
+                    vm.modalHandler.showModal(.ADD_TAG)
                 } label: {
                     HStack(alignment: .center) {
                         Spacer()

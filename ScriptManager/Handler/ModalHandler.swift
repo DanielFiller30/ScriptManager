@@ -15,21 +15,15 @@ class ModalHandler: ModalHandlerProtocol {
     
     func showModal(_ type: ModalType) {
         self.type = type
-        showModal()
+        
+        withAnimation {
+            self.modalVisible = true
+        }
     }
     
     func hideModal() {
         withAnimation {
             self.modalVisible = false
-        }
-    }
-}
-
-// MARK: - Helper functions
-extension ModalHandler {
-    private func showModal() {
-        withAnimation {
-            self.modalVisible = true
         }
     }
 }

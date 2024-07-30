@@ -47,6 +47,19 @@ class HeaderViewModel {
             }
         )
     }
+    
+    func openEditTag() {
+        guard let selected = tagHandler.tags.first(where: { $0.id == selectedTag }) else {
+            self.hintHandler.showHint(String(localized: "something-wrong"), type: .success)
+            return
+        }
+        
+        tagHandler.editMode = true
+        tagHandler.editTag = selected
+        tagHandler.editColor = try! ColorConverter.decodeColor(from: selected.badgeColor)
+        
+        modalHandler.showModal(.EDIT_TAG)
+    }
 }
 
 // MARK: - Helper functions

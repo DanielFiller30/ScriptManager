@@ -12,7 +12,7 @@ struct TagsListView: View {
     @State private var showTags = true
     
     var body: some View {
-        if (!vm.tags.isEmpty) {
+        if (vm.tags.count > 0) {
             VStack(alignment: .leading, spacing: Spacing.l) {
                 ScrollView(.horizontal) {
                     HStack(spacing: Spacing.l) {

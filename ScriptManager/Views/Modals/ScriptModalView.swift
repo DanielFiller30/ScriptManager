@@ -122,8 +122,8 @@ struct ScriptModalView: View {
                     language: .bash,
                     theme: CodeEditor.ThemeName(rawValue: "vs2015"),
                     flags: [ .selectable, .editable, .smartIndent ],
-                    autoPairs: [ "{": "}", "<": ">", "'": "'" ]
-                )
+                    autoPairs: [ "{": "}", "<": ">", "'": "'" ]                    
+                )                
             }.padding(.bottom, Spacing.l)
             
             HStack(alignment: .center) {
@@ -140,7 +140,7 @@ struct ScriptModalView: View {
             HStack(alignment: .center, spacing: Spacing.xl) {
                 // Cancel
                 CustomButtonView(
-                    onClick: { vm.modalHandler.hideModal() },
+                    onClick: { vm.hideModal() },
                     label: "cancel",
                     color: AnyShapeStyle(.ultraThickMaterial),
                     outlined: false,

@@ -24,6 +24,7 @@ class AlertHandler: AlertHandlerProtocol {
         self.message = message
         self.btnTitle = btnTitle
         self.action = action
+        self.cancelVisible = cancelVisible ?? true
         
         withAnimation {
             self.alertVisible = true
