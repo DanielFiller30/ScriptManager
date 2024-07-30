@@ -37,7 +37,7 @@ struct ModalView: View {
                 .padding(.bottom, Spacing.xl)
                 
                 switch vm.modalType {
-                case .TAG:
+                case .ADD_TAG, .EDIT_TAG:                    
                     TagModalView()
                 case .SETTINGS:
                     SettingsModalView()

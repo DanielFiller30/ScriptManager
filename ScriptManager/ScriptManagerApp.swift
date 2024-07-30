@@ -18,7 +18,7 @@ struct ScriptManagerApp: App {
     @State var hideWelcomeScreen: Bool = true
     @StateObject private var appState = AppState()
     
-    init() {
+    init() {        
         // Open welcome-screen on first launch
         if storageHandler.firstLaunch {
             openWindow()

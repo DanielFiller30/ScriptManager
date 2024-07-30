@@ -48,6 +48,28 @@ struct HeaderView: View {
                 }
                 .buttonStyle(.plain)
                 .padding(.trailing, Spacing.m)
+                
+                Button {
+                    vm.openEditTag()
+                } label: {
+                    HStack {
+                        Image(systemName: "pencil")
+                            .resizable()
+                            .frame(width: IconSize.m, height: IconSize.m)
+                    }
+                    .frame(width: IconSize.l, height: IconSize.l)
+                    .padding(Spacing.m)
+                    .background(.ultraThinMaterial)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(vm.getTagColor(), lineWidth: 1)
+                    )
+                    .shadow(radius: 3, x: 1, y: 2)
+                    .help("hint-remove-tag")
+                }
+                .buttonStyle(.plain)
+                .padding(.trailing, Spacing.m)
             }
             
             Button {

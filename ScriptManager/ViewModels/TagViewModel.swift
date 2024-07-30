@@ -11,11 +11,11 @@ import SwiftUI
 
 @Observable
 class TagViewModel {
-    @LazyInjected @ObservationIgnored private var tagHandler: TagHandlerProtocol
     @LazyInjected @ObservationIgnored private var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored private var alertHandler: AlertHandlerProtocol
     @LazyInjected @ObservationIgnored private var hintHandler: HintHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
+    @LazyInjected @ObservationIgnored var tagHandler: TagHandlerProtocol
     
     var tags: [Tag] {
         tagHandler.tags
@@ -25,13 +25,15 @@ class TagViewModel {
         tagHandler.selectedTag
     }
     
-    var name: String = ""
-    var badgeColor: Color = AppColor.Primary
+    var editMode: Bool {
+        tagHandler.editMode
+    }            
     
+    @MainActor
     func saveTag() {
         do {
-            let colorData = try ColorConverter.encodeColor(color: badgeColor)
-            let newTag: Tag = Tag(name: name, badgeColor: colorData)
+            let colorData = try ColorConverter.encodeColor(color: tagHandler.editColor)
+            let newTag: Tag = Tag(name: tagHandler.editTag.name, badgeColor: colorData)
             tagHandler.tags.append(newTag)
             tagHandler.saveTags()
             
@@ -42,6 +44,32 @@ class TagViewModel {
         } catch {
             debugPrint("Failed to save new tag: \(error)")
             hintHandler.showHint(String(localized: "save-tag-failed"), type: .error)
+        }
+    }
+    
+    @MainActor
+    func saveChangedTag() {
+        do {
+            let editTag = tagHandler.editTag
+            let index: Int? = tagHandler.tags.firstIndex(where: { $0.id == editTag.id })
+            
+            guard let index else { return }
+            var selectedTag = tagHandler.tags[index]
+            selectedTag.name = editTag.name
+            
+            let colorData = try ColorConverter.encodeColor(color: tagHandler.editColor)
+            selectedTag.badgeColor = colorData
+            
+            tagHandler.tags[index] = selectedTag
+            tagHandler.saveTags()
+            
+            tagHandler.editMode = false
+            resetForm()
+            
+            modalHandler.hideModal()
+            hintHandler.showHint(String(localized: "save-edit-tag-success"), type: .success)
+        } catch {
+            hintHandler.showHint(String(localized: "save-changed-tag-failed"), type: .error)
         }
     }
     
@@ -57,8 +85,14 @@ class TagViewModel {
         }
     }
     
+    func hideModal() {
+        resetForm()
+        modalHandler.hideModal()
+    }
+    
     func resetForm() {
-        name = ""
-        badgeColor = AppColor.Primary
+        tagHandler.editMode = false
+        tagHandler.editTag = EmptyTag
+        tagHandler.editColor = AppColor.Primary
     }
 }

@@ -12,6 +12,7 @@ import KeyboardShortcuts
 
 @Observable
 class ScriptViewModel {
+    @LazyInjected @ObservationIgnored var storageHandler: StorageHandlerProtocol
     @LazyInjected @ObservationIgnored var modalHandler: ModalHandlerProtocol
     @LazyInjected @ObservationIgnored var scriptHandler: ScriptHandlerProtocol
     @LazyInjected @ObservationIgnored var tagHandler: TagHandlerProtocol
@@ -91,7 +92,8 @@ class ScriptViewModel {
             let saveIndex = scriptHandler.scripts.firstIndex(where: { $0.id == scriptId })!
             scriptHandler.scripts[saveIndex] = tempScript!
             
-            scriptHandler.saveScripts()
+            let storageIndex = storageHandler.scripts.firstIndex(where: { $0.id == scriptId })!
+            storageHandler.scripts[storageIndex] = tempScript!
             
             scriptHandler.runningScript = scriptHandler.runningScript.filter { $0.id != scriptId }
         }
@@ -106,7 +108,7 @@ class ScriptViewModel {
         } else {
             scriptHandler.scripts = scriptHandler.savedScripts.filter { $0.name.lowercased().contains(searchString.lowercased()) }
         }
-    }
+    }        
     
     @MainActor
     func removeTagFromScript(tagId: UUID?) {
@@ -141,7 +143,7 @@ class ScriptViewModel {
     func saveScript() {
         resetScripts()
         
-        var updatedScripts = scriptHandler.scripts
+        var updatedScripts = scriptHandler.savedScripts
         
         // Change uuid for new script
         scriptHandler.editScript.id = UUID()
@@ -176,6 +178,7 @@ class ScriptViewModel {
     @MainActor
     func saveChangedScript() {
         resetScripts()
+        scriptHandler.scripts = scriptHandler.savedScripts
         
         let editScript = scriptHandler.editScript
         let index: Int? = scriptHandler.scripts.firstIndex(where: { $0.id == editScript.id })
@@ -202,6 +205,9 @@ class ScriptViewModel {
     func openEdit(script: Script) {
         scriptHandler.editMode = true
         scriptHandler.editScript = script
+        
+        let icon = ScriptIcons.firstIndex(where: {$0 == script.icon}) ?? 0
+        scriptHandler.selectedIcon = icon
         scriptHandler.input = script.input ?? ""
         
         modalHandler.showModal(.EDIT_SCRIPT)
@@ -289,8 +295,16 @@ extension ScriptViewModel {
     }
     
     @MainActor
+    func hideModal() {
+        scriptHandler.editMode = false
+        resetForm()
+        modalHandler.hideModal()
+    }
+    
+    @MainActor
     private func resetForm() {
-        scriptHandler.editScript.name = ""
+        scriptHandler.selectedIcon = 0
+        scriptHandler.editScript = EmptyScript
     }
     
     @MainActor

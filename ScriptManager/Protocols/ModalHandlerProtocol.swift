@@ -18,7 +18,8 @@ protocol ModalHandlerProtocol {
 enum ModalType {
     case ADD_SCRIPT
     case EDIT_SCRIPT
-    case TAG
+    case ADD_TAG
+    case EDIT_TAG
     case SETTINGS
     case INFO
     case ADD

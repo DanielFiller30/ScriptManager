@@ -7,9 +7,13 @@
 
 import Foundation
 import Resolver
+import SwiftUI
 
 @Observable
 class TagHandler: TagHandlerProtocol {
+    var editTag = Tag(name: "", badgeColor: ColorConverter.defaultEncodedColor)
+    var editColor: Color = AppColor.Primary
+    
     @LazyInjected @ObservationIgnored private var storageHandler: StorageHandlerProtocol
         
     var tags: [Tag] = [] {
@@ -18,6 +22,7 @@ class TagHandler: TagHandlerProtocol {
         }
     }
     
+    var editMode: Bool = false
     var selectedTag: UUID? = nil
     
     init() {

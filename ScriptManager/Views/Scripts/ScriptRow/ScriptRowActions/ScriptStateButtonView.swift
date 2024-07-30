@@ -24,6 +24,7 @@ struct ScriptStateButtonView: View {
                     .padding(Spacing.l)
                     .background(.ultraThickMaterial)
                     .clipShape(Circle())
+                    .help("success")
                 
             } else if (interrupted) {
                 // Script interrupted
@@ -33,6 +34,7 @@ struct ScriptStateButtonView: View {
                     .padding(Spacing.l)
                     .background(.ultraThickMaterial)
                     .clipShape(Circle())
+                    .help("interrupted")
             } else if (vm.isLogEnabled) {
                 // Script failed and logging is active
                 Button {
@@ -45,7 +47,7 @@ struct ScriptStateButtonView: View {
                         .foregroundColor(.white)
                         .background(AppColor.Danger)
                         .clipShape(Circle())
-                    
+                        .help("failed-logs")
                 }
                 .buttonStyle(.plain)
                 .disabled(vm.scriptHandler.runningScript.contains(where: { $0.id == script.id }))
@@ -57,6 +59,7 @@ struct ScriptStateButtonView: View {
                     .padding(Spacing.l)
                     .background(.ultraThickMaterial)
                     .clipShape(Circle())
+                    .help("failed")
             }
             
         }

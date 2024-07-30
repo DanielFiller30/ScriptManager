@@ -22,7 +22,7 @@ class ModalViewModel {
             String(localized: "add-new-script")
         case .EDIT_SCRIPT:
             String(localized: "edit-script-title")
-        case .TAG:
+        case .ADD_TAG:
             String(localized: "add-new-tag")
         case .SETTINGS:
             String(localized: "settings")
@@ -30,6 +30,8 @@ class ModalViewModel {
             String(localized: "info")
         case .ADD:
             String(localized: "add")
+        case .EDIT_TAG:
+            String(localized: "edit-tag-title")
         }
     }
 }

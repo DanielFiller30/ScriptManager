@@ -23,6 +23,8 @@ struct SearchbarView: View {
                 
                 Button {
                     withAnimation {
+                        vm.searchString = ""
+                        vm.scriptHandler.scripts = vm.scriptHandler.savedScripts
                         show.toggle()
                     }
                 } label: {

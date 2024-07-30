@@ -10,6 +10,7 @@ import SwiftUI
 
 @Observable
 class HintHandler: HintHandlerProtocol {
+    let interval = 3.0
     var hintVisible: Bool = false
     var hintText: String = "Test-Hint"
     var hintType: HintType = .warning
@@ -22,7 +23,7 @@ class HintHandler: HintHandlerProtocol {
             self.hintVisible = true
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
             self.hideHint()
         }
     }

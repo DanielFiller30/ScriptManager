@@ -19,7 +19,7 @@ struct TagModalView: View {
                 
                 Spacer()
                 
-                TextField("", text: $vm.name)
+                TextField("", text: $vm.tagHandler.editTag.name)
                     .frame(maxWidth: 155)
                     .cornerRadius(8)
                     .textFieldStyle(.roundedBorder)
@@ -32,7 +32,7 @@ struct TagModalView: View {
                 
                 Spacer()
                 
-                Picker("", selection: $vm.badgeColor) {
+                Picker("", selection: $vm.tagHandler.editColor) {
                     ForEach(colors, id: \.self) { color in
                         Text(color.description.capitalized)
                             .foregroundStyle(color)
@@ -41,7 +41,7 @@ struct TagModalView: View {
                 .pickerStyle(.menu)
                 .frame(width: 100)
                 
-                ColorPicker("", selection: $vm.badgeColor)
+                ColorPicker("", selection: $vm.tagHandler.editColor)
             }
             .padding(.bottom, Spacing.l)
             
@@ -55,8 +55,8 @@ struct TagModalView: View {
                 HStack {
                     ForEach(TagPresets, id: \.self) { preset in
                         Button {
-                            vm.name = preset.title
-                            vm.badgeColor = preset.color
+                            vm.tagHandler.editTag.name = preset.title
+                            vm.tagHandler.editColor = preset.color
                         } label: {
                             HStack(alignment: .center) {
                                 Image(systemName: preset.icon)
@@ -80,7 +80,7 @@ struct TagModalView: View {
             HStack(alignment: .center, spacing: Spacing.xl) {
                 // Cancel
                 CustomButtonView(
-                    onClick: { vm.modalHandler.hideModal() },
+                    onClick: { vm.hideModal() },
                     label: "cancel",
                     color: AnyShapeStyle(.ultraThickMaterial),
                     outlined: false,
@@ -89,11 +89,17 @@ struct TagModalView: View {
                 
                 // Save tag
                 CustomButtonView(
-                    onClick: { vm.saveTag() },
-                    label: "save-tag",
+                    onClick: {
+                        if vm.editMode {
+                            vm.saveChangedTag()
+                        } else {
+                            vm.saveTag()
+                        }
+                    },
+                    label: vm.editMode ? "save-changed-tag" : "save-tag",
                     color: AnyShapeStyle(AppColor.Primary),
                     outlined: false,
-                    disabled: vm.name.isEmpty
+                    disabled: vm.tagHandler.editTag.name.isEmpty
                 )
             }
         }

@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC00C2A62C592DEB0081D7B4 /* SettingsHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC00C2A52C592DE70081D7B4 /* SettingsHandlerTests.swift */; };
+		DC00C2A82C592EDD0081D7B4 /* TagHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC00C2A72C592ED70081D7B4 /* TagHandlerTests.swift */; };
+		DC00C2AA2C592F500081D7B4 /* ModalHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC00C2A92C592F4C0081D7B4 /* ModalHandlerTests.swift */; };
 		DC0448FA298D2F39004B6389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC0448F9298D2F39004B6389 /* Assets.xcassets */; };
 		DC0448FD298D2F39004B6389 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC0448FC298D2F39004B6389 /* Preview Assets.xcassets */; };
 		DC044912298D4046004B6389 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC044911298D4046004B6389 /* Colors.xcassets */; };
 		DC105EEE2C11F5BA0023ABE7 /* ModalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC105EED2C11F5BA0023ABE7 /* ModalHandler.swift */; };
 		DC105EF02C11F6A10023ABE7 /* ScriptModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC105EEF2C11F6A10023ABE7 /* ScriptModalView.swift */; };
+		DC1C1E372C57ACD600B9C216 /* CronJobModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C1E362C57ACD200B9C216 /* CronJobModel.swift */; };
+		DC1C1E3B2C57AD4C00B9C216 /* CronJobHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C1E3A2C57AD4700B9C216 /* CronJobHandler.swift */; };
+		DC1C1E3D2C57B3E000B9C216 /* CronJobHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C1E3C2C57B3D900B9C216 /* CronJobHandlerProtocol.swift */; };
 		DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC275E3D2B7F885C003E35C6 /* ScriptTimeModel.swift */; };
 		DC2991D529A382A800DBCAAD /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D429A382A800DBCAAD /* IconPickerView.swift */; };
 		DC2991D729A3830C00DBCAAD /* ScriptIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */; };
@@ -31,6 +37,11 @@
 		DC44B8C22C4BFEEB000D20E2 /* BackupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8C12C4BFEE8000D20E2 /* BackupViewModel.swift */; };
 		DC44B8C52C4C0D79000D20E2 /* ScriptPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8C42C4C0D75000D20E2 /* ScriptPresets.swift */; };
 		DC44B8C72C4C0D81000D20E2 /* TagPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B8C62C4C0D7E000D20E2 /* TagPreset.swift */; };
+		DC46ED9A2C58EAB20074B9F4 /* ScriptHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46ED992C58EAA10074B9F4 /* ScriptHandlerTests.swift */; };
+		DC46ED9C2C590DD00074B9F4 /* AlertHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46ED9B2C590DCE0074B9F4 /* AlertHandlerTests.swift */; };
+		DC46ED9E2C590FC30074B9F4 /* HintHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46ED9D2C590FBF0074B9F4 /* HintHandlerTests.swift */; };
+		DC46EDA02C5912E20074B9F4 /* CronJobHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46ED9F2C5912DE0074B9F4 /* CronJobHandlerTests.swift */; };
+		DC46EDA22C5917B90074B9F4 /* StorageHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC46EDA12C5917B50074B9F4 /* StorageHandlerMock.swift */; };
 		DC4D2D9729CAFC99006CDF16 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D2D9629CAFC99006CDF16 /* BadgeView.swift */; };
 		DC4E34C52BB55A17004EB76C /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = DC4E34C42BB55A17004EB76C /* Resolver */; };
 		DC4E34C92BB55A17004EB76C /* Resolver-Static in Frameworks */ = {isa = PBXBuildFile; productRef = DC4E34C82BB55A17004EB76C /* Resolver-Static */; };
@@ -82,6 +93,7 @@
 		DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC851CFB2BF4D442007EB396 /* SettingsHandlerProtocol.swift */; };
 		DC89BF1D29DC387B0029D9CA /* ScriptHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */; };
 		DC9558242C171A5A00BA7C34 /* ShortcutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9558232C171A5A00BA7C34 /* ShortcutView.swift */; };
+		DCA30BE42C57CBE7003F790E /* IntervalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA30BE32C57CBE3003F790E /* IntervalExtension.swift */; };
 		DCAEF26B2C4A50C4004C922B /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = DCAEF26A2C4A50C4004C922B /* CodeEditor */; };
 		DCAEF26D2C4A549C004C922B /* ScriptPresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAEF26C2C4A549A004C922B /* ScriptPresetModel.swift */; };
 		DCAEF26F2C4A5A17004C922B /* SearchbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAEF26E2C4A5A14004C922B /* SearchbarView.swift */; };
@@ -91,6 +103,7 @@
 		DCDA8F452C13320E00AD2B19 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCDA8F442C13320E00AD2B19 /* ConfettiSwiftUI */; };
 		DCDCD6BE29D7305E00529752 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DCDCD6BD29D7305E00529752 /* AlertToast */; };
 		DCDCD6C129D7342F00529752 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDCD6C029D7342F00529752 /* CustomButtonView.swift */; };
+		DCDD16B62C57DDEE00757547 /* IntervalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDD16B52C57DDE700757547 /* IntervalTests.swift */; };
 		DCDEB9DC2C4B94EB00C6BA31 /* TagPresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */; };
 		DCDEB9DE2C4BA8E400C6BA31 /* ScriptProcessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DD2C4BA8E100C6BA31 /* ScriptProcessModel.swift */; };
 		DCDEB9E02C4BB80D00C6BA31 /* InfoModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDEB9DF2C4BB80800C6BA31 /* InfoModal.swift */; };
@@ -108,7 +121,20 @@
 		DCFA344929DDA4FA00807A0E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFA344829DDA4FA00807A0E /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DCDD16B32C57DCF800757547 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC0448EA298D2F38004B6389 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC0448F1298D2F38004B6389;
+			remoteInfo = ScriptManager;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		DC00C2A52C592DE70081D7B4 /* SettingsHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHandlerTests.swift; sourceTree = "<group>"; };
+		DC00C2A72C592ED70081D7B4 /* TagHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHandlerTests.swift; sourceTree = "<group>"; };
+		DC00C2A92C592F4C0081D7B4 /* ModalHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandlerTests.swift; sourceTree = "<group>"; };
 		DC0448F2298D2F38004B6389 /* ScriptManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScriptManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0448F9298D2F39004B6389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC0448FC298D2F39004B6389 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -116,6 +142,9 @@
 		DC044911298D4046004B6389 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		DC105EED2C11F5BA0023ABE7 /* ModalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandler.swift; sourceTree = "<group>"; };
 		DC105EEF2C11F6A10023ABE7 /* ScriptModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptModalView.swift; sourceTree = "<group>"; };
+		DC1C1E362C57ACD200B9C216 /* CronJobModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronJobModel.swift; sourceTree = "<group>"; };
+		DC1C1E3A2C57AD4700B9C216 /* CronJobHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronJobHandler.swift; sourceTree = "<group>"; };
+		DC1C1E3C2C57B3D900B9C216 /* CronJobHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronJobHandlerProtocol.swift; sourceTree = "<group>"; };
 		DC275E3D2B7F885C003E35C6 /* ScriptTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptTimeModel.swift; sourceTree = "<group>"; };
 		DC2991D429A382A800DBCAAD /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
 		DC2991D629A3830C00DBCAAD /* ScriptIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptIcons.swift; sourceTree = "<group>"; };
@@ -133,6 +162,11 @@
 		DC44B8C12C4BFEE8000D20E2 /* BackupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupViewModel.swift; sourceTree = "<group>"; };
 		DC44B8C42C4C0D75000D20E2 /* ScriptPresets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptPresets.swift; sourceTree = "<group>"; };
 		DC44B8C62C4C0D7E000D20E2 /* TagPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPreset.swift; sourceTree = "<group>"; };
+		DC46ED992C58EAA10074B9F4 /* ScriptHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptHandlerTests.swift; sourceTree = "<group>"; };
+		DC46ED9B2C590DCE0074B9F4 /* AlertHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandlerTests.swift; sourceTree = "<group>"; };
+		DC46ED9D2C590FBF0074B9F4 /* HintHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintHandlerTests.swift; sourceTree = "<group>"; };
+		DC46ED9F2C5912DE0074B9F4 /* CronJobHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronJobHandlerTests.swift; sourceTree = "<group>"; };
+		DC46EDA12C5917B50074B9F4 /* StorageHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHandlerMock.swift; sourceTree = "<group>"; };
 		DC4D2D9629CAFC99006CDF16 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		DC4E34CA2BB55A35004EB76C /* DependencyRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
 		DC4E34CD2BB55FF9004EB76C /* StorageWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWrapper.swift; sourceTree = "<group>"; };
@@ -182,12 +216,15 @@
 		DC851CFB2BF4D442007EB396 /* SettingsHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHandlerProtocol.swift; sourceTree = "<group>"; };
 		DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptHandlerProtocol.swift; sourceTree = "<group>"; };
 		DC9558232C171A5A00BA7C34 /* ShortcutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutView.swift; sourceTree = "<group>"; };
+		DCA30BE32C57CBE3003F790E /* IntervalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalExtension.swift; sourceTree = "<group>"; };
 		DCAEF26C2C4A549A004C922B /* ScriptPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptPresetModel.swift; sourceTree = "<group>"; };
 		DCAEF26E2C4A5A14004C922B /* SearchbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchbarView.swift; sourceTree = "<group>"; };
 		DCDA8F3D2C1323DD00AD2B19 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		DCDA8F3F2C1323F300AD2B19 /* ModalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewModel.swift; sourceTree = "<group>"; };
 		DCDA8F412C13273E00AD2B19 /* ModalHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandlerProtocol.swift; sourceTree = "<group>"; };
 		DCDCD6C029D7342F00529752 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		DCDD16AC2C57D5F700757547 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCDD16B52C57DDE700757547 /* IntervalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalTests.swift; sourceTree = "<group>"; };
 		DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPresetModel.swift; sourceTree = "<group>"; };
 		DCDEB9DD2C4BA8E100C6BA31 /* ScriptProcessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptProcessModel.swift; sourceTree = "<group>"; };
 		DCDEB9DF2C4BB80800C6BA31 /* InfoModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModal.swift; sourceTree = "<group>"; };
@@ -220,6 +257,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DCDD16A92C57D5F700757547 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -227,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0448F4298D2F38004B6389 /* ScriptManager */,
+				DCDD16AD2C57D5F700757547 /* Tests */,
 				DC0448F3298D2F38004B6389 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -235,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0448F2298D2F38004B6389 /* ScriptManager.app */,
+				DCDD16AC2C57D5F700757547 /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,9 +326,32 @@
 			path = Presets;
 			sourceTree = "<group>";
 		};
+		DC46ED972C58EA860074B9F4 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				DC00C2A92C592F4C0081D7B4 /* ModalHandlerTests.swift */,
+				DC00C2A72C592ED70081D7B4 /* TagHandlerTests.swift */,
+				DC00C2A52C592DE70081D7B4 /* SettingsHandlerTests.swift */,
+				DC46ED9F2C5912DE0074B9F4 /* CronJobHandlerTests.swift */,
+				DC46ED9D2C590FBF0074B9F4 /* HintHandlerTests.swift */,
+				DC46ED9B2C590DCE0074B9F4 /* AlertHandlerTests.swift */,
+				DC46ED992C58EAA10074B9F4 /* ScriptHandlerTests.swift */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		DC46ED982C58EA8E0074B9F4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DCDD16B52C57DDE700757547 /* IntervalTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DC4E34CF2BB5605F004EB76C /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				DC46EDA12C5917B50074B9F4 /* StorageHandlerMock.swift */,
 				DC75B416299BA57F00086806 /* StorageHandler.swift */,
 				DC4E34CD2BB55FF9004EB76C /* StorageWrapper.swift */,
 			);
@@ -292,6 +361,7 @@
 		DC4E34D02BB56288004EB76C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DCA30BE32C57CBE3003F790E /* IntervalExtension.swift */,
 				DCFA344829DDA4FA00807A0E /* ColorExtension.swift */,
 				DC4E34D12BB56298004EB76C /* DateExtension.swift */,
 				DC4E34D62BB56427004EB76C /* ShortcutsExtension.swift */,
@@ -329,6 +399,7 @@
 		DC75B414299BA57F00086806 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
+				DC1C1E3A2C57AD4700B9C216 /* CronJobHandler.swift */,
 				DC44B8B72C4BF978000D20E2 /* HintHandler.swift */,
 				DC75B415299BA57F00086806 /* ScriptHandler.swift */,
 				DC851CF92BF4D2FF007EB396 /* SettingsHandler.swift */,
@@ -406,6 +477,7 @@
 		DC75B43D299BA57F00086806 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DC1C1E362C57ACD200B9C216 /* CronJobModel.swift */,
 				DC44B8B52C4BF85C000D20E2 /* UserdataModel.swift */,
 				DCDEB9DB2C4B94E700C6BA31 /* TagPresetModel.swift */,
 				DCAEF26C2C4A549A004C922B /* ScriptPresetModel.swift */,
@@ -436,6 +508,7 @@
 		DC89BF1E29DC38830029D9CA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				DC1C1E3C2C57B3D900B9C216 /* CronJobHandlerProtocol.swift */,
 				DC44B8B92C4BF9BF000D20E2 /* HintHandlerProtocol.swift */,
 				DC89BF1C29DC387B0029D9CA /* ScriptHandlerProtocol.swift */,
 				DCFA33F229DD592500807A0E /* NotificationHandlerProtocol.swift */,
@@ -480,6 +553,15 @@
 				DC5813CF2BF77B4A00C5C727 /* AlertView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DCDD16AD2C57D5F700757547 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DC46ED982C58EA8E0074B9F4 /* Extensions */,
+				DC46ED972C58EA860074B9F4 /* Handler */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		DCDF0F9229A4B6AA00057C1E /* AddScript */ = {
@@ -529,6 +611,24 @@
 			productReference = DC0448F2298D2F38004B6389 /* ScriptManager.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DCDD16AB2C57D5F700757547 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCDD16B02C57D5F700757547 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				DCDD16A82C57D5F700757547 /* Sources */,
+				DCDD16A92C57D5F700757547 /* Frameworks */,
+				DCDD16AA2C57D5F700757547 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DCDD16B42C57DCF800757547 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = DCDD16AC2C57D5F700757547 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -536,12 +636,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					DC0448F1298D2F38004B6389 = {
 						CreatedOnToolsVersion = 14.2;
 						LastSwiftMigration = 1420;
+					};
+					DCDD16AB2C57D5F700757547 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = DC0448F1298D2F38004B6389;
 					};
 				};
 			};
@@ -568,6 +672,7 @@
 			projectRoot = "";
 			targets = (
 				DC0448F1298D2F38004B6389 /* ScriptManager */,
+				DCDD16AB2C57D5F700757547 /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -581,6 +686,13 @@
 				DC0448FD298D2F39004B6389 /* Preview Assets.xcassets in Resources */,
 				DC4E34D42BB562F2004EB76C /* Localizable.xcstrings in Resources */,
 				DC0448FA298D2F39004B6389 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCDD16AA2C57D5F700757547 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +731,7 @@
 				DCDEB9E22C4BB84E00C6BA31 /* InfoViewModel.swift in Sources */,
 				DC105EF02C11F6A10023ABE7 /* ScriptModalView.swift in Sources */,
 				DCDA8F3E2C1323DD00AD2B19 /* ModalView.swift in Sources */,
+				DC46EDA22C5917B90074B9F4 /* StorageHandlerMock.swift in Sources */,
 				DCDEB9DC2C4B94EB00C6BA31 /* TagPresetModel.swift in Sources */,
 				DC75B467299BA58000086806 /* ShellModel.swift in Sources */,
 				DCDA8F402C1323F300AD2B19 /* ModalViewModel.swift in Sources */,
@@ -642,13 +755,16 @@
 				DC75B443299BA57F00086806 /* ScriptManagerApp.swift in Sources */,
 				DC275E3E2B7F885C003E35C6 /* ScriptTimeModel.swift in Sources */,
 				DCDEB9DE2C4BA8E400C6BA31 /* ScriptProcessModel.swift in Sources */,
+				DC1C1E3D2C57B3E000B9C216 /* CronJobHandlerProtocol.swift in Sources */,
 				DC44B8B42C4BF832000D20E2 /* JSONProvider.swift in Sources */,
+				DC1C1E3B2C57AD4C00B9C216 /* CronJobHandler.swift in Sources */,
 				DC75B463299BA58000086806 /* ScriptRunButtonView.swift in Sources */,
 				DCAEF26D2C4A549C004C922B /* ScriptPresetModel.swift in Sources */,
 				DC851CFC2BF4D442007EB396 /* SettingsHandlerProtocol.swift in Sources */,
 				DC44B8BC2C4BFAA9000D20E2 /* HintView.swift in Sources */,
 				DCFA33F329DD592500807A0E /* NotificationHandlerProtocol.swift in Sources */,
 				DC44B8B22C4BF7E5000D20E2 /* BackupProvider.swift in Sources */,
+				DC1C1E372C57ACD600B9C216 /* CronJobModel.swift in Sources */,
 				DC44B8C02C4BFEA6000D20E2 /* SettingsBackupView.swift in Sources */,
 				DC79D0CA2C49A004001BF56F /* HeaderViewModel.swift in Sources */,
 				DC44B8B82C4BF97A000D20E2 /* HintHandler.swift in Sources */,
@@ -684,6 +800,7 @@
 				DC75B462299BA58000086806 /* ScriptDeleteButtonView.swift in Sources */,
 				DC44B8BE2C4BFADA000D20E2 /* HintViewModel.swift in Sources */,
 				DC75B46A299BA58000086806 /* ResultModel.swift in Sources */,
+				DCA30BE42C57CBE7003F790E /* IntervalExtension.swift in Sources */,
 				DC75B458299BA58000086806 /* WelcomeView.swift in Sources */,
 				DC4E34CE2BB55FF9004EB76C /* StorageWrapper.swift in Sources */,
 				DC105EEE2C11F5BA0023ABE7 /* ModalHandler.swift in Sources */,
@@ -702,7 +819,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DCDD16A82C57D5F700757547 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC00C2AA2C592F500081D7B4 /* ModalHandlerTests.swift in Sources */,
+				DC46ED9C2C590DD00074B9F4 /* AlertHandlerTests.swift in Sources */,
+				DC46ED9E2C590FC30074B9F4 /* HintHandlerTests.swift in Sources */,
+				DC00C2A82C592EDD0081D7B4 /* TagHandlerTests.swift in Sources */,
+				DCDD16B62C57DDEE00757547 /* IntervalTests.swift in Sources */,
+				DC00C2A62C592DEB0081D7B4 /* SettingsHandlerTests.swift in Sources */,
+				DC46EDA02C5912E20074B9F4 /* CronJobHandlerTests.swift in Sources */,
+				DC46ED9A2C58EAB20074B9F4 /* ScriptHandlerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DCDD16B42C57DCF800757547 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DC0448F1298D2F38004B6389 /* ScriptManager */;
+			targetProxy = DCDD16B32C57DCF800757547 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DC0448FF298D2F39004B6389 /* Debug */ = {
@@ -846,7 +986,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = de.df.ScriptManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -881,12 +1021,72 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = de.df.ScriptManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = off;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DCDD16B12C57D5F700757547 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSM77R4CQ3;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.df.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScriptManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ScriptManager";
+			};
+			name = Debug;
+		};
+		DCDD16B22C57D5F700757547 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MSM77R4CQ3;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.df.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ScriptManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ScriptManager";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -907,6 +1107,15 @@
 			buildConfigurations = (
 				DC044902298D2F39004B6389 /* Debug */,
 				DC044903298D2F39004B6389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCDD16B02C57D5F700757547 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCDD16B12C57D5F700757547 /* Debug */,
+				DCDD16B22C57D5F700757547 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

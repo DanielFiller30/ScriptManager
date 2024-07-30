@@ -22,6 +22,9 @@ class StorageHandler: StorageHandlerProtocol {
     
     @Storage(key: StorageKeys.SETTINGS, defaultValue: DefaultSettings)
     var settings: Settings
+    
+    @Storage(key: StorageKeys.CRONJOBS, defaultValue: [])
+    var cronJobs: [CronJob]
 }
 
 // MARK: - Helper functions for StorageHandler
@@ -43,7 +46,7 @@ extension StorageHandler {
     /// Reset values of key in UserDefaults. (Used for debugging)
     /// Key-values will be reset to default
     func resetValues(_ key: StorageKeys) {
-        UserDefaults.standard.removeObject(forKey: key.rawValue)
+        UserDefaults.standard.removeObject(forKey: key.rawValue)        
     }
 }
 
@@ -53,4 +56,5 @@ enum StorageKeys: String, CaseIterable {
     case SETTINGS
     case TAG
     case TIMES
+    case CRONJOBS
 }
