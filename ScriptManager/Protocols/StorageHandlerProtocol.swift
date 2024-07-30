@@ -13,6 +13,7 @@ protocol StorageHandlerProtocol {
     var tags: [Tag] { get set }
     var times: [ScriptTime] { get set }
     var settings: Settings { get set }
+    var cronJobs: [CronJob] { get set }
     
     func resetData()
     func resetValues(_ key: StorageKeys)
